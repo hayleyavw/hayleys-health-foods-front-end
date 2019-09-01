@@ -1,10 +1,14 @@
 import React from 'react'
-import { StyledRecipeCard, StyledRecipeCardImage } from './RecipeCard.styled'
+import {
+    StyledRecipeCard,
+    StyledRecipeCardImage,
+    StyledRecipeCardTitleOverlay,
+} from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
 
 interface RecipeCardProps {
     dateAdded: string
-    id: number
+    id?: number
     method: string
     slug: string
     title: string
@@ -14,10 +18,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ dateAdded, id, method, s
     return (
         <StyledRecipeCard>
             <Link to={`/recipes/${slug}`}>
-                {/* <a href={`http://localhost:5000/recipes/${slug}`}> */}
-                <p>{title}</p>
+                <StyledRecipeCardTitleOverlay>{title}</StyledRecipeCardTitleOverlay>
                 <StyledRecipeCardImage src={`http://localhost:5000/images/${slug}`} />
-                {/* </a> */}
             </Link>
         </StyledRecipeCard>
     )

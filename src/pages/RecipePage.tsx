@@ -1,6 +1,5 @@
 import React from 'react'
 import * as H from 'history'
-// import { RouteProps } from 'react-router';
 import { RecipeCard } from '../components/RecipeCard/RecipeCard'
 
 interface MatchParams {
@@ -23,15 +22,45 @@ export interface match<P> {
     url: string
 }
 
-export const RecipePage: React.FC<Props> = props => {
-    console.log(props.match.params.slug)
-    return (
-        <RecipeCard
-            dateAdded={'date added'}
-            id={1}
-            method={'cats'}
-            slug={props.match.params.slug}
-            title={props.match.params.slug}
-        />
-    )
+interface State {
+    dateAdded: string
+    id?: number
+    method: string
+    slug: string
+    title: string
+}
+
+export class RecipePage extends React.Component<Props> {
+    public readonly state: Readonly<State> = {
+        dateAdded: '',
+        method: '',
+        title: '',
+        slug: this.props.match.params.slug,
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:5000/recipes/${this.state.slug}`)
+            .then(results => {
+                return results.json()
+            })
+            .then(recipe => {
+                this.setState({
+                    dateAdded: recipe['date_added'],
+                    id: recipe['id'],
+                    method: recipe['method'],
+                    title: recipe['title'],
+                })
+            })
+    }
+    render() {
+        return (
+            <RecipeCard
+                dateAdded={this.state.dateAdded}
+                id={this.state.id}
+                method={this.state.method}
+                slug={this.state.slug}
+                title={this.state.title}
+            />
+        )
+    }
 }

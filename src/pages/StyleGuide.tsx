@@ -13,6 +13,7 @@ import {
     StyledHeadingFour,
 } from '../components/common/Headings.styled'
 import { StyledParagraph } from '../components/common/Paragraph.styled'
+import { RecipeCard } from '../components/RecipeCard/RecipeCard'
 
 const StyleGuide: React.FC = () => {
     return (
@@ -90,6 +91,13 @@ const StyleGuide: React.FC = () => {
             <StyledButton>
                 <StyledButtonText>Button Text</StyledButtonText>
             </StyledButton>
+            <RecipeCard
+                dateAdded="14/01/2018"
+                id={1}
+                method="This is the method"
+                slug="apple-sauce"
+                title="Apple Sauce"
+            />
         </StyledStyleGuide>
     )
 }
