@@ -26,5 +26,5 @@ export const colours = {
     },
 
     white: '#fff',
-    black: '#000'
+    black: '#000',
 }

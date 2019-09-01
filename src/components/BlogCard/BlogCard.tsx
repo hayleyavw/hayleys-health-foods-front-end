@@ -6,7 +6,7 @@ interface TestState {
     blogTitle: string,
     blogContent: string
 }
-class BlogCard extends React.Component {
+export class BlogCard extends React.Component {
 
     public readonly state: Readonly<TestState> = {
         blogTitle: '',
@@ -35,7 +35,5 @@ class BlogCard extends React.Component {
                 </p>
             </StyledBlogCard>
         )
-        }
+    }
 }
-
-export default BlogCard;

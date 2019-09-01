@@ -9,7 +9,6 @@ const StyleGuide: React.FC = () => {
     
     return (
         /* each component
-         * p
          * ol
          * ul
          * link
