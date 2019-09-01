@@ -1,6 +1,5 @@
-import { calcRem } from "./styling-utils/calc-rem";
+import { calcRem } from './styling-utils/calc-rem'
 
 export const margin = {
-
-    bodyMargin: calcRem(100)
+    bodyMargin: calcRem(100),
 }

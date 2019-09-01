@@ -4,11 +4,11 @@ interface StyledSquareProps {
     colour: string
 }
 
-export const StyledColourScheme = styled('div') ({
+export const StyledColourScheme = styled('div')({
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'stretch',
-    margin: '20px 0'
+    margin: '20px 0',
 })
 
 export const StyledSquare = styled('div')<StyledSquareProps>(({ colour }) => ({
@@ -19,7 +19,7 @@ export const StyledSquare = styled('div')<StyledSquareProps>(({ colour }) => ({
     backgroundColor: colour,
 }))
 
-export const StyledStyleGuide = styled('div') ({
+export const StyledStyleGuide = styled('div')({
     width: '90vw',
-    margin: '0 auto'
+    margin: '0 auto',
 })

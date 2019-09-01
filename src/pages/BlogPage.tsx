@@ -1,10 +1,8 @@
 import React from 'react'
-import { BlogCard } from '../components/BlogCard/BlogCard';
+import { BlogCard } from '../components/BlogCard/BlogCard'
 
 const BlogPage: React.FC = () => {
-    return (
-        <BlogCard />
-    )
+    return <BlogCard />
 }
 
-export default BlogPage;
+export default BlogPage

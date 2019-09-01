@@ -1,38 +1,33 @@
 import React from 'react'
-import { StyledBlogCard } from './BlogCard.styled';
+import { StyledBlogCard } from './BlogCard.styled'
 
-
-interface TestState {
-    blogTitle: string,
+interface State {
+    blogTitle: string
     blogContent: string
 }
 export class BlogCard extends React.Component {
-
-    public readonly state: Readonly<TestState> = {
+    public readonly state: Readonly<State> = {
         blogTitle: '',
-        blogContent: ''
+        blogContent: '',
     }
 
     componentDidMount() {
         fetch('http://localhost:5000/blog/a-few-weeks-later')
-        .then(results => {
-            console.log(results)
-            return results.json();
-        }).then(data => {
-            console.log(data)
-            this.setState({ blogTitle: data.title })
-        })
+            .then(results => {
+                console.log(results)
+                return results.json()
+            })
+            .then(data => {
+                console.log(data)
+                this.setState({ blogTitle: data.title })
+            })
     }
 
     render() {
         return (
             <StyledBlogCard className="container">
-                <h2>
-                    {this.state.blogTitle}
-                </h2>
-                <p>
-                    {this.state.blogContent}
-                </p>
+                <h2>{this.state.blogTitle}</h2>
+                <p>{this.state.blogContent}</p>
             </StyledBlogCard>
         )
     }
