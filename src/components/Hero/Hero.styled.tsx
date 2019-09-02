@@ -1,15 +1,16 @@
 import styled from '@emotion/styled'
-import { margin } from '../styling/margin'
+import { margins } from '../styling/margin'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 
 export const StyledHero = styled('div')({
-    margin: `-${margin.bodyMargin} -${margin.bodyMargin} 0 -${margin.bodyMargin}`,
+    margin: `0 -${margins.leftAndRightMargins}`,
     height: '60vh',
     position: 'relative',
     textAlign: 'center',
-    color: 'white',
+    color: colours.white,
+    borderTop: `1px solid ${colours.white}`,
 })
 
 export const StyledHeroImage = styled('img')({

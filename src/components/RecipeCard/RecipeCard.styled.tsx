@@ -32,6 +32,7 @@ export const StyledRecipeCardImage = styled('img')({
 
 export const StyledRecipeCardTitleOverlay = styled('a')({
     position: 'absolute',
+    fontSize: '1.2rem',
     width: '100%',
     height: '20%',
     bottom: calcRem(-24),
