@@ -4,6 +4,7 @@ import { RecipeList } from '../components/RecipeList/RecipeList'
 import { Nav } from '../components/Nav/Nav'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
 import { LatestRecipeList } from '../components/RecipeList/LatestRecipeList'
+import { HomePagePromoCardRow } from '../components/HomePagePromoCardRow/HomePagePromoCardRow'
 
 const HomePage: React.FC = () => {
     return (
@@ -12,6 +13,7 @@ const HomePage: React.FC = () => {
             <Hero></Hero>
             <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
             <LatestRecipeList></LatestRecipeList>
+            <HomePagePromoCardRow />
             <StyledHeadingTwo>Recipes</StyledHeadingTwo>
             <RecipeList />
         </div>

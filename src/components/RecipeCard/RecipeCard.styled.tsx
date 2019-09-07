@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { colours } from '../styling/colours'
 import { gradients } from '../styling/gradients'
+import { cardBorderRadius } from '../styling/borders'
 
 export const StyledRecipeCard = styled('div')({
     height: calcRem(300),
@@ -10,8 +11,9 @@ export const StyledRecipeCard = styled('div')({
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center',
+    borderRadius: cardBorderRadius,
     '&:hover': {
-        a: {
+        p: {
             opacity: 1,
             bottom: 0,
             transition: 'bottom 0.5s',
@@ -30,11 +32,12 @@ export const StyledRecipeCardImage = styled('img')({
     },
 })
 
-export const StyledRecipeCardTitleOverlay = styled('a')({
+export const StyledRecipeCardTitleOverlay = styled('p')({
     position: 'absolute',
     fontSize: '1.2rem',
     width: '100%',
     height: '20%',
+    margin: 0,
     bottom: calcRem(-24),
     color: colours.white,
     background: gradients.primary_to_accent,

@@ -3,7 +3,6 @@ import { gradients } from '../styling/gradients'
 import { colours } from '../styling/colours'
 import { margins } from '../styling/margin'
 import { calcRem } from '../styling/styling-utils/calc-rem'
-import { StyledAnchor } from '../common/Anchor.styled'
 import { Link } from 'react-router-dom'
 import { bodyFont } from '../styling/fonts'
 
