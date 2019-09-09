@@ -12,7 +12,7 @@ export class RecipeList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/recipes?offset=5')
+        fetch('http://localhost:5000/recipes?offset=4')
             .then(results => {
                 return results.json()
             })
