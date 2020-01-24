@@ -1,34 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { StyledBlogCard } from './BlogCard.styled'
 
-interface State {
-    blogTitle: string
-    blogContent: string
+interface BlogCardProps {
+    id?: number
+    slug: string
+    title: string
 }
-export class BlogCard extends React.Component {
-    public readonly state: Readonly<State> = {
-        blogTitle: '',
-        blogContent: '',
-    }
 
-    componentDidMount() {
-        fetch('http://localhost:5000/blog/a-few-weeks-later')
-            .then(results => {
-                console.log(results)
-                return results.json()
-            })
-            .then(data => {
-                console.log(data)
-                this.setState({ blogTitle: data.title })
-            })
-    }
-
-    render() {
-        return (
-            <StyledBlogCard className="container">
-                <h2>{this.state.blogTitle}</h2>
-                <p>{this.state.blogContent}</p>
-            </StyledBlogCard>
-        )
-    }
+export const BlogCard: React.FC<BlogCardProps> = ({ slug, title }) => {
+    return (
+        <StyledBlogCard>
+            <Link to={`/blog/${slug}`}>{title}</Link>
+        </StyledBlogCard>
+    )
 }
