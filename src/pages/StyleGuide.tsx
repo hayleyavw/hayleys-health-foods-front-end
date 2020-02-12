@@ -92,11 +92,12 @@ const StyleGuide: React.FC = () => {
                 <StyledButtonText>Button Text</StyledButtonText>
             </StyledButton>
             <RecipeCard
-                dateAdded="14/01/2018"
+                createdAt="14/01/2018"
                 id={1}
                 method="This is the method"
                 slug="apple-sauce"
                 title="Apple Sauce"
+                hero="http://localhost:1337/uploads/45913c861f464a93af81f27f2efc7556.jpg"
             />
         </StyledStyleGuide>
     )

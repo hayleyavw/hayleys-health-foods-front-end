@@ -10,10 +10,11 @@ import {
 
 interface Recipe {
     id: number | undefined
-    date_added: string
+    createdAt: string
     method: string
     slug: string
     title: string
+    hero: any
 }
 
 interface IState {
@@ -27,16 +28,18 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
     public readonly state: Readonly<IState> = {
         main_recipe: {
             id: undefined,
-            date_added: '',
+            createdAt: '',
             method: '',
             slug: '',
             title: '',
+            hero: '',
         },
         recipes: [],
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/recipes?count=1')
+        const api_url = process.env.REACT_APP_API_URL || ''
+        fetch(`${api_url}/recipes`)
             .then(results => {
                 return results.json()
             })
@@ -45,7 +48,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                     main_recipe: data[0],
                 }))
             })
-        fetch('http://localhost:5000/recipes?count=3&offset=1')
+        fetch(`${api_url}/recipes`)
             .then(results => {
                 return results.json()
             })
@@ -61,10 +64,11 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                 <RecipeCard
                     key={main_recipe['id']}
                     title={main_recipe['title']}
-                    dateAdded={main_recipe['date_added']}
+                    createdAt={main_recipe['createdAt']}
                     method={main_recipe['method']}
                     slug={main_recipe['slug']}
                     id={main_recipe['id']}
+                    hero={main_recipe['hero']}
                 />
             )
         }
@@ -89,10 +93,11 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                             <RecipeCard
                                 key={recipe['id']}
                                 title={recipe['title']}
-                                dateAdded={recipe['date_added']}
+                                createdAt={recipe['createdAt']}
                                 method={recipe['method']}
                                 slug={recipe['slug']}
                                 id={recipe['id']}
+                                hero={recipe['hero']}
                             />
                             <StyledRightColumnCardText>
                                 <p>{recipe['title']}</p>

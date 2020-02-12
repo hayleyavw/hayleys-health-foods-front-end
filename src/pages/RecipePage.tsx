@@ -23,43 +23,48 @@ export interface match<P> {
 }
 
 interface State {
-    dateAdded: string
+    createdAt: string
     id?: number
     method: string
     slug: string
     title: string
+    hero: any
 }
 
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        dateAdded: '',
+        createdAt: '',
         method: '',
         title: '',
         slug: this.props.match.params.slug,
+        hero: '',
     }
 
     componentDidMount() {
-        fetch(`http://localhost:5000/recipes/${this.state.slug}`)
+        const api_url = process.env.REACT_APP_API_URL || ''
+        fetch(`${api_url}/recipes`)
             .then(results => {
                 return results.json()
             })
             .then(recipe => {
                 this.setState({
-                    dateAdded: recipe['date_added'],
+                    createdAt: recipe['created_at'],
                     id: recipe['id'],
                     method: recipe['method'],
                     title: recipe['title'],
+                    hero: recipe['hero'],
                 })
             })
     }
     render() {
         return (
             <RecipeCard
-                dateAdded={this.state.dateAdded}
+                createdAt={this.state.createdAt}
                 id={this.state.id}
                 method={this.state.method}
                 slug={this.state.slug}
                 title={this.state.title}
+                hero={this.state.hero}
             />
         )
     }

@@ -7,19 +7,29 @@ import {
 import { Link } from 'react-router-dom'
 
 interface RecipeCardProps {
-    dateAdded: string
+    createdAt: string
     id?: number
     method: string
     slug: string
     title: string
+    hero: any
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({ dateAdded, id, method, slug, title }) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({
+    createdAt,
+    id,
+    method,
+    slug,
+    title,
+    hero,
+}) => {
+    const api_url = process.env.REACT_APP_API_URL || ''
+    console.log(hero)
     return (
         <StyledRecipeCard>
             <Link to={`/recipes/${slug}`}>
                 <StyledRecipeCardTitleOverlay>{title}</StyledRecipeCardTitleOverlay>
-                <StyledRecipeCardImage src={`http://localhost:5000/images/${slug}`} />
+                <StyledRecipeCardImage src={`${api_url}/${hero.url}`} />
             </Link>
         </StyledRecipeCard>
     )
