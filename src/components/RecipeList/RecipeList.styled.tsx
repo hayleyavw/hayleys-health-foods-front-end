@@ -14,7 +14,7 @@ export const StyledRecipeList = styled('div')({
     height: '60vh',
 })
 
-export const StyledLargeLeftCard = styled('div')({
+export const StyledFeatureRecipeCard = styled('div')({
     flexBasis: '49%',
     height: '100%',
     display: 'flex',
@@ -26,7 +26,7 @@ export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
     margin: calcRem(3, 0, 0, 0),
 })
 
-export const StyledRightColumnCards = styled('div')({
+export const StyledLatestRecipeCardsColumn = styled('div')({
     display: 'flex',
     flexDirection: 'column',
     flexBasis: '49%',
@@ -34,7 +34,7 @@ export const StyledRightColumnCards = styled('div')({
     height: '100%',
 })
 
-export const StyledRightColumnCard = styled('div')({
+export const StyledLatestRecipeCard = styled('div')({
     display: 'flex',
     height: '32%',
     margin: calcRem(5),
@@ -61,7 +61,7 @@ export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageL
     })
 )
 
-export const StyledRightColumnCardText = styled('div')({
+export const StyledLatestRecipeCardText = styled('div')({
     flexBasis: '50%',
     marginLeft: calcRem(5),
 })

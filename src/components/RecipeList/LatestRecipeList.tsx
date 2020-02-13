@@ -2,10 +2,10 @@ import React from 'react'
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import {
     StyledRecipeList,
-    StyledLargeLeftCard,
-    StyledRightColumnCards,
-    StyledRightColumnCard,
-    StyledRightColumnCardText,
+    StyledFeatureRecipeCard,
+    StyledLatestRecipeCardsColumn,
+    StyledLatestRecipeCard,
+    StyledLatestRecipeCardText,
     StyledLatestRecipeImage,
     StyledLatestRecipeImageLink,
     StyledLatestRecipeDescription,
@@ -13,7 +13,6 @@ import {
 } from './RecipeList.styled'
 import { RecipeResponseObject } from '../../api/ResponseObjects'
 import { RecipeObject } from '../../api/DefaultObjects'
-import { StyledHeadingFour } from '../common/Headings.styled'
 
 interface IState {
     main_recipe: RecipeResponseObject
@@ -52,7 +51,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
         const api_url = process.env.REACT_APP_API_URL || ''
         return (
             <StyledRecipeList>
-                <StyledLargeLeftCard>
+                <StyledFeatureRecipeCard>
                     <StyledLatestRecipeImageLink
                         to={`/recipes/${this.state.main_recipe['slug']}`}
                         isMainCard={true}
@@ -74,10 +73,10 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                         rope's end aft. Broadside hardtack matey grapple barque squiffy crack Jennys
                         tea cup jolly boat plunder jury mast.
                     </StyledLatestRecipeDescription>
-                </StyledLargeLeftCard>
-                <StyledRightColumnCards>
+                </StyledFeatureRecipeCard>
+                <StyledLatestRecipeCardsColumn>
                     {this.state.recipes.map(recipe => (
-                        <StyledRightColumnCard>
+                        <StyledLatestRecipeCard>
                             <StyledLatestRecipeImageLink to={`/recipes/${recipe['slug']}`}>
                                 <StyledLatestRecipeImage
                                     src={
@@ -85,7 +84,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                                     }
                                 />
                             </StyledLatestRecipeImageLink>
-                            <StyledRightColumnCardText>
+                            <StyledLatestRecipeCardText>
                                 <StyledLatestRecipeCardHeadings>
                                     {recipe['title']}
                                 </StyledLatestRecipeCardHeadings>
@@ -93,10 +92,10 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                                     Gabion transom mizzenmast Plate Fleet topmast list heave to
                                     parrel gunwalls bowsprit.
                                 </StyledLatestRecipeDescription>
-                            </StyledRightColumnCardText>
-                        </StyledRightColumnCard>
+                            </StyledLatestRecipeCardText>
+                        </StyledLatestRecipeCard>
                     ))}
-                </StyledRightColumnCards>
+                </StyledLatestRecipeCardsColumn>
             </StyledRecipeList>
         )
     }
