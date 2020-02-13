@@ -25,7 +25,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
 
     componentDidMount() {
         const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes/?_limit=4`)
+        fetch(`${api_url}/recipes/`)
             .then(results => {
                 return results.json()
             })
@@ -34,7 +34,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                     main_recipe: data[0],
                 }))
             })
-        fetch(`${api_url}/recipes`)
+        fetch(`${api_url}/recipes?_start=1&_limit=3`)
             .then(results => {
                 return results.json()
             })

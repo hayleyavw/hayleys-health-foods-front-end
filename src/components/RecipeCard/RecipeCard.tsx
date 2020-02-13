@@ -25,7 +25,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     hero,
 }) => {
     const api_url = process.env.REACT_APP_API_URL || ''
-    console.log(hero)
     return (
         <StyledRecipeCard>
             <Link to={`/recipes/${slug}`}>
