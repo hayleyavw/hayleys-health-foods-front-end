@@ -4,8 +4,12 @@ import { colours } from '../styling/colours'
 import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
 
-export const StyledRecipeCard = styled('div')({
-    height: calcRem(300),
+interface StyledRecipeCardProps {
+    isSmall: boolean
+}
+
+export const StyledRecipeCard = styled('div')<StyledRecipeCardProps>(({ isSmall }) => ({
+    height: isSmall ? undefined : calcRem(300),
     flex: ' 1 0 21%',
     margin: calcRem(5),
     position: 'relative',
@@ -19,7 +23,7 @@ export const StyledRecipeCard = styled('div')({
             transition: 'bottom 0.5s',
         },
     },
-})
+}))
 
 export const StyledRecipeCardImage = styled('img')({
     width: '100%',

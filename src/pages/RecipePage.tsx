@@ -48,15 +48,6 @@ export class RecipePage extends React.Component<Props> {
             })
     }
     render() {
-        return (
-            <RecipeCard
-                createdAt={this.state.recipe.created_at}
-                id={this.state.recipe.id}
-                method={this.state.recipe.method}
-                slug={this.state.recipe.slug}
-                title={this.state.recipe.title}
-                hero={this.state.recipe.hero}
-            />
-        )
+        return <RecipeCard recipe={this.state.recipe} />
     }
 }

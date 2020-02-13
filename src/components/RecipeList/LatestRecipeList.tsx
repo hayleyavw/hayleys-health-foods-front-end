@@ -6,9 +6,12 @@ import {
     StyledRightColumnCards,
     StyledRightColumnCard,
     StyledRightColumnCardText,
+    StyledLatestRecipeImage,
+    StyledLatestRecipeImageLink,
 } from './RecipeList.styled'
 import { RecipeResponseObject } from '../../api/ResponseObjects'
 import { RecipeObject } from '../../api/DefaultObjects'
+import { Link } from 'react-router-dom'
 
 interface IState {
     main_recipe: RecipeResponseObject
@@ -43,28 +46,23 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
             })
     }
 
-    mainCard = () => {
-        const main_recipe = this.state.main_recipe
-        if (main_recipe.id) {
-            return (
-                <RecipeCard
-                    key={main_recipe['id']}
-                    title={main_recipe['title']}
-                    createdAt={main_recipe['created_at']}
-                    method={main_recipe['method']}
-                    slug={main_recipe['slug']}
-                    id={main_recipe['id']}
-                    hero={main_recipe['hero']}
-                />
-            )
-        }
-    }
-
     render() {
+        const api_url = process.env.REACT_APP_API_URL || ''
         return (
             <StyledRecipeList>
                 <StyledLargeLeftCard>
-                    {this.mainCard()}
+                    <StyledLatestRecipeImageLink
+                        to={`/recipes/${this.state.main_recipe['slug']}`}
+                        isMainCard={true}
+                    >
+                        <StyledLatestRecipeImage
+                            src={
+                                this.state.main_recipe['hero']
+                                    ? `${api_url}/${this.state.main_recipe['hero']['url']}`
+                                    : ''
+                            }
+                        />
+                    </StyledLatestRecipeImageLink>
                     <p>{this.state.main_recipe['title']}</p>
                     <p>
                         Gabion transom mizzenmast Plate Fleet topmast list heave to parrel gunwalls
@@ -76,15 +74,13 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                 <StyledRightColumnCards>
                     {this.state.recipes.map(recipe => (
                         <StyledRightColumnCard>
-                            <RecipeCard
-                                key={recipe['id']}
-                                title={recipe['title']}
-                                createdAt={recipe['createdAt']}
-                                method={recipe['method']}
-                                slug={recipe['slug']}
-                                id={recipe['id']}
-                                hero={recipe['hero']}
-                            />
+                            <StyledLatestRecipeImageLink to={`/recipes/${recipe['slug']}`}>
+                                <StyledLatestRecipeImage
+                                    src={
+                                        recipe['hero'] ? `${api_url}/${recipe['hero']['url']}` : ''
+                                    }
+                                />
+                            </StyledLatestRecipeImageLink>
                             <StyledRightColumnCardText>
                                 <p>{recipe['title']}</p>
                                 <p>

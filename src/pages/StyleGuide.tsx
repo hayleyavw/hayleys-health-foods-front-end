@@ -14,7 +14,7 @@ import {
 } from '../components/common/Headings.styled'
 import { StyledParagraph } from '../components/common/Paragraph.styled'
 import { RecipeCard } from '../components/RecipeCard/RecipeCard'
-import { HeroObject } from '../api/DefaultObjects'
+import { HeroObject, RecipeObject } from '../api/DefaultObjects'
 
 const StyleGuide: React.FC = () => {
     return (
@@ -92,14 +92,7 @@ const StyleGuide: React.FC = () => {
             <StyledButton>
                 <StyledButtonText>Button Text</StyledButtonText>
             </StyledButton>
-            <RecipeCard
-                createdAt="14/01/2018"
-                id={1}
-                method="This is the method"
-                slug="apple-sauce"
-                title="Apple Sauce"
-                hero={new HeroObject()}
-            />
+            <RecipeCard recipe={new RecipeObject()} />
         </StyledStyleGuide>
     )
 }

@@ -5,31 +5,20 @@ import {
     StyledRecipeCardTitleOverlay,
 } from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
-import { HeroResponseObject } from '../../api/ResponseObjects'
+import { HeroResponseObject, RecipeResponseObject } from '../../api/ResponseObjects'
 
 interface RecipeCardProps {
-    createdAt: string
-    id?: number
-    method: string
-    slug: string
-    title: string
-    hero: HeroResponseObject
+    recipe: RecipeResponseObject
+    isSmall?: boolean
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({
-    createdAt,
-    id,
-    method,
-    slug,
-    title,
-    hero,
-}) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isSmall }) => {
     const api_url = process.env.REACT_APP_API_URL || ''
     return (
-        <StyledRecipeCard>
-            <Link to={`/recipes/${slug}`}>
-                <StyledRecipeCardTitleOverlay>{title}</StyledRecipeCardTitleOverlay>
-                <StyledRecipeCardImage src={hero ? `${api_url}/${hero.url}` : ''} />
+        <StyledRecipeCard isSmall={isSmall ? isSmall : false}>
+            <Link to={`/recipes/${recipe.slug}`}>
+                <StyledRecipeCardTitleOverlay>{recipe.title}</StyledRecipeCardTitleOverlay>
+                <StyledRecipeCardImage src={recipe.hero ? `${api_url}/${recipe.hero.url}` : ''} />
             </Link>
         </StyledRecipeCard>
     )

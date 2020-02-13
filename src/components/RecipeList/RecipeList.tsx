@@ -26,15 +26,7 @@ export class RecipeList extends React.Component {
         return (
             <StyledRecipeList>
                 {this.state.recipes.map(recipe => (
-                    <RecipeCard
-                        key={recipe['id']}
-                        title={recipe['title']}
-                        createdAt={recipe['created_at']}
-                        method={recipe['method']}
-                        slug={recipe['slug']}
-                        id={recipe['id']}
-                        hero={recipe['hero']}
-                    />
+                    <RecipeCard key={recipe['id']} recipe={recipe} />
                 ))}
             </StyledRecipeList>
         )
