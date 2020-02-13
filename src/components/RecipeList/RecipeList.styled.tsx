@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import { calcRem } from '../styling/styling-utils/calc-rem'
+import { StyledHeadingFour } from '../common/Headings.styled'
 
 interface StyledLatestRecipeImageLinkProps {
     isMainCard?: boolean
@@ -20,6 +21,10 @@ export const StyledLargeLeftCard = styled('div')({
     justifyContent: 'space-between',
     flexDirection: 'column',
     margin: calcRem(5),
+})
+
+export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
+    margin: calcRem(3, 0, 0, 0),
 })
 
 export const StyledRightColumnCards = styled('div')({
@@ -43,10 +48,17 @@ export const StyledLatestRecipeImage = styled('img')({
     transition: '0.5s',
 })
 
+export const StyledLatestRecipeDescription = styled('p')({
+    margin: calcRem(5, 0, 5, 0),
+    fontWeight: 300,
+    fontSize: calcRem(14),
+})
+
 export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
     ({ isMainCard }) => ({
         width: isMainCard ? '100%' : '60%',
-        height: isMainCard ? '60%' : '100%',
+        height: '100%',
+        marginBottom: isMainCard ? calcRem(5) : undefined,
     })
 )
 

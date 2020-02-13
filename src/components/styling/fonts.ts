@@ -1,2 +1,3 @@
 export const headingFont = `'Caveat', cursive`
-export const bodyFont = `'Questrial', sans-serif;`
+export const secondaryHeadingFont = `'Questrial', sans-serif;`
+export const bodyFont = `'Roboto', sans-serif;`

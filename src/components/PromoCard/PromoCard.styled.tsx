@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { StyledHeadingThree } from '../common/Headings.styled'
+import { StyledHeadingTwo } from '../common/Headings.styled'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { colours } from '../styling/colours'
 import { cardBorderRadius } from '../styling/borders'
@@ -18,7 +18,4 @@ export const StyledPromoCard = styled('div')({
     backgroundColor: colours.white,
 })
 
-export const StyledPromoCardText = styled(StyledHeadingThree)({
-    fontSize: '2.5rem',
-    color: colours.primary.primary,
-})
+export const StyledPromoCardText = styled(StyledHeadingTwo)({})

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { headingFont, bodyFont } from '../styling/fonts'
 import { colours } from '../styling/colours'
+import { calcRem } from '../styling/styling-utils/calc-rem'
 
 export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,
@@ -16,15 +17,15 @@ export const StyledHeadingTwo = styled('h2')({
 })
 
 export const StyledHeadingThree = styled('h3')({
-    fontFamily: headingFont,
-    fontSize: '1.5rem',
-    color: colours.primary.primary,
-})
-
-export const StyledHeadingFour = styled('h4')({
     fontFamily: bodyFont,
     fontSize: '2rem',
     margin: 0,
     fontWeight: 'normal',
     color: colours.white,
+})
+
+export const StyledHeadingFour = styled('h4')({
+    fontFamily: bodyFont,
+    fontSize: '1rem',
+    color: colours.black,
 })

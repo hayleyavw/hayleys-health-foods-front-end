@@ -8,10 +8,12 @@ import {
     StyledRightColumnCardText,
     StyledLatestRecipeImage,
     StyledLatestRecipeImageLink,
+    StyledLatestRecipeDescription,
+    StyledLatestRecipeCardHeadings,
 } from './RecipeList.styled'
 import { RecipeResponseObject } from '../../api/ResponseObjects'
 import { RecipeObject } from '../../api/DefaultObjects'
-import { Link } from 'react-router-dom'
+import { StyledHeadingFour } from '../common/Headings.styled'
 
 interface IState {
     main_recipe: RecipeResponseObject
@@ -63,13 +65,15 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                             }
                         />
                     </StyledLatestRecipeImageLink>
-                    <p>{this.state.main_recipe['title']}</p>
-                    <p>
+                    <StyledLatestRecipeCardHeadings>
+                        {this.state.main_recipe['title']}
+                    </StyledLatestRecipeCardHeadings>
+                    <StyledLatestRecipeDescription>
                         Gabion transom mizzenmast Plate Fleet topmast list heave to parrel gunwalls
                         bowsprit. Gunwalls Spanish Main sheet yard topsail belay reef sails crimp
                         rope's end aft. Broadside hardtack matey grapple barque squiffy crack Jennys
                         tea cup jolly boat plunder jury mast.
-                    </p>
+                    </StyledLatestRecipeDescription>
                 </StyledLargeLeftCard>
                 <StyledRightColumnCards>
                     {this.state.recipes.map(recipe => (
@@ -82,11 +86,13 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                                 />
                             </StyledLatestRecipeImageLink>
                             <StyledRightColumnCardText>
-                                <p>{recipe['title']}</p>
-                                <p>
+                                <StyledLatestRecipeCardHeadings>
+                                    {recipe['title']}
+                                </StyledLatestRecipeCardHeadings>
+                                <StyledLatestRecipeDescription>
                                     Gabion transom mizzenmast Plate Fleet topmast list heave to
                                     parrel gunwalls bowsprit.
-                                </p>
+                                </StyledLatestRecipeDescription>
                             </StyledRightColumnCardText>
                         </StyledRightColumnCard>
                     ))}

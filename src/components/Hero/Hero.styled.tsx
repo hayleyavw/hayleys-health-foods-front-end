@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { margins } from '../styling/margin'
-import { StyledHeadingOne, StyledHeadingFour } from '../common/Headings.styled'
+import { StyledHeadingOne, StyledHeadingThree } from '../common/Headings.styled'
 import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { gradients } from '../styling/gradients'
@@ -43,6 +43,6 @@ export const StyledHeroHeading = styled(StyledHeadingOne)({
     // (offset-x offset-y blur-radius spread-radius color)
 })
 
-export const StyledSubtitle = styled(StyledHeadingFour)({
+export const StyledSubtitle = styled(StyledHeadingThree)({
     textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
 })
