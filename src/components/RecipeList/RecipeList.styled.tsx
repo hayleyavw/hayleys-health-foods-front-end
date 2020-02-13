@@ -18,7 +18,6 @@ export const StyledLargeLeftCard = styled('div')({
     flexBasis: '49%',
     height: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
     flexDirection: 'column',
     margin: calcRem(5),
 })
@@ -57,7 +56,7 @@ export const StyledLatestRecipeDescription = styled('p')({
 export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
     ({ isMainCard }) => ({
         width: isMainCard ? '100%' : '60%',
-        height: '100%',
+        height: isMainCard ? '65%' : '100%',
         marginBottom: isMainCard ? calcRem(5) : undefined,
     })
 )
