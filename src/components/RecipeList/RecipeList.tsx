@@ -14,7 +14,7 @@ export class RecipeList extends React.Component {
     componentDidMount() {
         // fetch('http://localhost:5000/recipes?offset=4')
         const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes`)
+        fetch(`${api_url}/recipes/_start=4`)
             .then(results => {
                 return results.json()
             })

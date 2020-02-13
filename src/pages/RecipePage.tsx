@@ -42,7 +42,7 @@ export class RecipePage extends React.Component<Props> {
 
     componentDidMount() {
         const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes`)
+        fetch(`${api_url}/recipes/?slug=${this.state.slug}`)
             .then(results => {
                 return results.json()
             })

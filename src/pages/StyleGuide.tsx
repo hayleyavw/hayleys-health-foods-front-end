@@ -14,6 +14,7 @@ import {
 } from '../components/common/Headings.styled'
 import { StyledParagraph } from '../components/common/Paragraph.styled'
 import { RecipeCard } from '../components/RecipeCard/RecipeCard'
+import { HeroObject } from '../api/DefaultObjects'
 
 const StyleGuide: React.FC = () => {
     return (
@@ -97,7 +98,7 @@ const StyleGuide: React.FC = () => {
                 method="This is the method"
                 slug="apple-sauce"
                 title="Apple Sauce"
-                hero="http://localhost:1337/uploads/45913c861f464a93af81f27f2efc7556.jpg"
+                hero={HeroObject}
             />
         </StyledStyleGuide>
     )

@@ -5,6 +5,7 @@ import {
     StyledRecipeCardTitleOverlay,
 } from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
+import { HeroResponseObject } from '../../api/ResponseObjects'
 
 interface RecipeCardProps {
     createdAt: string
@@ -12,7 +13,7 @@ interface RecipeCardProps {
     method: string
     slug: string
     title: string
-    hero: any
+    hero: HeroResponseObject
 }
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({
@@ -29,7 +30,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         <StyledRecipeCard>
             <Link to={`/recipes/${slug}`}>
                 <StyledRecipeCardTitleOverlay>{title}</StyledRecipeCardTitleOverlay>
-                <StyledRecipeCardImage src={`${api_url}/${hero.url}`} />
+                <StyledRecipeCardImage src={hero ? `${api_url}/${hero.url}` : ''} />
             </Link>
         </StyledRecipeCard>
     )

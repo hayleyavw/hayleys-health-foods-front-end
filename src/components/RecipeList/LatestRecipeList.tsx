@@ -7,18 +7,11 @@ import {
     StyledRightColumnCard,
     StyledRightColumnCardText,
 } from './RecipeList.styled'
-
-interface Recipe {
-    id: number | undefined
-    createdAt: string
-    method: string
-    slug: string
-    title: string
-    hero: any
-}
+import { RecipeResponseObject } from '../../api/ResponseObjects'
+import { RecipeObject } from '../../api/DefaultObjects'
 
 interface IState {
-    main_recipe: Recipe
+    main_recipe: RecipeResponseObject
     recipes: []
 }
 
@@ -26,20 +19,13 @@ interface IProps {}
 
 export class LatestRecipeList extends React.Component<IProps, IState> {
     public readonly state: Readonly<IState> = {
-        main_recipe: {
-            id: undefined,
-            createdAt: '',
-            method: '',
-            slug: '',
-            title: '',
-            hero: '',
-        },
+        main_recipe: RecipeObject,
         recipes: [],
     }
 
     componentDidMount() {
         const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes`)
+        fetch(`${api_url}/recipes/?_limit=4`)
             .then(results => {
                 return results.json()
             })
@@ -64,7 +50,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                 <RecipeCard
                     key={main_recipe['id']}
                     title={main_recipe['title']}
-                    createdAt={main_recipe['createdAt']}
+                    createdAt={main_recipe['created_at']}
                     method={main_recipe['method']}
                     slug={main_recipe['slug']}
                     id={main_recipe['id']}
