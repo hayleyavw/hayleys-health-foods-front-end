@@ -98,7 +98,7 @@ const StyleGuide: React.FC = () => {
                 method="This is the method"
                 slug="apple-sauce"
                 title="Apple Sauce"
-                hero={HeroObject}
+                hero={new HeroObject()}
             />
         </StyledStyleGuide>
     )

@@ -1,46 +1,46 @@
-export const HeroObject = {
-    id: 0,
-    name: '',
-    hash: '',
-    sha256: '',
-    ext: '',
-    mime: '',
-    size: 0,
-    url: '',
-    provider: '',
-    provider_metadata: null,
-    created_at: '',
-    updated_at: '',
+export class HeroObject {
+    id: number = 0
+    name: string = ''
+    hash: string = ''
+    sha256: string = ''
+    ext: string = ''
+    mime: string = ''
+    size: number = 0
+    url: string = ''
+    provider: string = ''
+    provider_metadata: null = null
+    created_at: string = ''
+    updated_at: string = ''
 }
 
-export const TagObject = {
-    id: 0,
-    slug: '',
-    name: '',
-    short_name: '',
-    created_at: '',
-    updated_at: '',
+export class TagObject {
+    id: number = 0
+    slug: string = ''
+    name: string = ''
+    short_name: string = ''
+    created_at: string = ''
+    updated_at: string = ''
 }
 
-export const IngredientObject = {
-    id: 0,
-    ingredient: 0,
-    recipe: 0,
-    quantity: '',
-    preview: '',
-    created_at: '',
-    updated_at: '',
-    ingredient_unit: 0,
+export class IngredientObject {
+    id: number = 0
+    ingredient: number = 0
+    recipe: number = 0
+    quantity: string = ''
+    preview: string = ''
+    created_at: string = ''
+    updated_at: string = ''
+    ingredient_unit: number = 0
 }
 
-export const RecipeObject = {
-    id: 0,
-    slug: '',
-    title: '',
-    method: '',
-    created_at: '',
-    updated_at: '',
-    hero: HeroObject,
-    tags: [TagObject],
-    ingredients: [IngredientObject],
+export class RecipeObject {
+    id: number = 0
+    slug: string = ''
+    title: string = ''
+    method: string = ''
+    created_at: string = ''
+    updated_at: string = ''
+    hero: HeroObject = new HeroObject()
+    tags: TagObject[] = [new TagObject()]
+    ingredients: IngredientObject[] = [new IngredientObject()]
 }

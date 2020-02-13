@@ -19,7 +19,7 @@ interface IProps {}
 
 export class LatestRecipeList extends React.Component<IProps, IState> {
     public readonly state: Readonly<IState> = {
-        main_recipe: RecipeObject,
+        main_recipe: new RecipeObject(),
         recipes: [],
     }
 

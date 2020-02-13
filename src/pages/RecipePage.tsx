@@ -1,6 +1,8 @@
 import React from 'react'
 import * as H from 'history'
 import { RecipeCard } from '../components/RecipeCard/RecipeCard'
+import { RecipeResponseObject } from '../api/ResponseObjects'
+import { RecipeObject } from '../api/DefaultObjects'
 
 interface MatchParams {
     slug: string
@@ -23,21 +25,14 @@ export interface match<P> {
 }
 
 interface State {
-    createdAt: string
-    id?: number
-    method: string
+    recipe: RecipeResponseObject
     slug: string
-    title: string
-    hero: any
 }
 
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        createdAt: '',
-        method: '',
-        title: '',
+        recipe: new RecipeObject(),
         slug: this.props.match.params.slug,
-        hero: '',
     }
 
     componentDidMount() {
@@ -46,25 +41,21 @@ export class RecipePage extends React.Component<Props> {
             .then(results => {
                 return results.json()
             })
-            .then(recipe => {
-                this.setState({
-                    createdAt: recipe['created_at'],
-                    id: recipe['id'],
-                    method: recipe['method'],
-                    title: recipe['title'],
-                    hero: recipe['hero'],
-                })
+            .then(data => {
+                this.setState((prevState, props) => ({
+                    recipe: data[0],
+                }))
             })
     }
     render() {
         return (
             <RecipeCard
-                createdAt={this.state.createdAt}
-                id={this.state.id}
-                method={this.state.method}
-                slug={this.state.slug}
-                title={this.state.title}
-                hero={this.state.hero}
+                createdAt={this.state.recipe.created_at}
+                id={this.state.recipe.id}
+                method={this.state.recipe.method}
+                slug={this.state.recipe.slug}
+                title={this.state.recipe.title}
+                hero={this.state.recipe.hero}
             />
         )
     }
