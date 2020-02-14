@@ -38,9 +38,12 @@ export class RecipePage extends React.Component<Props> {
         slug: this.props.match.params.slug,
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const api_url = process.env.REACT_APP_API_URL || ''
-        const queryString = recipeById(1)
+
+        const recipeData = await (await fetch(`${api_url}/recipes?slug=${this.state.slug}`)).json()
+        const queryString = recipeById(recipeData[0].id)
+
         fetch(`${api_url}/graphql`, {
             method: 'post',
             headers: {
@@ -51,9 +54,9 @@ export class RecipePage extends React.Component<Props> {
             .then(results => {
                 return results.json()
             })
-            .then(data => {
+            .then(results => {
                 this.setState((prevState, props) => ({
-                    recipe: data.data.recipe,
+                    recipe: results.data.recipe,
                 }))
             })
     }

@@ -15,7 +15,7 @@ export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
                 {ingredients.map(ingredient => (
                     <p>
                         {ingredient.ingredient.name} ({ingredient.quantity}{' '}
-                        {ingredient.ingredient_unit.short_name})
+                        {ingredient.ingredient_unit ? ingredient.ingredient_unit.short_name : ''})
                     </p>
                 ))}
             </StyledRecipeIngredients>
