@@ -37,7 +37,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                     main_recipe: data[0],
                 }))
             })
-        fetch(`${api_url}/recipes?_start=1&_limit=3`)
+        fetch(`${api_url}/recipes?_start=1&_limit=3&_sort=created_at:DESC`)
             .then(results => {
                 return results.json()
             })
@@ -67,10 +67,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                         {this.state.main_recipe['title']}
                     </StyledLatestRecipeCardHeadings>
                     <StyledLatestRecipeDescription>
-                        Gabion transom mizzenmast Plate Fleet topmast list heave to parrel gunwalls
-                        bowsprit. Gunwalls Spanish Main sheet yard topsail belay reef sails crimp
-                        rope's end aft. Broadside hardtack matey grapple barque squiffy crack Jennys
-                        tea cup jolly boat plunder jury mast.
+                        {this.state.main_recipe.description}
                     </StyledLatestRecipeDescription>
                 </StyledFeatureRecipeCard>
                 <StyledLatestRecipeCardsColumn>
@@ -88,8 +85,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                                     {recipe['title']}
                                 </StyledLatestRecipeCardHeadings>
                                 <StyledLatestRecipeDescription>
-                                    Gabion transom mizzenmast Plate Fleet topmast list heave to
-                                    parrel gunwalls bowsprit.
+                                    {recipe['description']}
                                 </StyledLatestRecipeDescription>
                             </StyledLatestRecipeCardText>
                         </StyledLatestRecipeCard>

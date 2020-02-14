@@ -13,7 +13,7 @@ export class RecipeList extends React.Component {
 
     componentDidMount() {
         const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes?_start=1`)
+        fetch(`${api_url}/recipes?_start=1&_sort=created_at:DESC`)
             .then(results => {
                 return results.json()
             })
