@@ -19,9 +19,12 @@ export class RecipeHero extends React.Component<RecipeHeroProps> {
             <StyledRecipeHeroWrapper>
                 <StyledRecipeHero>
                     <StyledRecipeHeroImage
-                        src={
-                            this.props.recipe.hero ? `${api_url}/${this.props.recipe.hero.url}` : ''
+                        image={
+                            this.props.recipe.hero ? `${api_url}${this.props.recipe.hero.url}` : ''
                         }
+                        // src={
+                        //     this.props.recipe.hero ? `${api_url}/${this.props.recipe.hero.url}` : ''
+                        // }
                     ></StyledRecipeHeroImage>
                     <StyledRecipeHeadingWrapper>
                         <StyledRecipeHeroHeading>{this.props.recipe.title}</StyledRecipeHeroHeading>

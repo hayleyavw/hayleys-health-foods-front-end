@@ -3,9 +3,10 @@ import { margins } from '../styling/margin'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
+import { HeroObject } from '../../api/DefaultObjects'
 
 export const StyledRecipeHero = styled('div')({
-    height: '70vh',
+    height: '100vh',
     position: 'relative',
     textAlign: 'center',
     color: colours.white,
@@ -17,12 +18,19 @@ export const StyledRecipeHeroWrapper = styled('div')({
     margin: `0 -${margins.leftAndRightMargins}`,
 })
 
-export const StyledRecipeHeroImage = styled('img')({
+interface StyledRecipeHeroImageProps {
+    image: string
+}
+
+export const StyledRecipeHeroImage = styled('div')<StyledRecipeHeroImageProps>(({ image }) => ({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
     objectPosition: 'top right',
-})
+    // background: `url('${image}')`,
+
+    background: `linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1)), url('${image}')`,
+}))
 
 export const StyledRecipeHeadingWrapper = styled('div')({
     position: 'absolute',
