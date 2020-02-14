@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { headingFont, bodyFont } from '../styling/fonts'
 import { colours } from '../styling/colours'
-import { calcRem } from '../styling/styling-utils/calc-rem'
 
 export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,

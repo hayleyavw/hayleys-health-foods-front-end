@@ -7,6 +7,12 @@ interface RecipeMethodProps {
 
 export class RecipeMethod extends React.Component<RecipeMethodProps> {
     render() {
-        return <StyledRecipeMethod>This is the recipe method.</StyledRecipeMethod>
+        const ReactMarkdown = require('react-markdown/with-html')
+        const { method } = this.props
+        return (
+            <StyledRecipeMethod>
+                <ReactMarkdown source={method} />
+            </StyledRecipeMethod>
+        )
     }
 }

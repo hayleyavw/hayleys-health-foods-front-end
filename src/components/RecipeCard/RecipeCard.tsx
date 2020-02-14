@@ -5,7 +5,7 @@ import {
     StyledRecipeCardTitleOverlay,
 } from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
-import { HeroResponseObject, RecipeResponseObject } from '../../api/ResponseObjects'
+import { RecipeResponseObject } from '../../api/ResponseObjects'
 
 interface RecipeCardProps {
     recipe: RecipeResponseObject

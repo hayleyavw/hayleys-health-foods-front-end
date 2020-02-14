@@ -1,20 +1,23 @@
 import React from 'react'
 
-import { RecipeObject } from '../../api/DefaultObjects'
+import { IngredientObject } from '../../api/DefaultObjects'
 import { StyledRecipeSteps } from './RecipeSteps.styled'
 import { RecipeIngredients } from '../RecipeIngredients/RecipeIngredients'
 import { RecipeMethod } from '../RecipeMethod/RecipeMethod'
 
 interface RecipeStepsProps {
-    recipe: RecipeObject
+    method: string
+    ingredients: IngredientObject[]
 }
 
 export class RecipeSteps extends React.Component<RecipeStepsProps> {
     render() {
+        const { method, ingredients } = this.props
+        console.log(ingredients)
         return (
             <StyledRecipeSteps>
-                <RecipeIngredients ingredients={this.props.recipe.ingredients} />
-                <RecipeMethod method={this.props.recipe.method} />
+                <RecipeIngredients ingredients={ingredients} />
+                <RecipeMethod method={method} />
             </StyledRecipeSteps>
         )
     }

@@ -14,7 +14,7 @@ import {
 } from '../components/common/Headings.styled'
 import { StyledParagraph } from '../components/common/Paragraph.styled'
 import { RecipeCard } from '../components/RecipeCard/RecipeCard'
-import { HeroObject, RecipeObject } from '../api/DefaultObjects'
+import { RecipeObject } from '../api/DefaultObjects'
 
 const StyleGuide: React.FC = () => {
     return (

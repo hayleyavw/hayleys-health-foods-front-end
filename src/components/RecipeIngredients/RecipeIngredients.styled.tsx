@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { colours } from '../styling/colours'
 
 export const StyledRecipeIngredients = styled('div')({
     flexBasis: '35%',
