@@ -14,10 +14,6 @@ export const StyledRecipeHero = styled('div')({
     margin: `0 -${margins.bodyLeftRightMargin}`,
 })
 
-interface StyledRecipeHeroImageProps {
-    image: string
-}
-
 export const StyledRecipeHeroImageWrapper = styled('div')({
     height: '100%',
     width: '100%',
@@ -32,11 +28,11 @@ export const StyledRecipeHeroImageOverlay = styled('div')({
     background: `linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1))`,
 })
 
-export const StyledRecipeHeroImage = styled('img')<StyledRecipeHeroImageProps>(({ image }) => ({
+export const StyledRecipeHeroImage = styled('img')({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
-}))
+})
 
 export const StyledRecipeHeadingWrapper = styled('div')({
     position: 'absolute',

@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { IngredientObject } from '../../api/DefaultObjects'
+import { IngredientsGraphQLObject } from '../../api/DefaultObjects'
 import { StyledRecipeSteps } from './RecipeSteps.styled'
 import { RecipeIngredients } from '../RecipeIngredients/RecipeIngredients'
 import { RecipeMethod } from '../RecipeMethod/RecipeMethod'
 
 interface RecipeStepsProps {
     method: string
-    ingredients: IngredientObject[]
+    ingredients: IngredientsGraphQLObject[]
 }
 
 export class RecipeSteps extends React.Component<RecipeStepsProps> {

@@ -1,11 +1,11 @@
 import React from 'react'
 import * as H from 'history'
-import { RecipeResponseObject } from '../api/ResponseObjects'
-import { RecipeObject } from '../api/DefaultObjects'
+import { RecipeGraphQLObject } from '../api/DefaultObjects'
 import { Nav } from '../components/Nav/Nav'
 import { RecipeHero } from '../components/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { recipeById } from '../GraphQLQueries/recipeById'
+import { RecipeGraphQLResponseObject } from '../api/GraphQLResponseObjects'
 
 interface MatchParams {
     slug: string
@@ -28,13 +28,13 @@ export interface match<P> {
 }
 
 interface State {
-    recipe: RecipeResponseObject
+    recipe: RecipeGraphQLResponseObject
     slug: string
 }
 
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        recipe: new RecipeObject(),
+        recipe: new RecipeGraphQLObject(),
         slug: this.props.match.params.slug,
     }
 
@@ -53,7 +53,7 @@ export class RecipePage extends React.Component<Props> {
             })
             .then(data => {
                 this.setState((prevState, props) => ({
-                    recipe: data.data,
+                    recipe: data.data.recipe,
                 }))
             })
     }
@@ -63,11 +63,20 @@ export class RecipePage extends React.Component<Props> {
         return (
             <div className="container">
                 <Nav />
-                <RecipeHero recipe={this.state.recipe} />
-                <RecipeSteps
-                    method={this.state.recipe.method}
-                    ingredients={this.state.recipe.ingredients}
-                />
+                {this.state.recipe.id !== 0 ? (
+                    <React.Fragment>
+                        <RecipeHero
+                            heroImage={this.state.recipe.hero.url}
+                            recipeTitle={this.state.recipe.title}
+                        />
+                        <RecipeSteps
+                            method={this.state.recipe.method}
+                            ingredients={this.state.recipe.ingredients}
+                        />
+                    </React.Fragment>
+                ) : (
+                    ''
+                )}
             </div>
         )
     }

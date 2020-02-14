@@ -45,3 +45,44 @@ export class RecipeObject {
     tags: TagObject[] = [new TagObject()]
     ingredients: IngredientObject[] = [new IngredientObject()]
 }
+
+export class HeroGraphQLObject {
+    id: number = 0
+    url: string = ''
+}
+
+export class TagGraphQLObject {
+    id: number = 0
+    slug: string = ''
+    name: string = ''
+    short_name: string = ''
+}
+
+export class IngredientGraphQLObject {
+    id: number = 0
+    slug: string = 'test'
+    name: string = 'test'
+}
+
+export class IngredientUnitGraphQLObject {
+    id: number = 0
+    name: string = 'test'
+    short_name: string = 'test'
+}
+
+export class IngredientsGraphQLObject {
+    quantity: string = ''
+    ingredient: IngredientGraphQLObject = new IngredientGraphQLObject()
+    ingredient_unit: IngredientUnitGraphQLObject = new IngredientUnitGraphQLObject()
+}
+
+export class RecipeGraphQLObject {
+    id: number = 0
+    slug: string = 'test'
+    title: string = 'test'
+    method: string = 'test'
+    description: string = ''
+    hero: HeroGraphQLObject = new HeroGraphQLObject()
+    tags: TagGraphQLObject[] = [new TagGraphQLObject()]
+    ingredients: IngredientsGraphQLObject[] = [new IngredientsGraphQLObject()]
+}

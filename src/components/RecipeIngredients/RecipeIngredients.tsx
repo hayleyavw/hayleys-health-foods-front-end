@@ -1,19 +1,22 @@
 import React from 'react'
 
-import { IngredientObject } from '../../api/DefaultObjects'
+import { IngredientsGraphQLObject } from '../../api/DefaultObjects'
 import { StyledRecipeIngredients } from './RecipeIngredients.styled'
 
 interface RecipeIngredientsProps {
-    ingredients: IngredientObject[]
+    ingredients: IngredientsGraphQLObject[]
 }
 
 export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
     render() {
         const { ingredients } = this.props
+        console.log(ingredients)
         return (
             <StyledRecipeIngredients>
                 {ingredients.map(ingredient => (
-                    <p>{ingredient.id}</p>
+                    <p>
+                        {ingredient.ingredient.name}({ingredient.ingredient_unit.short_name})
+                    </p>
                 ))}
             </StyledRecipeIngredients>
         )

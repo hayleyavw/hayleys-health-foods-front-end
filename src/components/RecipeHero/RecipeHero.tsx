@@ -7,10 +7,10 @@ import {
     StyledRecipeHeroImageWrapper,
     StyledRecipeHeroImageOverlay,
 } from './RecipeHero.styled'
-import { RecipeObject } from '../../api/DefaultObjects'
 
 interface RecipeHeroProps {
-    recipe: RecipeObject
+    heroImage: string
+    recipeTitle: string
 }
 
 export class RecipeHero extends React.Component<RecipeHeroProps> {
@@ -20,17 +20,12 @@ export class RecipeHero extends React.Component<RecipeHeroProps> {
             <StyledRecipeHero>
                 <StyledRecipeHeroImageWrapper>
                     <StyledRecipeHeroImage
-                        image={
-                            this.props.recipe.hero ? `${api_url}${this.props.recipe.hero.url}` : ''
-                        }
-                        src={
-                            this.props.recipe.hero ? `${api_url}/${this.props.recipe.hero.url}` : ''
-                        }
+                        src={`${api_url}${this.props.heroImage}`}
                     ></StyledRecipeHeroImage>
                     <StyledRecipeHeroImageOverlay />
                 </StyledRecipeHeroImageWrapper>
                 <StyledRecipeHeadingWrapper>
-                    <StyledRecipeHeroHeading>{this.props.recipe.title}</StyledRecipeHeroHeading>
+                    <StyledRecipeHeroHeading>{this.props.recipeTitle}</StyledRecipeHeroHeading>
                 </StyledRecipeHeadingWrapper>
             </StyledRecipeHero>
         )
