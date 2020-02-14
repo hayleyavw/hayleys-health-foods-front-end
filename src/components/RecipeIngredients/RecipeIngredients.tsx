@@ -10,12 +10,12 @@ interface RecipeIngredientsProps {
 export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
     render() {
         const { ingredients } = this.props
-        console.log(ingredients)
         return (
             <StyledRecipeIngredients>
                 {ingredients.map(ingredient => (
                     <p>
-                        {ingredient.ingredient.name}({ingredient.ingredient_unit.short_name})
+                        {ingredient.ingredient.name} ({ingredient.quantity}{' '}
+                        {ingredient.ingredient_unit.short_name})
                     </p>
                 ))}
             </StyledRecipeIngredients>
