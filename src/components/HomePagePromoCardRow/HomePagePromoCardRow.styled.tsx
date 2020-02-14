@@ -8,6 +8,6 @@ export const StyledPromoCardRow = styled('div')({
     alignItems: 'center',
     justifyContent: 'space-evenly',
     height: '60vh',
-    margin: `${calcRem(20)} -${margins.leftAndRightMargins}`,
+    margin: `${calcRem(20)} -${margins.bodyLeftRightMargin}`,
     background: gradients.primary_to_accent,
 })

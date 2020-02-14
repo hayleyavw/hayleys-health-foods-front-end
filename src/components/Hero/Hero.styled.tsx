@@ -15,7 +15,7 @@ export const StyledHero = styled('div')({
 })
 
 export const StyledHeroWrapper = styled('div')({
-    margin: `0 -${margins.leftAndRightMargins}`,
+    margin: `0 -${margins.bodyLeftRightMargin}`,
 })
 
 export const StyledHeroGradientLine = styled('div')({

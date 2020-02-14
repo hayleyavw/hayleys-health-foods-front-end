@@ -11,9 +11,9 @@ export const StyledNav = styled('nav')({
     justifyContent: 'flex-end',
     alignItems: 'center',
     background: gradients.primary_to_accent,
-    margin: `0 -${margins.leftAndRightMargins}`,
+    margin: `0 -${margins.bodyLeftRightMargin}`,
     height: '2.5rem',
-    paddingRight: margins.leftAndRightMargins,
+    paddingRight: margins.bodyLeftRightMargin,
 })
 
 export const StyledNavItem = styled(Link)({

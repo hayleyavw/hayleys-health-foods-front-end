@@ -17,7 +17,7 @@ export class App extends React.Component {
                 <Global
                     styles={css`
                         body {
-                            margin: ${margins.bodyMargin};
+                            margin: ${margins.bodyTopBottomMargin} ${margins.bodyLeftRightMargin};
                             padding: 0;
                             min-height: 100vh;
                             max-width: 100vw;

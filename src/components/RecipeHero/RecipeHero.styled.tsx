@@ -3,7 +3,6 @@ import { margins } from '../styling/margin'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
-import { HeroObject } from '../../api/DefaultObjects'
 
 export const StyledRecipeHero = styled('div')({
     height: '100vh',
@@ -12,10 +11,7 @@ export const StyledRecipeHero = styled('div')({
     color: colours.white,
     borderTop: `1px solid ${colours.white}`,
     borderBottom: `1px solid ${colours.white}`,
-})
-
-export const StyledRecipeHeroWrapper = styled('div')({
-    margin: `0 -${margins.leftAndRightMargins}`,
+    margin: `0 -${margins.bodyLeftRightMargin}`,
 })
 
 interface StyledRecipeHeroImageProps {
