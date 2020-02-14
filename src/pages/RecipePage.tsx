@@ -1,8 +1,12 @@
 import React from 'react'
 import * as H from 'history'
-import { RecipeCard } from '../components/RecipeCard/RecipeCard'
 import { RecipeResponseObject } from '../api/ResponseObjects'
 import { RecipeObject } from '../api/DefaultObjects'
+import { Nav } from '../components/Nav/Nav'
+import { RecipeHero } from '../components/RecipeHero/RecipeHero'
+import { RecipeIngredients } from '../components/RecipeIngredients/RecipeIngredients'
+import { RecipeMethod } from '../components/RecipeMethod/RecipeMethod'
+import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 
 interface MatchParams {
     slug: string
@@ -48,6 +52,13 @@ export class RecipePage extends React.Component<Props> {
             })
     }
     render() {
-        return <RecipeCard recipe={this.state.recipe} />
+        const recipe = this.state.recipe
+        return (
+            <div className="container">
+                <Nav />
+                <RecipeHero recipe={recipe} />
+                <RecipeSteps recipe={recipe} />
+            </div>
+        )
     }
 }
