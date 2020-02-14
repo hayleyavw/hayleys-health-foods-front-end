@@ -5,6 +5,8 @@ import {
     StyledRecipeHeadingWrapper,
     StyledRecipeHeroHeading,
     StyledRecipeHeroImage,
+    StyledRecipeHeroImageWrapper,
+    StyledRecipeHeroImageOverlay,
 } from './RecipeHero.styled'
 import { RecipeObject } from '../../api/DefaultObjects'
 
@@ -18,14 +20,21 @@ export class RecipeHero extends React.Component<RecipeHeroProps> {
         return (
             <StyledRecipeHeroWrapper>
                 <StyledRecipeHero>
-                    <StyledRecipeHeroImage
-                        image={
-                            this.props.recipe.hero ? `${api_url}${this.props.recipe.hero.url}` : ''
-                        }
-                        // src={
-                        //     this.props.recipe.hero ? `${api_url}/${this.props.recipe.hero.url}` : ''
-                        // }
-                    ></StyledRecipeHeroImage>
+                    <StyledRecipeHeroImageWrapper>
+                        <StyledRecipeHeroImage
+                            image={
+                                this.props.recipe.hero
+                                    ? `${api_url}${this.props.recipe.hero.url}`
+                                    : ''
+                            }
+                            src={
+                                this.props.recipe.hero
+                                    ? `${api_url}/${this.props.recipe.hero.url}`
+                                    : ''
+                            }
+                        ></StyledRecipeHeroImage>
+                        <StyledRecipeHeroImageOverlay />
+                    </StyledRecipeHeroImageWrapper>
                     <StyledRecipeHeadingWrapper>
                         <StyledRecipeHeroHeading>{this.props.recipe.title}</StyledRecipeHeroHeading>
                     </StyledRecipeHeadingWrapper>

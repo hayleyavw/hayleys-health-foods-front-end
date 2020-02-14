@@ -22,14 +22,24 @@ interface StyledRecipeHeroImageProps {
     image: string
 }
 
-export const StyledRecipeHeroImage = styled('div')<StyledRecipeHeroImageProps>(({ image }) => ({
+export const StyledRecipeHeroImageWrapper = styled('div')({
+    height: '100%',
+    width: '100%',
+    position: 'relative',
+})
+
+export const StyledRecipeHeroImageOverlay = styled('div')({
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    background: `linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1))`,
+})
+
+export const StyledRecipeHeroImage = styled('img')<StyledRecipeHeroImageProps>(({ image }) => ({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
-    objectPosition: 'top right',
-    // background: `url('${image}')`,
-
-    background: `linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1)), url('${image}')`,
 }))
 
 export const StyledRecipeHeadingWrapper = styled('div')({
@@ -43,5 +53,4 @@ export const StyledRecipeHeroHeading = styled(StyledHeadingOne)({
     fontSize: '7rem',
     color: colours.white,
     textShadow: `${calcRem(4)} ${calcRem(4)} ${calcRem(1)} rgba(0,0,0,0.8)`,
-    // (offset-x offset-y blur-radius spread-radius color)
 })
