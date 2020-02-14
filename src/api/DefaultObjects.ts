@@ -40,6 +40,7 @@ export class RecipeObject {
     method: string = ''
     created_at: string = ''
     updated_at: string = ''
+    description: string = ''
     hero: HeroObject = new HeroObject()
     tags: TagObject[] = [new TagObject()]
     ingredients: IngredientObject[] = [new IngredientObject()]

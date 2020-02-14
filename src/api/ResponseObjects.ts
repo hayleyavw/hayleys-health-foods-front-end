@@ -5,6 +5,7 @@ export interface RecipeResponseObject {
     method: string
     created_at: string
     updated_at: string
+    description: string
     hero: HeroResponseObject
     tags: TagResponseObject[]
     ingredients: IngredientResponseObject[]
