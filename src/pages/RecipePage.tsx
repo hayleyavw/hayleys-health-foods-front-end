@@ -62,7 +62,6 @@ export class RecipePage extends React.Component<Props> {
     }
 
     render() {
-        console.log(this.state.recipe)
         return (
             <div className="container">
                 <Nav />

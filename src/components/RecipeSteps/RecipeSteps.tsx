@@ -13,7 +13,6 @@ interface RecipeStepsProps {
 export class RecipeSteps extends React.Component<RecipeStepsProps> {
     render() {
         const { method, ingredients } = this.props
-        console.log(ingredients)
         return (
             <StyledRecipeSteps>
                 <RecipeIngredients ingredients={ingredients} />
