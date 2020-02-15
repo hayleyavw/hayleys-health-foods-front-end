@@ -1,9 +1,12 @@
 import styled from '@emotion/styled'
+import { gradients } from '../styling/gradients'
 import { colours } from '../styling/colours'
 
 export const StyledRecipeMethod = styled('div')({
-    flexBasis: '60%',
+    flexBasis: '69%',
     backgroundColor: colours.white,
-    opacity: '0.9',
-    boxShadow: `0px 0px 5px 0px rgba(0,0,0,0.75)`,
+    border: `3px solid ${colours.primary.primary}`,
+    // borderWidth: '3px',
+    // borderStyle: 'solid',
+    // borderImage: `${gradients.primary_to_accent} 1`,
 })

@@ -25,7 +25,7 @@ export const StyledRecipeHeroImageOverlay = styled('div')({
     width: '100%',
     position: 'absolute',
     top: 0,
-    background: `linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 1))`,
+    background: `linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 1))`,
 })
 
 export const StyledRecipeHeroImage = styled('img')({
