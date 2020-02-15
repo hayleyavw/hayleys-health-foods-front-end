@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero } from '../components/Hero/Hero'
+import { MainHero } from '../components/Hero/Hero/MainHero'
 import { RecipeList } from '../components/RecipeList/RecipeList'
 import { Nav } from '../components/Nav/Nav'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
     return (
         <div className="container">
             <Nav />
-            <Hero></Hero>
+            <MainHero></MainHero>
             <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
             <LatestRecipeList></LatestRecipeList>
             <HomePagePromoCardRow />
