@@ -4,7 +4,7 @@ import { calcRem } from '../styling/styling-utils/calc-rem'
 import { StyledHeadingFour } from '../common/Headings.styled'
 
 interface StyledLatestRecipeImageLinkProps {
-    isMainCard?: boolean
+    isFeaturedRecipeCard?: boolean
 }
 
 export const StyledRecipeList = styled('div')({
@@ -54,10 +54,10 @@ export const StyledLatestRecipeDescription = styled('p')({
 })
 
 export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
-    ({ isMainCard }) => ({
-        width: isMainCard ? '100%' : '60%',
-        height: isMainCard ? '65%' : '100%',
-        marginBottom: isMainCard ? calcRem(5) : undefined,
+    ({ isFeaturedRecipeCard }) => ({
+        width: isFeaturedRecipeCard ? '100%' : '60%',
+        height: isFeaturedRecipeCard ? '65%' : '100%',
+        marginBottom: isFeaturedRecipeCard ? calcRem(5) : undefined,
     })
 )
 

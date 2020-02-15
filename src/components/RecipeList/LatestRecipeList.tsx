@@ -53,7 +53,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                 <StyledFeatureRecipeCard>
                     <StyledLatestRecipeImageLink
                         to={`/recipes/${this.state.main_recipe['slug']}`}
-                        isMainCard={true}
+                        isFeaturedRecipeCard={true}
                     >
                         <StyledLatestRecipeImage
                             src={
@@ -72,7 +72,7 @@ export class LatestRecipeList extends React.Component<IProps, IState> {
                 </StyledFeatureRecipeCard>
                 <StyledLatestRecipeCardsColumn>
                     {this.state.recipes.map(recipe => (
-                        <StyledLatestRecipeCard>
+                        <StyledLatestRecipeCard key={recipe['id']}>
                             <StyledLatestRecipeImageLink to={`/recipes/${recipe['slug']}`}>
                                 <StyledLatestRecipeImage
                                     src={
