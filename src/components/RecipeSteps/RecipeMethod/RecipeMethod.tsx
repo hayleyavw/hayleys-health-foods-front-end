@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledRecipeMethod } from './RecipeMethod.styled'
-import { StyledHeadingFour } from '../common/Headings.styled'
+import { StyledHeadingFour } from '../../common/Headings.styled'
 
 interface RecipeMethodProps {
     method: string
