@@ -9,6 +9,8 @@ import { margins } from './components/styling/margin'
 import { bodyFont } from './components/styling/fonts'
 import { RecipePage } from './pages/RecipePage'
 import { BlogPage } from './pages/BlogPage'
+import AboutPage from './pages/AboutPage'
+import SupportPage from './pages/SupportPage'
 
 export class App extends React.Component {
     render() {
@@ -30,6 +32,8 @@ export class App extends React.Component {
                     <Route path="/blog/:slug" component={BlogPage} />
                     <Route path="/blog" component={BlogListPage} />
                     <Route path="/recipes/:slug" component={RecipePage} />
+                    <Route path="/about" component={AboutPage} />
+                    <Route path="/support" component={SupportPage} />
                     <Route path="/styleguide" component={StyleGuide} />
                 </Switch>
             </div>

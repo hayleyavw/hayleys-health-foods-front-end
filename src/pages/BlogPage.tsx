@@ -1,5 +1,6 @@
 import React from 'react'
 import * as H from 'history'
+import { Nav } from '../components/Nav/Nav'
 
 interface MatchParams {
     slug: string
@@ -34,24 +35,24 @@ export class BlogPage extends React.Component<Props> {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:5000/blog/${this.state.slug}`)
+        const api_url = process.env.REACT_APP_API_URL || ''
+        fetch(`${api_url}/blogs?slug=${this.state.slug}`)
             .then(results => {
-                console.log(results)
                 return results.json()
             })
             .then(data => {
-                console.log(data)
-                this.setState({ blogTitle: data.title })
-                this.setState({ blogContent: data.content })
+                this.setState({ blogTitle: data[0].title })
+                this.setState({ blogContent: data[0].content })
             })
     }
 
     render() {
         return (
-            <React.Fragment>
-                <h2>{this.state.blogTitle}</h2>
+            <div className="container">
+                <Nav />
+                <p>{this.state.blogTitle}</p>
                 <p>{this.state.blogContent}</p>
-            </React.Fragment>
+            </div>
         )
     }
 }

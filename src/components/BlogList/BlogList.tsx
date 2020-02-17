@@ -12,7 +12,8 @@ export class BlogList extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/blog')
+        const api_url = process.env.REACT_APP_API_URL || ''
+        fetch(`${api_url}/blogs?_sort=created_at:DESC`)
             .then(results => {
                 return results.json()
             })
