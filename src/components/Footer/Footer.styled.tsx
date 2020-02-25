@@ -4,26 +4,21 @@ import { colours } from '../styling/colours'
 import { margins } from '../styling/margin'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { Link } from 'react-router-dom'
-import { bodyFont } from '../styling/fonts'
+import { bodyFont, headingFont } from '../styling/fonts'
 import { StyledMiniLogo } from '../common/Headings.styled'
 
-interface StyledNavLogoProps {
-    isHomePage?: boolean
-}
-
-export const StyledNav = styled('nav')({
+export const StyledFooter = styled('footer')({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: gradients.primary_to_accent,
     margin: `0 -${margins.bodyLeftRightMargin}`,
-    height: '2.5rem',
-    padding: `${calcRem(3)} ${margins.bodyLeftRightMargin}`,
+    padding: `${calcRem(10)} ${margins.bodyLeftRightMargin}`,
 })
 
-export const StyledNavItem = styled(Link)({
+export const StyledFooterItem = styled(Link)({
     color: colours.white,
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     margin: `0 ${calcRem(10)}`,
     fontFamily: bodyFont,
     textDecoration: 'none',
@@ -32,10 +27,10 @@ export const StyledNavItem = styled(Link)({
     },
 })
 
-export const StyledNavLogo = styled(StyledMiniLogo)<StyledNavLogoProps>(({ isHomePage }) => ({
-    display: isHomePage ? 'none' : undefined,
-}))
+export const StyledFooterLogo = styled(StyledMiniLogo)({
+    margin: `0 ${calcRem(10)}`,
+})
 
-export const StyledNavColumn = styled('div')({
+export const StyledFooterColumn = styled('div')({
     color: colours.white,
 })

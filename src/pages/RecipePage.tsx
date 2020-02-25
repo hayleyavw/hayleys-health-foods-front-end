@@ -6,6 +6,7 @@ import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { recipeById } from '../GraphQLQueries/recipeById'
 import { RecipeGraphQLResponseObject } from '../api/GraphQLResponseObjects'
+import { Footer } from '../components/Footer/Footer'
 
 interface MatchParams {
     slug: string
@@ -79,6 +80,7 @@ export class RecipePage extends React.Component<Props> {
                 ) : (
                     ''
                 )}
+                <Footer />
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { headingFont, bodyFont } from '../styling/fonts'
 import { colours } from '../styling/colours'
+import { Link } from 'react-router-dom'
 
 export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,
@@ -27,4 +28,14 @@ export const StyledHeadingFour = styled('h4')({
     fontFamily: bodyFont,
     fontSize: '1rem',
     color: colours.black,
+})
+
+export const StyledMiniLogo = styled(Link)({
+    color: colours.white,
+    fontSize: '2rem',
+    fontFamily: headingFont,
+    textDecoration: 'none',
+    '&:hover': {
+        textDecoration: 'none',
+    },
 })

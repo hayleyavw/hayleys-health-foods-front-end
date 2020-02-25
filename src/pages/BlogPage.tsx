@@ -1,6 +1,7 @@
 import React from 'react'
 import * as H from 'history'
 import { Nav } from '../components/Nav/Nav'
+import { Footer } from '../components/Footer/Footer'
 
 interface MatchParams {
     slug: string
@@ -52,6 +53,7 @@ export class BlogPage extends React.Component<Props> {
                 <Nav />
                 <p>{this.state.blogTitle}</p>
                 <p>{this.state.blogContent}</p>
+                <Footer />
             </div>
         )
     }
