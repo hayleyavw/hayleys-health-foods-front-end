@@ -10,7 +10,10 @@ import { bodyFont } from './components/styling/fonts'
 import { RecipePage } from './pages/RecipePage'
 import { BlogPage } from './pages/BlogPage'
 import AboutPage from './pages/AboutPage'
-import SupportPage from './pages/SupportPage'
+import SupportPage from './pages/about/SupportPage'
+import ContactPage from './pages/about/ContactPage'
+import MyStoryPage from './pages/about/MyStoryPage'
+import GutHealthPage from './pages/about/GutHealthPage'
 
 export class App extends React.Component {
     render() {
@@ -31,8 +34,11 @@ export class App extends React.Component {
                     <Route path="/blog/:slug" component={BlogPage} />
                     <Route path="/blog" component={BlogListPage} />
                     <Route path="/recipes/:slug" component={RecipePage} />
+                    <Route path="/about/contact" component={ContactPage} />
+                    <Route path="/about/gut-health" component={GutHealthPage} />
+                    <Route path="/about/my-story" component={MyStoryPage} />
+                    <Route path="/about/support" component={SupportPage} />
                     <Route path="/about" component={AboutPage} />
-                    <Route path="/support" component={SupportPage} />
                     <Route path="/styleguide" component={StyleGuide} />
                 </Switch>
             </div>

@@ -17,7 +17,7 @@ export const Nav: React.FC<NavProps> = ({ isHomePage }) => {
                 <StyledNavItem to={'/'}>Recipes</StyledNavItem>
                 <StyledNavItem to={'/blog'}>Blog</StyledNavItem>
                 <StyledNavItem to={'/about'}>About</StyledNavItem>
-                <StyledNavItem to={'/support'}>Support</StyledNavItem>
+                <StyledNavItem to={'/about/support'}>Support</StyledNavItem>
             </StyledNavColumn>
         </StyledNav>
     )
