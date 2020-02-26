@@ -1,12 +1,10 @@
 import React from 'react'
 import * as H from 'history'
 import { RecipeGraphQLObject } from '../api/DefaultObjects'
-import { Nav } from '../components/Nav/Nav'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { recipeById } from '../GraphQLQueries/recipeById'
 import { RecipeGraphQLResponseObject } from '../api/GraphQLResponseObjects'
-import { Footer } from '../components/Footer/Footer'
 
 interface MatchParams {
     slug: string
@@ -56,7 +54,7 @@ export class RecipePage extends React.Component<Props> {
                 return results.json()
             })
             .then(results => {
-                this.setState((prevState, props) => ({
+                this.setState(() => ({
                     recipe: results.data.recipe,
                 }))
             })
@@ -65,7 +63,6 @@ export class RecipePage extends React.Component<Props> {
     render() {
         return (
             <React.Fragment>
-                <Nav />
                 {this.state.recipe.id !== 0 ? (
                     <React.Fragment>
                         <RecipeHero
@@ -80,7 +77,6 @@ export class RecipePage extends React.Component<Props> {
                 ) : (
                     ''
                 )}
-                <Footer />
             </React.Fragment>
         )
     }

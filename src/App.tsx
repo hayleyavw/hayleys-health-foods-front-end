@@ -15,11 +15,13 @@ import ContactPage from './pages/about/ContactPage'
 import { GutHealthPage } from './pages/about/GutHealthPage'
 import { MyStoryPage } from './pages/about/MyStoryPage'
 import { Nav } from './components/Nav/Nav'
+import { Footer } from './components/Footer/Footer'
 
 export class App extends React.Component {
     render() {
         return (
             <div className="container">
+                <Nav />
                 <Global
                     styles={css`
                         body {
@@ -42,6 +44,7 @@ export class App extends React.Component {
                     <Route path="/about" component={AboutPage} />
                     <Route path="/styleguide" component={StyleGuide} />
                 </Switch>
+                <Footer />
             </div>
         )
     }

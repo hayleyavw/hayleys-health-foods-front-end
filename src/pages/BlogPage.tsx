@@ -1,7 +1,6 @@
 import React from 'react'
 import * as H from 'history'
-import { Nav } from '../components/Nav/Nav'
-import { Footer } from '../components/Footer/Footer'
+import { StyledHeadingOne } from '../components/common/Headings.styled'
 
 interface MatchParams {
     slug: string
@@ -48,12 +47,11 @@ export class BlogPage extends React.Component<Props> {
     }
 
     render() {
+        const ReactMarkdown = require('react-markdown/with-html')
         return (
             <React.Fragment>
-                <Nav />
-                <p>{this.state.blogTitle}</p>
-                <p>{this.state.blogContent}</p>
-                <Footer />
+                <StyledHeadingOne>{this.state.blogTitle}</StyledHeadingOne>
+                <ReactMarkdown source={this.state.blogContent}></ReactMarkdown>
             </React.Fragment>
         )
     }

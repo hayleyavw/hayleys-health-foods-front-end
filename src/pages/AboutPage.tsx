@@ -1,7 +1,5 @@
 import React from 'react'
-import { Nav } from '../components/Nav/Nav'
 import { StyledHeadingOne, StyledHeadingTwo } from '../components/common/Headings.styled'
-import { Footer } from '../components/Footer/Footer'
 import { AboutMenu } from '../components/AboutMenu/AboutMenu'
 
 interface State {
@@ -28,13 +26,11 @@ export class AboutPage extends React.Component {
         const ReactMarkdown = require('react-markdown/with-html')
         return (
             <React.Fragment>
-                <Nav />
                 <AboutMenu></AboutMenu>
                 <StyledHeadingOne>Welcome</StyledHeadingOne>
                 <ReactMarkdown source={this.state.content}></ReactMarkdown>
                 <StyledHeadingTwo>With love,</StyledHeadingTwo>
                 <StyledHeadingTwo>Hayley</StyledHeadingTwo>
-                <Footer />
             </React.Fragment>
         )
     }
