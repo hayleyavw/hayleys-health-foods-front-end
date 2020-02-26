@@ -9,11 +9,12 @@ import { margins } from './components/styling/margin'
 import { bodyFont } from './components/styling/fonts'
 import { RecipePage } from './pages/RecipePage'
 import { BlogPage } from './pages/BlogPage'
-import AboutPage from './pages/AboutPage'
+import { AboutPage } from './pages/AboutPage'
 import SupportPage from './pages/about/SupportPage'
 import ContactPage from './pages/about/ContactPage'
-import MyStoryPage from './pages/about/MyStoryPage'
-import GutHealthPage from './pages/about/GutHealthPage'
+import { GutHealthPage } from './pages/about/GutHealthPage'
+import { MyStoryPage } from './pages/about/MyStoryPage'
+import { Nav } from './components/Nav/Nav'
 
 export class App extends React.Component {
     render() {
