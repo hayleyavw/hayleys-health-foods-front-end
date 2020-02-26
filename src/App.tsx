@@ -15,13 +15,12 @@ import SupportPage from './pages/SupportPage'
 export class App extends React.Component {
     render() {
         return (
-            <div>
+            <div className="container">
                 <Global
                     styles={css`
                         body {
                             margin: ${margins.bodyTopBottomMargin} ${margins.bodyLeftRightMargin};
                             padding: 0;
-                            min-height: 100vh;
                             max-width: 100vw;
                             font-family: ${bodyFont};
                         }

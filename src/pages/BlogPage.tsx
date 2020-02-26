@@ -49,12 +49,12 @@ export class BlogPage extends React.Component<Props> {
 
     render() {
         return (
-            <div className="container">
+            <React.Fragment>
                 <Nav />
                 <p>{this.state.blogTitle}</p>
                 <p>{this.state.blogContent}</p>
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }

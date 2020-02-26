@@ -4,7 +4,7 @@ import { colours } from '../styling/colours'
 import { margins } from '../styling/margin'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { Link } from 'react-router-dom'
-import { bodyFont, headingFont } from '../styling/fonts'
+import { bodyFont } from '../styling/fonts'
 import { StyledMiniLogo } from '../common/Headings.styled'
 
 export const StyledFooter = styled('footer')({
@@ -13,7 +13,7 @@ export const StyledFooter = styled('footer')({
     alignItems: 'center',
     background: gradients.primary_to_accent,
     margin: `0 -${margins.bodyLeftRightMargin}`,
-    padding: `${calcRem(10)} ${margins.bodyLeftRightMargin}`,
+    padding: `${calcRem(3)} ${margins.bodyLeftRightMargin}`,
 })
 
 export const StyledFooterItem = styled(Link)({

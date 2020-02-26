@@ -64,7 +64,7 @@ export class RecipePage extends React.Component<Props> {
 
     render() {
         return (
-            <div className="container">
+            <React.Fragment>
                 <Nav />
                 {this.state.recipe.id !== 0 ? (
                     <React.Fragment>
@@ -81,7 +81,7 @@ export class RecipePage extends React.Component<Props> {
                     ''
                 )}
                 <Footer />
-            </div>
+            </React.Fragment>
         )
     }
 }

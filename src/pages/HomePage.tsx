@@ -9,7 +9,7 @@ import { Footer } from '../components/Footer/Footer'
 
 const HomePage: React.FC = () => {
     return (
-        <div className="container">
+        <React.Fragment>
             <Nav isHomePage={true} />
             <MainHero></MainHero>
             <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
             <StyledHeadingTwo>Recipes</StyledHeadingTwo>
             <RecipeList />
             <Footer />
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -5,11 +5,11 @@ import { Footer } from '../components/Footer/Footer'
 
 const SupportPage: React.FC = () => {
     return (
-        <div className="container">
+        <React.Fragment>
             <Nav />
             <StyledHeadingOne>Support</StyledHeadingOne>
             <Footer />
-        </div>
+        </React.Fragment>
     )
 }
 

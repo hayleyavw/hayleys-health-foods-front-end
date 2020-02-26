@@ -5,11 +5,11 @@ import { Footer } from '../components/Footer/Footer'
 
 const BlogListPage: React.FC = () => {
     return (
-        <div className="container">
+        <React.Fragment>
             <Nav />
             <BlogList />
             <Footer />
-        </div>
+        </React.Fragment>
     )
 }
 
