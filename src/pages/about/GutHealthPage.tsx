@@ -1,6 +1,7 @@
 import React from 'react'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { StyledHeadingOne } from '../../components/common/Headings.styled'
+import ReactMarkdown from 'react-markdown/with-html'
 
 interface State {
     content: []
@@ -23,7 +24,6 @@ export class GutHealthPage extends React.Component {
     }
 
     render() {
-        const ReactMarkdown = require('react-markdown/with-html')
         return (
             <React.Fragment>
                 <AboutMenu></AboutMenu>

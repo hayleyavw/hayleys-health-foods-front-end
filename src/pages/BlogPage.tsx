@@ -1,6 +1,7 @@
 import React from 'react'
 import * as H from 'history'
 import { StyledHeadingOne } from '../components/common/Headings.styled'
+import ReactMarkdown from 'react-markdown/with-html'
 
 interface MatchParams {
     slug: string
@@ -47,7 +48,6 @@ export class BlogPage extends React.Component<Props> {
     }
 
     render() {
-        const ReactMarkdown = require('react-markdown/with-html')
         return (
             <React.Fragment>
                 <StyledHeadingOne>{this.state.blogTitle}</StyledHeadingOne>
