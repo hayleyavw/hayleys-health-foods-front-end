@@ -2,6 +2,7 @@ import React from 'react'
 import * as H from 'history'
 import { StyledHeadingOne } from '../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown/with-html'
+import { getBlogs } from '../api/common'
 
 interface MatchParams {
     slug: string
@@ -36,15 +37,10 @@ export class BlogPage extends React.Component<Props> {
     }
 
     componentDidMount() {
-        const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/blogs?slug=${this.state.slug}`)
-            .then(results => {
-                return results.json()
-            })
-            .then(data => {
-                this.setState({ blogTitle: data[0].title })
-                this.setState({ blogContent: data[0].content })
-            })
+        getBlogs(this.state.slug).then(data => {
+            this.setState({ blogTitle: data[0].title })
+            this.setState({ blogContent: data[0].content })
+        })
     }
 
     render() {

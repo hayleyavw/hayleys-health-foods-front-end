@@ -1,6 +1,7 @@
 import React from 'react'
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { StyledRecipeList } from './RecipeList.styled'
+import { getRecipes } from '../../api/common'
 
 interface State {
     recipes: []
@@ -12,14 +13,9 @@ export class RecipeList extends React.Component {
     }
 
     componentDidMount() {
-        const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes?_start=1&_sort=created_at:DESC`)
-            .then(results => {
-                return results.json()
-            })
-            .then(data => {
-                this.setState({ recipes: Object.values(data) })
-            })
+        getRecipes({}).then(data => {
+            this.setState({ recipes: Object.values(data) })
+        })
     }
 
     render() {
