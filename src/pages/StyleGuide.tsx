@@ -13,8 +13,6 @@ import {
     StyledHeadingFour,
 } from '../components/common/Headings.styled'
 import { StyledParagraph } from '../components/common/Paragraph.styled'
-import { RecipeCard } from '../components/RecipeCard/RecipeCard'
-import { RecipeObject } from '../api/DefaultObjects'
 
 const StyleGuide: React.FC = () => {
     return (
@@ -92,7 +90,7 @@ const StyleGuide: React.FC = () => {
             <StyledButton>
                 <StyledButtonText>Button Text</StyledButtonText>
             </StyledButton>
-            <RecipeCard recipe={new RecipeObject()} />
+            {/* <RecipeCard recipe={new RecipeObject()} /> */}
         </StyledStyleGuide>
     )
 }

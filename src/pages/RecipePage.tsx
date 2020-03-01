@@ -3,7 +3,6 @@ import * as H from 'history'
 import { RecipeGraphQLObject } from '../api/DefaultObjects'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
-import { RecipeGraphQLResponseObject } from '../api/GraphQLResponseObjects'
 import { getRecipes, getRecipeByIdGraphQL } from '../api/common'
 
 interface MatchParams {
@@ -27,7 +26,7 @@ export interface match<P> {
 }
 
 interface State {
-    recipe: RecipeGraphQLResponseObject
+    recipe: any
     slug: string
 }
 

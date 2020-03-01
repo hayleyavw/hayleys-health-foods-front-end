@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyledBlogList } from './BlogList.styled'
 import { BlogCard } from '../BlogCard/BlogCard'
+import { getBlogs } from '../../api/common'
 
 interface State {
     blogPosts: []
@@ -12,14 +13,9 @@ export class BlogList extends React.Component {
     }
 
     componentDidMount() {
-        const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/blogs?_sort=created_at:DESC`)
-            .then(results => {
-                return results.json()
-            })
-            .then(data => {
-                this.setState({ blogPosts: Object.values(data) })
-            })
+        getBlogs({}).then(data => {
+            this.setState({ blogPosts: Object.values(data) })
+        })
     }
 
     render() {

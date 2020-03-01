@@ -2,8 +2,14 @@ import { recipeById } from '../GraphQLQueries/recipeById'
 
 export const api_url = process.env.REACT_APP_API_URL || ''
 
-export async function getBlogs(slug: string) {
-    const results = await fetch(`${api_url}/blogs?slug=${slug}`)
+interface BlogParams {
+    slug?: string
+}
+
+export async function getBlogs(props: BlogParams) {
+    const results = await fetch(
+        `${api_url}/blogs${props.slug ? '?slug=' + props.slug : '?_sort=created_at:DESC'}`
+    )
     return results.json()
 }
 

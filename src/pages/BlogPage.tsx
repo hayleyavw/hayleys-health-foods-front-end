@@ -37,7 +37,7 @@ export class BlogPage extends React.Component<Props> {
     }
 
     componentDidMount() {
-        getBlogs(this.state.slug).then(data => {
+        getBlogs({ slug: this.state.slug }).then(data => {
             this.setState({ blogTitle: data[0].title })
             this.setState({ blogContent: data[0].content })
         })
