@@ -3,8 +3,8 @@ import * as H from 'history'
 import { RecipeGraphQLObject } from '../api/DefaultObjects'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
-import { recipeById } from '../GraphQLQueries/recipeById'
 import { RecipeGraphQLResponseObject } from '../api/GraphQLResponseObjects'
+import { getRecipes, getRecipeByIdGraphQL } from '../api/common'
 
 interface MatchParams {
     slug: string
@@ -38,26 +38,10 @@ export class RecipePage extends React.Component<Props> {
     }
 
     async componentDidMount() {
-        const api_url = process.env.REACT_APP_API_URL || ''
-
-        const recipeData = await (await fetch(`${api_url}/recipes?slug=${this.state.slug}`)).json()
-        const queryString = recipeById(recipeData[0].id)
-
-        fetch(`${api_url}/graphql`, {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ query: queryString }),
+        const recipeData = await getRecipes({ slug: this.state.slug })
+        getRecipeByIdGraphQL({ id: recipeData[0].id }).then(data => {
+            this.setState({ recipe: data.data.recipe })
         })
-            .then(results => {
-                return results.json()
-            })
-            .then(results => {
-                this.setState(() => ({
-                    recipe: results.data.recipe,
-                }))
-            })
     }
 
     render() {

@@ -1,10 +1,8 @@
-// import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { api_url } from '../../api/common'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { StyledHeadingOne, StyledHeadingTwo } from '../../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown'
-
-import React, { useState, useEffect } from 'react'
 
 export default function GetAboutContent(pageName: string, slug: string) {
     const [content, setContent] = useState()
@@ -17,7 +15,7 @@ export default function GetAboutContent(pageName: string, slug: string) {
             .then(data => {
                 setContent(data[0]['Content'])
             })
-    }, [pageName])
+    }, [pageName, slug])
 
     return (
         <React.Fragment>
