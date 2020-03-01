@@ -86,3 +86,11 @@ export class RecipeGraphQLObject {
     tags: TagGraphQLObject[] = [new TagGraphQLObject()]
     ingredients: IngredientsGraphQLObject[] = [new IngredientsGraphQLObject()]
 }
+
+export class BlogGraphQLObject {
+    id: number = 0
+    slug: string = 'test'
+    title: string = 'test'
+    content: string = 'test'
+    created_at: string = 'test'
+}

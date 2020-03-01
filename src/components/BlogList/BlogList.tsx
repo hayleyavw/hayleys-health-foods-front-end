@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledBlogList } from './BlogList.styled'
 import { BlogCard } from '../BlogCard/BlogCard'
-import { getBlogs } from '../../api/common'
+import { getBlogBySlug, getBlogsGraphQL } from '../../api/common'
 
 interface State {
     blogPosts: []
@@ -13,20 +13,16 @@ export class BlogList extends React.Component {
     }
 
     componentDidMount() {
-        getBlogs({}).then(data => {
-            this.setState({ blogPosts: Object.values(data) })
+        getBlogsGraphQL({}).then(data => {
+            this.setState({ blogPosts: data.data.blogs })
         })
     }
 
     render() {
         return (
             <StyledBlogList>
-                {this.state.blogPosts.map(blogPost => (
-                    <BlogCard
-                        key={blogPost['id']}
-                        title={blogPost['title']}
-                        slug={blogPost['slug']}
-                    />
+                {this.state.blogPosts.map((blogPost, index) => (
+                    <BlogCard key={index} title={blogPost['title']} slug={blogPost['slug']} />
                 ))}
             </StyledBlogList>
         )

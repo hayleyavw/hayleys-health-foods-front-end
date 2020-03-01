@@ -1,44 +1,38 @@
-import { recipeById } from '../GraphQLQueries/recipeById'
+import { recipeByIdQuery, recipesQuery } from '../GraphQLQueries/recipeQueries'
+import { blogPostsByIdQuery, blogPostsQuery } from '../GraphQLQueries/blogPostsQueries'
 
 export const api_url = process.env.REACT_APP_API_URL || ''
 
-interface BlogParams {
-    slug?: string
+interface GetBlogBySlugProps {
+    slug: string
 }
 
-export async function getBlogs(props: BlogParams) {
-    const results = await fetch(
-        `${api_url}/blogs${props.slug ? '?slug=' + props.slug : '?_sort=created_at:DESC'}`
-    )
-    return results.json()
+interface BlogGraphQLProps {
+    id?: number
 }
 
-interface RecipeParams {
-    start?: string
+interface GetRecipeBySlugProps {
+    slug: string
+}
+
+interface RecipeGraphQLProps {
+    id?: number
     limit?: string
-    slug?: string
+    start?: string
 }
 
-export async function getRecipes(props: RecipeParams) {
-    let baseQuery = `${api_url}/recipes`
-    let query = ''
-    if (props.slug) {
-        query = `${baseQuery}?slug=${props.slug}`
-    } else {
-        query = `${baseQuery}?_sort=created_at:DESC${props.start ? '&_start=' + props.start : ''}${
-            props.limit ? '&_limit=' + props.limit : ''
-        }`
-    }
-    const results = await fetch(query)
+export async function getBlogBySlug(props: GetBlogBySlugProps) {
+    const results = await fetch(`${api_url}/blogs?slug=${props.slug}`)
     return results.json()
 }
 
-interface RecipeByIdGraphQLProps {
-    id: number
-}
-
-export async function getRecipeByIdGraphQL(props: RecipeByIdGraphQLProps) {
-    const queryString = recipeById(props.id)
+export async function getBlogsGraphQL(props: BlogGraphQLProps) {
+    let queryString = ''
+    if (props.id) {
+        queryString = blogPostsByIdQuery(props.id)
+    } else {
+        queryString = blogPostsQuery()
+    }
     const results = await fetch(`${api_url}/graphql`, {
         method: 'post',
         headers: {
@@ -46,6 +40,27 @@ export async function getRecipeByIdGraphQL(props: RecipeByIdGraphQLProps) {
         },
         body: JSON.stringify({ query: queryString }),
     })
+    return results.json()
+}
 
+export async function getRecipeBySlug(props: GetRecipeBySlugProps) {
+    const results = await fetch(`${api_url}/recipes?slug=${props.slug}`)
+    return results.json()
+}
+
+export async function getRecipeGraphQL(props: RecipeGraphQLProps) {
+    let queryString = ''
+    if (props.id) {
+        queryString = recipeByIdQuery(props.id)
+    } else {
+        queryString = recipesQuery({ start: props.start, limit: props.limit })
+    }
+    const results = await fetch(`${api_url}/graphql`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: queryString }),
+    })
     return results.json()
 }

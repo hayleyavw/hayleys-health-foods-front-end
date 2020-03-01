@@ -10,7 +10,7 @@ import {
     StyledLatestRecipeDescription,
     StyledLatestRecipeCardHeadings,
 } from './RecipeList.styled'
-import { getRecipes, api_url } from '../../api/common'
+import { api_url, getRecipeGraphQL } from '../../api/common'
 
 interface State {
     recipes: []
@@ -22,8 +22,8 @@ export class LatestRecipeList extends React.Component {
     }
 
     componentDidMount() {
-        getRecipes({ limit: '4' }).then(data => {
-            this.setState({ recipes: data })
+        getRecipeGraphQL({ limit: '4' }).then(data => {
+            this.setState({ recipes: data.data.recipes })
         })
     }
 

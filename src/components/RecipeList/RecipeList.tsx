@@ -1,7 +1,7 @@
 import React from 'react'
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { StyledRecipeList } from './RecipeList.styled'
-import { getRecipes } from '../../api/common'
+import { getRecipeGraphQL } from '../../api/common'
 
 interface State {
     recipes: []
@@ -13,8 +13,8 @@ export class RecipeList extends React.Component {
     }
 
     componentDidMount() {
-        getRecipes({}).then(data => {
-            this.setState({ recipes: Object.values(data) })
+        getRecipeGraphQL({}).then(data => {
+            this.setState({ recipes: data.data.recipes })
         })
     }
 

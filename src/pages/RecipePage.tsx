@@ -3,7 +3,7 @@ import * as H from 'history'
 import { RecipeGraphQLObject } from '../api/DefaultObjects'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
-import { getRecipes, getRecipeByIdGraphQL } from '../api/common'
+import { getRecipeBySlug, getRecipeGraphQL } from '../api/common'
 
 interface MatchParams {
     slug: string
@@ -37,8 +37,8 @@ export class RecipePage extends React.Component<Props> {
     }
 
     async componentDidMount() {
-        const recipeData = await getRecipes({ slug: this.state.slug })
-        getRecipeByIdGraphQL({ id: recipeData[0].id }).then(data => {
+        const recipeData = await getRecipeBySlug({ slug: this.state.slug })
+        getRecipeGraphQL({ id: recipeData[0].id }).then(data => {
             this.setState({ recipe: data.data.recipe })
         })
     }
