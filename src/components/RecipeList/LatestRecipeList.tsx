@@ -10,85 +10,81 @@ import {
     StyledLatestRecipeDescription,
     StyledLatestRecipeCardHeadings,
 } from './RecipeList.styled'
-import { RecipeResponseObject } from '../../api/ResponseObjects'
-import { RecipeObject } from '../../api/DefaultObjects'
+import { getRecipes, api_url } from '../../api/common'
 
-interface IState {
-    main_recipe: RecipeResponseObject
+interface State {
     recipes: []
 }
 
-interface IProps {}
-
-export class LatestRecipeList extends React.Component<IProps, IState> {
-    public readonly state: Readonly<IState> = {
-        main_recipe: new RecipeObject(),
+export class LatestRecipeList extends React.Component {
+    public readonly state: Readonly<State> = {
         recipes: [],
     }
 
     componentDidMount() {
-        const api_url = process.env.REACT_APP_API_URL || ''
-        fetch(`${api_url}/recipes/`)
-            .then(results => {
-                return results.json()
-            })
-            .then(data => {
-                this.setState((prevState, props) => ({
-                    main_recipe: data[0],
-                }))
-            })
-        fetch(`${api_url}/recipes?_start=1&_limit=3&_sort=created_at:DESC`)
-            .then(results => {
-                return results.json()
-            })
-            .then(data => {
-                this.setState({ recipes: data })
-            })
+        getRecipes({ limit: '4' }).then(data => {
+            this.setState({ recipes: data })
+        })
     }
 
     render() {
-        const api_url = process.env.REACT_APP_API_URL || ''
         return (
             <StyledRecipeList>
-                <StyledFeatureRecipeCard>
-                    <StyledLatestRecipeImageLink
-                        to={`/recipes/${this.state.main_recipe['slug']}`}
-                        isFeaturedRecipeCard={true}
-                    >
-                        <StyledLatestRecipeImage
-                            src={
-                                this.state.main_recipe['hero']
-                                    ? `${api_url}/${this.state.main_recipe['hero']['url']}`
-                                    : ''
-                            }
-                        />
-                    </StyledLatestRecipeImageLink>
-                    <StyledLatestRecipeCardHeadings>
-                        {this.state.main_recipe['title']}
-                    </StyledLatestRecipeCardHeadings>
-                    <StyledLatestRecipeDescription>
-                        {this.state.main_recipe.description}
-                    </StyledLatestRecipeDescription>
-                </StyledFeatureRecipeCard>
-                <StyledLatestRecipeCardsColumn>
-                    {this.state.recipes.map(recipe => (
-                        <StyledLatestRecipeCard key={recipe['id']}>
-                            <StyledLatestRecipeImageLink to={`/recipes/${recipe['slug']}`}>
-                                <StyledLatestRecipeImage
-                                    src={
-                                        recipe['hero'] ? `${api_url}/${recipe['hero']['url']}` : ''
-                                    }
-                                />
-                            </StyledLatestRecipeImageLink>
-                            <StyledLatestRecipeCardText>
+                {this.state.recipes.map((recipe, index) => (
+                    <React.Fragment key={index}>
+                        {index === 0 ? (
+                            <StyledFeatureRecipeCard>
+                                <StyledLatestRecipeImageLink
+                                    to={`/recipes/${recipe['slug']}`}
+                                    isFeaturedRecipeCard={true}
+                                >
+                                    <StyledLatestRecipeImage
+                                        src={
+                                            recipe['hero']
+                                                ? `${api_url}/${recipe['hero']['url']}`
+                                                : ''
+                                        }
+                                    />
+                                </StyledLatestRecipeImageLink>
                                 <StyledLatestRecipeCardHeadings>
                                     {recipe['title']}
                                 </StyledLatestRecipeCardHeadings>
                                 <StyledLatestRecipeDescription>
                                     {recipe['description']}
                                 </StyledLatestRecipeDescription>
-                            </StyledLatestRecipeCardText>
-                        </StyledLatestRecipeCard>
+                            </StyledFeatureRecipeCard>
+                        ) : (
+                            ''
+                        )}
+                    </React.Fragment>
+                ))}
+                <StyledLatestRecipeCardsColumn>
+                    {this.state.recipes.map((recipe, index) => (
+                        <React.Fragment key={index}>
+                            {index > 0 ? (
+                                <StyledLatestRecipeCard key={recipe['id']}>
+                                    <StyledLatestRecipeImageLink to={`/recipes/${recipe['slug']}`}>
+                                        <StyledLatestRecipeImage
+                                            src={
+                                                recipe['hero']
+                                                    ? `${api_url}/${recipe['hero']['url']}`
+                                                    : ''
+                                            }
+                                        />
+                                    </StyledLatestRecipeImageLink>
+                                    <StyledLatestRecipeCardText>
+                                        <StyledLatestRecipeCardHeadings>
+                                            {recipe['title']}
+                                        </StyledLatestRecipeCardHeadings>
+                                        <StyledLatestRecipeDescription>
+                                            {recipe['description']}
+                                        </StyledLatestRecipeDescription>
+                                    </StyledLatestRecipeCardText>
+                                </StyledLatestRecipeCard>
+                            ) : (
+                                ''
+                            )}
+                        </React.Fragment>
                     ))}
                 </StyledLatestRecipeCardsColumn>
             </StyledRecipeList>
