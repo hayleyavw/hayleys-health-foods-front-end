@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
+import { Switch, Route, Router } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import HomePage from './pages/HomePage'
 import BlogListPage from './pages/BlogListPage'
 import StyleGuide from './pages/StyleGuide'
-import { Switch, Route } from 'react-router-dom'
 import { Global, css } from '@emotion/core'
 import { margins } from './components/styling/margin'
 import { bodyFont } from './components/styling/fonts'
@@ -19,9 +20,9 @@ import { Footer } from './components/Footer/Footer'
 
 export class App extends React.Component {
     render() {
+        const history = createBrowserHistory()
         return (
             <div className="container">
-                <Nav />
                 <Global
                     styles={css`
                         body {
@@ -32,18 +33,21 @@ export class App extends React.Component {
                         }
                     `}
                 />
-                <Switch>
-                    <Route exact path="/" component={HomePage} />
-                    <Route path="/blog/:slug" component={BlogPage} />
-                    <Route path="/blog" component={BlogListPage} />
-                    <Route path="/recipes/:slug" component={RecipePage} />
-                    <Route path="/about/contact" component={ContactPage} />
-                    <Route path="/about/gut-health" component={GutHealthPage} />
-                    <Route path="/about/my-story" component={MyStoryPage} />
-                    <Route path="/about/support" component={SupportPage} />
-                    <Route path="/about" component={AboutPage} />
-                    <Route path="/styleguide" component={StyleGuide} />
-                </Switch>
+                <Router history={history}>
+                    <Nav />
+                    <Switch>
+                        <Route exact path="/" component={HomePage} />
+                        <Route path="/blog/:slug" component={BlogPage} />
+                        <Route path="/blog" component={BlogListPage} />
+                        <Route path="/recipes/:slug" component={RecipePage} />
+                        <Route path="/about/contact" component={ContactPage} />
+                        <Route path="/about/gut-health" component={GutHealthPage} />
+                        <Route path="/about/my-story" component={MyStoryPage} />
+                        <Route path="/about/support" component={SupportPage} />
+                        <Route path="/about" component={AboutPage} />
+                        <Route path="/styleguide" component={StyleGuide} />
+                    </Switch>
+                </Router>
                 <Footer />
             </div>
         )

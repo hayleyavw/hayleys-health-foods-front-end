@@ -1,11 +1,9 @@
 import React from 'react'
+import { useLocation } from 'react-router'
 import { StyledNav, StyledNavItem, StyledNavColumn, StyledNavLogo } from './Nav.styled'
 
-interface NavProps {
-    isHomePage?: boolean
-}
-
-export const Nav: React.FC<NavProps> = ({ isHomePage }) => {
+export const Nav: React.FC = () => {
+    const isHomePage = useLocation().pathname === '/'
     return (
         <StyledNav>
             <StyledNavColumn>
