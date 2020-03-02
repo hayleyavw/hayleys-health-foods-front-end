@@ -35,7 +35,7 @@ export interface IngredientsGraphQLResponseObject {
     }
 }
 
-export interface BlogResponseObject {
+export interface BlogGraphQLResponseObject {
     id: number
     slug: string
     title: string

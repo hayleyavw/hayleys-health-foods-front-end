@@ -1,6 +1,5 @@
 import React from 'react'
 import * as H from 'history'
-import { BlogGraphQLObject } from '../api/DefaultObjects'
 import { StyledHeadingOne } from '../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown/with-html'
 import { getBlogsGraphQL, getBlogBySlug } from '../api/common'
@@ -31,13 +30,13 @@ interface State {
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        blogPost: new BlogGraphQLObject(),
         slug: this.props.match.params.slug,
+        blogPost: {},
     }
 
     async componentDidMount() {
-        const blogData = await getBlogBySlug({ slug: this.state.slug })
-        getBlogsGraphQL({ id: blogData[0].id }).then(data => {
+        const blogPost = await getBlogBySlug({ slug: this.state.slug })
+        getBlogsGraphQL({ id: blogPost.id }).then(data => {
             this.setState({ blogPost: data.data.blog })
         })
     }
