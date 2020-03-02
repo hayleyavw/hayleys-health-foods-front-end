@@ -1,6 +1,6 @@
 import { recipeByIdQuery, recipesQuery } from '../GraphQLQueries/recipeQueries'
 import { blogPostsByIdQuery, blogPostsQuery } from '../GraphQLQueries/blogPostsQueries'
-import { BlogGraphQLObject } from './DefaultObjects'
+import { BlogGraphQLObject, RecipeGraphQLObject, RecipeObject } from './DefaultObjects'
 
 export const api_url = process.env.REACT_APP_API_URL || ''
 
@@ -44,24 +44,32 @@ export async function getBlogsGraphQL(props: BlogGraphQLProps) {
     return results.json()
 }
 
-export async function getRecipeBySlug(props: GetRecipeBySlugProps) {
-    const results = await fetch(`${api_url}/recipes?slug=${props.slug}`)
-    return results.json()
+export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject> {
+    const results = await (await fetch(`${api_url}/recipes?slug=${props.slug}`)).json()
+    return new RecipeObject(results[0])
 }
 
-export async function getRecipeGraphQL(props: RecipeGraphQLProps) {
+export async function getRecipeGraphQL(
+    props: RecipeGraphQLProps
+): Promise<RecipeGraphQLObject | RecipeGraphQLObject[]> {
     let queryString = ''
     if (props.id) {
         queryString = recipeByIdQuery(props.id)
     } else {
         queryString = recipesQuery({ start: props.start, limit: props.limit })
     }
-    const results = await fetch(`${api_url}/graphql`, {
+    const results = await (await fetch(`${api_url}/graphql`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ query: queryString }),
-    })
-    return results.json()
+    })).json()
+    if (props.id) {
+        return new RecipeGraphQLObject(results.data.recipe)
+    } else {
+        return results.data.recipes.map((recipe: RecipeGraphQLObject) => {
+            return recipe
+        })
+    }
 }

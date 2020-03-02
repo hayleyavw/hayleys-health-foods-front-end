@@ -1,9 +1,9 @@
 import React from 'react'
 import * as H from 'history'
-import { RecipeGraphQLObject } from '../api/DefaultObjects'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/common'
+import { RecipeGraphQLObject } from '../api/DefaultObjects'
 
 interface MatchParams {
     slug: string
@@ -26,36 +26,34 @@ export interface match<P> {
 }
 
 interface State {
-    recipe: any
     slug: string
+    recipe: RecipeGraphQLObject
 }
 
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        recipe: new RecipeGraphQLObject(),
         slug: this.props.match.params.slug,
+        recipe: new RecipeGraphQLObject(),
     }
 
     async componentDidMount() {
-        const recipeData = await getRecipeBySlug({ slug: this.state.slug })
-        getRecipeGraphQL({ id: recipeData[0].id }).then(data => {
-            this.setState({ recipe: data.data.recipe })
+        const recipe = await getRecipeBySlug({ slug: this.state.slug })
+        getRecipeGraphQL({ id: recipe.id }).then(data => {
+            this.setState({ recipe: data })
         })
     }
 
     render() {
+        const recipe = this.state.recipe
         return (
             <React.Fragment>
-                {this.state.recipe.id !== 0 ? (
+                {recipe !== undefined ? (
                     <React.Fragment>
                         <RecipeHero
-                            heroImage={this.state.recipe.hero.url}
-                            recipeTitle={this.state.recipe.title}
+                            heroImage={recipe.hero ? recipe.hero.url : ''}
+                            recipeTitle={recipe.title}
                         />
-                        <RecipeSteps
-                            method={this.state.recipe.method}
-                            ingredients={this.state.recipe.ingredients}
-                        />
+                        <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
                     </React.Fragment>
                 ) : (
                     ''

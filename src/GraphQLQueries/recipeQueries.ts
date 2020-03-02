@@ -15,6 +15,7 @@ const baseQuery = `
         short_name
     }
     ingredients {
+        id
         quantity
         ingredient {
             id

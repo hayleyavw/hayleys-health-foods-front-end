@@ -11,19 +11,20 @@ import {
     StyledLatestRecipeCardHeadings,
 } from './RecipeList.styled'
 import { api_url, getRecipeGraphQL } from '../../api/common'
+import { RecipeGraphQLObject } from '../../api/DefaultObjects'
 
 interface State {
-    recipes: []
+    recipes: RecipeGraphQLObject[]
 }
 
 export class LatestRecipeList extends React.Component {
     public readonly state: Readonly<State> = {
-        recipes: [],
+        recipes: [new RecipeGraphQLObject()],
     }
 
     componentDidMount() {
-        getRecipeGraphQL({ limit: '4' }).then(data => {
-            this.setState({ recipes: data.data.recipes })
+        getRecipeGraphQL({ limit: '4' }).then(recipe => {
+            this.setState({ recipes: recipe })
         })
     }
 

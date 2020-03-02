@@ -6,9 +6,10 @@ import {
 } from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
 import { RecipeResponseObject } from '../../api/ResponseObjects'
+import { RecipeGraphQLObject } from '../../api/DefaultObjects'
 
 interface RecipeCardProps {
-    recipe: RecipeResponseObject
+    recipe: RecipeGraphQLObject
     isSmall?: boolean
 }
 
