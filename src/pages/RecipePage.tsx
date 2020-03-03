@@ -2,8 +2,8 @@ import React from 'react'
 import * as H from 'history'
 import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
-import { getRecipeBySlug, getRecipeGraphQL } from '../api/common'
-import { RecipeGraphQLObject } from '../api/DefaultObjects'
+import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
+import { RecipeGraphQLObject } from '../api/recipes/ResponseShapes'
 
 interface MatchParams {
     slug: string

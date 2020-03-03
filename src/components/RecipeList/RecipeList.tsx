@@ -1,8 +1,8 @@
 import React from 'react'
 import { RecipeCard } from '../RecipeCard/RecipeCard'
 import { StyledRecipeList } from './RecipeList.styled'
-import { getRecipeGraphQL } from '../../api/common'
-import { RecipeGraphQLObject } from '../../api/DefaultObjects'
+import { getRecipeGraphQL } from '../../api/recipes/Queries'
+import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
 
 interface State {
     recipes: RecipeGraphQLObject[]

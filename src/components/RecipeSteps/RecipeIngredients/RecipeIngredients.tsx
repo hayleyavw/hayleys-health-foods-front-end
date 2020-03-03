@@ -1,8 +1,7 @@
 import React from 'react'
-
-import { IngredientsGraphQLObject } from '../../../api/DefaultObjects'
 import { StyledRecipeIngredients } from './RecipeIngredients.styled'
 import { StyledHeadingFour } from '../../common/Headings.styled'
+import { IngredientsGraphQLObject } from '../../../api/recipes/ResponseShapes'
 
 interface RecipeIngredientsProps {
     ingredients: IngredientsGraphQLObject[]

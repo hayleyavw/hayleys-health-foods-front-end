@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { api_url } from '../../api/common'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { StyledHeadingOne, StyledHeadingTwo } from '../../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown'
+import { api_url } from '../../api/common'
 
 export default function GetAboutContent(pageName: string, slug: string) {
     const [content, setContent] = useState()

@@ -10,8 +10,9 @@ import {
     StyledLatestRecipeDescription,
     StyledLatestRecipeCardHeadings,
 } from './RecipeList.styled'
-import { api_url, getRecipeGraphQL } from '../../api/common'
-import { RecipeGraphQLObject } from '../../api/DefaultObjects'
+import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { getRecipeGraphQL } from '../../api/recipes/Queries'
+import { api_url } from '../../api/common'
 
 interface State {
     recipes: RecipeGraphQLObject[]

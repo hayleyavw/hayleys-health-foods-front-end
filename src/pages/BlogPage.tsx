@@ -2,7 +2,7 @@ import React from 'react'
 import * as H from 'history'
 import { StyledHeadingOne } from '../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown/with-html'
-import { getBlogsGraphQL, getBlogBySlug } from '../api/common'
+import { getBlogBySlug, getBlogsGraphQL } from '../api/blogPosts/Queries'
 
 interface MatchParams {
     slug: string

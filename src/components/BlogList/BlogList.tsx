@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledBlogList } from './BlogList.styled'
 import { BlogCard } from '../BlogCard/BlogCard'
-import { getBlogsGraphQL } from '../../api/common'
+import { getBlogsGraphQL } from '../../api/blogPosts/Queries'
 
 interface State {
     blogPosts: []

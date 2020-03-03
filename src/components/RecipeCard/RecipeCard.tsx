@@ -5,7 +5,8 @@ import {
     StyledRecipeCardTitleOverlay,
 } from './RecipeCard.styled'
 import { Link } from 'react-router-dom'
-import { RecipeGraphQLObject } from '../../api/DefaultObjects'
+import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { api_url } from '../../api/common'
 
 interface RecipeCardProps {
     recipe: RecipeGraphQLObject
@@ -13,7 +14,6 @@ interface RecipeCardProps {
 }
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isSmall }) => {
-    const api_url = process.env.REACT_APP_API_URL || ''
     return (
         <StyledRecipeCard isSmall={isSmall ? isSmall : false}>
             <Link to={`/recipes/${recipe.slug}`}>
