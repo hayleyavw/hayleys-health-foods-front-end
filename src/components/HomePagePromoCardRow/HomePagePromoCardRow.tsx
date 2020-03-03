@@ -6,9 +6,9 @@ export class HomePagePromoCardRow extends React.Component {
     render() {
         return (
             <StyledPromoCardRow>
-                <PromoCard text="No ads, always free." />
+                <PromoCard text="Read the blog." />
                 <PromoCard text="Recipes designed with Gut Health in Mind." />
-                <PromoCard text="Find out more." />
+                <PromoCard text="Support me to make more." />
             </StyledPromoCardRow>
         )
     }
