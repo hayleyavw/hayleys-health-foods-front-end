@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IngredientsGraphQLObject, IngredientGraphQLObject } from '../../../api/DefaultObjects'
+import { IngredientsGraphQLObject } from '../../../api/DefaultObjects'
 import { StyledRecipeIngredients } from './RecipeIngredients.styled'
 import { StyledHeadingFour } from '../../common/Headings.styled'
 
