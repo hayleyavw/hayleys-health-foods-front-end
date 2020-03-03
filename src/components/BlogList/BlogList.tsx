@@ -13,8 +13,8 @@ export class BlogList extends React.Component {
     }
 
     componentDidMount() {
-        getBlogsGraphQL({}).then(data => {
-            this.setState({ blogPosts: data.data.blogs })
+        getBlogsGraphQL({}).then(blogs => {
+            this.setState({ blogPosts: blogs })
         })
     }
 

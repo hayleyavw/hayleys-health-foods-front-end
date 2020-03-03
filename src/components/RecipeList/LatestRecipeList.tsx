@@ -23,8 +23,8 @@ export class LatestRecipeList extends React.Component {
     }
 
     componentDidMount() {
-        getRecipeGraphQL({ limit: '4' }).then(recipe => {
-            this.setState({ recipes: recipe })
+        getRecipeGraphQL({ limit: '4' }).then(recipes => {
+            this.setState({ recipes: recipes })
         })
     }
 

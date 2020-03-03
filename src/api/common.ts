@@ -27,21 +27,29 @@ export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<BlogGrap
     return new BlogGraphQLObject(results[0])
 }
 
-export async function getBlogsGraphQL(props: BlogGraphQLProps) {
+export async function getBlogsGraphQL(
+    props: BlogGraphQLProps
+): Promise<BlogGraphQLObject | BlogGraphQLObject[]> {
     let queryString = ''
     if (props.id) {
         queryString = blogPostsByIdQuery(props.id)
     } else {
         queryString = blogPostsQuery()
     }
-    const results = await fetch(`${api_url}/graphql`, {
+    const results = await (await fetch(`${api_url}/graphql`, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ query: queryString }),
-    })
-    return results.json()
+    })).json()
+    if (props.id) {
+        return new BlogGraphQLObject(results.data.blog)
+    } else {
+        return results.data.blogs.map((blog: BlogGraphQLObject) => {
+            return blog
+        })
+    }
 }
 
 export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject> {

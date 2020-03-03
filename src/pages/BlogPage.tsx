@@ -36,8 +36,8 @@ export class BlogPage extends React.Component<Props> {
 
     async componentDidMount() {
         const blogPost = await getBlogBySlug({ slug: this.state.slug })
-        getBlogsGraphQL({ id: blogPost.id }).then(data => {
-            this.setState({ blogPost: data.data.blog })
+        getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
+            this.setState({ blogPost: blogPost })
         })
     }
 

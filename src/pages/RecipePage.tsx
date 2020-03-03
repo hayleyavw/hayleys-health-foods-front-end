@@ -38,8 +38,8 @@ export class RecipePage extends React.Component<Props> {
 
     async componentDidMount() {
         const recipe = await getRecipeBySlug({ slug: this.state.slug })
-        getRecipeGraphQL({ id: recipe.id }).then(data => {
-            this.setState({ recipe: data })
+        getRecipeGraphQL({ id: recipe.id }).then(recipe => {
+            this.setState({ recipe: recipe })
         })
     }
 
