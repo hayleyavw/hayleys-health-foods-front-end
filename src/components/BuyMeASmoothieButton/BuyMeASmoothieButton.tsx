@@ -1,9 +1,8 @@
 import React from 'react'
 import {
     StyledBuyMeASmoothieButton,
-    StyledBuyMeASmoothieAnchor,
     StyledBuyMeASmoothieImage,
-    StyledBuyMeASmoothieSpan,
+    StyledBuyMeASmoothieText,
 } from './StyledBuyMeASmoothieButton.styled'
 
 interface Props {
@@ -12,17 +11,12 @@ interface Props {
 
 export const BuyMeASmoothieButton: React.FC<Props> = ({ prop }) => {
     return (
-        <StyledBuyMeASmoothieButton>
-            <StyledBuyMeASmoothieAnchor
-                target="_blank"
-                href="https://www.buymeacoffee.com/healthfoods"
-            >
-                <StyledBuyMeASmoothieImage
-                    src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
-                    alt="Buy me a smoothie?"
-                />
-                <StyledBuyMeASmoothieSpan>Buy me a smoothie?</StyledBuyMeASmoothieSpan>
-            </StyledBuyMeASmoothieAnchor>
+        <StyledBuyMeASmoothieButton target="_blank" href="https://www.buymeacoffee.com/healthfoods">
+            <StyledBuyMeASmoothieImage
+                src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+                alt="Buy me a smoothie?"
+            />
+            <StyledBuyMeASmoothieText>Buy me a smoothie?</StyledBuyMeASmoothieText>
         </StyledBuyMeASmoothieButton>
     )
 }
