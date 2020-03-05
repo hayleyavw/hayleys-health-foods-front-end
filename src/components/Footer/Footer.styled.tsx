@@ -1,36 +1,24 @@
 import styled from '@emotion/styled'
-import { gradients } from '../styling/gradients'
-import { colours } from '../styling/colours'
-import { margins } from '../styling/margin'
-import { calcRem } from '../styling/styling-utils/calc-rem'
 import { Link } from 'react-router-dom'
-import { bodyFont } from '../styling/fonts'
 import { StyledMiniLogo } from '../common/Headings.styled'
+import { StyledNav, StyledNavItem, StyledNavLogo, StyledNavColumn } from '../Nav/Nav.styled'
+import { calcRem } from '../styling/styling-utils/calc-rem'
 
-export const StyledFooter = styled('footer')({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    background: gradients.primary_to_accent,
-    margin: `0 -${margins.bodyLeftRightMargin}`,
-    padding: `${calcRem(3)} ${margins.bodyLeftRightMargin}`,
+export const StyledFooterFooter = styled('footer')({
+    height: undefined,
 })
 
-export const StyledFooterItem = styled(Link)({
-    color: colours.white,
-    fontSize: '1rem',
-    margin: `0 ${calcRem(10)}`,
-    fontFamily: bodyFont,
-    textDecoration: 'none',
-    '&:hover': {
-        textDecoration: 'underline',
-    },
+export const StyledFooterItemLink = styled(Link)({
+    fontSize: `${calcRem(16)} !important`,
 })
 
-export const StyledFooterLogo = styled(StyledMiniLogo)({
-    margin: `0 ${calcRem(10)}`,
+export const StyledFooterLogoMiniLogo = styled(StyledMiniLogo)({
+    display: undefined,
 })
 
-export const StyledFooterColumn = styled('div')({
-    color: colours.white,
-})
+export const StyledFooterColumnDiv = styled('div')({})
+
+export const StyledFooter = StyledNav.withComponent(StyledFooterFooter)
+export const StyledFooterItem = StyledNavItem.withComponent(StyledFooterItemLink)
+export const StyledFooterLogo = StyledNavLogo.withComponent(StyledFooterLogoMiniLogo)
+export const StyledFooterColumn = StyledNavColumn.withComponent(StyledFooterColumnDiv)

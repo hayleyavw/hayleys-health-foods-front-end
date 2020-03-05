@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-    StyledFooter,
     StyledFooterItem,
     StyledFooterColumn,
     StyledFooterLogo,
+    StyledFooter,
 } from './Footer.styled'
 
 export class Footer extends React.Component {

@@ -22,34 +22,42 @@ export class App extends React.Component {
     render() {
         const history = createBrowserHistory()
         return (
-            <div className="container">
-                <Global
-                    styles={css`
-                        body {
-                            margin: ${margins.bodyTopBottomMargin} ${margins.bodyLeftRightMargin};
-                            padding: 0;
-                            max-width: 100vw;
-                            font-family: ${bodyFont};
-                        }
-                    `}
-                />
-                <Router history={history}>
-                    <Nav />
-                    <Switch>
-                        <Route exact path="/" component={HomePage} />
-                        <Route path="/blog/:slug" component={BlogPage} />
-                        <Route path="/blog" component={BlogListPage} />
-                        <Route path="/recipes/:slug" component={RecipePage} />
-                        <Route path="/about/contact" component={ContactPage} />
-                        <Route path="/about/gut-health" component={GutHealthPage} />
-                        <Route path="/about/my-story" component={MyStoryPage} />
-                        <Route path="/about/support" component={SupportPage} />
-                        <Route path="/about" component={AboutPage} />
-                        <Route path="/styleguide" component={StyleGuide} />
-                    </Switch>
-                </Router>
-                <Footer />
-            </div>
+            <React.Fragment>
+                <div className="container">
+                    <Global
+                        styles={css`
+                            body {
+                                margin: ${margins.bodyTopBottomMargin}
+                                    ${margins.bodyLeftRightMargin};
+                                padding: 0;
+                                max-width: 100vw;
+                                font-family: ${bodyFont};
+                            }
+                            .content-wrapper {
+                                min-height: 100vh;
+                            }
+                        `}
+                    />
+                    <Router history={history}>
+                        <div className="content-wrapper">
+                            <Nav />
+                            <Switch>
+                                <Route exact path="/" component={HomePage} />
+                                <Route path="/blog/:slug" component={BlogPage} />
+                                <Route path="/blog" component={BlogListPage} />
+                                <Route path="/recipes/:slug" component={RecipePage} />
+                                <Route path="/about/contact" component={ContactPage} />
+                                <Route path="/about/gut-health" component={GutHealthPage} />
+                                <Route path="/about/my-story" component={MyStoryPage} />
+                                <Route path="/about/support" component={SupportPage} />
+                                <Route path="/about" component={AboutPage} />
+                                <Route path="/styleguide" component={StyleGuide} />
+                            </Switch>
+                        </div>
+                        <Footer />
+                    </Router>
+                </div>
+            </React.Fragment>
         )
     }
 }
