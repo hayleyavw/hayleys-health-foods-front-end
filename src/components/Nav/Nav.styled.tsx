@@ -16,9 +16,9 @@ export const StyledNav = styled('nav')({
     justifyContent: 'space-between',
     alignItems: 'center',
     background: gradients.primary_to_accent,
-    margin: `0 -${margins.bodyLeftRightMargin}`,
+    margin: `0 -${margins.bodyLeftRightMargin.sm}`,
     height: '2.5rem',
-    padding: `${calcRem(3)} ${margins.bodyLeftRightMargin}`,
+    padding: `${calcRem(3)} ${margins.bodyLeftRightMargin.sm}`,
 })
 
 export const StyledNavItem = styled(Link)({

@@ -3,9 +3,9 @@ type breakpointOptions = {
 }
 
 const breakpoints: breakpointOptions = {
-    small: 400,
-    smaller: 768,
-    large: 1024,
+    sm: 500,
+    md: 900,
+    lg: 1200,
 }
 
 export const breakpoint = (n: string) => {

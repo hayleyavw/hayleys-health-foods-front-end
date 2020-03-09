@@ -2,8 +2,13 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { StyledHeadingFour } from '../common/Headings.styled'
+import { breakpoint } from '../styling/styling-utils/breakpoints'
 
 interface StyledLatestRecipeImageLinkProps {
+    isFeaturedRecipeCard?: boolean
+}
+
+interface StyledLatestRecipeDescriptionProps {
     isFeaturedRecipeCard?: boolean
 }
 
@@ -11,15 +16,22 @@ export const StyledRecipeList = styled('div')({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    height: '60vh',
+
+    [breakpoint('sm')]: {
+        height: '60vh',
+    },
 })
 
 export const StyledFeatureRecipeCard = styled('div')({
-    flexBasis: '49%',
-    height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    height: '100%',
     margin: calcRem(5),
+    flexBasis: '100%',
+    flexDirection: 'column',
+
+    [breakpoint('sm')]: {
+        flexBasis: '48%',
+    },
 })
 
 export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
@@ -28,16 +40,28 @@ export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
 
 export const StyledLatestRecipeCardsColumn = styled('div')({
     display: 'flex',
-    flexDirection: 'column',
-    flexBasis: '49%',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     height: '100%',
+    flexBasis: '100%',
+
+    [breakpoint('sm')]: {
+        flexBasis: '49%',
+        flexDirection: 'column',
+    },
 })
 
 export const StyledLatestRecipeCard = styled('div')({
     display: 'flex',
-    height: '32%',
+    flexDirection: 'column',
     margin: calcRem(5),
+    flexBasis: '32%',
+    height: calcRem(200),
+
+    [breakpoint('sm')]: {
+        flexDirection: 'row',
+        height: '32%',
+    },
 })
 
 export const StyledLatestRecipeImage = styled('img')({
@@ -47,17 +71,28 @@ export const StyledLatestRecipeImage = styled('img')({
     transition: '0.5s',
 })
 
-export const StyledLatestRecipeDescription = styled('p')({
-    margin: calcRem(5, 0, 5, 0),
-    fontWeight: 300,
-    fontSize: calcRem(14),
-})
+export const StyledLatestRecipeDescription = styled('p')<StyledLatestRecipeDescriptionProps>(
+    ({ isFeaturedRecipeCard }) => ({
+        display: isFeaturedRecipeCard ? undefined : 'none',
+        margin: calcRem(5, 0, 5, 0),
+        fontWeight: 300,
+        fontSize: calcRem(14),
+
+        [breakpoint('sm')]: {
+            display: 'block',
+        },
+    })
+)
 
 export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
     ({ isFeaturedRecipeCard }) => ({
-        width: isFeaturedRecipeCard ? '100%' : '60%',
+        width: '100%',
         height: isFeaturedRecipeCard ? '65%' : '100%',
         marginBottom: isFeaturedRecipeCard ? calcRem(5) : undefined,
+
+        [breakpoint('sm')]: {
+            width: isFeaturedRecipeCard ? '100%' : '60%',
+        },
     })
 )
 

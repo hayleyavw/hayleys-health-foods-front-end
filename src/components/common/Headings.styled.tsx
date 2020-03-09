@@ -5,20 +5,17 @@ import { Link } from 'react-router-dom'
 
 export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,
-    fontSize: '3rem',
     margin: 0,
     color: colours.primary.primary,
 })
 
 export const StyledHeadingTwo = styled('h2')({
     fontFamily: headingFont,
-    fontSize: '2rem',
     color: colours.primary.primary,
 })
 
 export const StyledHeadingThree = styled('h3')({
     fontFamily: bodyFont,
-    fontSize: '2rem',
     margin: 0,
     fontWeight: 'normal',
     color: colours.white,
@@ -26,13 +23,11 @@ export const StyledHeadingThree = styled('h3')({
 
 export const StyledHeadingFour = styled('h4')({
     fontFamily: bodyFont,
-    fontSize: '1rem',
     color: colours.black,
 })
 
 export const StyledMiniLogo = styled(Link)({
     color: colours.white,
-    fontSize: '2rem',
     fontFamily: headingFont,
     textDecoration: 'none',
     '&:hover': {

@@ -28,7 +28,7 @@ export class App extends React.Component {
                         styles={css`
                             body {
                                 margin: ${margins.bodyTopBottomMargin}
-                                    ${margins.bodyLeftRightMargin};
+                                    ${margins.bodyLeftRightMargin.sm};
                                 padding: 0;
                                 max-width: 100vw;
                                 font-family: ${bodyFont};

@@ -51,7 +51,7 @@ export class LatestRecipeList extends React.Component {
                                 <StyledLatestRecipeCardHeadings>
                                     {recipe['title']}
                                 </StyledLatestRecipeCardHeadings>
-                                <StyledLatestRecipeDescription>
+                                <StyledLatestRecipeDescription isFeaturedRecipeCard={true}>
                                     {recipe['description']}
                                 </StyledLatestRecipeDescription>
                             </StyledFeatureRecipeCard>

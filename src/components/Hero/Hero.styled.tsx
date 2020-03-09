@@ -3,6 +3,7 @@ import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { margins } from '../styling/margin'
+import { breakpoint } from '../styling/styling-utils/breakpoints'
 
 interface StyledHeroProps {
     isMainHero?: boolean
@@ -18,9 +19,17 @@ export const StyledHeroHeadingWrapper = styled('div')({
 })
 
 export const StyledHeroHeading = styled(StyledHeadingOne)({
-    fontSize: '7rem',
+    fontSize: calcRem(60),
     color: colours.white,
     textShadow: `${calcRem(4)} ${calcRem(4)} ${calcRem(1)} rgba(0,0,0,0.8)`,
+
+    [breakpoint('sm')]: {
+        fontSize: calcRem(80),
+    },
+
+    [breakpoint('md')]: {
+        fontSize: calcRem(110),
+    },
 })
 
 export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isMainHero }) => ({
@@ -37,5 +46,5 @@ export const StyledHero = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
     color: colours.white,
     borderTop: `1px solid ${colours.white}`,
     borderBottom: `1px solid ${colours.white}`,
-    margin: isMainHero ? undefined : `0 -${margins.bodyLeftRightMargin}`,
+    margin: isMainHero ? undefined : `0 -${margins.bodyLeftRightMargin.sm}`,
 }))
