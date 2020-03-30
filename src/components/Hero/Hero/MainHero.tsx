@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyledHeroGradientLine, StyledMainHeroWrapper, StyledSubtitle } from './MainHero.styled'
+import { StyledMainHeroWrapper, StyledSubtitle } from './MainHero.styled'
 import {
     StyledHeroHeadingWrapper,
     StyledHeroHeading,
     StyledHeroImage,
     StyledHero,
+    StyledHeroGradientLine,
 } from '../Hero.styled'
 
 export class MainHero extends React.Component {

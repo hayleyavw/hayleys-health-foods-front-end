@@ -9,11 +9,6 @@ export const StyledMainHeroWrapper = styled('div')({
     margin: `0 -${margins.bodyLeftRightMargin.sm}`,
 })
 
-export const StyledHeroGradientLine = styled('div')({
-    height: calcRem(20),
-    background: gradients.primary_to_accent,
-})
-
 export const StyledSubtitle = styled(StyledHeadingThree)({
     textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
     fontSize: calcRem(25),

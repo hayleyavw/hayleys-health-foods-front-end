@@ -4,19 +4,20 @@ import { calcRem } from '../styling/styling-utils/calc-rem'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { margins } from '../styling/margin'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
+import { gradients } from '../styling/gradients'
 
 interface StyledHeroProps {
     isMainHero?: boolean
 }
 
-export const StyledHeroHeadingWrapper = styled('div')({
+export const StyledHeroHeadingWrapper = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
     position: 'absolute',
-    top: '40%',
+    top: isMainHero ? '40%' : '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     margin: 0,
     width: '90%',
-})
+}))
 
 export const StyledHeroHeading = styled(StyledHeadingOne)({
     fontSize: calcRem(60),
@@ -40,11 +41,16 @@ export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isMainHero }) =
 }))
 
 export const StyledHero = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
-    height: isMainHero ? '70vh' : '100vh',
+    height: isMainHero ? '70vh' : '60vh',
     position: 'relative',
     textAlign: 'center',
     color: colours.white,
     borderTop: `1px solid ${colours.white}`,
     borderBottom: `1px solid ${colours.white}`,
-    margin: isMainHero ? undefined : `0 -${margins.bodyLeftRightMargin.sm}`,
+    margin: `0 -${margins.bodyLeftRightMargin.sm}`,
 }))
+
+export const StyledHeroGradientLine = styled('div')({
+    height: calcRem(20),
+    background: gradients.primary_to_accent,
+})

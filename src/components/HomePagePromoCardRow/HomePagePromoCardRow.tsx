@@ -8,7 +8,7 @@ export class HomePagePromoCardRow extends React.Component {
             <StyledPromoCardRow>
                 <PromoCard text="Read the blog." />
                 <PromoCard text="Recipes designed with Gut Health in Mind." />
-                <PromoCard text="Support me to make more." />
+                <PromoCard text="Support me to make more." showSupportButton={true} />
             </StyledPromoCardRow>
         )
     }

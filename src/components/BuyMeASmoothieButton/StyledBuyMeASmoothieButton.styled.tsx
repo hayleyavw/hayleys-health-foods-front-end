@@ -24,6 +24,7 @@ export const StyledBuyMeASmoothieLink = styled('a')({
     letterSpacing: calcRem(0.6),
     boxShadow: `${calcRem(0, 1, 2)} rgba(190, 190, 190, 0.5)`,
     WebkitBoxShadow: `${calcRem(0, 1, 2, 2)} rgba(190, 190, 190, 0.5)`,
+    alignItems: 'center',
 })
 
 export const StyledBuyMeASmoothieButton = StyledButton.withComponent(StyledBuyMeASmoothieLink)

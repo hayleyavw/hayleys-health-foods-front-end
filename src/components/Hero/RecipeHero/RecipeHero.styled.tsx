@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { margins } from '../../styling/margin'
 
 export const StyledRecipeHeroImageWrapper = styled('div')({
     height: '100%',
@@ -11,5 +12,6 @@ export const StyledRecipeHeroImageOverlay = styled('div')({
     width: '100%',
     position: 'absolute',
     top: 0,
-    background: `linear-gradient(rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 1))`,
 })
+
+export const StyledRecipeHeroWrapper = styled('div')({})

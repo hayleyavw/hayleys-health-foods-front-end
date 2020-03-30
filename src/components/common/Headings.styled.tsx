@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { headingFont, bodyFont } from '../styling/fonts'
 import { colours } from '../styling/colours'
 import { Link } from 'react-router-dom'
+import { calcRem } from '../styling/styling-utils/calc-rem'
 
 export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,
@@ -12,6 +13,7 @@ export const StyledHeadingOne = styled('h1')({
 export const StyledHeadingTwo = styled('h2')({
     fontFamily: headingFont,
     color: colours.primary.primary,
+    fontSize: calcRem(32),
 })
 
 export const StyledHeadingThree = styled('h3')({

@@ -5,7 +5,6 @@ import { calcRem } from '../../styling/styling-utils/calc-rem'
 
 export const StyledRecipeMethod = styled(StyledRecipeStepCard)({
     flexBasis: '66%',
-    borderColor: colours.primary.primary,
     ol: {
         paddingInlineStart: calcRem(18),
     },
