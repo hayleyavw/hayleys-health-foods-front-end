@@ -42,10 +42,9 @@ export const StyledLatestRecipeCardsColumn = styled('div')({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '100%',
-    flexBasis: '100%',
 
     [breakpoint('sm')]: {
+        height: '100%',
         flexBasis: '49%',
         flexDirection: 'column',
     },
@@ -56,7 +55,6 @@ export const StyledLatestRecipeCard = styled('div')({
     flexDirection: 'column',
     margin: calcRem(5),
     flexBasis: '32%',
-    height: calcRem(200),
 
     [breakpoint('sm')]: {
         flexDirection: 'row',
@@ -87,16 +85,20 @@ export const StyledLatestRecipeDescription = styled('p')<StyledLatestRecipeDescr
 export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
     ({ isFeaturedRecipeCard }) => ({
         width: '100%',
-        height: isFeaturedRecipeCard ? '65%' : '100%',
+        height: isFeaturedRecipeCard ? '65%' : '80%',
         marginBottom: isFeaturedRecipeCard ? calcRem(5) : undefined,
 
         [breakpoint('sm')]: {
             width: isFeaturedRecipeCard ? '100%' : '60%',
+            height: isFeaturedRecipeCard ? '65%' : '100%',
         },
     })
 )
 
 export const StyledLatestRecipeCardText = styled('div')({
-    flexBasis: '50%',
-    marginLeft: calcRem(5),
+    [breakpoint('sm')]: {
+        flexBasis: '50%',
+        display: 'block',
+        marginLeft: calcRem(5),
+    },
 })
