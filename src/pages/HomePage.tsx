@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
             <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
             <LatestRecipeList />
             <HomePagePromoCardRow />
-            <StyledHeadingTwo>Recipes</StyledHeadingTwo>
+            <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
             <RecipeList />
         </React.Fragment>
     )

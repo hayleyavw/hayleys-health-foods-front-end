@@ -17,6 +17,7 @@ import { GutHealthPage } from './pages/about/GutHealthPage'
 import { MyStoryPage } from './pages/about/MyStoryPage'
 import { Nav } from './components/Nav/Nav'
 import { Footer } from './components/Footer/Footer'
+import { calcRem } from './components/styling/styling-utils/calc-rem'
 
 export class App extends React.Component {
     render() {
@@ -35,6 +36,7 @@ export class App extends React.Component {
                             }
                             .content-wrapper {
                                 min-height: 100vh;
+                                margin-bottom: ${calcRem(12)};
                             }
                         `}
                     />

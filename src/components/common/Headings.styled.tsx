@@ -12,8 +12,10 @@ export const StyledHeadingOne = styled('h1')({
 
 export const StyledHeadingTwo = styled('h2')({
     fontFamily: headingFont,
-    color: colours.primary.primary,
     fontSize: calcRem(32),
+    fontWeight: 'bold',
+    color: colours.primary.primary,
+    margin: calcRem(12, 0),
 })
 
 export const StyledHeadingThree = styled('h3')({

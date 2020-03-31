@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    StyledRecipeList,
+    StyledLatestRecipeList,
     StyledFeatureRecipeCard,
     StyledLatestRecipeCardsColumn,
     StyledLatestRecipeCard,
@@ -9,7 +9,7 @@ import {
     StyledLatestRecipeImageLink,
     StyledLatestRecipeDescription,
     StyledLatestRecipeCardHeadings,
-} from './RecipeList.styled'
+} from './LatestRecipeList.styled'
 import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { api_url } from '../../api/common'
@@ -31,7 +31,7 @@ export class LatestRecipeList extends React.Component {
 
     render() {
         return (
-            <StyledRecipeList>
+            <StyledLatestRecipeList>
                 {this.state.recipes.map((recipe, index) => (
                     <React.Fragment key={index}>
                         {index === 0 ? (
@@ -89,7 +89,7 @@ export class LatestRecipeList extends React.Component {
                         </React.Fragment>
                     ))}
                 </StyledLatestRecipeCardsColumn>
-            </StyledRecipeList>
+            </StyledLatestRecipeList>
         )
     }
 }

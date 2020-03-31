@@ -10,12 +10,11 @@ import { api_url } from '../../api/common'
 
 interface RecipeCardProps {
     recipe: RecipeGraphQLObject
-    isSmall?: boolean
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, isSmall }) => {
+export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
     return (
-        <StyledRecipeCard isSmall={isSmall ? isSmall : false}>
+        <StyledRecipeCard>
             <Link to={`/recipes/${recipe.slug}`}>
                 <StyledRecipeCardTitleOverlay>{recipe.title}</StyledRecipeCardTitleOverlay>
                 <StyledRecipeCardImage src={recipe.hero ? `${api_url}/${recipe.hero.url}` : ''} />

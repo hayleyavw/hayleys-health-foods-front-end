@@ -3,15 +3,11 @@ import { calcRem } from '../styling/styling-utils/calc-rem'
 import { colours } from '../styling/colours'
 import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
+import { breakpoint } from '../styling/styling-utils/breakpoints'
 
-interface StyledRecipeCardProps {
-    isSmall: boolean
-}
-
-export const StyledRecipeCard = styled('div')<StyledRecipeCardProps>(({ isSmall }) => ({
-    height: isSmall ? undefined : calcRem(300),
+export const StyledRecipeCard = styled('div')({
+    height: calcRem(150),
     flex: ' 1 0 21%',
-    margin: calcRem(5),
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center',
@@ -23,7 +19,11 @@ export const StyledRecipeCard = styled('div')<StyledRecipeCardProps>(({ isSmall 
             transition: 'bottom 0.5s',
         },
     },
-}))
+
+    [breakpoint('sm')]: {
+        height: calcRem(300),
+    },
+})
 
 export const StyledRecipeCardImage = styled('img')({
     width: '100%',
