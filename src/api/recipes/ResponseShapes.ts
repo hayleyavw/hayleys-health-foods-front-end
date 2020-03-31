@@ -85,7 +85,7 @@ export class RecipeObject {
     constructor(results?: any) {
         this.id = results.id ? results.id : 0
         this.slug = results.slug ? results.slug : 'test-slug'
-        this.title = results.title ? results.title : 'Test Title'
+        this.title = results.title ? results.title : ''
         this.method = results.method ? results.method : 'Test Method'
         this.createdAt = results.created_at ? results.created_at : 'Test Date'
         this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
@@ -185,7 +185,7 @@ export class RecipeGraphQLObject {
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
         this.slug = results && results.slug ? results.slug : 'test-slug'
-        this.title = results && results.title ? results.title : 'Test Title'
+        this.title = results && results.title ? results.title : ''
         this.method = results && results.method ? results.method : 'Test Method'
         this.description = results && results.description ? results.description : 'Rest Description'
         this.hero =
