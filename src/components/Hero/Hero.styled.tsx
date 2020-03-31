@@ -10,6 +10,8 @@ interface StyledHeroProps {
     isMainHero?: boolean
 }
 
+export const StyledHeroWrapper = styled('div')({})
+
 export const StyledHeroHeadingWrapper = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
     position: 'absolute',
     top: isMainHero ? '40%' : '50%',
@@ -53,4 +55,5 @@ export const StyledHero = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
 export const StyledHeroGradientLine = styled('div')({
     height: calcRem(20),
     background: gradients.primary_to_accent,
+    margin: `0 -${margins.bodyLeftRightMargin.sm}`,
 })

@@ -1,18 +1,19 @@
 import React from 'react'
-import { StyledMainHeroWrapper, StyledSubtitle } from './MainHero.styled'
+import { StyledSubtitle } from './MainHero.styled'
 import {
     StyledHeroHeadingWrapper,
     StyledHeroHeading,
     StyledHeroImage,
     StyledHero,
     StyledHeroGradientLine,
+    StyledHeroWrapper,
 } from '../Hero.styled'
 
 export class MainHero extends React.Component {
     render() {
         const heroImage = require('./heroImages/muesli-banner.jpg')
         return (
-            <StyledMainHeroWrapper>
+            <StyledHeroWrapper>
                 <StyledHero isMainHero={true}>
                     <StyledHeroImage isMainHero={true} src={heroImage}></StyledHeroImage>
                     <StyledHeroHeadingWrapper>
@@ -21,7 +22,7 @@ export class MainHero extends React.Component {
                     </StyledHeroHeadingWrapper>
                 </StyledHero>
                 <StyledHeroGradientLine />
-            </StyledMainHeroWrapper>
+            </StyledHeroWrapper>
         )
     }
 }

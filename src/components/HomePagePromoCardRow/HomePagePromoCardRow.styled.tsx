@@ -8,7 +8,13 @@ export const StyledPromoCardRow = styled('div')({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    height: '40vh',
+    flexWrap: 'wrap',
     margin: `${calcRem(20)} -${margins.bodyLeftRightMargin.sm}`,
+    padding: margins.bodyLeftRightMargin.sm,
     background: gradients.primary_to_accent,
+
+    [breakpoint('md')]: {
+        flexWrap: 'nowrap',
+        height: '40vh',
+    },
 })
