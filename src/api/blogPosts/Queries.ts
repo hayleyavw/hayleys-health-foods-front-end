@@ -1,4 +1,4 @@
-import { BlogGraphQLObject } from './ResponseShapes'
+import { BlogGraphQLObject, BlogObject } from './ResponseShapes'
 import { blogPostsByIdQuery, blogPostsQuery } from './GraphQLStrings'
 import { api_url } from '../common'
 
@@ -10,9 +10,9 @@ interface BlogGraphQLProps {
     id?: number
 }
 
-export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<BlogGraphQLObject> {
+export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<BlogObject> {
     const results = await (await fetch(`${api_url}/blogs?slug=${props.slug}`)).json()
-    return new BlogGraphQLObject(results[0])
+    return new BlogObject(results[0])
 }
 
 export async function getBlogsGraphQL(

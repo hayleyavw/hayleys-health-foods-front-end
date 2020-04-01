@@ -30,7 +30,7 @@ export class HeroObject {
     }
 }
 
-export class BlogGraphQLObject {
+export class BlogObject {
     id: number
     slug: string
     title: string
@@ -45,5 +45,33 @@ export class BlogGraphQLObject {
         this.content = results && results.content ? results.content : 'Test Content'
         this.createdAt = results && results.created_at ? results.created_at : 'Test Date'
         this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
+    }
+}
+
+export class HeroGraphQLObject {
+    id: number = 0
+    url: string
+
+    constructor(results?: any) {
+        this.id = results && results.id ? results.id : 0
+        this.url = results && results.url ? results.url : 'https://test-url.com'
+    }
+}
+
+export class BlogGraphQLObject {
+    id: number
+    slug: string
+    title: string
+    content: string
+    createdAt: string
+    hero: HeroGraphQLObject
+
+    constructor(results?: any) {
+        this.id = results && results.id ? results.id : 0
+        this.slug = results && results.slug ? results.slug : 'test-slug'
+        this.title = results && results.title ? results.title : ''
+        this.content = results && results.content ? results.content : 'Test Content'
+        this.createdAt = results && results.created_at ? results.created_at : 'Test Date'
+        this.hero = results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
     }
 }
