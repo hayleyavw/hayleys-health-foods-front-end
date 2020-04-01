@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledRecipeMethod } from './RecipeMethod.styled'
-import { StyledHeadingFour } from '../../common/Headings.styled'
+import { StyledHeadingTwo } from '../../common/Headings.styled'
 import ReactMarkdown from 'react-markdown/with-html'
 
 interface RecipeMethodProps {
@@ -12,7 +12,7 @@ export class RecipeMethod extends React.Component<RecipeMethodProps> {
         const { method } = this.props
         return (
             <StyledRecipeMethod>
-                <StyledHeadingFour>Method</StyledHeadingFour>
+                <StyledHeadingTwo>Method</StyledHeadingTwo>
                 <ReactMarkdown source={method} />
             </StyledRecipeMethod>
         )
