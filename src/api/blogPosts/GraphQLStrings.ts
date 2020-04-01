@@ -3,6 +3,10 @@ const baseQuery = `
     slug
     title
     content
+    hero {
+        id
+        url
+    }
 `
 
 export const blogPostsQuery = () => {

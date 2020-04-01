@@ -34,11 +34,3 @@ export interface IngredientsGraphQLResponseObject {
         short_name: string
     }
 }
-
-export interface BlogGraphQLResponseObject {
-    id: number
-    slug: string
-    title: string
-    content: string
-    created_at: string
-}
