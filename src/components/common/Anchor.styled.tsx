@@ -8,6 +8,7 @@ export const StyledAnchor = styled(Link)({
     fontSize: '1rem',
     color: colours.primary.primary,
     cursor: 'pointer',
+    textDecoration: 'none',
     '&:hover': {
         textDecoration: 'underline',
     },

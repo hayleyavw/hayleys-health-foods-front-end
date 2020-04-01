@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyledHeadingOne, StyledHeadingTwo } from '../../components/common/Headings.styled'
-import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { BuyMeASmoothieButton } from '../../components/BuyMeASmoothieButton/BuyMeASmoothieButton'
+import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
+import { StyledAboutWrapper } from '../../components/CommonAbout/AboutWrapper.styled'
 
 const SupportPage: React.FC = () => {
     return (
-        <React.Fragment>
+        <StyledAboutWrapper>
             <AboutMenu />
             <StyledHeadingOne>Support</StyledHeadingOne>
             <StyledHeadingTwo>Help me to keep making cool things!</StyledHeadingTwo>
@@ -25,7 +26,7 @@ const SupportPage: React.FC = () => {
                 form of a message with feedback about this site and/or a recipe idea. You can
                 contact me here.
             </p>
-        </React.Fragment>
+        </StyledAboutWrapper>
     )
 }
 
