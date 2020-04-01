@@ -9,6 +9,7 @@ const HomePage: React.FC = () => {
     return (
         <React.Fragment>
             <Hero
+                isHomePage={true}
                 title={"Hayley's Health Foods"}
                 subtitle={'Recipes Designed with Gut Health in Mind.'}
             ></Hero>

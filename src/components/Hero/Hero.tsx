@@ -11,6 +11,7 @@ import {
 import { api_url } from '../../api/common'
 
 interface HeroProps {
+    isHomePage?: boolean
     heroImage?: string
     title: string
     subtitle?: string
@@ -18,7 +19,7 @@ interface HeroProps {
 
 export class Hero extends React.Component<HeroProps> {
     render() {
-        const { heroImage, title, subtitle } = this.props
+        const { isHomePage, heroImage, title, subtitle } = this.props
         const heroImageUrl = heroImage
             ? `${api_url}${heroImage}`
             : require('./heroImages/muesli-banner.jpg')
@@ -26,7 +27,7 @@ export class Hero extends React.Component<HeroProps> {
         return (
             <StyledHeroWrapper>
                 <StyledHero hasSubtitle={hasSubtitle}>
-                    <StyledHeroImage hasSubtitle={hasSubtitle} src={heroImageUrl}></StyledHeroImage>
+                    <StyledHeroImage isHomePage={isHomePage} src={heroImageUrl}></StyledHeroImage>
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>

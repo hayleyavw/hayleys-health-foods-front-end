@@ -8,6 +8,7 @@ import { gradients } from '../styling/gradients'
 
 interface StyledHeroProps {
     hasSubtitle?: boolean
+    isHomePage?: boolean
 }
 
 export const StyledHeroWrapper = styled('div')({})
@@ -48,11 +49,11 @@ export const StyledSubtitle = styled(StyledHeadingThree)({
     },
 })
 
-export const StyledHeroImage = styled('img')<StyledHeroProps>(({ hasSubtitle }) => ({
+export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isHomePage }) => ({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
-    objectPosition: hasSubtitle ? 'top right' : undefined,
+    objectPosition: isHomePage ? 'top right' : undefined,
 }))
 
 export const StyledHero = styled('div')<StyledHeroProps>(({ hasSubtitle }) => ({
