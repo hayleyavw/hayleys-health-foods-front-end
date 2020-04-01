@@ -1,8 +1,8 @@
 import React from 'react'
 import * as H from 'history'
-import { StyledHeadingOne } from '../components/common/Headings.styled'
 import ReactMarkdown from 'react-markdown/with-html'
 import { getBlogBySlug, getBlogsGraphQL } from '../api/blogPosts/Queries'
+import { Hero } from '../components/Hero/Hero'
 
 interface MatchParams {
     slug: string
@@ -42,10 +42,15 @@ export class BlogPage extends React.Component<Props> {
     }
 
     render() {
+        const blogPost = this.state.blogPost
         return (
             <React.Fragment>
-                <StyledHeadingOne>{this.state.blogPost.title}</StyledHeadingOne>
-                <ReactMarkdown source={this.state.blogPost.content}></ReactMarkdown>
+                <Hero
+                    heroImage={blogPost.hero ? blogPost.hero.url : ''}
+                    title={blogPost.title}
+                    subtitle={blogPost.createdAt}
+                />
+                <ReactMarkdown source={blogPost.content}></ReactMarkdown>
             </React.Fragment>
         )
     }

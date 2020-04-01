@@ -4,7 +4,7 @@ import {
     StyledRecipeIngredientsWrapper,
     StyledRecipeIngredient,
 } from './RecipeIngredients.styled'
-import { StyledHeadingFour, StyledHeadingTwo } from '../../common/Headings.styled'
+import { StyledHeadingTwo } from '../../common/Headings.styled'
 import { IngredientsGraphQLObject } from '../../../api/recipes/ResponseShapes'
 
 interface RecipeIngredientsProps {

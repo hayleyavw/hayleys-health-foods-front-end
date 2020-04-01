@@ -4,7 +4,6 @@ import { calcRem } from '../styling/styling-utils/calc-rem'
 import { colours } from '../styling/colours'
 import { cardBorderRadius } from '../styling/borders'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
-import { BuyMeASmoothieButton } from '../BuyMeASmoothieButton/BuyMeASmoothieButton'
 
 export const StyledPromoCard = styled('div')({
     display: 'flex',

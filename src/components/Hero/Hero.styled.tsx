@@ -1,20 +1,20 @@
 import styled from '@emotion/styled'
 import { colours } from '../styling/colours'
 import { calcRem } from '../styling/styling-utils/calc-rem'
-import { StyledHeadingOne } from '../common/Headings.styled'
+import { StyledHeadingOne, StyledHeadingThree } from '../common/Headings.styled'
 import { margins } from '../styling/margin'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 import { gradients } from '../styling/gradients'
 
 interface StyledHeroProps {
-    isMainHero?: boolean
+    hasSubtitle?: boolean
 }
 
 export const StyledHeroWrapper = styled('div')({})
 
-export const StyledHeroHeadingWrapper = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
+export const StyledHeroHeadingWrapper = styled('div')<StyledHeroProps>(({ hasSubtitle }) => ({
     position: 'absolute',
-    top: isMainHero ? '40%' : '50%',
+    top: hasSubtitle ? '40%' : '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     margin: 0,
@@ -35,15 +35,28 @@ export const StyledHeroHeading = styled(StyledHeadingOne)({
     },
 })
 
-export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isMainHero }) => ({
+export const StyledSubtitle = styled(StyledHeadingThree)({
+    textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
+    fontSize: calcRem(25),
+
+    [breakpoint('sm')]: {
+        fontSize: calcRem(30),
+    },
+
+    [breakpoint('md')]: {
+        fontSize: calcRem(35),
+    },
+})
+
+export const StyledHeroImage = styled('img')<StyledHeroProps>(({ hasSubtitle }) => ({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
-    objectPosition: isMainHero ? 'top right' : undefined,
+    objectPosition: hasSubtitle ? 'top right' : undefined,
 }))
 
-export const StyledHero = styled('div')<StyledHeroProps>(({ isMainHero }) => ({
-    height: isMainHero ? '70vh' : '60vh',
+export const StyledHero = styled('div')<StyledHeroProps>(({ hasSubtitle }) => ({
+    height: hasSubtitle ? '70vh' : '60vh',
     position: 'relative',
     textAlign: 'center',
     color: colours.white,

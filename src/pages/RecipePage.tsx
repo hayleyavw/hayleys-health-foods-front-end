@@ -1,9 +1,9 @@
 import React from 'react'
 import * as H from 'history'
-import { RecipeHero } from '../components/Hero/RecipeHero/RecipeHero'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
 import { RecipeGraphQLObject } from '../api/recipes/ResponseShapes'
+import { Hero } from '../components/Hero/Hero'
 
 interface MatchParams {
     slug: string
@@ -49,10 +49,7 @@ export class RecipePage extends React.Component<Props> {
             <React.Fragment>
                 {recipe !== undefined ? (
                     <React.Fragment>
-                        <RecipeHero
-                            heroImage={recipe.hero ? recipe.hero.url : ''}
-                            recipeTitle={recipe.title}
-                        />
+                        <Hero heroImage={recipe.hero ? recipe.hero.url : ''} title={recipe.title} />
                         <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
                     </React.Fragment>
                 ) : (
