@@ -28,6 +28,7 @@ export class BlogList extends React.Component {
                         slug={blogPost.slug}
                         title={blogPost.title}
                         hero={blogPost.hero}
+                        description={'test description'}
                     />
                 ))}
             </StyledBlogList>

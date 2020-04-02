@@ -23,7 +23,13 @@ export class RecipeList extends React.Component {
         return (
             <StyledRecipeList>
                 {this.state.recipes.map((recipe: RecipeGraphQLObject, index) => (
-                    <Card key={index} slug={recipe.slug} title={recipe.title} hero={recipe.hero} />
+                    <Card
+                        key={index}
+                        slug={recipe.slug}
+                        title={recipe.title}
+                        description={recipe.description}
+                        hero={recipe.hero}
+                    />
                 ))}
             </StyledRecipeList>
         )
