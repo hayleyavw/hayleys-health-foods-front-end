@@ -35,7 +35,7 @@ export async function getBlogsGraphQL(
         return new BlogGraphQLObject(results.data.blog)
     } else {
         return results.data.blogs.map((blog: BlogGraphQLObject) => {
-            return blog
+            return new BlogGraphQLObject(blog)
         })
     }
 }

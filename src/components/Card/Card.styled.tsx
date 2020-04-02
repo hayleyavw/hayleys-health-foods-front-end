@@ -12,20 +12,16 @@ export const StyledCard = styled('div')({
     overflow: 'hidden',
     textAlign: 'center',
     borderRadius: cardBorderRadius,
-    transition: '0.5s',
 
     '&:hover': {
         img: {
             height: '60%',
-            transition: '0.5s',
         },
         '.card-text-wrapper': {
             height: '40% !important',
-            transition: '0.5s',
         },
         '.card-description': {
             display: 'block !important',
-            transition: '0.5s',
         },
     },
 
@@ -37,40 +33,52 @@ export const StyledCard = styled('div')({
 export const StyledCardImage = styled('img')({
     width: '100%',
     objectFit: 'cover',
-    height: '80%',
-    transition: '0.5s',
+    height: '71%',
+
+    [breakpoint('sm')]: {
+        height: '81%',
+    },
 })
 
-export const StyledCardTitleWrapper = styled('div')({
+export const StyledCardTextWrapper = styled('div')({
     position: 'absolute',
-    fontSize: calcRem(19),
+    fontSize: calcRem(14),
     width: '100%',
-    height: '20%',
+    minHeight: '30%',
     margin: 0,
     bottom: 0,
-    color: colours.white,
-    background: gradients.primary_to_accent,
+    padding: calcRem(0, 10),
+    boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    transition: '0.5s',
+    color: colours.white,
+    background: gradients.primary_to_accent,
 
-    '&:hover': {
+    '&:hover .card-titles': {
         textDecoration: 'underline',
     },
 
     p: {
         margin: 0,
     },
+
+    [breakpoint('sm')]: {
+        minHeight: '20%',
+        fontSize: calcRem(19),
+    },
 })
 
-export const StyledCardTitle = styled('p')({
-    transition: '0.5s',
+export const StyledCardTitleWrapper = styled('div')({})
+
+export const StyledCardTitle = styled('p')({})
+
+export const StyledCardSubtitle = styled('p')({
+    fontSize: calcRem(14),
 })
 
 export const StyledCardDescription = styled('p')({
     display: 'none',
-    fontSize: calcRem(16),
-    transition: '0.5s',
+    fontSize: calcRem(14),
 })

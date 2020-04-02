@@ -37,7 +37,7 @@ export async function getRecipeGraphQL(
         return new RecipeGraphQLObject(results.data.recipe)
     } else {
         return results.data.recipes.map((recipe: RecipeGraphQLObject) => {
-            return recipe
+            return new RecipeGraphQLObject(recipe)
         })
     }
 }
