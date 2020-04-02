@@ -3,7 +3,7 @@ import { StyledHeadingOne, StyledHeadingTwo } from '../common/Headings.styled'
 import ReactMarkdown from 'react-markdown'
 import { api_url } from '../../api/common'
 import { AboutMenu } from '../AboutMenu/AboutMenu'
-import { StyledAboutWrapper } from './AboutWrapper.styled'
+import { StyledContentBox } from '../common/ContentBox.styled'
 
 export default function GetAboutContent(pageName: string, slug: string) {
     const [content, setContent] = useState()
@@ -19,12 +19,12 @@ export default function GetAboutContent(pageName: string, slug: string) {
     }, [pageName, slug])
 
     return (
-        <StyledAboutWrapper>
+        <StyledContentBox>
             <AboutMenu />
             <StyledHeadingOne>{pageName}</StyledHeadingOne>
             <ReactMarkdown source={content}></ReactMarkdown>
             <StyledHeadingTwo>With love,</StyledHeadingTwo>
             <StyledHeadingTwo>Hayley</StyledHeadingTwo>
-        </StyledAboutWrapper>
+        </StyledContentBox>
     )
 }

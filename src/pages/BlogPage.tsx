@@ -3,6 +3,8 @@ import * as H from 'history'
 import ReactMarkdown from 'react-markdown/with-html'
 import { getBlogBySlug, getBlogsGraphQL } from '../api/blogPosts/Queries'
 import { Hero } from '../components/Hero/Hero'
+import { StyledContentBox } from '../components/common/ContentBox.styled'
+import { StyledHeadingTwo } from '../components/common/Headings.styled'
 
 interface MatchParams {
     slug: string
@@ -43,14 +45,20 @@ export class BlogPage extends React.Component<Props> {
 
     render() {
         const blogPost = this.state.blogPost
+        const moment = require('moment')
+        const createdAt = moment(blogPost.createdAt).format('Do MMM YYYY')
         return (
             <React.Fragment>
                 <Hero
                     heroImage={blogPost.hero ? blogPost.hero.url : ''}
                     title={blogPost.title}
-                    subtitle={blogPost.createdAt}
+                    subtitle={createdAt}
                 />
-                <ReactMarkdown source={blogPost.content}></ReactMarkdown>
+                <StyledContentBox>
+                    <ReactMarkdown source={blogPost.content}></ReactMarkdown>
+                    <StyledHeadingTwo>With love,</StyledHeadingTwo>
+                    <StyledHeadingTwo>Hayley</StyledHeadingTwo>
+                </StyledContentBox>
             </React.Fragment>
         )
     }

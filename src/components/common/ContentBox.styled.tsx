@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 
-export const StyledAboutWrapper = styled('div')({
+export const StyledContentBox = styled('div')({
     textAlign: 'justify',
     margin: calcRem(0, 0, 10),
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyledHeadingOne } from '../../components/common/Headings.styled'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
-import { StyledAboutWrapper } from '../../components/CommonAbout/AboutWrapper.styled'
+import { StyledContentBox } from '../../components/common/ContentBox.styled'
 
 const ContactPage: React.FC = () => {
     return (
-        <StyledAboutWrapper>
+        <StyledContentBox>
             <AboutMenu></AboutMenu>
             <StyledHeadingOne>Contact</StyledHeadingOne>
-        </StyledAboutWrapper>
+        </StyledContentBox>
     )
 }
 
