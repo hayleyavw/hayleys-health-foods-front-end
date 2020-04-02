@@ -3,6 +3,7 @@ const baseQuery = `
     slug
     title
     content
+    created_at
     hero {
         id
         url
