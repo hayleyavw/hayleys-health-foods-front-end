@@ -1,5 +1,5 @@
 import React from 'react'
-import { RecipeCard } from '../RecipeCard/RecipeCard'
+import { Card } from '../Card/Card'
 import { StyledRecipeList } from './RecipeList.styled'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
@@ -22,8 +22,8 @@ export class RecipeList extends React.Component {
     render() {
         return (
             <StyledRecipeList>
-                {this.state.recipes.map((recipe: RecipeGraphQLObject) => (
-                    <RecipeCard key={recipe['id']} recipe={recipe} />
+                {this.state.recipes.map((recipe: RecipeGraphQLObject, index) => (
+                    <Card key={index} slug={recipe.slug} title={recipe.title} hero={recipe.hero} />
                 ))}
             </StyledRecipeList>
         )

@@ -44,7 +44,7 @@ export class BlogObject {
         this.title = results && results.title ? results.title : ''
         this.content = results && results.content ? results.content : 'Test Content'
         this.createdAt = results && results.created_at ? results.created_at : 'Test Date'
-        this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
+        this.hero = results && results.hero ? new HeroObject(results.hero) : new HeroObject()
     }
 }
 
@@ -72,6 +72,7 @@ export class BlogGraphQLObject {
         this.title = results && results.title ? results.title : ''
         this.content = results && results.content ? results.content : 'Test Content'
         this.createdAt = results && results.created_at ? results.created_at : 'Test Date'
-        this.hero = results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
+        this.hero =
+            results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
     }
 }

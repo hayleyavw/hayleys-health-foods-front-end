@@ -1,20 +1,21 @@
 import React from 'react'
 import { StyledBlogList } from './BlogList.styled'
-import { BlogCard } from '../BlogCard/BlogCard'
 import { getBlogsGraphQL } from '../../api/blogPosts/Queries'
+import { Card } from '../Card/Card'
+import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
 
 interface State {
-    blogPosts: []
+    blogPosts: BlogGraphQLObject[]
 }
 
 export class BlogList extends React.Component {
     public readonly state: Readonly<State> = {
-        blogPosts: [],
+        blogPosts: [new BlogGraphQLObject()],
     }
 
     componentDidMount() {
-        getBlogsGraphQL({}).then(blogs => {
-            this.setState({ blogPosts: blogs })
+        getBlogsGraphQL({}).then(blogPosts => {
+            this.setState({ blogPosts: blogPosts })
         })
     }
 
@@ -22,7 +23,12 @@ export class BlogList extends React.Component {
         return (
             <StyledBlogList>
                 {this.state.blogPosts.map((blogPost, index) => (
-                    <BlogCard key={index} title={blogPost['title']} slug={blogPost['slug']} />
+                    <Card
+                        key={index}
+                        slug={blogPost.slug}
+                        title={blogPost.title}
+                        hero={blogPost.hero}
+                    />
                 ))}
             </StyledBlogList>
         )

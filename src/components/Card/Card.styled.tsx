@@ -5,7 +5,7 @@ import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 
-export const StyledRecipeCard = styled('div')({
+export const StyledCard = styled('div')({
     height: calcRem(150),
     flex: ' 1 0 21%',
     position: 'relative',
@@ -25,7 +25,7 @@ export const StyledRecipeCard = styled('div')({
     },
 })
 
-export const StyledRecipeCardImage = styled('img')({
+export const StyledCardImage = styled('img')({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
@@ -36,7 +36,7 @@ export const StyledRecipeCardImage = styled('img')({
     },
 })
 
-export const StyledRecipeCardTitleOverlay = styled('p')({
+export const StyledCardTitleOverlay = styled('p')({
     position: 'absolute',
     fontSize: '1.2rem',
     width: '100%',
