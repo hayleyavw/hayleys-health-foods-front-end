@@ -28,7 +28,7 @@ export const StyledNav = styled('nav')({
 
 export const StyledNavItem = styled(Link)({
     color: colours.white,
-    fontSize: calcRem(12),
+    fontSize: calcRem(14),
     margin: `0 ${calcRem(5)}`,
     fontFamily: bodyFont,
     textDecoration: 'none',
@@ -37,7 +37,7 @@ export const StyledNavItem = styled(Link)({
     },
 
     [breakpoint('sm')]: {
-        fontSize: calcRem(15),
+        fontSize: calcRem(16),
     },
 
     [breakpoint('md')]: {
@@ -47,7 +47,7 @@ export const StyledNavItem = styled(Link)({
 
 export const StyledNavLogo = styled(StyledMiniLogo)<StyledNavLogoProps>(({ isHomePage }) => ({
     display: isHomePage ? 'none' : undefined,
-    fontSize: calcRem(16),
+    fontSize: calcRem(18),
 
     [breakpoint('sm')]: {
         fontSize: calcRem(24),

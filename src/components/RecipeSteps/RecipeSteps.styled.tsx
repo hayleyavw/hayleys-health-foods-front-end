@@ -10,7 +10,7 @@ export const StyledRecipeSteps = styled('div')({
     margin: calcRem(0),
     position: 'relative',
     color: colours.black,
-    fontSize: calcRem(11),
+    fontSize: calcRem(16),
 
     [breakpoint('sm')]: {
         flexWrap: 'wrap',
@@ -19,7 +19,7 @@ export const StyledRecipeSteps = styled('div')({
 
     [breakpoint('md')]: {
         margin: calcRem(0, 96),
-        fontSize: calcRem(16),
+        fontSize: calcRem(18),
     },
 
     [breakpoint('lg')]: {

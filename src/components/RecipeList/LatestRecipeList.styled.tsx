@@ -67,7 +67,10 @@ export const StyledLatestRecipeList = styled('div')({
     },
     '#latest-recipe-text-0': {
         gridArea: 'leftText',
-        paddingLeft: calcRem(5),
+        paddingLeft: 0,
+        [breakpoint('sm')]: {
+            paddingLeft: calcRem(5),
+        },
         '&:hover .latest-recipe-heading': {
             textDecoration: 'underline',
         },
@@ -120,11 +123,7 @@ export const StyledLatestRecipeImage = styled('img')({
 export const StyledLatestRecipeDescription = styled('p')({
     fontWeight: 100,
     margin: calcRem(0),
-    fontSize: calcRem(12),
-
-    [breakpoint('md')]: {
-        fontSize: calcRem(16),
-    },
+    fontSize: calcRem(16),
 })
 
 export const StyledLatestRecipeCard = styled(Link)({

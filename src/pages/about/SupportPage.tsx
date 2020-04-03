@@ -8,8 +8,7 @@ const SupportPage: React.FC = () => {
     return (
         <StyledContentBox>
             <AboutMenu />
-            <StyledHeadingOne>Support</StyledHeadingOne>
-            <StyledHeadingTwo>Help me to keep making cool things!</StyledHeadingTwo>
+            <StyledHeadingOne>Help me to keep making cool things!</StyledHeadingOne>
             <p>
                 I have so many ideas for recipes to create and features to add this website, but
                 unfortunately they all take time. There is also a small ongoing cost for keeping a

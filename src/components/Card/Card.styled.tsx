@@ -7,7 +7,7 @@ import { breakpoint } from '../styling/styling-utils/breakpoints'
 import { StyledHeadingThree, StyledHeadingFour } from '../common/Headings.styled'
 
 export const StyledCard = styled('div')({
-    height: calcRem(150),
+    height: calcRem(200),
     flex: ' 1 0 21%',
     position: 'relative',
     overflow: 'hidden',
@@ -31,7 +31,6 @@ export const StyledCard = styled('div')({
             height: '100%',
             visibility: 'visible',
             opacity: 1,
-            // transition: '0.5s',
         },
     },
 
@@ -76,7 +75,7 @@ export const StyledCardTextWrapper = styled('div')({
 export const StyledCardTitleWrapper = styled('div')({})
 
 export const StyledCardTitle = styled(StyledHeadingThree)({
-    fontSize: calcRem(14),
+    fontSize: calcRem(18),
 
     [breakpoint('sm')]: {
         fontSize: calcRem(19),
@@ -84,8 +83,8 @@ export const StyledCardTitle = styled(StyledHeadingThree)({
 })
 
 export const StyledCardSubtitle = styled(StyledHeadingFour)({
-    margin: 0,
-    fontSize: calcRem(12),
+    margin: calcRem(3, 0, 0),
+    fontSize: calcRem(14),
     color: colours.white,
 
     [breakpoint('sm')]: {

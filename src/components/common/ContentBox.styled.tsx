@@ -5,6 +5,8 @@ import { calcRem } from '../styling/styling-utils/calc-rem'
 export const StyledContentBox = styled('div')({
     textAlign: 'justify',
     margin: calcRem(0, 0, 10),
+    lineHeight: calcRem(24),
+    fontSize: calcRem(16),
 
     [breakpoint('sm')]: {
         flexWrap: 'wrap',
@@ -13,7 +15,7 @@ export const StyledContentBox = styled('div')({
 
     [breakpoint('md')]: {
         margin: calcRem(0, 96, 50),
-        fontSize: calcRem(16),
+        fontSize: calcRem(18),
     },
 
     [breakpoint('lg')]: {
