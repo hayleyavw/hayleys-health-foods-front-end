@@ -24,7 +24,7 @@ const SupportPage: React.FC = () => {
                     src: 'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg',
                     alt: 'But me a smoothie?',
                 }}
-                buttonText="Buy my a smoothie?"
+                buttonText="Buy me a smoothie?"
             />
 
             <p>

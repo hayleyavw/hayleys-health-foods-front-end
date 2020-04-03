@@ -107,7 +107,7 @@ export const StyledLatestRecipeCardsColumn = styled('div')({})
 
 export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
     fontSize: calcRem(18),
-    margin: calcRem(0, 0, 5),
+    margin: calcRem(0, 0, 3),
 
     [breakpoint('md')]: {
         margin: calcRem(0, 0, 10),
@@ -124,6 +124,14 @@ export const StyledLatestRecipeDescription = styled('p')({
     fontWeight: 100,
     margin: calcRem(0),
     fontSize: calcRem(16),
+
+    [breakpoint('sm')]: {
+        fontSize: calcRem(12),
+    },
+
+    [breakpoint('md')]: {
+        fontSize: calcRem(16),
+    },
 })
 
 export const StyledLatestRecipeCard = styled(Link)({
