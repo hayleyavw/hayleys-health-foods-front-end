@@ -15,13 +15,22 @@ export const StyledCard = styled('div')({
 
     '&:hover': {
         img: {
-            height: '60%',
+            height: '61%',
+            transition: '0.5s',
         },
         '.card-text-wrapper': {
             height: '40% !important',
+            transition: 'height 0.5s',
+            justifyContent: 'start',
+        },
+        '.card-titles': {
+            transition: '0.5s',
         },
         '.card-description': {
-            display: 'block !important',
+            height: '100%',
+            visibility: 'visible',
+            opacity: 1,
+            transition: '0.5s',
         },
     },
 
@@ -42,19 +51,18 @@ export const StyledCardImage = styled('img')({
 
 export const StyledCardTextWrapper = styled('div')({
     position: 'absolute',
-    fontSize: calcRem(14),
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     minHeight: '30%',
-    margin: 0,
     bottom: 0,
     padding: calcRem(0, 10),
     boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
     color: colours.white,
     background: gradients.primary_to_accent,
+    fontSize: calcRem(14),
 
     '&:hover .card-titles': {
         textDecoration: 'underline',
@@ -70,7 +78,9 @@ export const StyledCardTextWrapper = styled('div')({
     },
 })
 
-export const StyledCardTitleWrapper = styled('div')({})
+export const StyledCardTitleWrapper = styled('div')({
+    margin: calcRem(10, 0),
+})
 
 export const StyledCardTitle = styled('p')({})
 
@@ -79,6 +89,8 @@ export const StyledCardSubtitle = styled('p')({
 })
 
 export const StyledCardDescription = styled('p')({
-    display: 'none',
+    height: 0,
+    visibility: 'hidden',
+    opacity: 0,
     fontSize: calcRem(14),
 })
