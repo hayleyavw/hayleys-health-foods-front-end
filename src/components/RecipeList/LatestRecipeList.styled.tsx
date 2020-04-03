@@ -2,103 +2,117 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { StyledHeadingFour } from '../common/Headings.styled'
-import { breakpoint } from '../styling/styling-utils/breakpoints'
-
-interface StyledLatestRecipeImageLinkProps {
-    isFeaturedRecipeCard?: boolean
-}
-
-interface StyledLatestRecipeDescriptionProps {
-    isFeaturedRecipeCard?: boolean
-}
+import { colours } from '../styling/colours'
 
 export const StyledLatestRecipeList = styled('div')({
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    height: '60vh',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateRows: 'repeat(3, 30%)',
+    gridGap: calcRem(10),
+    gridTemplateAreas:
+        "'leftImage leftImage rightTopImage rightTopText' 'leftImage leftImage rightMiddleImage rightMiddleText' 'leftText leftText rightBottomImage rightBottomText'",
 
-    [breakpoint('sm')]: {
-        height: '60vh',
+    '.latest-recipe-image': {
+        overflow: 'hidden',
+    },
+
+    '#latest-recipe-image-0': {
+        gridArea: 'leftImage',
+        '&:hover': {
+            ' & ~ #latest-recipe-text-0 .latest-recipe-heading': {
+                textDecoration: 'underline',
+            },
+            img: {
+                transform: 'scale(1.2)',
+                transition: '1s',
+            },
+        },
+    },
+    '#latest-recipe-image-1': {
+        gridArea: 'rightTopImage',
+        '&:hover': {
+            '& ~ #latest-recipe-text-1 .latest-recipe-heading': {
+                textDecoration: 'underline',
+            },
+            img: {
+                transform: 'scale(1.2)',
+                transition: '1s',
+            },
+        },
+    },
+    '#latest-recipe-image-2': {
+        gridArea: 'rightMiddleImage',
+        '&:hover': {
+            '& ~ #latest-recipe-text-2 .latest-recipe-heading': {
+                textDecoration: 'underline',
+            },
+            img: {
+                transform: 'scale(1.2)',
+                transition: '1s',
+            },
+        },
+    },
+    '#latest-recipe-image-3': {
+        gridArea: 'rightBottomImage',
+        '&:hover': {
+            '& ~ #latest-recipe-text-3 .latest-recipe-heading': {
+                textDecoration: 'underline',
+            },
+            img: {
+                transform: 'scale(1.2)',
+                transition: '1s',
+            },
+        },
+    },
+    '#latest-recipe-text-0': {
+        gridArea: 'leftText',
+        paddingLeft: calcRem(5),
+        '&:hover .latest-recipe-heading': {
+            textDecoration: 'underline',
+        },
+    },
+    '#latest-recipe-text-1': {
+        gridArea: 'rightTopText',
+        '&:hover .latest-recipe-heading': {
+            textDecoration: 'underline',
+        },
+    },
+    '#latest-recipe-text-2': {
+        gridArea: 'rightMiddleText',
+        '&:hover .latest-recipe-heading': {
+            textDecoration: 'underline',
+        },
+    },
+    '#latest-recipe-text-3': {
+        gridArea: 'rightBottomText',
+        '&:hover .latest-recipe-heading': {
+            textDecoration: 'underline',
+        },
     },
 })
 
-export const StyledFeatureRecipeCard = styled('div')({
-    display: 'flex',
-    height: '100%',
-    margin: calcRem(5),
-    flexBasis: '100%',
-    flexDirection: 'column',
-
-    [breakpoint('sm')]: {
-        flexBasis: '48%',
-    },
-})
+export const StyledLatestRecipeCardsColumn = styled('div')({})
 
 export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
-    margin: calcRem(3, 0, 0, 0),
-})
-
-export const StyledLatestRecipeCardsColumn = styled('div')({
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-
-    [breakpoint('sm')]: {
-        height: '100%',
-        flexBasis: '49%',
-        flexDirection: 'column',
-    },
-})
-
-export const StyledLatestRecipeCard = styled('div')({
-    display: 'flex',
-    flexDirection: 'column',
-    margin: calcRem(5),
-    flexBasis: '32%',
-
-    [breakpoint('sm')]: {
-        flexDirection: 'row',
-        height: '32%',
-    },
+    fontSize: calcRem(18),
+    margin: calcRem(0, 0, 10),
 })
 
 export const StyledLatestRecipeImage = styled('img')({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    transition: '0.5s',
 })
 
-export const StyledLatestRecipeDescription = styled('p')<StyledLatestRecipeDescriptionProps>(
-    ({ isFeaturedRecipeCard }) => ({
-        display: isFeaturedRecipeCard ? undefined : 'none',
-        margin: calcRem(5, 0, 5, 0),
-        fontWeight: 300,
-        fontSize: calcRem(14),
-
-        [breakpoint('sm')]: {
-            display: 'block',
-        },
-    })
-)
-
-export const StyledLatestRecipeImageLink = styled(Link)<StyledLatestRecipeImageLinkProps>(
-    ({ isFeaturedRecipeCard }) => ({
-        width: '100%',
-        height: isFeaturedRecipeCard ? '65%' : '80%',
-        marginBottom: isFeaturedRecipeCard ? calcRem(5) : undefined,
-
-        [breakpoint('sm')]: {
-            width: isFeaturedRecipeCard ? '100%' : '60%',
-            height: isFeaturedRecipeCard ? '65%' : '100%',
-        },
-    })
-)
-
-export const StyledLatestRecipeCardText = styled('div')({
-    [breakpoint('sm')]: {
-        flexBasis: '50%',
-        display: 'block',
-        marginLeft: calcRem(5),
-    },
+export const StyledLatestRecipeDescription = styled('p')({
+    fontWeight: 100,
 })
+
+export const StyledLatestRecipeCard = styled(Link)({
+    width: '100%',
+    textDecoration: 'none',
+    color: colours.black,
+})
+
+export const StyledLatestRecipeCardText = styled('div')({})

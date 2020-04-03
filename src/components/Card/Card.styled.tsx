@@ -26,13 +26,12 @@ export const StyledCard = styled('div')({
         },
         '.card-titles': {
             margin: calcRem(10, 0),
-            transition: '0.5s',
         },
         '.card-description': {
             height: '100%',
             visibility: 'visible',
             opacity: 1,
-            transition: '0.5s',
+            // transition: '0.5s',
         },
     },
 

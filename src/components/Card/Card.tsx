@@ -21,8 +21,6 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ slug, title, subtitle, description, hero }) => {
-    console.log(description.slice(0, 200))
-
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
