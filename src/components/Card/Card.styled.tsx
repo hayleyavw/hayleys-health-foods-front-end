@@ -4,6 +4,7 @@ import { colours } from '../styling/colours'
 import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
+import { StyledHeadingThree, StyledHeadingFour } from '../common/Headings.styled'
 
 export const StyledCard = styled('div')({
     height: calcRem(150),
@@ -24,6 +25,7 @@ export const StyledCard = styled('div')({
             justifyContent: 'start',
         },
         '.card-titles': {
+            margin: calcRem(10, 0),
             transition: '0.5s',
         },
         '.card-description': {
@@ -62,34 +64,39 @@ export const StyledCardTextWrapper = styled('div')({
     boxSizing: 'border-box',
     color: colours.white,
     background: gradients.primary_to_accent,
-    fontSize: calcRem(14),
 
     '&:hover .card-titles': {
         textDecoration: 'underline',
     },
 
-    p: {
-        margin: 0,
-    },
-
     [breakpoint('sm')]: {
         minHeight: '20%',
+    },
+})
+
+export const StyledCardTitleWrapper = styled('div')({})
+
+export const StyledCardTitle = styled(StyledHeadingThree)({
+    fontSize: calcRem(14),
+
+    [breakpoint('sm')]: {
         fontSize: calcRem(19),
     },
 })
 
-export const StyledCardTitleWrapper = styled('div')({
-    margin: calcRem(10, 0),
-})
+export const StyledCardSubtitle = styled(StyledHeadingFour)({
+    margin: 0,
+    fontSize: calcRem(12),
+    color: colours.white,
 
-export const StyledCardTitle = styled('p')({})
-
-export const StyledCardSubtitle = styled('p')({
-    fontSize: calcRem(14),
+    [breakpoint('sm')]: {
+        fontSize: calcRem(14),
+    },
 })
 
 export const StyledCardDescription = styled('p')({
     height: 0,
+    margin: 0,
     visibility: 'hidden',
     opacity: 0,
     fontSize: calcRem(14),
