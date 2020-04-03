@@ -22,8 +22,6 @@ export const StyledButtonLinkImage = styled('img')({
 export const StyledLink = styled('a')({
     display: 'inline-flex',
     justifyContent: 'center',
-    width: '100%',
-    margin: calcRem(5),
     lineHeight: calcRem(35),
     textDecoration: 'none',
     letterSpacing: calcRem(0.6),

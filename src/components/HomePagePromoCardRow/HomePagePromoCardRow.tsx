@@ -1,28 +1,32 @@
 import React from 'react'
-import { StyledPromoCardRow } from './HomePagePromoCardRow.styled'
-import { ButtonLink } from '../ButtonLink/ButtonLink'
+import {
+    StyledPromoCardRow,
+    StyledPromoCardRowButtonLink,
+    StyledPromoCardButtonLinkImage,
+    StyledPromoCardButtonLinkText,
+} from './HomePagePromoCardRow.styled'
 
 export class HomePagePromoCardRow extends React.Component {
     render() {
         const blogIcon = require('../HomePagePromoCardRow/bubble.png')
         return (
             <StyledPromoCardRow>
-                <ButtonLink
-                    href="/blog/"
-                    image={{
-                        src: blogIcon,
-                        alt: 'Thought bubble.',
-                    }}
-                    buttonText="Read the blog"
-                />
-                <ButtonLink
+                <StyledPromoCardRowButtonLink href="/blog/">
+                    <StyledPromoCardButtonLinkImage src={blogIcon} alt={'Thought bubble.'} />
+                    <StyledPromoCardButtonLinkText>Read the Blog</StyledPromoCardButtonLinkText>
+                </StyledPromoCardRowButtonLink>
+                <StyledPromoCardRowButtonLink
+                    target="_blank"
                     href="https://www.buymeacoffee.com/healthfoods"
-                    image={{
-                        src: 'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg',
-                        alt: 'Keep cup.',
-                    }}
-                    buttonText="Buy me a smoothie?"
-                />
+                >
+                    <StyledPromoCardButtonLinkImage
+                        src={'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg'}
+                        alt={'Keep cup.'}
+                    />
+                    <StyledPromoCardButtonLinkText>
+                        Buy me a smoothie?
+                    </StyledPromoCardButtonLinkText>
+                </StyledPromoCardRowButtonLink>
             </StyledPromoCardRow>
         )
     }

@@ -2,7 +2,11 @@ import styled from '@emotion/styled'
 import { calcRem } from '../styling/styling-utils/calc-rem'
 import { margins } from '../styling/margin'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
-import { ButtonLink } from '../ButtonLink/ButtonLink'
+import {
+    StyledButtonLink,
+    StyledButtonLinkImage,
+    StyledButtonLinkText,
+} from '../ButtonLink/ButtonLink.styled'
 
 export const StyledPromoCardRow = styled('div')({
     display: 'flex',
@@ -19,3 +23,12 @@ export const StyledPromoCardRow = styled('div')({
         flexWrap: 'nowrap',
     },
 })
+
+export const StyledPromoCardRowButtonLink = styled(StyledButtonLink)({
+    width: '100%',
+    margin: calcRem(5),
+})
+
+export const StyledPromoCardButtonLinkImage = styled(StyledButtonLinkImage)({})
+
+export const StyledPromoCardButtonLinkText = styled(StyledButtonLinkText)({})
