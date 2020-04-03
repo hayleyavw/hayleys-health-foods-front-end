@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledHeadingOne, StyledHeadingTwo } from '../../components/common/Headings.styled'
-import { BuyMeASmoothieButton } from '../../components/BuyMeASmoothieButton/BuyMeASmoothieButton'
+import { ButtonLink } from '../../components/ButtonLink/ButtonLink'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { StyledContentBox } from '../../components/common/ContentBox.styled'
 
@@ -19,7 +19,14 @@ const SupportPage: React.FC = () => {
                 paywalls) but the only way to sustain it is with your help.
             </p>
             <p>If you like what you see and want more, let me know by buying me a smoothie :)</p>
-            <BuyMeASmoothieButton />
+            <ButtonLink
+                href="https://www.buymeacoffee.com/healthfoods"
+                image={{
+                    src: 'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg',
+                    alt: 'But me a smoothie?',
+                }}
+                buttonText="Buy my a smoothie?"
+            />
 
             <p>
                 I know not everyone is in a position to give, so I would love your support in the

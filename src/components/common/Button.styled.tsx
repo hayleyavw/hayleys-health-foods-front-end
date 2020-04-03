@@ -6,7 +6,7 @@ import { buttonBorderRadius } from '../styling/borders'
 import { gradients } from '../styling/gradients'
 
 export const StyledButton = styled('button')({
-    padding: `${calcRem(10)}`,
+    padding: calcRem(10),
     color: colours.white,
     borderRadius: buttonBorderRadius,
     border: '3px solid transparent',

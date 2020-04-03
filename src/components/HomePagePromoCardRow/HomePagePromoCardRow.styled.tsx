@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { calcRem } from '../styling/styling-utils/calc-rem'
-import { gradients } from '../styling/gradients'
 import { margins } from '../styling/margin'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
+import { ButtonLink } from '../ButtonLink/ButtonLink'
 
 export const StyledPromoCardRow = styled('div')({
     display: 'flex',
@@ -10,11 +10,12 @@ export const StyledPromoCardRow = styled('div')({
     justifyContent: 'space-evenly',
     flexWrap: 'wrap',
     margin: `${calcRem(20)} -${margins.bodyLeftRightMargin.sm}`,
-    padding: margins.bodyLeftRightMargin.sm,
-    background: gradients.primary_to_accent,
+    padding: calcRem(8),
+    backgroundColor: '#efefef',
 
     [breakpoint('md')]: {
+        padding: calcRem(48),
+        height: undefined,
         flexWrap: 'nowrap',
-        height: '40vh',
     },
 })

@@ -89,7 +89,7 @@ export class RecipeObject {
         this.method = results.method ? results.method : 'Test Method'
         this.createdAt = results.created_at ? results.created_at : 'Test Date'
         this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
-        this.description = results.description ? results.description : 'Rest Description'
+        this.description = results.description ? results.description : 'Test Description'
         this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
         this.tags = results.tags
             ? results.tags.map((tag: any) => {
@@ -187,7 +187,7 @@ export class RecipeGraphQLObject {
         this.slug = results && results.slug ? results.slug : 'test-slug'
         this.title = results && results.title ? results.title : ''
         this.method = results && results.method ? results.method : 'Test Method'
-        this.description = results && results.description ? results.description : 'Rest Description'
+        this.description = results && results.description ? results.description : 'Test Description'
         this.hero =
             results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
         this.tags =
