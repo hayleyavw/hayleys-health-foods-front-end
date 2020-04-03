@@ -13,21 +13,21 @@ import { HeroGraphQLObject } from '../../api/recipes/ResponseShapes'
 import { api_url } from '../../api/common'
 
 interface CardProps {
-    slug: string
+    url: string
     title: string
     subtitle?: string
     description: string
     hero: HeroGraphQLObject
 }
 
-export const Card: React.FC<CardProps> = ({ slug, title, subtitle, description, hero }) => {
+export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, hero }) => {
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
     }
     return (
         <StyledCard>
-            <Link to={`/recipes/${slug}`}>
+            <Link to={url}>
                 <StyledCardTextWrapper className="card-text-wrapper">
                     <StyledCardTitleWrapper className="card-titles">
                         <StyledCardTitle>{title}</StyledCardTitle>

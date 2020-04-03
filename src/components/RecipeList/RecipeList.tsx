@@ -25,7 +25,7 @@ export class RecipeList extends React.Component {
                 {this.state.recipes.map((recipe: RecipeGraphQLObject, index) => (
                     <Card
                         key={index}
-                        slug={recipe.slug}
+                        url={`/recipes/${recipe.slug}`}
                         title={recipe.title}
                         description={recipe.description}
                         hero={recipe.hero}

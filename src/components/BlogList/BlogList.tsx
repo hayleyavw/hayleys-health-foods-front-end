@@ -31,7 +31,7 @@ export class BlogList extends React.Component {
                         return (
                             <Card
                                 key={index}
-                                slug={blogPost.slug}
+                                url={`/blog/${blogPost.slug}`}
                                 title={blogPost.title}
                                 subtitle={createdAt}
                                 hero={blogPost.hero}
