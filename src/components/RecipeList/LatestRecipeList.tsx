@@ -5,7 +5,6 @@ import {
     StyledLatestRecipeImage,
     StyledLatestRecipeCardHeadings,
     StyledLatestRecipeDescription,
-    StyledLatestRecipeCardText,
 } from './LatestRecipeList.styled'
 import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
@@ -29,11 +28,10 @@ export class LatestRecipeList extends React.Component {
     render() {
         let recipes = this.state.recipes
         recipes.forEach(recipe => {
-            if (recipe.description.length > 100) {
-                recipe.description = `${recipe.description.slice(0, 150)}...`
+            if (recipe.description.length > 120) {
+                recipe.description = `${recipe.description.slice(0, 120)}...`
             }
         })
-        console.log(recipes)
         return (
             <StyledLatestRecipeList>
                 {recipes.map((recipe, index) => (
