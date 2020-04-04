@@ -67,7 +67,7 @@ const generateRecipeStructuredData = (
             "@type": "Person",
             "name": "Hayley van Waas"
         },
-        "description": "A ${title} recipe designed with gut health in mind.",
+        "description": "${title} recipe designed with gut health in mind.",
         "recipeIngredient": [
             ${ingredientString}
         ],

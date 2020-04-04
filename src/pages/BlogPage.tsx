@@ -30,44 +30,37 @@ export interface match<P> {
 
 interface State {
     slug: string
-    blogPost: any
-    description: string
+    blogPost: BlogGraphQLObject
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
-        blogPost: {},
-        description: '',
+        blogPost: new BlogGraphQLObject(),
     }
 
     async componentDidMount() {
         const blogPost = await getBlogBySlug({ slug: this.state.slug })
-        getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
+        await getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
             this.setState({ blogPost: blogPost })
-            this.setState({
-                description: (blogPost as BlogGraphQLObject).content.match(/<p>(.*?)<\/p>/)![1],
-            })
         })
     }
 
     render() {
-        const { blogPost, description } = this.state.blogPost
+        const blogPost = this.state.blogPost
         const moment = require('moment')
         const createdAt = moment(blogPost.createdAt).format('Do MMM YYYY')
-        let test = blogPost.content
-        // console.log(test.match(/<p>(.*?)<\/p>/))
-        // const description = blogPost.content.match(/<p>(.*?)<\/p>/)![1]
-        // const description = 'test'
+
+        function getDescription(content: string) {
+            let description = content.split(/\r?\n/)
+            if (description) {
+                return description[0]
+            }
+            return 'Blog post by Hayley van Waas.'
+        }
+
         return (
             <React.Fragment>
-                <BlogPostHead
-                    imageURL={blogPost.hero ? blogPost.hero.url : ''}
-                    title={blogPost.title}
-                    content={blogPost.content}
-                    description={description}
-                    createdAt={blogPost.createdAt}
-                    updatedAt={blogPost.updatedAt}
-                />
+                <BlogPostHead blogPost={blogPost} description={getDescription(blogPost.content)} />
                 <Hero
                     heroImage={blogPost.hero ? blogPost.hero.url : ''}
                     title={blogPost.title}

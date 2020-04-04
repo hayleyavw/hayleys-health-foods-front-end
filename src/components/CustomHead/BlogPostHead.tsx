@@ -4,30 +4,25 @@ import { api_url } from '../../api/common'
 import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
 
 interface Props {
-    title: string
-    imageURL: string
-    content: string
+    blogPost: BlogGraphQLObject
     description: string
-    createdAt: string
-    updatedAt: string
 }
 
 export class BlogPostHead extends React.Component<Props> {
     render() {
-        const { title, imageURL, content, description, createdAt, updatedAt } = this.props
-        // const description = blogPost.content.match(/<p>(.*?)<\/p>/)![1]
+        const { blogPost, description } = this.props
         return (
             <Helmet>
-                <title>{title}</title>
+                <title>{blogPost.title}</title>
                 <meta name="description" content={`${description}`} />
                 <script type="application/ld+json">
                     {generateBlogStructuredData(
-                        title,
-                        imageURL,
-                        content,
+                        blogPost.title,
+                        blogPost.hero.url,
+                        blogPost.content,
                         description,
-                        createdAt,
-                        updatedAt
+                        blogPost.createdAt,
+                        blogPost.updatedAt
                     )}
                 </script>
             </Helmet>
