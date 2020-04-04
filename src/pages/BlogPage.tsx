@@ -5,6 +5,8 @@ import { getBlogBySlug, getBlogsGraphQL } from '../api/blogPosts/Queries'
 import { Hero } from '../components/Hero/Hero'
 import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
+import { BlogPostHead } from '../components/CustomHead/BlogPostHead'
+import { BlogGraphQLObject } from '../api/blogPosts/ResponseShapes'
 
 interface MatchParams {
     slug: string
@@ -29,26 +31,43 @@ export interface match<P> {
 interface State {
     slug: string
     blogPost: any
+    description: string
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
         blogPost: {},
+        description: '',
     }
 
     async componentDidMount() {
         const blogPost = await getBlogBySlug({ slug: this.state.slug })
         getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
             this.setState({ blogPost: blogPost })
+            this.setState({
+                description: (blogPost as BlogGraphQLObject).content.match(/<p>(.*?)<\/p>/)![1],
+            })
         })
     }
 
     render() {
-        const blogPost = this.state.blogPost
+        const { blogPost, description } = this.state.blogPost
         const moment = require('moment')
         const createdAt = moment(blogPost.createdAt).format('Do MMM YYYY')
+        let test = blogPost.content
+        // console.log(test.match(/<p>(.*?)<\/p>/))
+        // const description = blogPost.content.match(/<p>(.*?)<\/p>/)![1]
+        // const description = 'test'
         return (
             <React.Fragment>
+                <BlogPostHead
+                    imageURL={blogPost.hero ? blogPost.hero.url : ''}
+                    title={blogPost.title}
+                    content={blogPost.content}
+                    description={description}
+                    createdAt={blogPost.createdAt}
+                    updatedAt={blogPost.updatedAt}
+                />
                 <Hero
                     heroImage={blogPost.hero ? blogPost.hero.url : ''}
                     title={blogPost.title}

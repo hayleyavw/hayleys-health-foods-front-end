@@ -4,6 +4,7 @@ import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
 import { RecipeGraphQLObject } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
+import { RecipeHead } from '../components/CustomHead/RecipeHead'
 
 interface MatchParams {
     slug: string
@@ -47,6 +48,7 @@ export class RecipePage extends React.Component<Props> {
         const recipe = this.state.recipe
         return (
             <React.Fragment>
+                <RecipeHead recipe={recipe} />
                 {recipe !== undefined ? (
                     <React.Fragment>
                         <Hero heroImage={recipe.hero ? recipe.hero.url : ''} title={recipe.title} />

@@ -4,6 +4,7 @@ const baseQuery = `
     title
     content
     created_at
+    updated_at
     hero {
         id
         url

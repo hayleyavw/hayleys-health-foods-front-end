@@ -64,6 +64,7 @@ export class BlogGraphQLObject {
     title: string
     content: string
     createdAt: string
+    updatedAt: string
     hero: HeroGraphQLObject
 
     constructor(results?: any) {
@@ -73,6 +74,7 @@ export class BlogGraphQLObject {
         this.title = results && results.title ? results.title : ''
         this.content = results && results.content ? results.content : 'Test Content'
         this.createdAt = results && results.created_at ? results.created_at : 'Test Date'
+        this.updatedAt = results && results.updated_at ? results.updated_at : 'Test Date'
         this.hero =
             results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
     }

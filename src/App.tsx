@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import './App.css'
 import { Switch, Route, Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -24,6 +25,16 @@ export class App extends React.Component {
         const history = createBrowserHistory()
         return (
             <React.Fragment>
+                <Helmet titleTemplate="%s | Hayleys Health Foods">
+                    <meta
+                        name="keywords"
+                        content="gut health, recipes, free, healthy, health foods, hayley, hayley van waas, hayley's health foods, healthy recipes, diet, diary free, gluten free, meals, snacks, drinks, side dishes"
+                    />
+                    <meta name="author" content="Hayley van Waas" />
+                    <title>Home</title>
+                    <meta name="description" content="Recipes designed with gut health in mind." />
+                    <link rel="canonical" href="hayleyshealthfoods.com" />
+                </Helmet>
                 <div className="container">
                     <Global
                         styles={css`
