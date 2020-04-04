@@ -4,10 +4,15 @@ import { RecipeList } from '../components/RecipeList/RecipeList'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
 import { HomePagePromoCardRow } from '../components/HomePagePromoCardRow/HomePagePromoCardRow'
 import { LatestRecipeList } from '../components/RecipeList/LatestRecipeList'
+import Helmet from 'react-helmet'
+import { jsonld } from '../components/common/jsonld'
 
 const HomePage: React.FC = () => {
     return (
         <React.Fragment>
+            <Helmet>
+                <script type="application/ld+json">{jsonld}</script>
+            </Helmet>
             <Hero
                 isHomePage={true}
                 title={"Hayley's Health Foods"}

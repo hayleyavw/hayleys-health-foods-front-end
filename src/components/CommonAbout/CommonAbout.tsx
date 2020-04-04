@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import { api_url } from '../../api/common'
 import { AboutMenu } from '../AboutMenu/AboutMenu'
 import { StyledContentBox } from '../common/ContentBox.styled'
+import { jsonld } from '../common/jsonld'
+import Helmet from 'react-helmet'
 
 export default function GetAboutContent(pageName: string, slug: string) {
     const [content, setContent] = useState()
@@ -19,12 +21,17 @@ export default function GetAboutContent(pageName: string, slug: string) {
     }, [pageName, slug])
 
     return (
-        <StyledContentBox>
-            <AboutMenu />
-            <StyledHeadingOne>{pageName}</StyledHeadingOne>
-            <ReactMarkdown source={content}></ReactMarkdown>
-            <StyledHeadingTwo>With love,</StyledHeadingTwo>
-            <StyledHeadingTwo>Hayley</StyledHeadingTwo>
-        </StyledContentBox>
+        <React.Fragment>
+            <Helmet>
+                <script type="application/ld+json">{jsonld}</script>
+            </Helmet>
+            <StyledContentBox>
+                <AboutMenu />
+                <StyledHeadingOne>{pageName}</StyledHeadingOne>
+                <ReactMarkdown source={content}></ReactMarkdown>
+                <StyledHeadingTwo>With love,</StyledHeadingTwo>
+                <StyledHeadingTwo>Hayley</StyledHeadingTwo>
+            </StyledContentBox>
+        </React.Fragment>
     )
 }
