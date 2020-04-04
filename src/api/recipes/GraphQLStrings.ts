@@ -1,13 +1,12 @@
+import { heroQuery } from '../common/GraphQLStrings'
+
 const baseQuery = `
     id
     slug
     title
     method
     description
-    hero {
-        id
-        url
-    }
+    ${heroQuery}
     tags {
         id
         slug

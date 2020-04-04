@@ -1,3 +1,5 @@
+import { heroQuery } from '../common/GraphQLStrings'
+
 const baseQuery = `
     id
     slug
@@ -5,10 +7,7 @@ const baseQuery = `
     content
     created_at
     updated_at
-    hero {
-        id
-        url
-    }
+    ${heroQuery}
 `
 
 export const blogPostsQuery = () => {
