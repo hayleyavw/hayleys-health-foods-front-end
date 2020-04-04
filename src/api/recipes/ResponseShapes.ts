@@ -14,19 +14,17 @@ export class HeroObject {
 
     constructor(results?: any) {
         this.id = results.id ? results.id : 0
-        this.name = results.name ? results.name : 'Test Name'
-        this.hash = results.hash ? results.hash : 'test-hash'
-        this.sha256 = results.sha256 ? results.sha256 : 'test sha256'
-        this.ext = results.ext ? results.ext : 'test ext'
-        this.mime = results.mime ? results.mime : 'test mime'
-        this.size = results.size ? results.size : 'test size'
-        this.url = results.url ? results.url : 'test url'
-        this.provider = results.provider ? results.provider : 'test provider'
-        this.providerMetadata = results.providerMetadata
-            ? results.providerMetadata
-            : 'test metadata'
-        this.createdAt = results.created_at ? results.created_at : 'Test Date'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
+        this.name = results.name ? results.name : 'Loading...'
+        this.hash = results.hash ? results.hash : 'Loading...'
+        this.sha256 = results.sha256 ? results.sha256 : 'Loading...'
+        this.ext = results.ext ? results.ext : 'Loading...'
+        this.mime = results.mime ? results.mime : 'Loading...'
+        this.size = results.size ? results.size : 'Loading...'
+        this.url = results.url ? results.url : 'Loading...'
+        this.provider = results.provider ? results.provider : 'Loading...'
+        this.providerMetadata = results.providerMetadata ? results.providerMetadata : 'Loading...'
+        this.createdAt = results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
     }
 }
 
@@ -40,11 +38,11 @@ export class TagObject {
 
     constructor(results?: any) {
         this.id = results.id ? results.id : 0
-        this.slug = results.slug ? results.slug : 'test-slug'
-        this.name = results.name ? results.name : 'Test Name'
-        this.shortName = results.short_name ? results.short_name : 'sn'
-        this.createdAt = results.created_at ? results.created_at : 'Test Date'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
+        this.slug = results.slug ? results.slug : 'Loading...'
+        this.name = results.name ? results.name : 'Loading...'
+        this.shortName = results.short_name ? results.short_name : 'Loading...'
+        this.createdAt = results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
     }
 }
 
@@ -62,10 +60,10 @@ export class IngredientObject {
         this.id = results.id ? results.id : 0
         this.ingredient = results.ingredient ? results.ingredient : 0
         this.recipe = results.recipe ? results.recipe : 0
-        this.quantity = results.quantity ? results.quantity : 'quantity'
-        this.preview = results.preview ? results.preview : 'Test preview'
-        this.createdAt = results.created_at ? results.created_at : 'Test Date'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
+        this.quantity = results.quantity ? results.quantity : 'Loading...'
+        this.preview = results.preview ? results.preview : 'Loading...'
+        this.createdAt = results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
         this.ingredientUnit = results.ingredient_unit ? results.ingredient_unit : 0
     }
 }
@@ -84,12 +82,12 @@ export class RecipeObject {
 
     constructor(results?: any) {
         this.id = results.id ? results.id : 0
-        this.slug = results.slug ? results.slug : 'test-slug'
-        this.title = results.title ? results.title : ''
-        this.method = results.method ? results.method : 'Test Method'
-        this.createdAt = results.created_at ? results.created_at : 'Test Date'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Test Date'
-        this.description = results.description ? results.description : 'Test Description'
+        this.slug = results.slug ? results.slug : 'Loading...'
+        this.title = results.title ? results.title : 'Loading...'
+        this.method = results.method ? results.method : 'Loading...'
+        this.createdAt = results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
+        this.description = results.description ? results.description : 'Loading...'
         this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
         this.tags = results.tags
             ? results.tags.map((tag: any) => {
@@ -110,7 +108,7 @@ export class HeroGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.url = results && results.url ? results.url : 'https://test-url.com'
+        this.url = results && results.url ? results.url : 'Loading...'
     }
 }
 
@@ -122,9 +120,9 @@ export class TagGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.slug = results && results.slug ? results.slug : 'test-slug'
-        this.name = results && results.name ? results.name : 'Test Name'
-        this.shortName = results && results.short_name ? results.short_name : 'sn'
+        this.slug = results && results.slug ? results.slug : 'Loading...'
+        this.name = results && results.name ? results.name : 'Loading...'
+        this.shortName = results && results.short_name ? results.short_name : 'Loading...'
     }
 }
 
@@ -135,8 +133,8 @@ export class IngredientGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.slug = results && results.slug ? results.slug : 'test-slug'
-        this.name = results && results.name ? results.name : 'Test Name'
+        this.slug = results && results.slug ? results.slug : 'Loading...'
+        this.name = results && results.name ? results.name : 'Loading...'
     }
 }
 
@@ -147,8 +145,8 @@ export class IngredientUnitGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.name = results && results.name ? results.name : 'Test Name'
-        this.shortName = results && results.short_name ? results.short_name : 'sn'
+        this.name = results && results.name ? results.name : 'Loading...'
+        this.shortName = results && results.short_name ? results.short_name : 'Loading...'
     }
 }
 
@@ -160,7 +158,7 @@ export class IngredientsGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.quantity = results && results.quantity ? results.quantity : 'quantity'
+        this.quantity = results && results.quantity ? results.quantity : 'Loading...'
         this.ingredient =
             results && results.ingredient
                 ? new IngredientGraphQLObject(results.ingredient)
@@ -184,10 +182,10 @@ export class RecipeGraphQLObject {
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
-        this.slug = results && results.slug ? results.slug : 'test-slug'
-        this.title = results && results.title ? results.title : ''
-        this.method = results && results.method ? results.method : 'Test Method'
-        this.description = results && results.description ? results.description : 'Test Description'
+        this.slug = results && results.slug ? results.slug : 'Loading...'
+        this.title = results && results.title ? results.title : 'Loading...'
+        this.method = results && results.method ? results.method : 'Loading...'
+        this.description = results && results.description ? results.description : 'Loading...'
         this.hero =
             results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
         this.tags =
