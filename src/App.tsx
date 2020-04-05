@@ -19,7 +19,6 @@ import { MyStoryPage } from './pages/about/MyStoryPage'
 import { Nav } from './components/Nav/Nav'
 import { Footer } from './components/Footer/Footer'
 import { calcRem } from './components/styling/styling-utils/calc-rem'
-import { jsonld } from './components/common/jsonld'
 
 export class App extends React.Component {
     render() {
