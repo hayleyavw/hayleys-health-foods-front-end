@@ -4,6 +4,8 @@ import { AboutMenu } from '../../components/AboutMenu/AboutMenu'
 import { StyledContentBox } from '../../components/common/ContentBox.styled'
 import Helmet from 'react-helmet'
 import { jsonld } from '../../components/common/jsonld'
+import { StyledContactFormWrapper } from '../../components/CommonAbout/ContactPage.styled'
+import ContactForm from '../../components/ContactForm/ContactForm'
 
 const ContactPage: React.FC = () => {
     return (
@@ -14,6 +16,9 @@ const ContactPage: React.FC = () => {
             <StyledContentBox>
                 <AboutMenu></AboutMenu>
                 <StyledHeadingOne>Contact</StyledHeadingOne>
+                <StyledContactFormWrapper>
+                    <ContactForm />
+                </StyledContactFormWrapper>
             </StyledContentBox>
         </React.Fragment>
     )

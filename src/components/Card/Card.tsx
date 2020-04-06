@@ -9,8 +9,6 @@ import {
     StyledCardSubtitle,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
-import { HeroGraphQLObject } from '../../api/common/ResponseShapes'
-import { api_url } from '../../api/common'
 
 interface CardProps {
     url: string
