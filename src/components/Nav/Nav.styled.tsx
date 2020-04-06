@@ -9,8 +9,19 @@ import { StyledMiniLogo } from '../common/Headings.styled'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 
 interface StyledNavLogoProps {
-    isHomePage?: boolean
+    hideLogo?: boolean
 }
+
+export const NavLogo = styled('div')<StyledNavLogoProps>(({ hideLogo }) => ({
+    display: hideLogo ? 'none' : undefined,
+    fontSize: calcRem(18),
+
+    [breakpoint('sm')]: {
+        fontSize: calcRem(24),
+    },
+}))
+
+export const StyledNavLogo = StyledMiniLogo.withComponent(NavLogo)
 
 export const StyledNav = styled('nav')({
     display: 'flex',
@@ -44,15 +55,6 @@ export const StyledNavItem = styled(Link)({
         fontSize: calcRem(19),
     },
 })
-
-export const StyledNavLogo = styled(StyledMiniLogo)<StyledNavLogoProps>(({ isHomePage }) => ({
-    display: isHomePage ? 'none' : undefined,
-    fontSize: calcRem(18),
-
-    [breakpoint('sm')]: {
-        fontSize: calcRem(24),
-    },
-}))
 
 export const StyledNavColumn = styled('div')({
     color: colours.white,

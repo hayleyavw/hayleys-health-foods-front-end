@@ -12,9 +12,13 @@ interface RecipeGraphQLProps {
     start?: string
 }
 
-export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject> {
+export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject | Error> {
     const results = await (await fetch(`${api_url}/recipes?slug=${props.slug}`)).json()
-    return new RecipeObject(results[0])
+    try {
+        return new RecipeObject(results[0])
+    } catch {
+        return new Error('Recipe not found.')
+    }
 }
 
 export async function getRecipeGraphQL(
@@ -33,11 +37,14 @@ export async function getRecipeGraphQL(
         },
         body: JSON.stringify({ query: queryString }),
     })).json()
-    if (props.id) {
-        return new RecipeGraphQLObject(results.data.recipe)
-    } else {
-        return results.data.recipes.map((recipe: RecipeGraphQLObject) => {
-            return new RecipeGraphQLObject(recipe)
-        })
+    if (results) {
+        if (props.id) {
+            return new RecipeGraphQLObject(results.data.recipe)
+        } else {
+            return results.data.recipes.map((recipe: RecipeGraphQLObject) => {
+                return new RecipeGraphQLObject(recipe)
+            })
+        }
     }
+    return new RecipeGraphQLObject()
 }

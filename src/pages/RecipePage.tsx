@@ -2,9 +2,10 @@ import React from 'react'
 import * as H from 'history'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
-import { RecipeGraphQLObject } from '../api/recipes/ResponseShapes'
+import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
+import NotFound from '../components/common/NotFound'
 
 interface MatchParams {
     slug: string
@@ -31,6 +32,10 @@ interface State {
     recipe: RecipeGraphQLObject
 }
 
+function isRecipeObject(response: RecipeObject | Error): response is RecipeObject {
+    return (response as RecipeObject).title !== undefined
+}
+
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
@@ -38,24 +43,31 @@ export class RecipePage extends React.Component<Props> {
     }
 
     async componentDidMount() {
-        const recipe = await getRecipeBySlug({ slug: this.state.slug })
-        getRecipeGraphQL({ id: recipe.id }).then(recipe => {
-            this.setState({ recipe: recipe })
-        })
+        const response = await getRecipeBySlug({ slug: this.state.slug })
+        if (isRecipeObject(response)) {
+            getRecipeGraphQL({ id: response.id }).then(recipe => {
+                this.setState({ recipe: recipe })
+            })
+        }
     }
 
     render() {
         const recipe = this.state.recipe
         return (
             <React.Fragment>
-                <RecipeHead recipe={recipe} />
-                {recipe !== undefined ? (
+                {recipe.slug !== 'Loading...' ? (
                     <React.Fragment>
-                        <Hero heroImage={recipe.hero ? recipe.hero.url : ''} title={recipe.title} />
-                        <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
+                        <RecipeHead recipe={recipe} />
+                        <React.Fragment>
+                            <Hero
+                                heroImage={recipe.hero ? recipe.hero.url : ''}
+                                title={recipe.title}
+                            />
+                            <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
+                        </React.Fragment>
                     </React.Fragment>
                 ) : (
-                    ''
+                    <NotFound type={'recipe'} message={`Hmm, we can't seem to find that recipe.`} />
                 )}
             </React.Fragment>
         )

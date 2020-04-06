@@ -7,7 +7,7 @@ export const Nav: React.FC = () => {
     return (
         <StyledNav>
             <StyledNavColumn>
-                <StyledNavLogo isHomePage={isHomePage} to={'/'}>
+                <StyledNavLogo hideLogo={isHomePage} to={'/'}>
                     Hayley's Health Foods
                 </StyledNavLogo>
             </StyledNavColumn>

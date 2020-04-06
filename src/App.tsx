@@ -19,6 +19,7 @@ import { MyStoryPage } from './pages/about/MyStoryPage'
 import { Nav } from './components/Nav/Nav'
 import { Footer } from './components/Footer/Footer'
 import { calcRem } from './components/styling/styling-utils/calc-rem'
+import PageNotFound from './pages/PageNotFound'
 
 export class App extends React.Component {
     render() {
@@ -65,6 +66,7 @@ export class App extends React.Component {
                                 <Route path="/about/support" component={SupportPage} />
                                 <Route path="/about" component={AboutPage} />
                                 <Route path="/styleguide" component={StyleGuide} />
+                                <Route component={PageNotFound} />
                             </Switch>
                         </div>
                         <Footer />
