@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { StyledRecipeStepCard } from '../RecipeStepCard.styled'
 import { breakpoint } from '../../styling/styling-utils/breakpoints'
-import { calcRem } from '../../styling/styling-utils/calc-rem'
+import { calcRem } from '../../styling/styling-utils/calcRem'
 
 export const StyledRecipeIngredient = styled('p')({
     margin: calcRem(6, 0),

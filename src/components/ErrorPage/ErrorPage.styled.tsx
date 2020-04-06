@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { calcRem } from '../styling/styling-utils/calc-rem'
+import { calcRem } from '../styling/styling-utils/calcRem'
 import { StyledHeadingOne } from '../common/Headings.styled'
 import { StyledParagraph } from '../common/Paragraph.styled'
 import { breakpoint } from '../styling/styling-utils/breakpoints'

@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
 import { StyledMiniLogo } from '../common/Headings.styled'
 import { StyledNav, StyledNavItem, StyledNavLogo, StyledNavColumn } from '../Nav/Nav.styled'
-import { calcRem } from '../styling/styling-utils/calc-rem'
+import { calcRem } from '../styling/styling-utils/calcRem'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 
 export const StyledFooterFooter = styled('footer')({

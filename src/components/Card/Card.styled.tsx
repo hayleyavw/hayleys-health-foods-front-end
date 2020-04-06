@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { calcRem } from '../styling/styling-utils/calc-rem'
+import { calcRem } from '../styling/styling-utils/calcRem'
 import { colours } from '../styling/colours'
 import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'

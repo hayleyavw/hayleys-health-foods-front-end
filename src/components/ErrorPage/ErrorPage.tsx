@@ -22,7 +22,7 @@ const ErrorPage: React.FC = () => {
             <StyledContentBox>
                 <StyledErrorHeading>Hmmm, I can't seem to find that page...</StyledErrorHeading>
                 <StyledErrorParagraph>
-                    ... but here are some other things to check out while you are here.
+                    ...but here are some other things to check out while you are here.
                 </StyledErrorParagraph>
                 <StyledRow>
                     <Card

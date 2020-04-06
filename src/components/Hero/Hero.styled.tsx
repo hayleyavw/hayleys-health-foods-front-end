@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colours } from '../styling/colours'
-import { calcRem } from '../styling/styling-utils/calc-rem'
+import { calcRem } from '../styling/styling-utils/calcRem'
 import { StyledHeadingOne, StyledHeadingThree } from '../common/Headings.styled'
 import { margins } from '../styling/margin'
 import { breakpoint } from '../styling/styling-utils/breakpoints'

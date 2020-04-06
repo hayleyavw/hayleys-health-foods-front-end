@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { StyledAnchor } from '../common/Anchor.styled'
-import { calcRem } from '../styling/styling-utils/calc-rem'
+import { calcRem } from '../styling/styling-utils/calcRem'
 
 export const StyledAboutMenu = styled('div')({
     margin: calcRem(20, 0),

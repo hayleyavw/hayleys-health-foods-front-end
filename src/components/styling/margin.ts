@@ -1,4 +1,4 @@
-import { calcRem } from './styling-utils/calc-rem'
+import { calcRem } from './styling-utils/calcRem'
 
 export const margins = {
     bodyTopBottomMargin: '0',
