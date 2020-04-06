@@ -4,6 +4,7 @@ import { getBlogsGraphQL } from '../../api/blogPosts/Queries'
 import { Card } from '../Card/Card'
 import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
 import { StyledHeadingTwo } from '../common/Headings.styled'
+import { api_url } from '../../api/common'
 
 interface State {
     blogPosts: BlogGraphQLObject[]
@@ -34,7 +35,7 @@ export class BlogList extends React.Component {
                                 url={`/blog/${blogPost.slug}`}
                                 title={blogPost.title}
                                 subtitle={createdAt}
-                                hero={blogPost.hero}
+                                heroURL={`${api_url}/${blogPost.hero.url}`}
                                 description={blogPost.content}
                             />
                         )

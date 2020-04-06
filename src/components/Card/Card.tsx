@@ -17,10 +17,10 @@ interface CardProps {
     title: string
     subtitle?: string
     description: string
-    hero: HeroGraphQLObject
+    heroURL: string
 }
 
-export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, hero }) => {
+export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, heroURL }) => {
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
@@ -37,7 +37,7 @@ export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, h
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage src={hero ? `${api_url}/${hero.url}` : ''} />
+                <StyledCardImage src={heroURL} />
             </Link>
         </StyledCard>
     )

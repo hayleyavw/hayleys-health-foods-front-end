@@ -1,7 +1,7 @@
 import React from 'react'
 import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
-import { StyledParagraph } from '../components/common/Paragraph.styled'
+import ErrorPage from '../components/ErrorPage/ErrorPage'
 
 const PageNotFound: React.FC = () => {
     return (
@@ -9,7 +9,7 @@ const PageNotFound: React.FC = () => {
             <Helmet>
                 <script type="application/ld+json">{jsonld}</script>
             </Helmet>
-            <StyledParagraph>Hmmm, we can't seem to find that page...</StyledParagraph>
+            <ErrorPage />
         </React.Fragment>
     )
 }

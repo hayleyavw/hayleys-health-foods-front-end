@@ -5,7 +5,7 @@ import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
 import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
-import NotFound from '../components/common/NotFound'
+import ErrorPage from '../components/ErrorPage/ErrorPage'
 
 interface MatchParams {
     slug: string
@@ -67,7 +67,8 @@ export class RecipePage extends React.Component<Props> {
                         </React.Fragment>
                     </React.Fragment>
                 ) : (
-                    <NotFound type={'recipe'} message={`Hmm, we can't seem to find that recipe.`} />
+                    // <NotFound type={'recipe'} message={`Hmm, we can't seem to find that recipe.`} />
+                    <ErrorPage />
                 )}
             </React.Fragment>
         )

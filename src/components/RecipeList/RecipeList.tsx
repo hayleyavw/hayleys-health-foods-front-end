@@ -3,6 +3,7 @@ import { Card } from '../Card/Card'
 import { StyledRecipeList } from './RecipeList.styled'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { api_url } from '../../api/common'
 
 interface State {
     recipes: RecipeGraphQLObject[]
@@ -28,7 +29,7 @@ export class RecipeList extends React.Component {
                         url={`/recipes/${recipe.slug}`}
                         title={recipe.title}
                         description={recipe.description}
-                        hero={recipe.hero}
+                        heroURL={`${api_url}/${recipe.hero.url}`}
                     />
                 ))}
             </StyledRecipeList>
