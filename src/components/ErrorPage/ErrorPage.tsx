@@ -28,19 +28,19 @@ const ErrorPage: React.FC = () => {
                     <Card
                         url="/"
                         title="Recipes"
-                        description="See all recipes."
+                        description="Check out all my recipes, each and everyone designed with gut health in mind."
                         heroURL={recipeImage}
                     />
                     <Card
                         url="/blog"
                         title="Blog"
-                        description="See all blog posts."
+                        description="Read my latest blog posts to see what is going on in the world of Hayley."
                         heroURL={blogImage}
                     />
                     <Card
                         url="/about"
                         title="About and Support"
-                        description="What inspired this project and how you can help me to keep making awesome things!"
+                        description="Ready about what inspired this project and how you can help me to keep making awesome things!"
                         heroURL={aboutImage}
                     />
                 </StyledRow>
