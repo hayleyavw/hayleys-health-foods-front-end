@@ -2,6 +2,10 @@
     "name": "hayleys-health-foods",
     "version": "0.1.0",
     "private": true,
+    "engines": {
+        "node": "12.16.1",
+        "npm": "6.13.4"
+    },
     "dependencies": {
         "@emotion/core": "^10.0.28",
         "@emotion/styled": "^10.0.15",
