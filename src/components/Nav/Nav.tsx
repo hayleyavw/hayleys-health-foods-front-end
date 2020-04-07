@@ -1,15 +1,11 @@
 import React from 'react'
-import { useLocation } from 'react-router'
 import { StyledNav, StyledNavItem, StyledNavColumn, StyledNavLogo } from './Nav.styled'
 
 export const Nav: React.FC = () => {
-    const isHomePage = useLocation().pathname === '/'
     return (
         <StyledNav>
             <StyledNavColumn>
-                <StyledNavLogo hideLogo={isHomePage} to={'/'}>
-                    Hayley's Health Foods
-                </StyledNavLogo>
+                <StyledNavLogo to={'/'}>Hayley's Health Foods</StyledNavLogo>
             </StyledNavColumn>
             <StyledNavColumn>
                 <StyledNavItem to={'/'}>Recipes</StyledNavItem>
