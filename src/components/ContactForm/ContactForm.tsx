@@ -5,7 +5,9 @@ import {
     StyledInput,
     StyledTextarea,
     StyledFieldset,
+    StyledButtonWrapper,
 } from './ContactForm.styled'
+import { StyledButton, StyledButtonText } from '../common/Button.styled'
 
 class ContactForm extends React.Component {
     render() {
@@ -21,14 +23,21 @@ class ContactForm extends React.Component {
                     <StyledInput name="email" id="email-input" type="email" required />
                 </StyledFieldset>
 
-                <StyledFieldset>
+                <StyledFieldset className="contact-textarea">
                     <StyledLabel htmlFor="formMessage">Message</StyledLabel>
-                    <StyledTextarea name="message" id="message-input" required></StyledTextarea>
+                    <StyledTextarea
+                        name="message"
+                        id="message-input"
+                        required
+                        rows={5}
+                    ></StyledTextarea>
                 </StyledFieldset>
 
-                <div>
-                    <input type="submit" placeholder="Send message" />
-                </div>
+                <StyledButtonWrapper>
+                    <StyledButton type="submit">
+                        <StyledButtonText>Send Message</StyledButtonText>
+                    </StyledButton>
+                </StyledButtonWrapper>
             </StyledForm>
         )
     }

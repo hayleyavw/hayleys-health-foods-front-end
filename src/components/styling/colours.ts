@@ -24,5 +24,6 @@ export const colours = {
     },
 
     white: '#fff',
+    offWhite: '#f9f9f9',
     black: '#000',
 }

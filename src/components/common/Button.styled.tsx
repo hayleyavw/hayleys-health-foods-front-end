@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colours } from '../styling/colours'
-import { bodyFont } from '../styling/fonts'
+import { headingFont, bodyFont } from '../styling/fonts'
 import { calcRem } from '../styling/styling-utils/calcRem'
 import { buttonBorderRadius } from '../styling/borders'
 import { gradients } from '../styling/gradients'
@@ -27,6 +27,6 @@ export const StyledButton = styled('button')({
 
 export const StyledButtonText = styled('p')({
     fontFamily: bodyFont,
-    fontSize: '1rem',
+    fontSize: calcRem(16),
     margin: 0,
 })
