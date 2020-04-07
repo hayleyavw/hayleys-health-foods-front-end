@@ -24,7 +24,7 @@ export const StyledAboutMenu = styled('div')({
 
 export const StyledMenuItems = styled(StyledAnchor)({
     flexBasis: '30%',
-    margin: calcRem(3, 0),
+    margin: calcRem(5, 0),
 
     [breakpoint('sm')]: {
         margin: calcRem(0, 10),
