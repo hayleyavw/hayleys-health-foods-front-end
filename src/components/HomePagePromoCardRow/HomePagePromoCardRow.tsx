@@ -15,10 +15,7 @@ export class HomePagePromoCardRow extends React.Component {
                     <StyledPromoCardButtonLinkImage src={blogIcon} alt={'Thought bubble.'} />
                     <StyledPromoCardButtonLinkText>Read the Blog</StyledPromoCardButtonLinkText>
                 </StyledPromoCardRowButtonLink>
-                <StyledPromoCardRowButtonLink
-                    target="_blank"
-                    href="https://www.buymeacoffee.com/healthfoods"
-                >
+                <StyledPromoCardRowButtonLink href="/about/support">
                     <StyledPromoCardButtonLinkImage
                         src={'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg'}
                         alt={'Keep cup.'}

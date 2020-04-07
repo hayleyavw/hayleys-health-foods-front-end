@@ -6,6 +6,7 @@ import { StyledContentBox } from '../../components/common/ContentBox.styled'
 import { StyledButtonWrapper } from '../../components/CommonAbout/CommonAbout.styled'
 import Helmet from 'react-helmet'
 import { jsonld } from '../../components/common/jsonld'
+import { StyledAnchor } from '../../components/common/Anchor.styled'
 
 const SupportPage: React.FC = () => {
     return (
@@ -42,7 +43,7 @@ const SupportPage: React.FC = () => {
                 <p>
                     I know not everyone is in a position to give, so I would love your support in
                     the form of a message with feedback about this site and/or a recipe idea. You
-                    can contact me here.
+                    can contact me <StyledAnchor to="/about/contact">here</StyledAnchor>.
                 </p>
             </StyledContentBox>
         </React.Fragment>
