@@ -4,7 +4,7 @@ import { calcRem } from '../styling/styling-utils/calcRem'
 
 export const StyledContentBox = styled('div')({
     textAlign: 'justify',
-    margin: calcRem(0, 0, 10),
+    margin: calcRem(0, 0, 30),
     lineHeight: calcRem(24),
     fontSize: calcRem(16),
 

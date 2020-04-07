@@ -13,8 +13,8 @@ const ContactPage: React.FC = () => {
             <Helmet>
                 <script type="application/ld+json">{jsonld}</script>
             </Helmet>
+            <AboutMenu></AboutMenu>
             <StyledContentBox>
-                <AboutMenu></AboutMenu>
                 <StyledHeadingOne>Contact</StyledHeadingOne>
                 <StyledContactFormWrapper>
                     <ContactForm />

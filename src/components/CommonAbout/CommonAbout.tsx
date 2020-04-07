@@ -25,8 +25,8 @@ export default function GetAboutContent(pageName: string, slug: string) {
             <Helmet>
                 <script type="application/ld+json">{jsonld}</script>
             </Helmet>
+            <AboutMenu />
             <StyledContentBox>
-                <AboutMenu />
                 <StyledHeadingOne>{pageName}</StyledHeadingOne>
                 <ReactMarkdown source={content}></ReactMarkdown>
                 <StyledHeadingTwo>With love,</StyledHeadingTwo>

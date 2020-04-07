@@ -13,8 +13,8 @@ const SupportPage: React.FC = () => {
             <Helmet>
                 <script type="application/ld+json">{jsonld}</script>
             </Helmet>
+            <AboutMenu />
             <StyledContentBox>
-                <AboutMenu />
                 <StyledHeadingOne>Help me to keep making cool things!</StyledHeadingOne>
                 <p>
                     I have so many ideas for recipes to create and features to add this website, but

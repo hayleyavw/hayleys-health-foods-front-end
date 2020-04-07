@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colours } from '../styling/colours'
-import { headingFont, bodyFont } from '../styling/fonts'
+import { bodyFont } from '../styling/fonts'
 import { calcRem } from '../styling/styling-utils/calcRem'
 import { buttonBorderRadius } from '../styling/borders'
 import { gradients } from '../styling/gradients'

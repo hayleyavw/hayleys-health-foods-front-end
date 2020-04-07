@@ -39,7 +39,7 @@ const commonStyles = css({
     padding: 0,
     fontSize: calcRem(18),
     fontFamily: 'monospace',
-    backgroundColor: colours.offWhite,
+    backgroundColor: '#f9f9f9',
     borderRadius: calcRem(5),
 })
 

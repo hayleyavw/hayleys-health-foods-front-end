@@ -7,6 +7,7 @@ import {
     StyledButtonLinkImage,
     StyledButtonLinkText,
 } from '../ButtonLink/ButtonLink.styled'
+import { colours } from '../styling/colours'
 
 export const StyledPromoCardRow = styled('div')({
     display: 'flex',
@@ -15,7 +16,7 @@ export const StyledPromoCardRow = styled('div')({
     flexWrap: 'wrap',
     margin: `${calcRem(20)} -${margins.bodyLeftRightMargin.sm}`,
     padding: calcRem(8),
-    backgroundColor: '#efefef',
+    backgroundColor: colours.offWhite,
 
     [breakpoint('md')]: {
         padding: calcRem(48),
