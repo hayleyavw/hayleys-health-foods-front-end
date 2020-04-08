@@ -21,7 +21,10 @@ export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
                     {ingredients.map((ingredient: IngredientsGraphQLObject, index: number) => (
                         <StyledRecipeIngredient key={index}>
                             {ingredient.ingredient.name} ({ingredient.quantity}{' '}
-                            {ingredient.ingredientUnit ? ingredient.ingredientUnit.shortName : ''})
+                            {ingredient.ingredientUnit.shortName !== 'Loading...'
+                                ? ingredient.ingredientUnit.shortName
+                                : ''}
+                            )
                         </StyledRecipeIngredient>
                     ))}
                 </StyledRecipeIngredients>
