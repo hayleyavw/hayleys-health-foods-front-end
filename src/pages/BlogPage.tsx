@@ -7,6 +7,10 @@ import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
 import { BlogPostHead } from '../components/CustomHead/BlogPostHead'
 import { BlogGraphQLObject } from '../api/blogPosts/ResponseShapes'
+import Helmet from 'react-helmet'
+import { jsonld } from '../components/common/jsonld'
+import Loading from '../components/Loading/Loading'
+import ErrorPage from '../components/ErrorPage/ErrorPage'
 
 interface MatchParams {
     slug: string
@@ -31,18 +35,25 @@ export interface match<P> {
 interface State {
     slug: string
     blogPost: BlogGraphQLObject
+    loading: boolean
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
         blogPost: new BlogGraphQLObject(),
+        loading: true,
     }
 
     async componentDidMount() {
-        const blogPost = await getBlogBySlug({ slug: this.state.slug })
-        await getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
-            this.setState({ blogPost: blogPost })
-        })
+        try {
+            const blogPost = await getBlogBySlug({ slug: this.state.slug })
+            await getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
+                this.setState({ blogPost: blogPost })
+                this.setState({ loading: false })
+            })
+        } catch {
+            this.setState({ loading: false })
+        }
     }
 
     render() {
@@ -60,17 +71,39 @@ export class BlogPage extends React.Component<Props> {
 
         return (
             <React.Fragment>
-                <BlogPostHead blogPost={blogPost} description={getDescription(blogPost.content)} />
-                <Hero
-                    heroImage={blogPost.hero ? blogPost.hero.url : ''}
-                    title={blogPost.title}
-                    subtitle={createdAt}
-                />
-                <StyledContentBox>
-                    <ReactMarkdown source={blogPost.content}></ReactMarkdown>
-                    <StyledHeadingTwo>With love,</StyledHeadingTwo>
-                    <StyledHeadingTwo>Hayley</StyledHeadingTwo>
-                </StyledContentBox>
+                {this.state.loading ? (
+                    <React.Fragment>
+                        <Helmet>
+                            <script type="application/ld+json">{jsonld}</script>
+                        </Helmet>
+                        <StyledContentBox>
+                            <Loading />
+                        </StyledContentBox>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        {blogPost.slug !== 'Loading...' ? (
+                            <React.Fragment>
+                                <BlogPostHead
+                                    blogPost={blogPost}
+                                    description={getDescription(blogPost.content)}
+                                />
+                                <Hero
+                                    heroImage={blogPost.hero ? blogPost.hero.url : ''}
+                                    title={blogPost.title}
+                                    subtitle={createdAt}
+                                />
+                                <StyledContentBox>
+                                    <ReactMarkdown source={blogPost.content}></ReactMarkdown>
+                                    <StyledHeadingTwo>With love,</StyledHeadingTwo>
+                                    <StyledHeadingTwo>Hayley</StyledHeadingTwo>
+                                </StyledContentBox>
+                            </React.Fragment>
+                        ) : (
+                            <ErrorPage />
+                        )}
+                    </React.Fragment>
+                )}
             </React.Fragment>
         )
     }

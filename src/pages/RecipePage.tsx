@@ -6,7 +6,11 @@ import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
-import LoadingPage from '../components/LoadingPage/LoadingPage'
+import LoadingPage from '../components/Loading/Loading'
+import Loading from '../components/Loading/Loading'
+import { StyledContentBox } from '../components/common/ContentBox.styled'
+import { jsonld } from '../components/common/jsonld'
+import Helmet from 'react-helmet'
 
 interface MatchParams {
     slug: string
@@ -64,7 +68,14 @@ export class RecipePage extends React.Component<Props> {
         return (
             <React.Fragment>
                 {this.state.loading ? (
-                    <LoadingPage />
+                    <React.Fragment>
+                        <Helmet>
+                            <script type="application/ld+json">{jsonld}</script>
+                        </Helmet>
+                        <StyledContentBox>
+                            <Loading />
+                        </StyledContentBox>
+                    </React.Fragment>
                 ) : (
                     <React.Fragment>
                         {recipe.slug !== 'Loading...' ? (

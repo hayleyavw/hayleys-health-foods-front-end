@@ -12,7 +12,11 @@ interface BlogGraphQLProps {
 
 export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<BlogObject> {
     const results = await (await fetch(`${api_url}/blogs?slug=${props.slug}`)).json()
-    return new BlogObject(results[0])
+    try {
+        return new BlogObject(results[0])
+    } catch {
+        throw new Error('Blog Post not found.')
+    }
 }
 
 export async function getBlogsGraphQL(
