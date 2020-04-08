@@ -29,7 +29,11 @@ export class RecipeList extends React.Component {
                         url={`/recipes/${recipe.slug}`}
                         title={recipe.title}
                         description={recipe.description}
-                        heroURL={`${api_url}/${recipe.hero.url}`}
+                        heroURL={
+                            process.env.NODE_ENV !== 'production'
+                                ? `${api_url}/${recipe.hero.url}`
+                                : recipe.hero.url
+                        }
                     />
                 ))}
             </StyledRecipeList>

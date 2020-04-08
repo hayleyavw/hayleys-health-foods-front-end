@@ -35,7 +35,11 @@ export class BlogList extends React.Component {
                                 url={`/blog/${blogPost.slug}`}
                                 title={blogPost.title}
                                 subtitle={createdAt}
-                                heroURL={`${api_url}/${blogPost.hero.url}`}
+                                heroURL={
+                                    process.env.NODE_ENV !== 'production'
+                                        ? `${api_url}/${blogPost.hero.url}`
+                                        : blogPost.hero.url
+                                }
                                 description={blogPost.content}
                             />
                         )

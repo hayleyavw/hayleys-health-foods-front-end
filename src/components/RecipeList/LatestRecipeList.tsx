@@ -42,7 +42,13 @@ export class LatestRecipeList extends React.Component {
                         className={'latest-recipe-image'}
                     >
                         <StyledLatestRecipeImage
-                            src={recipe['hero'] ? `${api_url}/${recipe['hero']['url']}` : ''}
+                            src={
+                                recipe['hero']
+                                    ? process.env.NODE_ENV !== 'production'
+                                        ? `${api_url}/${recipe.hero.url}`
+                                        : `${recipe['hero']['url']}`
+                                    : ''
+                            }
                         />
                     </StyledLatestRecipeCard>
                 ))}
