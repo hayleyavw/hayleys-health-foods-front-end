@@ -45,10 +45,11 @@ export class BlogList extends React.Component {
                                         url={`/blog/${blogPost.slug}`}
                                         title={blogPost.title}
                                         subtitle={createdAt}
-                                        heroURL={
+                                        images={blogPost.images}
+                                        imageUrlPrefix={
                                             process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${blogPost.hero.url}`
-                                                : blogPost.hero.url
+                                                ? `${api_url}/`
+                                                : ''
                                         }
                                         description={blogPost.content}
                                     />

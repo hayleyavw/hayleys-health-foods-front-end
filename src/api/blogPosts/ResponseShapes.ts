@@ -1,4 +1,4 @@
-import { HeroObject, HeroGraphQLObject } from '../common/ResponseShapes'
+import { ImageObject, ImagesGraphQLObject } from '../common/ResponseShapes'
 
 export class BlogObject {
     id: number
@@ -6,7 +6,7 @@ export class BlogObject {
     title: string
     content: string
     createdAt: string
-    hero: HeroObject
+    images: ImageObject[]
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -14,7 +14,12 @@ export class BlogObject {
         this.title = results && results.title ? results.title : 'Loading...'
         this.content = results && results.content ? results.content : 'Loading...'
         this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
-        this.hero = results && results.hero ? new HeroObject(results.hero) : new HeroObject()
+        this.images =
+            results && results.images
+                ? results.images.map((image: any) => {
+                      return new ImageObject(image)
+                  })
+                : [new ImageObject()]
     }
 }
 
@@ -25,7 +30,7 @@ export class BlogGraphQLObject {
     content: string
     createdAt: string
     updatedAt: string
-    hero: HeroGraphQLObject
+    images: ImagesGraphQLObject[]
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -34,7 +39,11 @@ export class BlogGraphQLObject {
         this.content = results && results.content ? results.content : 'Loading...'
         this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
         this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
-        this.hero =
-            results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
+        this.images =
+            results && results.images
+                ? results.images.map((image: any) => {
+                      return new ImagesGraphQLObject(image)
+                  })
+                : new ImagesGraphQLObject()
     }
 }

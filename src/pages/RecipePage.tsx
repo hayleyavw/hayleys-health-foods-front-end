@@ -35,6 +35,7 @@ interface State {
     slug: string
     recipe: RecipeGraphQLObject
     loading: boolean
+    imageUrl: string
 }
 
 function isRecipeObject(response: RecipeObject | Error): response is RecipeObject {
@@ -46,6 +47,7 @@ export class RecipePage extends React.Component<Props> {
         slug: this.props.match.params.slug,
         recipe: new RecipeGraphQLObject(),
         loading: true,
+        imageUrl: '',
     }
 
     async componentDidMount() {
@@ -55,6 +57,13 @@ export class RecipePage extends React.Component<Props> {
                 getRecipeGraphQL({ id: response.id }).then(recipe => {
                     this.setState({ recipe: recipe })
                     this.setState({ loading: false })
+                    let imageUrl = ''
+                    ;(recipe as RecipeGraphQLObject).images.forEach(image => {
+                        if (image.imageSize.size === 'thumbnail') {
+                            imageUrl = image.image.url
+                        }
+                    })
+                    this.setState({ imageUrl: imageUrl })
                 })
             }
         } catch {
@@ -64,6 +73,7 @@ export class RecipePage extends React.Component<Props> {
 
     render() {
         const recipe = this.state.recipe
+        const imageUrl = this.state.imageUrl
         return (
             <React.Fragment>
                 {this.state.loading ? (
@@ -82,7 +92,7 @@ export class RecipePage extends React.Component<Props> {
                                 <RecipeHead recipe={recipe} />
                                 <React.Fragment>
                                     <Hero
-                                        heroImage={recipe.hero ? recipe.hero.url : ''}
+                                        heroImage={recipe.images ? imageUrl : ''}
                                         title={recipe.title}
                                     />
                                     <RecipeSteps

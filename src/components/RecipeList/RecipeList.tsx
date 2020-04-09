@@ -43,10 +43,9 @@ export class RecipeList extends React.Component {
                                 url={`/recipes/${recipe.slug}`}
                                 title={recipe.title}
                                 description={recipe.description}
-                                heroURL={
-                                    process.env.NODE_ENV !== 'production'
-                                        ? `${api_url}/${recipe.hero.url}`
-                                        : recipe.hero.url
+                                images={recipe.images}
+                                imageUrlPrefix={
+                                    process.env.NODE_ENV !== 'production' ? `${api_url}/` : ''
                                 }
                             />
                         ))}

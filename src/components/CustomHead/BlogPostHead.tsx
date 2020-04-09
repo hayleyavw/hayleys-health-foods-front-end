@@ -11,6 +11,12 @@ interface Props {
 export class BlogPostHead extends React.Component<Props> {
     render() {
         const { blogPost, description } = this.props
+        let imageUrl = ''
+        blogPost.images.forEach(image => {
+            if (image.imageSize.size === 'thumbnail') {
+                imageUrl = image.image.url
+            }
+        })
         return (
             <Helmet>
                 <title>{blogPost.title}</title>
@@ -18,7 +24,7 @@ export class BlogPostHead extends React.Component<Props> {
                 <script type="application/ld+json">
                     {generateBlogStructuredData(
                         blogPost.title,
-                        blogPost.hero.url,
+                        imageUrl,
                         blogPost.content,
                         description,
                         blogPost.createdAt,

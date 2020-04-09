@@ -36,12 +36,14 @@ interface State {
     slug: string
     blogPost: BlogGraphQLObject
     loading: boolean
+    imageUrl: string
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
         blogPost: new BlogGraphQLObject(),
         loading: true,
+        imageUrl: '',
     }
 
     async componentDidMount() {
@@ -50,6 +52,13 @@ export class BlogPage extends React.Component<Props> {
             await getBlogsGraphQL({ id: blogPost.id }).then(blogPost => {
                 this.setState({ blogPost: blogPost })
                 this.setState({ loading: false })
+                let imageUrl = ''
+                ;(blogPost as BlogGraphQLObject).images.forEach(image => {
+                    if (image.imageSize.size === 'thumbnail') {
+                        imageUrl = image.image.url
+                    }
+                })
+                this.setState({ imageUrl: imageUrl })
             })
         } catch {
             this.setState({ loading: false })
@@ -58,6 +67,7 @@ export class BlogPage extends React.Component<Props> {
 
     render() {
         const blogPost = this.state.blogPost
+        const imageUrl = this.state.imageUrl
         const moment = require('moment')
         const createdAt = moment(blogPost.createdAt).format('Do MMM YYYY')
 
@@ -89,7 +99,7 @@ export class BlogPage extends React.Component<Props> {
                                     description={getDescription(blogPost.content)}
                                 />
                                 <Hero
-                                    heroImage={blogPost.hero ? blogPost.hero.url : ''}
+                                    heroImage={blogPost.images ? imageUrl : ''}
                                     title={blogPost.title}
                                     subtitle={createdAt}
                                 />

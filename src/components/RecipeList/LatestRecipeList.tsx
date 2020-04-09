@@ -16,6 +16,14 @@ interface State {
     loading: boolean
 }
 
+function getRecipeImage(recipe: RecipeGraphQLObject) {
+    recipe.images.forEach(image => {
+        if (image.imageSize.size === 'thumbnail') {
+            return image.image.url
+        }
+    })
+}
+
 export class LatestRecipeList extends React.Component {
     public readonly state: Readonly<State> = {
         recipes: [new RecipeGraphQLObject()],
@@ -48,15 +56,15 @@ export class LatestRecipeList extends React.Component {
                             <StyledLatestRecipeCard
                                 key={index}
                                 id={`latest-recipe-image-${index}`}
-                                to={`/recipes/${recipe['slug']}`}
+                                to={`/recipes/${recipe.slug}`}
                                 className={'latest-recipe-image'}
                             >
                                 <StyledLatestRecipeImage
                                     src={
-                                        recipe['hero']
+                                        recipe.images
                                             ? process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${recipe.hero.url}`
-                                                : `${recipe['hero']['url']}`
+                                                ? `${api_url}/${getRecipeImage(recipe)}`
+                                                : `${getRecipeImage(recipe)}`
                                             : ''
                                     }
                                 />

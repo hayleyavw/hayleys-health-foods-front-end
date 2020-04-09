@@ -1,4 +1,4 @@
-import { HeroObject, HeroGraphQLObject } from '../common/ResponseShapes'
+import { ImagesObject, ImagesGraphQLObject } from '../common/ResponseShapes'
 
 export class TagObject {
     id: number
@@ -48,7 +48,7 @@ export class RecipeObject {
     createdAt: string
     updatedAt: string
     description: string
-    hero: HeroObject
+    images: ImagesObject[]
     tags: TagObject[]
     ingredients: IngredientObject[]
 
@@ -60,7 +60,11 @@ export class RecipeObject {
         this.createdAt = results.created_at ? results.created_at : 'Loading...'
         this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
         this.description = results.description ? results.description : 'Loading...'
-        this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
+        this.images = results.images
+            ? results.images.map((image: any) => {
+                  return new ImagesObject(image)
+              })
+            : [new ImagesObject()]
         this.tags = results.tags
             ? results.tags.map((tag: any) => {
                   return new TagObject(tag)
@@ -138,7 +142,7 @@ export class RecipeGraphQLObject {
     title: string
     method: string
     description: string
-    hero: HeroGraphQLObject
+    images: ImagesGraphQLObject[]
     tags: TagGraphQLObject[]
     ingredients: IngredientsGraphQLObject[]
 
@@ -148,8 +152,12 @@ export class RecipeGraphQLObject {
         this.title = results && results.title ? results.title : 'Loading...'
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
-        this.hero =
-            results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
+        this.images =
+            results && results.images
+                ? results.images.map((image: any) => {
+                      return new ImagesGraphQLObject(image)
+                  })
+                : [new ImagesGraphQLObject()]
         this.tags =
             results && results.tags
                 ? results.tags.map((tag: any) => {
