@@ -32,6 +32,18 @@ export const Card: React.FC<CardProps> = ({
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
     }
+
+    let imageUrl = ''
+    if (typeof images !== 'string') {
+        images.forEach((image: ImagesGraphQLObject) => {
+            if (image.imageSize.size === 'thumbnail') {
+                imageUrl = image.image.url
+            }
+        })
+    } else {
+        imageUrl = images
+    }
+
     return (
         <StyledCard>
             <Link to={url}>
@@ -44,13 +56,7 @@ export const Card: React.FC<CardProps> = ({
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage
-                    src={
-                        typeof images === 'string'
-                            ? images
-                            : `${imageUrlPrefix ? imageUrlPrefix : ''}${images[0].image.url}`
-                    }
-                />
+                <StyledCardImage src={`${imageUrlPrefix ? imageUrlPrefix : ''}${imageUrl}`} />
             </Link>
         </StyledCard>
     )

@@ -14,7 +14,6 @@ interface RecipeGraphQLProps {
 
 export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject | Error> {
     const results = await (await fetch(`${api_url}/recipes?slug=${props.slug}`)).json()
-    console.log(results)
     try {
         return new RecipeObject(results[0])
     } catch {

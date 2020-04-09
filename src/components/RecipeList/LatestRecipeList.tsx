@@ -16,14 +16,6 @@ interface State {
     loading: boolean
 }
 
-function getRecipeImage(recipe: RecipeGraphQLObject) {
-    recipe.images.forEach(image => {
-        if (image.imageSize.size === 'thumbnail') {
-            return image.image.url
-        }
-    })
-}
-
 export class LatestRecipeList extends React.Component {
     public readonly state: Readonly<State> = {
         recipes: [new RecipeGraphQLObject()],
@@ -44,6 +36,17 @@ export class LatestRecipeList extends React.Component {
                 recipe.description = `${recipe.description.slice(0, 120)}...`
             }
         })
+
+        function getRecipeImage(recipe: RecipeGraphQLObject) {
+            let imageUrl = ''
+            recipe.images.forEach(image => {
+                if (image.imageSize.size === 'thumbnail') {
+                    console.log(image.image.url)
+                    imageUrl = image.image.url
+                }
+            })
+            return imageUrl
+        }
         return (
             <React.Fragment>
                 {this.state.loading ? (

@@ -13,18 +13,19 @@ export class ImageObject {
     updatedAt: string
 
     constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.name = results.name ? results.name : 'Loading...'
-        this.hash = results.hash ? results.hash : 'Loading...'
-        this.sha256 = results.sha256 ? results.sha256 : 'Loading...'
-        this.ext = results.ext ? results.ext : 'Loading...'
-        this.mime = results.mime ? results.mime : 'Loading...'
-        this.size = results.size ? results.size : 'Loading...'
-        this.url = results.url ? results.url : 'Loading...'
-        this.provider = results.provider ? results.provider : 'Loading...'
-        this.providerMetadata = results.providerMetadata ? results.providerMetadata : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
+        this.id = results && results.id ? results.id : 0
+        this.name = results && results.name ? results.name : 'Loading...'
+        this.hash = results && results.hash ? results.hash : 'Loading...'
+        this.sha256 = results && results.sha256 ? results.sha256 : 'Loading...'
+        this.ext = results && results.ext ? results.ext : 'Loading...'
+        this.mime = results && results.mime ? results.mime : 'Loading...'
+        this.size = results && results.size ? results.size : 'Loading...'
+        this.url = results && results.url ? results.url : 'Loading...'
+        this.provider = results && results.provider ? results.provider : 'Loading...'
+        this.providerMetadata =
+            results && results.providerMetadata ? results.providerMetadata : 'Loading...'
+        this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
     }
 }
 
@@ -43,8 +44,8 @@ export class ImageSizeGraphQLObject {
     size: string
 
     constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.size = results.size ? results.size : 'Loading...'
+        this.id = results && results.id ? results.id : 0
+        this.size = results && results.size ? results.size : 'Loading...'
     }
 }
 
@@ -55,10 +56,10 @@ export class ImageSizeObject {
     updatedAt: string
 
     constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.size = results.size ? results.size : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
+        this.id = results && results.id ? results.id : 0
+        this.size = results && results.size ? results.size : 'Loading...'
+        this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
     }
 }
 
@@ -71,35 +72,34 @@ export class ImagesObject {
     image: ImageObject
 
     constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.size = results.size ? results.size : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
-        this.imageSize = results.image_size
-            ? new ImageSizeObject(results.image_size)
-            : new ImageSizeObject()
-        this.image = results.image ? new ImageObject(results.image) : new ImageObject()
+        this.id = results && results.id ? results.id : 0
+        this.size = results && results.size ? results.size : 'Loading...'
+        this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
+        this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
+        this.imageSize =
+            results && results.image_size
+                ? new ImageSizeObject(results.image_size)
+                : new ImageSizeObject()
+        this.image = results && results.image ? new ImageObject(results.image) : new ImageObject()
     }
 }
 
 export class ImagesGraphQLObject {
     id: number = 0
     size: string
-    createdAt: string
-    updatedAt: string
     imageSize: ImageSizeGraphQLObject
     image: ImageGraphQLObject
 
     constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.size = results.size ? results.size : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
-        this.imageSize = results.image_size
-            ? new ImageSizeGraphQLObject(results.image_size)
-            : new ImageSizeGraphQLObject()
-        this.image = results.image
-            ? new ImageGraphQLObject(results.image)
-            : new ImageGraphQLObject()
+        this.id = results && results.id ? results.id : 0
+        this.size = results && results.size ? results.size : 'Loading...'
+        this.imageSize =
+            results && results.image_size
+                ? new ImageSizeGraphQLObject(results.image_size)
+                : new ImageSizeGraphQLObject()
+        this.image =
+            results && results.image
+                ? new ImageGraphQLObject(results.image)
+                : new ImageGraphQLObject()
     }
 }
