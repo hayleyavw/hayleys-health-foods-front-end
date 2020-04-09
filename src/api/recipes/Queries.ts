@@ -17,7 +17,7 @@ export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<Reci
     try {
         return new RecipeObject(results[0])
     } catch {
-        return new Error('Recipe not found.')
+        throw new Error('Recipe not found.')
     }
 }
 

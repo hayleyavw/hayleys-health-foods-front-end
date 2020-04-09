@@ -38,6 +38,7 @@ const generateBlogStructuredData = (
     createdAt: string,
     updatedAt: string
 ) => {
+    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
     return `{
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -48,7 +49,7 @@ const generateBlogStructuredData = (
         "headline": "${title}",
         "description": "${description}",
         "articleBody": "${content}",
-        "image": "${api_url}${imageURL}",
+        "image": "${image}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"

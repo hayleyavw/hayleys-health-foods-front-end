@@ -21,7 +21,9 @@ export class Hero extends React.Component<HeroProps> {
     render() {
         const { isHomePage, heroImage, title, subtitle } = this.props
         const heroImageUrl = heroImage
-            ? `${api_url}${heroImage}`
+            ? process.env.NODE_ENV !== 'production'
+                ? `${api_url}${heroImage}`
+                : heroImage
             : require('./heroImages/muesli-banner.jpg')
         const hasSubtitle = subtitle ? true : false
         return (

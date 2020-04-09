@@ -57,12 +57,12 @@ const generateRecipeStructuredData = (
             }${index < numMethodSteps - 1 ? ',' : ''}`
         }
     })
-
+    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
     return `{
         "@context": "http://schema.org/",
         "@type": "Recipe",
         "name": "${title}",
-        "image": "${api_url}${imageURL}",
+        "image": "${image}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"

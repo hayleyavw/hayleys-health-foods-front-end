@@ -8,18 +8,13 @@ import { bodyFont } from '../styling/fonts'
 import { StyledMiniLogo } from '../common/Headings.styled'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 
-interface StyledNavLogoProps {
-    hideLogo?: boolean
-}
-
-export const NavLogo = styled('div')<StyledNavLogoProps>(({ hideLogo }) => ({
-    display: hideLogo ? 'none' : undefined,
+export const NavLogo = styled('div')({
     fontSize: calcRem(18),
 
     [breakpoint('sm')]: {
         fontSize: calcRem(24),
     },
-}))
+})
 
 export const StyledNavLogo = StyledMiniLogo.withComponent(NavLogo)
 

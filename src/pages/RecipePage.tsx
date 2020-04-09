@@ -6,6 +6,10 @@ import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
+import Loading from '../components/Loading/Loading'
+import { StyledContentBox } from '../components/common/ContentBox.styled'
+import { jsonld } from '../components/common/jsonld'
+import Helmet from 'react-helmet'
 
 interface MatchParams {
     slug: string
@@ -30,6 +34,7 @@ export interface match<P> {
 interface State {
     slug: string
     recipe: RecipeGraphQLObject
+    loading: boolean
 }
 
 function isRecipeObject(response: RecipeObject | Error): response is RecipeObject {
@@ -40,14 +45,20 @@ export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
         recipe: new RecipeGraphQLObject(),
+        loading: true,
     }
 
     async componentDidMount() {
-        const response = await getRecipeBySlug({ slug: this.state.slug })
-        if (isRecipeObject(response)) {
-            getRecipeGraphQL({ id: response.id }).then(recipe => {
-                this.setState({ recipe: recipe })
-            })
+        try {
+            const response = await getRecipeBySlug({ slug: this.state.slug })
+            if (isRecipeObject(response)) {
+                getRecipeGraphQL({ id: response.id }).then(recipe => {
+                    this.setState({ recipe: recipe })
+                    this.setState({ loading: false })
+                })
+            }
+        } catch {
+            this.setState({ loading: false })
         }
     }
 
@@ -55,20 +66,35 @@ export class RecipePage extends React.Component<Props> {
         const recipe = this.state.recipe
         return (
             <React.Fragment>
-                {recipe.slug !== 'Loading...' ? (
+                {this.state.loading ? (
                     <React.Fragment>
-                        <RecipeHead recipe={recipe} />
-                        <React.Fragment>
-                            <Hero
-                                heroImage={recipe.hero ? recipe.hero.url : ''}
-                                title={recipe.title}
-                            />
-                            <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
-                        </React.Fragment>
+                        <Helmet>
+                            <script type="application/ld+json">{jsonld}</script>
+                        </Helmet>
+                        <StyledContentBox>
+                            <Loading />
+                        </StyledContentBox>
                     </React.Fragment>
                 ) : (
-                    // <NotFound type={'recipe'} message={`Hmm, we can't seem to find that recipe.`} />
-                    <ErrorPage />
+                    <React.Fragment>
+                        {recipe.slug !== 'Loading...' ? (
+                            <React.Fragment>
+                                <RecipeHead recipe={recipe} />
+                                <React.Fragment>
+                                    <Hero
+                                        heroImage={recipe.hero ? recipe.hero.url : ''}
+                                        title={recipe.title}
+                                    />
+                                    <RecipeSteps
+                                        method={recipe.method}
+                                        ingredients={recipe.ingredients}
+                                    />
+                                </React.Fragment>
+                            </React.Fragment>
+                        ) : (
+                            <ErrorPage />
+                        )}
+                    </React.Fragment>
                 )}
             </React.Fragment>
         )

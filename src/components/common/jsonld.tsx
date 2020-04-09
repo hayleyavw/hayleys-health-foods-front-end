@@ -9,7 +9,7 @@ export const jsonld = `
                 "telephone": "+61-468-424-969",
                 "contactType": "sales",
                 "areaServed": "AU",
-                "availableLanguage": "English",
-            },
-        ],
+                "availableLanguage": "English"
+            }
+        ]
     }`
