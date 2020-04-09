@@ -6,7 +6,6 @@ import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
-import LoadingPage from '../components/Loading/Loading'
 import Loading from '../components/Loading/Loading'
 import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { jsonld } from '../components/common/jsonld'

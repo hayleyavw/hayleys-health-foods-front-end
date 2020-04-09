@@ -4,9 +4,6 @@ import { StyledRecipeList } from './RecipeList.styled'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
 import { api_url } from '../../api/common'
-import Helmet from 'react-helmet'
-import { jsonld } from '../common/jsonld'
-import { StyledContentBox } from '../common/ContentBox.styled'
 import Loading from '../Loading/Loading'
 
 interface State {
