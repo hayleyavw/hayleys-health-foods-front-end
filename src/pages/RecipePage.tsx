@@ -2,7 +2,7 @@ import React from 'react'
 import * as H from 'history'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
-import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes'
+import { Recipe } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
@@ -33,18 +33,18 @@ export interface match<P> {
 
 interface State {
     slug: string
-    recipe: RecipeGraphQLObject
+    recipe: Recipe
     loading: boolean
 }
 
-function isRecipeObject(response: RecipeObject | Error): response is RecipeObject {
-    return (response as RecipeObject).title !== undefined
+function isRecipeObject(response: Recipe | Error): response is Recipe {
+    return (response as Recipe).title !== undefined
 }
 
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
-        recipe: new RecipeGraphQLObject(),
+        recipe: new Recipe(),
         loading: true,
     }
 
@@ -82,7 +82,9 @@ export class RecipePage extends React.Component<Props> {
                                 <RecipeHead recipe={recipe} />
                                 <React.Fragment>
                                     <Hero
-                                        heroImage={recipe.hero ? recipe.hero.url : ''}
+                                        smallImage={recipe.thumbnail}
+                                        mediumImage={recipe.mediumImage}
+                                        largeImage={recipe.largeImage}
                                         title={recipe.title}
                                     />
                                     <RecipeSteps

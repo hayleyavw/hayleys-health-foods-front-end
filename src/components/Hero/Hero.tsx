@@ -8,28 +8,46 @@ import {
     StyledHeroWrapper,
     StyledSubtitle,
 } from './Hero.styled'
-import { api_url } from '../../api/common'
+import { Image } from '../../api/common/ResponseShapes'
+import { getStaticFilesPrefix } from '../../utils/utils'
+import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 
 interface HeroProps {
     isHomePage?: boolean
-    heroImage?: string
+    smallImage?: Image
+    mediumImage?: Image
+    largeImage?: Image
     title: string
     subtitle?: string
 }
 
+const heroImagePath = (filename: string) => {
+    return require(`./heroImages/${filename}.jpg`)
+}
+
 export class Hero extends React.Component<HeroProps> {
     render() {
-        const { isHomePage, heroImage, title, subtitle } = this.props
-        const heroImageUrl = heroImage
-            ? process.env.NODE_ENV !== 'production'
-                ? `${api_url}${heroImage}`
-                : heroImage
-            : require('./heroImages/muesli-banner.jpg')
+        const { isHomePage, smallImage, mediumImage, largeImage, title, subtitle } = this.props
+
+        let smallBanner = require('./heroImages/small.jpg')
+        let mediumBanner = require('./heroImages/medium.jpg')
+        let largeBanner = require('./heroImages/large.jpg')
+
+        const small = smallImage ? `${getStaticFilesPrefix()}${smallImage.url}` : `${smallBanner}`
+        const medium = mediumImage
+            ? `${getStaticFilesPrefix()}${mediumImage.url}`
+            : `${mediumBanner}`
+        const large = largeImage ? `${getStaticFilesPrefix()}${largeImage.url}` : `${largeBanner}`
+
         const hasSubtitle = subtitle ? true : false
         return (
             <StyledHeroWrapper>
                 <StyledHero hasSubtitle={hasSubtitle}>
-                    <StyledHeroImage isHomePage={isHomePage} src={heroImageUrl}></StyledHeroImage>
+                    <StyledHeroImage
+                        isHomePage={isHomePage}
+                        src={small}
+                        srcSet={`${small} ${srcSetWidths.sm}, ${medium} ${srcSetWidths.md}, ${large} ${srcSetWidths.lg}`}
+                    />
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>

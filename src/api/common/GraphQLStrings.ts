@@ -1,5 +1,12 @@
-export const heroQuery = `
-    hero {
+export const imageQuery = `
+    images {
         id
-        url
+        image_size {
+            id
+            size
+        }
+        image {
+            id
+            url
+        }
     }`

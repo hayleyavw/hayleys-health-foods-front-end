@@ -2,19 +2,18 @@ import React from 'react'
 import { StyledBlogList } from './BlogList.styled'
 import { getBlogsGraphQL } from '../../api/blogPosts/Queries'
 import { Card } from '../Card/Card'
-import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
+import { Blog } from '../../api/blogPosts/ResponseShapes'
 import { StyledHeadingTwo } from '../common/Headings.styled'
-import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
 
 interface State {
-    blogPosts: BlogGraphQLObject[]
+    blogPosts: Blog[]
     loading: boolean
 }
 
 export class BlogList extends React.Component {
     public readonly state: Readonly<State> = {
-        blogPosts: [new BlogGraphQLObject()],
+        blogPosts: [new Blog()],
         loading: true,
     }
 
@@ -45,11 +44,7 @@ export class BlogList extends React.Component {
                                         url={`/blog/${blogPost.slug}`}
                                         title={blogPost.title}
                                         subtitle={createdAt}
-                                        heroURL={
-                                            process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${blogPost.hero.url}`
-                                                : blogPost.hero.url
-                                        }
+                                        thumbnail={blogPost.thumbnail.url}
                                         description={blogPost.content}
                                     />
                                 )

@@ -1,80 +1,6 @@
-import { HeroObject, HeroGraphQLObject } from '../common/ResponseShapes'
+import { Image, extractImage } from '../common/ResponseShapes'
 
-export class TagObject {
-    id: number
-    slug: string
-    name: string
-    shortName: string
-    createdAt: string
-    updatedAt: string
-
-    constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.slug = results.slug ? results.slug : 'Loading...'
-        this.name = results.name ? results.name : 'Loading...'
-        this.shortName = results.short_name ? results.short_name : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
-    }
-}
-
-export class IngredientObject {
-    id: number
-    ingredient: number
-    recipe: number
-    quantity: string
-    preview: string
-    createdAt: string
-    updatedAt: string
-    ingredientUnit: number
-
-    constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.ingredient = results.ingredient ? results.ingredient : 0
-        this.recipe = results.recipe ? results.recipe : 0
-        this.quantity = results.quantity ? results.quantity : 'Loading...'
-        this.preview = results.preview ? results.preview : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
-        this.ingredientUnit = results.ingredient_unit ? results.ingredient_unit : 0
-    }
-}
-
-export class RecipeObject {
-    id: number
-    slug: string
-    title: string
-    method: string
-    createdAt: string
-    updatedAt: string
-    description: string
-    hero: HeroObject
-    tags: TagObject[]
-    ingredients: IngredientObject[]
-
-    constructor(results?: any) {
-        this.id = results.id ? results.id : 0
-        this.slug = results.slug ? results.slug : 'Loading...'
-        this.title = results.title ? results.title : 'Loading...'
-        this.method = results.method ? results.method : 'Loading...'
-        this.createdAt = results.created_at ? results.created_at : 'Loading...'
-        this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
-        this.description = results.description ? results.description : 'Loading...'
-        this.hero = results.hero ? new HeroObject(results.hero) : new HeroObject()
-        this.tags = results.tags
-            ? results.tags.map((tag: any) => {
-                  return new TagObject(tag)
-              })
-            : [new TagObject()]
-        this.ingredients = results.ingredients
-            ? results.ingredients.map((ingredient: any) => {
-                  return new IngredientObject(ingredient)
-              })
-            : [new IngredientObject()]
-    }
-}
-
-export class TagGraphQLObject {
+export class Tag {
     id: number
     slug: string
     name: string
@@ -100,7 +26,7 @@ export class IngredientGraphQLObject {
     }
 }
 
-export class IngredientUnitGraphQLObject {
+export class IngredientUnit {
     id: number
     name: string
     shortName: string
@@ -112,11 +38,11 @@ export class IngredientUnitGraphQLObject {
     }
 }
 
-export class IngredientsGraphQLObject {
+export class Ingredients {
     id: number
     quantity: string
     ingredient: IngredientGraphQLObject
-    ingredientUnit: IngredientUnitGraphQLObject
+    ingredientUnit: IngredientUnit
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -127,20 +53,22 @@ export class IngredientsGraphQLObject {
                 : new IngredientGraphQLObject()
         this.ingredientUnit =
             results && results.ingredient_unit
-                ? new IngredientUnitGraphQLObject(results.ingredient_unit)
-                : new IngredientUnitGraphQLObject()
+                ? new IngredientUnit(results.ingredient_unit)
+                : new IngredientUnit()
     }
 }
 
-export class RecipeGraphQLObject {
+export class Recipe {
     id: number
     slug: string
     title: string
     method: string
     description: string
-    hero: HeroGraphQLObject
-    tags: TagGraphQLObject[]
-    ingredients: IngredientsGraphQLObject[]
+    thumbnail: Image
+    mediumImage: Image
+    largeImage: Image
+    tags: Tag[]
+    ingredients: Ingredients[]
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -148,20 +76,24 @@ export class RecipeGraphQLObject {
         this.title = results && results.title ? results.title : 'Loading...'
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
-        this.hero =
-            results && results.hero ? new HeroGraphQLObject(results.hero) : new HeroGraphQLObject()
+        this.thumbnail =
+            results && results.images ? extractImage('thumbnail', results.images) : new Image()
+        this.mediumImage =
+            results && results.images ? extractImage('medium', results.images) : new Image()
+        this.largeImage =
+            results && results.images ? extractImage('large', results.images) : new Image()
         this.tags =
             results && results.tags
                 ? results.tags.map((tag: any) => {
-                      return new TagGraphQLObject(tag)
+                      return new Tag(tag)
                   })
-                : [new TagGraphQLObject()]
+                : [new Tag()]
 
         this.ingredients =
             results && results.ingredients
                 ? results.ingredients.map((ingredient: any) => {
-                      return new IngredientsGraphQLObject(ingredient)
+                      return new Ingredients(ingredient)
                   })
-                : [new IngredientsGraphQLObject()]
+                : [new Ingredients()]
     }
 }

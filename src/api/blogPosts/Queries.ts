@@ -1,4 +1,4 @@
-import { BlogGraphQLObject, BlogObject } from './ResponseShapes'
+import { Blog } from './ResponseShapes'
 import { blogPostsByIdQuery, blogPostsQuery } from './GraphQLStrings'
 import { api_url } from '../common'
 
@@ -10,18 +10,16 @@ interface BlogGraphQLProps {
     id?: number
 }
 
-export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<BlogObject> {
+export async function getBlogBySlug(props: GetBlogBySlugProps): Promise<Blog> {
     const results = await (await fetch(`${api_url}/blogs?slug=${props.slug}`)).json()
     try {
-        return new BlogObject(results[0])
+        return new Blog(results[0])
     } catch {
         throw new Error('Blog Post not found.')
     }
 }
 
-export async function getBlogsGraphQL(
-    props: BlogGraphQLProps
-): Promise<BlogGraphQLObject | BlogGraphQLObject[]> {
+export async function getBlogsGraphQL(props: BlogGraphQLProps): Promise<Blog | Blog[]> {
     let queryString = ''
     if (props.id) {
         queryString = blogPostsByIdQuery(props.id)
@@ -36,10 +34,10 @@ export async function getBlogsGraphQL(
         body: JSON.stringify({ query: queryString }),
     })).json()
     if (props.id) {
-        return new BlogGraphQLObject(results.data.blog)
+        return new Blog(results.data.blog)
     } else {
-        return results.data.blogs.map((blog: BlogGraphQLObject) => {
-            return new BlogGraphQLObject(blog)
+        return results.data.blogs.map((blog: Blog) => {
+            return new Blog(blog)
         })
     }
 }

@@ -6,19 +6,19 @@ import {
     StyledLatestRecipeCardHeadings,
     StyledLatestRecipeDescription,
 } from './LatestRecipeList.styled'
-import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { Recipe } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
-import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface State {
-    recipes: RecipeGraphQLObject[]
+    recipes: Recipe[]
     loading: boolean
 }
 
 export class LatestRecipeList extends React.Component {
     public readonly state: Readonly<State> = {
-        recipes: [new RecipeGraphQLObject()],
+        recipes: [new Recipe()],
         loading: true,
     }
 
@@ -36,6 +36,7 @@ export class LatestRecipeList extends React.Component {
                 recipe.description = `${recipe.description.slice(0, 120)}...`
             }
         })
+
         return (
             <React.Fragment>
                 {this.state.loading ? (
@@ -48,15 +49,13 @@ export class LatestRecipeList extends React.Component {
                             <StyledLatestRecipeCard
                                 key={index}
                                 id={`latest-recipe-image-${index}`}
-                                to={`/recipes/${recipe['slug']}`}
+                                to={`/recipes/${recipe.slug}`}
                                 className={'latest-recipe-image'}
                             >
                                 <StyledLatestRecipeImage
                                     src={
-                                        recipe['hero']
-                                            ? process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${recipe.hero.url}`
-                                                : `${recipe['hero']['url']}`
+                                        recipe.thumbnail
+                                            ? `${getStaticFilesPrefix()}${recipe.thumbnail.url}`
                                             : ''
                                     }
                                 />

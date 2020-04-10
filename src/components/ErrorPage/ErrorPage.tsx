@@ -29,19 +29,19 @@ const ErrorPage: React.FC = () => {
                         url="/"
                         title="Recipes"
                         description="Check out all my recipes, each and everyone designed with gut health in mind."
-                        heroURL={recipeImage}
+                        thumbnail={recipeImage}
                     />
                     <Card
                         url="/blog"
                         title="Blog"
                         description="Read my latest blog posts to see what is going on in the world of Hayley."
-                        heroURL={blogImage}
+                        thumbnail={blogImage}
                     />
                     <Card
                         url="/about"
                         title="About and Support"
                         description="Ready about what inspired this project and how you can help me to keep making awesome things!"
-                        heroURL={aboutImage}
+                        thumbnail={aboutImage}
                     />
                 </StyledRow>
             </StyledContentBox>

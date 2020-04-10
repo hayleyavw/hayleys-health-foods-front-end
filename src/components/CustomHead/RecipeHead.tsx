@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { RecipeGraphQLObject, IngredientsGraphQLObject } from '../../api/recipes/ResponseShapes'
-import { api_url } from '../../api/common'
+import { Recipe, Ingredients } from '../../api/recipes/ResponseShapes'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface Props {
-    recipe: RecipeGraphQLObject
+    recipe: Recipe
 }
 
 export class RecipeHead extends React.Component<Props> {
@@ -17,7 +17,7 @@ export class RecipeHead extends React.Component<Props> {
                 <script type="application/ld+json">
                     {generateRecipeStructuredData(
                         recipe.title,
-                        recipe.hero.url,
+                        recipe.thumbnail.url,
                         recipe.ingredients,
                         recipe.method
                     )}
@@ -29,8 +29,8 @@ export class RecipeHead extends React.Component<Props> {
 
 const generateRecipeStructuredData = (
     title: string,
-    imageURL: string,
-    ingredients: IngredientsGraphQLObject[],
+    imageUrl: string,
+    ingredients: Ingredients[],
     method: string
 ) => {
     const numIngredients = ingredients.length
@@ -57,12 +57,11 @@ const generateRecipeStructuredData = (
             }${index < numMethodSteps - 1 ? ',' : ''}`
         }
     })
-    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
     return `{
         "@context": "http://schema.org/",
         "@type": "Recipe",
         "name": "${title}",
-        "image": "${image}",
+        "image": "${getStaticFilesPrefix}${imageUrl}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"

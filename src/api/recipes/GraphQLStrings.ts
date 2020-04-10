@@ -1,4 +1,4 @@
-import { heroQuery } from '../common/GraphQLStrings'
+import { imageQuery } from '../common/GraphQLStrings'
 
 const baseQuery = `
     id
@@ -6,7 +6,7 @@ const baseQuery = `
     title
     method
     description
-    ${heroQuery}
+    ${imageQuery}
     tags {
         id
         slug

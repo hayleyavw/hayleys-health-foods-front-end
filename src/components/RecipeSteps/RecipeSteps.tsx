@@ -2,11 +2,11 @@ import React from 'react'
 import { StyledRecipeSteps } from './RecipeSteps.styled'
 import { RecipeIngredients } from './RecipeIngredients/RecipeIngredients'
 import { RecipeMethod } from './RecipeMethod/RecipeMethod'
-import { IngredientsGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { Ingredients } from '../../api/recipes/ResponseShapes'
 
 interface RecipeStepsProps {
     method: string
-    ingredients: IngredientsGraphQLObject[]
+    ingredients: Ingredients[]
 }
 
 export class RecipeSteps extends React.Component<RecipeStepsProps> {

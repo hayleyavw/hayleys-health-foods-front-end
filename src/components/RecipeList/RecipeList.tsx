@@ -2,18 +2,17 @@ import React from 'react'
 import { Card } from '../Card/Card'
 import { StyledRecipeList } from './RecipeList.styled'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
-import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
-import { api_url } from '../../api/common'
+import { Recipe } from '../../api/recipes/ResponseShapes'
 import Loading from '../Loading/Loading'
 
 interface State {
-    recipes: RecipeGraphQLObject[]
+    recipes: Recipe[]
     loading: boolean
 }
 
 export class RecipeList extends React.Component {
     public readonly state: Readonly<State> = {
-        recipes: [new RecipeGraphQLObject()],
+        recipes: [new Recipe()],
         loading: true,
     }
 
@@ -37,17 +36,13 @@ export class RecipeList extends React.Component {
                     </React.Fragment>
                 ) : (
                     <StyledRecipeList>
-                        {this.state.recipes.map((recipe: RecipeGraphQLObject, index) => (
+                        {this.state.recipes.map((recipe: Recipe, index) => (
                             <Card
                                 key={index}
                                 url={`/recipes/${recipe.slug}`}
                                 title={recipe.title}
                                 description={recipe.description}
-                                heroURL={
-                                    process.env.NODE_ENV !== 'production'
-                                        ? `${api_url}/${recipe.hero.url}`
-                                        : recipe.hero.url
-                                }
+                                thumbnail={recipe.thumbnail.url}
                             />
                         ))}
                     </StyledRecipeList>

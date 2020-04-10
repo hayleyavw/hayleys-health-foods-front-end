@@ -1,4 +1,4 @@
-import { heroQuery } from '../common/GraphQLStrings'
+import { imageQuery } from '../common/GraphQLStrings'
 
 const baseQuery = `
     id
@@ -7,7 +7,7 @@ const baseQuery = `
     content
     created_at
     updated_at
-    ${heroQuery}
+    ${imageQuery}
 `
 
 export const blogPostsQuery = () => {

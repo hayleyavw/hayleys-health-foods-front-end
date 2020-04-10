@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { api_url } from '../../api/common'
-import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
+import { Blog } from '../../api/blogPosts/ResponseShapes'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface Props {
-    blogPost: BlogGraphQLObject
+    blogPost: Blog
     description: string
 }
 
@@ -18,7 +18,7 @@ export class BlogPostHead extends React.Component<Props> {
                 <script type="application/ld+json">
                     {generateBlogStructuredData(
                         blogPost.title,
-                        blogPost.hero.url,
+                        blogPost.thumbnail.url,
                         blogPost.content,
                         description,
                         blogPost.createdAt,
@@ -32,13 +32,13 @@ export class BlogPostHead extends React.Component<Props> {
 
 const generateBlogStructuredData = (
     title: string,
-    imageURL: string,
+    imageUrl: string,
     content: string,
     description: string,
     createdAt: string,
     updatedAt: string
 ) => {
-    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
+    let image = `${getStaticFilesPrefix}${imageUrl}`
     return `{
         "@context": "https://schema.org",
         "@type": "BlogPosting",
