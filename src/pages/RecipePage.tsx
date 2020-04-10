@@ -2,7 +2,7 @@ import React from 'react'
 import * as H from 'history'
 import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
 import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
-import { RecipeGraphQLObject, RecipeObject } from '../api/recipes/ResponseShapes'
+import { RecipeGraphQLObject } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
 import ErrorPage from '../components/ErrorPage/ErrorPage'
@@ -37,8 +37,8 @@ interface State {
     loading: boolean
 }
 
-function isRecipeObject(response: RecipeObject | Error): response is RecipeObject {
-    return (response as RecipeObject).title !== undefined
+function isRecipeObject(response: RecipeGraphQLObject | Error): response is RecipeGraphQLObject {
+    return (response as RecipeGraphQLObject).title !== undefined
 }
 
 export class RecipePage extends React.Component<Props> {

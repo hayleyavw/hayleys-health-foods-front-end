@@ -1,6 +1,6 @@
 import { recipeByIdQuery, recipesQuery } from './GraphQLStrings'
 import { api_url } from '../common'
-import { RecipeObject, RecipeGraphQLObject } from './ResponseShapes'
+import { RecipeGraphQLObject } from './ResponseShapes'
 
 interface GetRecipeBySlugProps {
     slug: string
@@ -12,10 +12,12 @@ interface RecipeGraphQLProps {
     start?: string
 }
 
-export async function getRecipeBySlug(props: GetRecipeBySlugProps): Promise<RecipeObject | Error> {
+export async function getRecipeBySlug(
+    props: GetRecipeBySlugProps
+): Promise<RecipeGraphQLObject | Error> {
     const results = await (await fetch(`${api_url}/recipes?slug=${props.slug}`)).json()
     try {
-        return new RecipeObject(results[0])
+        return new RecipeGraphQLObject(results[0])
     } catch {
         throw new Error('Recipe not found.')
     }
