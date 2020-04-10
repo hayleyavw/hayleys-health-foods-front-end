@@ -1,4 +1,4 @@
-import { ImageGraphQLObject, ImageObject } from '../common/ResponseShapes'
+import { ImageGraphQLObject, ImageObject, extractImage } from '../common/ResponseShapes'
 
 export class TagObject {
     id: number
@@ -201,14 +201,4 @@ export class RecipeGraphQLObject {
                   })
                 : [new IngredientsGraphQLObject()]
     }
-}
-
-function extractImage(size: string, images: any) {
-    for (let index = 0; index < images.length; index++) {
-        let image = images[index]
-        if (image.image_size.size == size) {
-            return new ImageGraphQLObject(image.image)
-        }
-    }
-    return new ImageGraphQLObject()
 }

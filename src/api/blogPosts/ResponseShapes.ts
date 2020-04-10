@@ -1,4 +1,4 @@
-import { ImageObject, ImageGraphQLObject } from '../common/ResponseShapes'
+import { ImageGraphQLObject, extractImage } from '../common/ResponseShapes'
 
 export class BlogObject {
     id: number
@@ -7,9 +7,9 @@ export class BlogObject {
     content: string
     createdAt: string
     updatedAt: string
-    thumbnail: ImageObject
-    mediumImage: ImageObject
-    largeImage: ImageObject
+    thumbnail: ImageGraphQLObject
+    mediumImage: ImageGraphQLObject
+    largeImage: ImageGraphQLObject
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -20,28 +20,16 @@ export class BlogObject {
         this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
         this.thumbnail =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'thumbnail') {
-                          return new ImageObject(image)
-                      }
-                  })
-                : new ImageObject()
+                ? extractImage('thumbnail', results.images)
+                : new ImageGraphQLObject()
         this.mediumImage =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'medium') {
-                          return new ImageObject(image)
-                      }
-                  })
-                : new ImageObject()
+                ? extractImage('medium', results.images)
+                : new ImageGraphQLObject()
         this.largeImage =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'medium') {
-                          return new ImageObject(image)
-                      }
-                  })
-                : new ImageObject()
+                ? extractImage('large', results.images)
+                : new ImageGraphQLObject()
     }
 }
 
@@ -65,27 +53,15 @@ export class BlogGraphQLObject {
         this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
         this.thumbnail =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'thumbnail') {
-                          return new ImageGraphQLObject(image)
-                      }
-                  })
+                ? extractImage('thumbnail', results.images)
                 : new ImageGraphQLObject()
         this.mediumImage =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'medium') {
-                          return new ImageGraphQLObject(image)
-                      }
-                  })
+                ? extractImage('medium', results.images)
                 : new ImageGraphQLObject()
         this.largeImage =
             results && results.images
-                ? results.images.forEach((image: any) => {
-                      if (image.size === 'medium') {
-                          return new ImageGraphQLObject(image)
-                      }
-                  })
+                ? extractImage('large', results.images)
                 : new ImageGraphQLObject()
     }
 }
