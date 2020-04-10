@@ -1,4 +1,4 @@
-import { ImagesObject, ImagesGraphQLObject } from '../common/ResponseShapes'
+import { ImageGraphQLObject, ImageObject } from '../common/ResponseShapes'
 
 export class TagObject {
     id: number
@@ -48,7 +48,9 @@ export class RecipeObject {
     createdAt: string
     updatedAt: string
     description: string
-    images: ImagesObject[]
+    thumbnail: ImageObject
+    mediumImage: ImageObject
+    largeImage: ImageObject
     tags: TagObject[]
     ingredients: IngredientObject[]
 
@@ -60,11 +62,30 @@ export class RecipeObject {
         this.createdAt = results.created_at ? results.created_at : 'Loading...'
         this.updatedAt = results.updated_at ? results.updated_at : 'Loading...'
         this.description = results.description ? results.description : 'Loading...'
-        this.images = results.images
-            ? results.images.map((image: any) => {
-                  return new ImagesObject(image)
-              })
-            : [new ImagesObject()]
+        this.thumbnail =
+            results && results.images
+                ? results.images.forEach((image: any) => {
+                      if (image.size === 'thumbnail') {
+                          return new ImageObject(image)
+                      }
+                  })
+                : new ImageObject()
+        this.mediumImage =
+            results && results.images
+                ? results.images.forEach((image: any) => {
+                      if (image.size === 'medium') {
+                          return new ImageObject(image)
+                      }
+                  })
+                : new ImageObject()
+        this.largeImage =
+            results && results.images
+                ? results.images.forEach((image: any) => {
+                      if (image.size === 'medium') {
+                          return new ImageObject(image)
+                      }
+                  })
+                : new ImageObject()
         this.tags = results.tags
             ? results.tags.map((tag: any) => {
                   return new TagObject(tag)
@@ -142,7 +163,9 @@ export class RecipeGraphQLObject {
     title: string
     method: string
     description: string
-    images: ImagesGraphQLObject[]
+    thumbnail: ImageGraphQLObject
+    mediumImage: ImageGraphQLObject
+    largeImage: ImageGraphQLObject
     tags: TagGraphQLObject[]
     ingredients: IngredientsGraphQLObject[]
 
@@ -152,12 +175,18 @@ export class RecipeGraphQLObject {
         this.title = results && results.title ? results.title : 'Loading...'
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
-        this.images =
+        this.thumbnail =
             results && results.images
-                ? results.images.map((image: any) => {
-                      return new ImagesGraphQLObject(image)
-                  })
-                : [new ImagesGraphQLObject()]
+                ? extractImage('thumbnail', results.images)
+                : new ImageGraphQLObject()
+        this.mediumImage =
+            results && results.images
+                ? extractImage('medium', results.images)
+                : new ImageGraphQLObject()
+        this.largeImage =
+            results && results.images
+                ? extractImage('large', results.images)
+                : new ImageGraphQLObject()
         this.tags =
             results && results.tags
                 ? results.tags.map((tag: any) => {
@@ -172,4 +201,14 @@ export class RecipeGraphQLObject {
                   })
                 : [new IngredientsGraphQLObject()]
     }
+}
+
+function extractImage(size: string, images: any) {
+    for (let index = 0; index < images.length; index++) {
+        let image = images[index]
+        if (image.image_size.size == size) {
+            return new ImageGraphQLObject(image.image)
+        }
+    }
+    return new ImageGraphQLObject()
 }

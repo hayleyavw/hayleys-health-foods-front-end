@@ -9,14 +9,13 @@ import {
     StyledCardSubtitle,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
-import { ImagesGraphQLObject } from '../../api/common/ResponseShapes'
 
 interface CardProps {
     url: string
     title: string
     subtitle?: string
     description: string
-    images: ImagesGraphQLObject[] | string
+    thumbnail: string
     imageUrlPrefix?: string
 }
 
@@ -25,23 +24,12 @@ export const Card: React.FC<CardProps> = ({
     title,
     subtitle,
     description,
-    images,
+    thumbnail,
     imageUrlPrefix,
 }) => {
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
-    }
-
-    let imageUrl = ''
-    if (typeof images !== 'string') {
-        images.forEach((image: ImagesGraphQLObject) => {
-            if (image.imageSize.size === 'thumbnail') {
-                imageUrl = image.image.url
-            }
-        })
-    } else {
-        imageUrl = images
     }
 
     return (
@@ -56,7 +44,7 @@ export const Card: React.FC<CardProps> = ({
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage src={`${imageUrlPrefix ? imageUrlPrefix : ''}${imageUrl}`} />
+                <StyledCardImage src={`${imageUrlPrefix ? imageUrlPrefix : ''}${thumbnail}`} />
             </Link>
         </StyledCard>
     )

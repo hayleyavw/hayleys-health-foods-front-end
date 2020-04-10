@@ -37,16 +37,6 @@ export class LatestRecipeList extends React.Component {
             }
         })
 
-        function getRecipeImage(recipe: RecipeGraphQLObject) {
-            let imageUrl = ''
-            recipe.images.forEach(image => {
-                if (image.imageSize.size === 'thumbnail') {
-                    console.log(image.image.url)
-                    imageUrl = image.image.url
-                }
-            })
-            return imageUrl
-        }
         return (
             <React.Fragment>
                 {this.state.loading ? (
@@ -64,10 +54,10 @@ export class LatestRecipeList extends React.Component {
                             >
                                 <StyledLatestRecipeImage
                                     src={
-                                        recipe.images
+                                        recipe.thumbnail
                                             ? process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${getRecipeImage(recipe)}`
-                                                : `${getRecipeImage(recipe)}`
+                                                ? `${api_url}/${recipe.thumbnail.url}`
+                                                : `${recipe.thumbnail.url}`
                                             : ''
                                     }
                                 />

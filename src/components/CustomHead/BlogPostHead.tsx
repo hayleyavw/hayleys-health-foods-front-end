@@ -11,12 +11,6 @@ interface Props {
 export class BlogPostHead extends React.Component<Props> {
     render() {
         const { blogPost, description } = this.props
-        let imageUrl = ''
-        blogPost.images.forEach(image => {
-            if (image.imageSize.size === 'thumbnail') {
-                imageUrl = image.image.url
-            }
-        })
         return (
             <Helmet>
                 <title>{blogPost.title}</title>
@@ -24,7 +18,7 @@ export class BlogPostHead extends React.Component<Props> {
                 <script type="application/ld+json">
                     {generateBlogStructuredData(
                         blogPost.title,
-                        imageUrl,
+                        blogPost.thumbnail.url,
                         blogPost.content,
                         description,
                         blogPost.createdAt,
@@ -38,13 +32,13 @@ export class BlogPostHead extends React.Component<Props> {
 
 const generateBlogStructuredData = (
     title: string,
-    imageURL: string,
+    imageUrl: string,
     content: string,
     description: string,
     createdAt: string,
     updatedAt: string
 ) => {
-    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
+    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageUrl}` : imageUrl
     return `{
         "@context": "https://schema.org",
         "@type": "BlogPosting",

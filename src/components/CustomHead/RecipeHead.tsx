@@ -10,12 +10,6 @@ interface Props {
 export class RecipeHead extends React.Component<Props> {
     render() {
         const { recipe } = this.props
-        let imageUrl = ''
-        recipe.images.forEach(image => {
-            if (image.imageSize.size === 'thumbnail') {
-                imageUrl = image.image.url
-            }
-        })
         return (
             <Helmet>
                 <title>{recipe.title}</title>
@@ -23,7 +17,7 @@ export class RecipeHead extends React.Component<Props> {
                 <script type="application/ld+json">
                     {generateRecipeStructuredData(
                         recipe.title,
-                        imageUrl,
+                        recipe.thumbnail.url,
                         recipe.ingredients,
                         recipe.method
                     )}
@@ -35,7 +29,7 @@ export class RecipeHead extends React.Component<Props> {
 
 const generateRecipeStructuredData = (
     title: string,
-    imageURL: string,
+    imageUrl: string,
     ingredients: IngredientsGraphQLObject[],
     method: string
 ) => {
@@ -63,7 +57,7 @@ const generateRecipeStructuredData = (
             }${index < numMethodSteps - 1 ? ',' : ''}`
         }
     })
-    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageURL}` : imageURL
+    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageUrl}` : imageUrl
     return `{
         "@context": "http://schema.org/",
         "@type": "Recipe",
