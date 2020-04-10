@@ -21,10 +21,6 @@ interface HeroProps {
     subtitle?: string
 }
 
-const heroImagePath = (filename: string) => {
-    return require(`./heroImages/${filename}.jpg`)
-}
-
 export class Hero extends React.Component<HeroProps> {
     render() {
         const { isHomePage, smallImage, mediumImage, largeImage, title, subtitle } = this.props
