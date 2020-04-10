@@ -43,6 +43,7 @@ export class RecipeList extends React.Component {
                                 title={recipe.title}
                                 description={recipe.description}
                                 thumbnail={recipe.thumbnail.url}
+                                tags={recipe.tags}
                             />
                         ))}
                     </StyledRecipeList>

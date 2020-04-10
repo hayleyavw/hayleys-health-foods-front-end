@@ -5,6 +5,7 @@ import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 import { StyledHeadingThree, StyledHeadingFour } from '../common/Headings.styled'
+import { StyledParagraph } from '../common/Paragraph.styled'
 
 export const StyledCard = styled('div')({
     height: calcRem(200),
@@ -47,6 +48,25 @@ export const StyledCardImage = styled('img')({
     [breakpoint('sm')]: {
         height: '81%',
     },
+})
+
+export const StyledTagsWrapper = styled('div')({
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    margin: calcRem(2),
+})
+
+export const StyledTag = styled(StyledParagraph)({
+    margin: calcRem(2),
+    padding: calcRem(3),
+    borderRadius: calcRem(2),
+    lineHeight: calcRem(16),
+    fontSize: calcRem(14),
+    backgroundColor: colours.offWhite,
+    color: colours.black,
+    opacity: 0.8,
 })
 
 export const StyledCardTextWrapper = styled('div')({
