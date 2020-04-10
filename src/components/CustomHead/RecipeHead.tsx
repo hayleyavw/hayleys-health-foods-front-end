@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Recipe, Ingredients } from '../../api/recipes/ResponseShapes'
-import { api_url } from '../../api/common'
+import { getStaticFilesPrefix } from '../Hero/utils'
 
 interface Props {
     recipe: Recipe
@@ -57,12 +57,11 @@ const generateRecipeStructuredData = (
             }${index < numMethodSteps - 1 ? ',' : ''}`
         }
     })
-    let image = process.env.NODE_ENV !== 'production' ? `${api_url}/${imageUrl}` : imageUrl
     return `{
         "@context": "http://schema.org/",
         "@type": "Recipe",
         "name": "${title}",
-        "image": "${image}",
+        "image": "${getStaticFilesPrefix}${imageUrl}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"

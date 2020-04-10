@@ -89,9 +89,12 @@ export class BlogPage extends React.Component<Props> {
                                     description={getDescription(blogPost.content)}
                                 />
                                 <Hero
-                                    heroImage={
-                                        blogPost.largeImage.url ? blogPost.largeImage.url : ''
-                                    }
+                                    // heroImage={
+                                    //     blogPost.largeImage.url ? blogPost.largeImage.url : ''
+                                    // }
+                                    smallImage={blogPost.thumbnail}
+                                    mediumImage={blogPost.mediumImage}
+                                    largeImage={blogPost.largeImage}
                                     title={blogPost.title}
                                     subtitle={createdAt}
                                 />

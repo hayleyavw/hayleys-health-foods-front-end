@@ -9,6 +9,7 @@ import {
     StyledCardSubtitle,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
+import { getStaticFilesPrefix } from '../Hero/utils'
 
 interface CardProps {
     url: string
@@ -16,17 +17,9 @@ interface CardProps {
     subtitle?: string
     description: string
     thumbnail: string
-    imageUrlPrefix?: string
 }
 
-export const Card: React.FC<CardProps> = ({
-    url,
-    title,
-    subtitle,
-    description,
-    thumbnail,
-    imageUrlPrefix,
-}) => {
+export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, thumbnail }) => {
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
@@ -44,7 +37,7 @@ export const Card: React.FC<CardProps> = ({
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage src={`${imageUrlPrefix ? imageUrlPrefix : ''}${thumbnail}`} />
+                <StyledCardImage src={`${getStaticFilesPrefix()}${thumbnail}`} />
             </Link>
         </StyledCard>
     )

@@ -82,9 +82,9 @@ export class RecipePage extends React.Component<Props> {
                                 <RecipeHead recipe={recipe} />
                                 <React.Fragment>
                                     <Hero
-                                        heroImage={
-                                            recipe.largeImage.url ? recipe.largeImage.url : ''
-                                        }
+                                        smallImage={recipe.thumbnail}
+                                        mediumImage={recipe.mediumImage}
+                                        largeImage={recipe.largeImage}
                                         title={recipe.title}
                                     />
                                     <RecipeSteps

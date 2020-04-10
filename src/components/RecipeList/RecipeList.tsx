@@ -3,7 +3,6 @@ import { Card } from '../Card/Card'
 import { StyledRecipeList } from './RecipeList.styled'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { Recipe } from '../../api/recipes/ResponseShapes'
-import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
 
 interface State {
@@ -44,9 +43,6 @@ export class RecipeList extends React.Component {
                                 title={recipe.title}
                                 description={recipe.description}
                                 thumbnail={recipe.thumbnail.url}
-                                imageUrlPrefix={
-                                    process.env.NODE_ENV !== 'production' ? `${api_url}/` : ''
-                                }
                             />
                         ))}
                     </StyledRecipeList>

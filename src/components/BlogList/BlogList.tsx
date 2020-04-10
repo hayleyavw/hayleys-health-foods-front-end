@@ -4,7 +4,6 @@ import { getBlogsGraphQL } from '../../api/blogPosts/Queries'
 import { Card } from '../Card/Card'
 import { Blog } from '../../api/blogPosts/ResponseShapes'
 import { StyledHeadingTwo } from '../common/Headings.styled'
-import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
 
 interface State {
@@ -46,11 +45,6 @@ export class BlogList extends React.Component {
                                         title={blogPost.title}
                                         subtitle={createdAt}
                                         thumbnail={blogPost.thumbnail.url}
-                                        imageUrlPrefix={
-                                            process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/`
-                                                : ''
-                                        }
                                         description={blogPost.content}
                                     />
                                 )

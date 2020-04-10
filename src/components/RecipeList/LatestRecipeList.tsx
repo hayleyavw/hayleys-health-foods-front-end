@@ -8,8 +8,8 @@ import {
 } from './LatestRecipeList.styled'
 import { Recipe } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
-import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
+import { getStaticFilesPrefix } from '../Hero/utils'
 
 interface State {
     recipes: Recipe[]
@@ -55,9 +55,7 @@ export class LatestRecipeList extends React.Component {
                                 <StyledLatestRecipeImage
                                     src={
                                         recipe.thumbnail
-                                            ? process.env.NODE_ENV !== 'production'
-                                                ? `${api_url}/${recipe.thumbnail.url}`
-                                                : `${recipe.thumbnail.url}`
+                                            ? `${getStaticFilesPrefix()}${recipe.thumbnail.url}`
                                             : ''
                                     }
                                 />

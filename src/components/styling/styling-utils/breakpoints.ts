@@ -18,3 +18,9 @@ export const breakpoint = (n: string) => {
 
     return result
 }
+
+export const srcSetWidths = {
+    sm: '500w',
+    md: '900w',
+    lg: '1500w',
+}
