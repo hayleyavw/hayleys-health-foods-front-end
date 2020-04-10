@@ -55,7 +55,11 @@ export class LatestRecipeList extends React.Component {
                                 <StyledLatestRecipeImage
                                     src={
                                         recipe.thumbnail
-                                            ? `${getStaticFilesPrefix()}${recipe.thumbnail.url}`
+                                            ? index === 0
+                                                ? `${getStaticFilesPrefix()}${
+                                                      recipe.mediumImage.url
+                                                  }`
+                                                : `${getStaticFilesPrefix()}${recipe.thumbnail.url}`
                                             : ''
                                     }
                                 />
