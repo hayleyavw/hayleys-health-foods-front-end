@@ -9,7 +9,7 @@ import {
     StyledCardSubtitle,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
-import { getStaticFilesPrefix } from '../Hero/utils'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface CardProps {
     url: string

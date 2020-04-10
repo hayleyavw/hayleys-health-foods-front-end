@@ -9,7 +9,7 @@ import {
     StyledSubtitle,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
-import { getStaticFilesPrefix } from './utils'
+import { getStaticFilesPrefix } from '../../utils/utils'
 import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 
 interface HeroProps {

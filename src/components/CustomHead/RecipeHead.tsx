@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Recipe, Ingredients } from '../../api/recipes/ResponseShapes'
-import { getStaticFilesPrefix } from '../Hero/utils'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface Props {
     recipe: Recipe

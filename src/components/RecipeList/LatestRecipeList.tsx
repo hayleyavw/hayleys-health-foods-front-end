@@ -9,7 +9,7 @@ import {
 import { Recipe } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import Loading from '../Loading/Loading'
-import { getStaticFilesPrefix } from '../Hero/utils'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface State {
     recipes: Recipe[]

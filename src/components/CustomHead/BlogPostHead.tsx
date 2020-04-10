@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Blog } from '../../api/blogPosts/ResponseShapes'
-import { getStaticFilesPrefix } from '../Hero/utils'
+import { getStaticFilesPrefix } from '../../utils/utils'
 
 interface Props {
     blogPost: Blog
