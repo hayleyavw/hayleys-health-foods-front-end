@@ -5,10 +5,10 @@ import {
     StyledRecipeIngredient,
 } from './RecipeIngredients.styled'
 import { StyledHeadingTwo } from '../../common/Headings.styled'
-import { IngredientsGraphQLObject } from '../../../api/recipes/ResponseShapes'
+import { Ingredients } from '../../../api/recipes/ResponseShapes'
 
 interface RecipeIngredientsProps {
-    ingredients: IngredientsGraphQLObject[]
+    ingredients: Ingredients[]
 }
 
 export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
@@ -18,7 +18,7 @@ export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
             <StyledRecipeIngredientsWrapper>
                 <StyledHeadingTwo>Ingredients</StyledHeadingTwo>
                 <StyledRecipeIngredients>
-                    {ingredients.map((ingredient: IngredientsGraphQLObject, index: number) => (
+                    {ingredients.map((ingredient: Ingredients, index: number) => (
                         <StyledRecipeIngredient key={index}>
                             {ingredient.ingredient.name} ({ingredient.quantity}
                             {ingredient.ingredientUnit.shortName !== 'Loading...'

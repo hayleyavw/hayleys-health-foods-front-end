@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { RecipeGraphQLObject, IngredientsGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { Recipe, Ingredients } from '../../api/recipes/ResponseShapes'
 import { api_url } from '../../api/common'
 
 interface Props {
-    recipe: RecipeGraphQLObject
+    recipe: Recipe
 }
 
 export class RecipeHead extends React.Component<Props> {
@@ -30,7 +30,7 @@ export class RecipeHead extends React.Component<Props> {
 const generateRecipeStructuredData = (
     title: string,
     imageUrl: string,
-    ingredients: IngredientsGraphQLObject[],
+    ingredients: Ingredients[],
     method: string
 ) => {
     const numIngredients = ingredients.length

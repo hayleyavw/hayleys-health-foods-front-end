@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { api_url } from '../../api/common'
-import { BlogGraphQLObject } from '../../api/blogPosts/ResponseShapes'
+import { Blog } from '../../api/blogPosts/ResponseShapes'
 
 interface Props {
-    blogPost: BlogGraphQLObject
+    blogPost: Blog
     description: string
 }
 

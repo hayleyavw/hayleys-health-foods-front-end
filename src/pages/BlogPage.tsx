@@ -6,7 +6,7 @@ import { Hero } from '../components/Hero/Hero'
 import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
 import { BlogPostHead } from '../components/CustomHead/BlogPostHead'
-import { BlogGraphQLObject } from '../api/blogPosts/ResponseShapes'
+import { Blog } from '../api/blogPosts/ResponseShapes'
 import Helmet from 'react-helmet'
 import { jsonld } from '../components/common/jsonld'
 import Loading from '../components/Loading/Loading'
@@ -34,13 +34,13 @@ export interface match<P> {
 
 interface State {
     slug: string
-    blogPost: BlogGraphQLObject
+    blogPost: Blog
     loading: boolean
 }
 export class BlogPage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
-        blogPost: new BlogGraphQLObject(),
+        blogPost: new Blog(),
         loading: true,
     }
 

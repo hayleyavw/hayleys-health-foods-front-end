@@ -1,15 +1,15 @@
-import { ImageGraphQLObject, extractImage } from '../common/ResponseShapes'
+import { Image, extractImage } from '../common/ResponseShapes'
 
-export class BlogGraphQLObject {
+export class Blog {
     id: number
     slug: string
     title: string
     content: string
     createdAt: string
     updatedAt: string
-    thumbnail: ImageGraphQLObject
-    mediumImage: ImageGraphQLObject
-    largeImage: ImageGraphQLObject
+    thumbnail: Image
+    mediumImage: Image
+    largeImage: Image
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -19,16 +19,10 @@ export class BlogGraphQLObject {
         this.createdAt = results && results.created_at ? results.created_at : 'Loading...'
         this.updatedAt = results && results.updated_at ? results.updated_at : 'Loading...'
         this.thumbnail =
-            results && results.images
-                ? extractImage('thumbnail', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('thumbnail', results.images) : new Image()
         this.mediumImage =
-            results && results.images
-                ? extractImage('medium', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('medium', results.images) : new Image()
         this.largeImage =
-            results && results.images
-                ? extractImage('large', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('large', results.images) : new Image()
     }
 }

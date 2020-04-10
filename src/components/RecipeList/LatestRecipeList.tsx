@@ -6,19 +6,19 @@ import {
     StyledLatestRecipeCardHeadings,
     StyledLatestRecipeDescription,
 } from './LatestRecipeList.styled'
-import { RecipeGraphQLObject } from '../../api/recipes/ResponseShapes'
+import { Recipe } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import { api_url } from '../../api/common'
 import Loading from '../Loading/Loading'
 
 interface State {
-    recipes: RecipeGraphQLObject[]
+    recipes: Recipe[]
     loading: boolean
 }
 
 export class LatestRecipeList extends React.Component {
     public readonly state: Readonly<State> = {
-        recipes: [new RecipeGraphQLObject()],
+        recipes: [new Recipe()],
         loading: true,
     }
 

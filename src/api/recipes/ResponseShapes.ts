@@ -1,6 +1,6 @@
-import { ImageGraphQLObject, extractImage } from '../common/ResponseShapes'
+import { Image, extractImage } from '../common/ResponseShapes'
 
-export class TagGraphQLObject {
+export class Tag {
     id: number
     slug: string
     name: string
@@ -26,7 +26,7 @@ export class IngredientGraphQLObject {
     }
 }
 
-export class IngredientUnitGraphQLObject {
+export class IngredientUnit {
     id: number
     name: string
     shortName: string
@@ -38,11 +38,11 @@ export class IngredientUnitGraphQLObject {
     }
 }
 
-export class IngredientsGraphQLObject {
+export class Ingredients {
     id: number
     quantity: string
     ingredient: IngredientGraphQLObject
-    ingredientUnit: IngredientUnitGraphQLObject
+    ingredientUnit: IngredientUnit
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -53,22 +53,22 @@ export class IngredientsGraphQLObject {
                 : new IngredientGraphQLObject()
         this.ingredientUnit =
             results && results.ingredient_unit
-                ? new IngredientUnitGraphQLObject(results.ingredient_unit)
-                : new IngredientUnitGraphQLObject()
+                ? new IngredientUnit(results.ingredient_unit)
+                : new IngredientUnit()
     }
 }
 
-export class RecipeGraphQLObject {
+export class Recipe {
     id: number
     slug: string
     title: string
     method: string
     description: string
-    thumbnail: ImageGraphQLObject
-    mediumImage: ImageGraphQLObject
-    largeImage: ImageGraphQLObject
-    tags: TagGraphQLObject[]
-    ingredients: IngredientsGraphQLObject[]
+    thumbnail: Image
+    mediumImage: Image
+    largeImage: Image
+    tags: Tag[]
+    ingredients: Ingredients[]
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -77,29 +77,23 @@ export class RecipeGraphQLObject {
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
         this.thumbnail =
-            results && results.images
-                ? extractImage('thumbnail', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('thumbnail', results.images) : new Image()
         this.mediumImage =
-            results && results.images
-                ? extractImage('medium', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('medium', results.images) : new Image()
         this.largeImage =
-            results && results.images
-                ? extractImage('large', results.images)
-                : new ImageGraphQLObject()
+            results && results.images ? extractImage('large', results.images) : new Image()
         this.tags =
             results && results.tags
                 ? results.tags.map((tag: any) => {
-                      return new TagGraphQLObject(tag)
+                      return new Tag(tag)
                   })
-                : [new TagGraphQLObject()]
+                : [new Tag()]
 
         this.ingredients =
             results && results.ingredients
                 ? results.ingredients.map((ingredient: any) => {
-                      return new IngredientsGraphQLObject(ingredient)
+                      return new Ingredients(ingredient)
                   })
-                : [new IngredientsGraphQLObject()]
+                : [new Ingredients()]
     }
 }
