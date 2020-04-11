@@ -50,15 +50,22 @@ export const StyledSubtitle = styled(StyledHeadingThree)({
 })
 
 export const StyledTagsWrapper = styled('div')({
+    marginTop: calcRem(10),
+    height: calcRem(60),
     display: 'flex',
     justifyContent: 'center',
+    flexWrap: 'wrap',
+
+    [breakpoint('sm')]: {
+        height: calcRem(30),
+    },
 })
 
 export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isHomePage }) => ({
     height: '100%',
     width: '100%',
     objectFit: 'cover',
-    objectPosition: isHomePage ? 'top right' : undefined,
+    objectPosition: isHomePage ? 'top' : undefined,
 }))
 
 export const StyledHero = styled('div')<StyledHeroProps>(({ hasSubtitle }) => ({

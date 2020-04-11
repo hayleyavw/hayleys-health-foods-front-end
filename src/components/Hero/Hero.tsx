@@ -23,6 +23,7 @@ interface HeroProps {
     largeImage?: Image
     title: string
     subtitle?: string
+    handler?: (tags: TagObject[]) => void
 }
 
 interface State {
@@ -43,7 +44,15 @@ export class Hero extends React.Component<HeroProps> {
     }
 
     render() {
-        const { isHomePage, smallImage, mediumImage, largeImage, title, subtitle } = this.props
+        const {
+            isHomePage,
+            smallImage,
+            mediumImage,
+            largeImage,
+            title,
+            subtitle,
+            handler,
+        } = this.props
         const { tags } = this.state
 
         let smallBanner = require('./heroImages/small.jpg')
@@ -69,9 +78,14 @@ export class Hero extends React.Component<HeroProps> {
                         <StyledHeroHeading>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
                         <StyledTagsWrapper>
-                            {this.state.loading === false && tags
+                            {this.state.loading === false && handler && tags
                                 ? tags.map((tag: TagObject, index) => (
-                                      <TagButton key={index} text={tag.name}></TagButton>
+                                      <TagButton
+                                          key={index}
+                                          text={tag.name}
+                                          handler={handler}
+                                          tag={tag}
+                                      ></TagButton>
                                   ))
                                 : ''}
                         </StyledTagsWrapper>

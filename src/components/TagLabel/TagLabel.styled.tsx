@@ -12,4 +12,5 @@ export const StyledTagLabel = styled(StyledParagraph)({
     backgroundColor: colours.offWhite,
     color: colours.black,
     opacity: 0.8,
+    height: 'fit-content',
 })
