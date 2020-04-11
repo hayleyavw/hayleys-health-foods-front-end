@@ -50,3 +50,14 @@ export const recipesQuery = (props: RecipesQueryProps) => {
         }
     }`
 }
+
+export const tagsQuery = `
+    query {
+        tags {
+            id
+            slug
+            name
+            short_name
+        }
+    }
+`

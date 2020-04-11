@@ -49,6 +49,11 @@ export const StyledSubtitle = styled(StyledHeadingThree)({
     },
 })
 
+export const StyledTagsWrapper = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+})
+
 export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isHomePage }) => ({
     height: '100%',
     width: '100%',

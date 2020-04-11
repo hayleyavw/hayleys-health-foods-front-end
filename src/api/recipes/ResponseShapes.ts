@@ -1,6 +1,6 @@
 import { Image, extractImage } from '../common/ResponseShapes'
 
-export class Tag {
+export class TagObject {
     id: number
     slug: string
     name: string
@@ -67,7 +67,7 @@ export class Recipe {
     thumbnail: Image
     mediumImage: Image
     largeImage: Image
-    tags: Tag[]
+    tags: TagObject[]
     ingredients: Ingredients[]
 
     constructor(results?: any) {
@@ -85,9 +85,9 @@ export class Recipe {
         this.tags =
             results && results.tags
                 ? results.tags.map((tag: any) => {
-                      return new Tag(tag)
+                      return new TagObject(tag)
                   })
-                : [new Tag()]
+                : [new TagObject()]
 
         this.ingredients =
             results && results.ingredients

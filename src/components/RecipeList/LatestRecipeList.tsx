@@ -8,7 +8,7 @@ import {
     StyledLatestRecipeImageWrapper,
     StyledTagsWrapper,
 } from './LatestRecipeList.styled'
-import { Recipe, Tag } from '../../api/recipes/ResponseShapes'
+import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import Loading from '../Loading/Loading'
 import { getStaticFilesPrefix } from '../../utils/utils'
@@ -71,16 +71,16 @@ export class LatestRecipeList extends React.Component {
                                     />
                                     <StyledTagsWrapper>
                                         {recipe.tags &&
-                                            recipe.tags.map((tag: Tag, index) => (
-                                                <React.Fragment>
+                                            recipe.tags.map((tag: TagObject, index) => (
+                                                <React.Fragment key={index}>
                                                     <TagLabel
                                                         classText="tag-label-short"
-                                                        key={index}
+                                                        key={`${recipe.id}-${index}-short`}
                                                         text={tag.shortName}
                                                     />
                                                     <TagLabel
                                                         classText="tag-label-long"
-                                                        key={index}
+                                                        key={`${recipe.id}-${index}-long`}
                                                         text={tag.name}
                                                     />
                                                 </React.Fragment>
