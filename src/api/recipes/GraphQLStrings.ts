@@ -64,22 +64,23 @@ export const tagsQuery = `query {
     }
 }`
 
-export const recipesByTagsQuery = `
-    query {
+export const recipesByTagsQuery = (tagList: string) => {
+    return `query {
         tags(where: {
-            short_name: ["gf"]
+            short_name: ${tagList}
         }) {
             ${tagsQueryString}
-        } recipes {
-            id
-            slug
-            title
-            method
-            description
-            ${imageQuery}
-            tags {
-                ${tagsQueryString}
+            recipes {
+                id
+                slug
+                title
+                method
+                description
+                ${imageQuery}
+                tags {
+                    ${tagsQueryString}
+                }
             }
         }
-    }
-`
+    }`
+}

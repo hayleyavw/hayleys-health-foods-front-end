@@ -48,8 +48,10 @@ export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recip
 }
 
 export async function getRecipesByTags(tags: TagObject[]): Promise<Recipe[]> {
-    const queryString = recipesByTagsQuery
-    console.log(queryString)
+    let tagList = tags.map((tag: TagObject) => {
+        return tag.shortName
+    })
+    const queryString = recipesByTagsQuery(JSON.stringify(tagList))
     const results = await (await fetch(`${api_url}/graphql`, {
         method: 'post',
         headers: {
@@ -59,7 +61,7 @@ export async function getRecipesByTags(tags: TagObject[]): Promise<Recipe[]> {
     })).json()
     console.log(results)
     if (results) {
-        return results.data.recipes.map((recipe: Recipe) => {
+        return results.data.tags[0].recipes.map((recipe: Recipe) => {
             return new Recipe(recipe)
         })
     }
