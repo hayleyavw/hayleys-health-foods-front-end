@@ -7,6 +7,8 @@ import { LatestRecipeList } from '../components/RecipeList/LatestRecipeList'
 import Helmet from 'react-helmet'
 import { jsonld } from '../components/common/jsonld'
 import { TagObject } from '../api/recipes/ResponseShapes'
+import { StyledAllRecipesHeading } from '../components/FilterButtons/FilterButtons.styled'
+import { FilterButtons } from '../components/FilterButtons/FilterButtons'
 
 interface Props {}
 
@@ -48,7 +50,10 @@ class HomePage extends React.Component<Props> {
                 <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
                 <LatestRecipeList />
                 <HomePagePromoCardRow />
-                <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
+                <StyledAllRecipesHeading>
+                    <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
+                    <FilterButtons />
+                </StyledAllRecipesHeading>
                 <RecipeList tags={this.state.tags} />
             </React.Fragment>
         )
