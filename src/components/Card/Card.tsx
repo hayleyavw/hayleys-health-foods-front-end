@@ -8,11 +8,11 @@ import {
     StyledCardTitleWrapper,
     StyledCardSubtitle,
     StyledTagsWrapper,
-    StyledTag,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
 import { getStaticFilesPrefix } from '../../utils/utils'
 import { Tag } from '../../api/recipes/ResponseShapes'
+import { TagLabel } from '../TagLabel/TagLabel'
 
 interface CardProps {
     url: string
@@ -42,7 +42,7 @@ export const Card: React.FC<CardProps> = ({
                 <StyledTagsWrapper>
                     {tags &&
                         tags.map((tag: Tag, index) => (
-                            <StyledTag key={index}>{tag.shortName}</StyledTag>
+                            <TagLabel key={index} text={tag.shortName} />
                         ))}
                 </StyledTagsWrapper>
                 <StyledCardTextWrapper className="card-text-wrapper">

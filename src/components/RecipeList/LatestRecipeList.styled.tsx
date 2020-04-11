@@ -114,6 +114,47 @@ export const StyledLatestRecipeCardHeadings = styled(StyledHeadingFour)({
     },
 })
 
+export const StyledLatestRecipeImageWrapper = styled('div')({
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+})
+
+export const StyledTagsWrapper = styled('div')({
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
+    margin: calcRem(2),
+
+    '.tag-label-short': {
+        display: 'none',
+    },
+    '.tag-label-long': {
+        display: 'block',
+    },
+
+    [breakpoint('sm')]: {
+        '.tag-label-short': {
+            display: 'block',
+        },
+        '.tag-label-long': {
+            display: 'none',
+        },
+    },
+
+    [breakpoint('md')]: {
+        '.tag-label-short': {
+            display: 'none',
+        },
+        '.tag-label-long': {
+            display: 'block',
+        },
+    },
+})
+
 export const StyledLatestRecipeImage = styled('img')({
     width: '100%',
     height: '100%',
