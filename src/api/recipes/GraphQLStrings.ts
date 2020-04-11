@@ -51,13 +51,35 @@ export const recipesQuery = (props: RecipesQueryProps) => {
     }`
 }
 
-export const tagsQuery = `
+export const tagsQueryString = `
+    id
+    slug
+    name
+    short_name
+`
+
+export const tagsQuery = `query {
+    tags {
+        ${tagsQueryString}
+    }
+}`
+
+export const recipesByTagsQuery = `
     query {
-        tags {
+        tags(where: {
+            short_name: ["gf"]
+        }) {
+            ${tagsQueryString}
+        } recipes {
             id
             slug
-            name
-            short_name
+            title
+            method
+            description
+            ${imageQuery}
+            tags {
+                ${tagsQueryString}
+            }
         }
     }
 `

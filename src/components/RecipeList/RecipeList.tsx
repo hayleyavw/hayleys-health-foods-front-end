@@ -1,16 +1,19 @@
 import React from 'react'
 import { Card } from '../Card/Card'
 import { StyledRecipeList } from './RecipeList.styled'
-import { getRecipeGraphQL } from '../../api/recipes/Queries'
-import { Recipe } from '../../api/recipes/ResponseShapes'
+import { getRecipeGraphQL, getRecipesByTags } from '../../api/recipes/Queries'
+import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
 import Loading from '../Loading/Loading'
 
+interface RecipeListProps {
+    tags: TagObject[] | null
+}
 interface State {
     recipes: Recipe[]
     loading: boolean
 }
 
-export class RecipeList extends React.Component {
+export class RecipeList extends React.Component<RecipeListProps> {
     public readonly state: Readonly<State> = {
         recipes: [new Recipe()],
         loading: true,
@@ -18,12 +21,40 @@ export class RecipeList extends React.Component {
 
     async componentDidMount() {
         try {
-            await getRecipeGraphQL({}).then(recipe => {
-                this.setState({ recipes: recipe })
-                this.setState({ loading: false })
-            })
+            if (this.props.tags === null) {
+                await getRecipeGraphQL({}).then(recipe => {
+                    this.setState({ recipes: recipe })
+                    this.setState({ loading: false })
+                })
+            } else {
+                await getRecipesByTags(this.props.tags).then(recipes => {
+                    this.setState({ recipes: recipes })
+                    this.setState({ loading: false })
+                })
+            }
         } catch {
             this.setState({ loading: false })
+        }
+    }
+
+    async componentDidUpdate(prevProps: RecipeListProps) {
+        if (JSON.stringify(this.props.tags) !== JSON.stringify(prevProps.tags)) {
+            try {
+                this.setState({ loading: true })
+                if (this.props.tags === null) {
+                    await getRecipeGraphQL({}).then(recipe => {
+                        this.setState({ recipes: recipe })
+                        this.setState({ loading: false })
+                    })
+                } else {
+                    await getRecipesByTags(this.props.tags).then(recipes => {
+                        this.setState({ recipes: recipes })
+                        this.setState({ loading: false })
+                    })
+                }
+            } catch {
+                this.setState({ loading: false })
+            }
         }
     }
 

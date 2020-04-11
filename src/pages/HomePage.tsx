@@ -11,11 +11,11 @@ import { TagObject } from '../api/recipes/ResponseShapes'
 interface Props {}
 
 interface State {
-    tags: TagObject[]
+    tags: TagObject[] | null
 }
 class HomePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
-        tags: [new TagObject()],
+        tags: null,
     }
 
     constructor(props: Props) {
@@ -48,7 +48,7 @@ class HomePage extends React.Component<Props> {
                 <LatestRecipeList />
                 <HomePagePromoCardRow />
                 <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
-                <RecipeList />
+                <RecipeList tags={this.state.tags} />
             </React.Fragment>
         )
     }

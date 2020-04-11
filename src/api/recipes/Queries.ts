@@ -1,4 +1,4 @@
-import { recipeByIdQuery, recipesQuery, tagsQuery } from './GraphQLStrings'
+import { recipeByIdQuery, recipesQuery, tagsQuery, recipesByTagsQuery } from './GraphQLStrings'
 import { api_url } from '../common'
 import { Recipe, TagObject } from './ResponseShapes'
 
@@ -45,6 +45,25 @@ export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recip
         }
     }
     return new Recipe()
+}
+
+export async function getRecipesByTags(tags: TagObject[]): Promise<Recipe[]> {
+    const queryString = recipesByTagsQuery
+    console.log(queryString)
+    const results = await (await fetch(`${api_url}/graphql`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: queryString }),
+    })).json()
+    console.log(results)
+    if (results) {
+        return results.data.recipes.map((recipe: Recipe) => {
+            return new Recipe(recipe)
+        })
+    }
+    return [new Recipe()]
 }
 
 export async function getTags(): Promise<TagObject[]> {
