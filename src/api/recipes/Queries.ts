@@ -59,7 +59,6 @@ export async function getRecipesByTags(tags: TagObject[]): Promise<Recipe[]> {
         },
         body: JSON.stringify({ query: queryString }),
     })).json()
-    console.log(results)
     if (results) {
         return results.data.tags[0].recipes.map((recipe: Recipe) => {
             return new Recipe(recipe)

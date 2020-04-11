@@ -39,6 +39,9 @@ export class App extends React.Component {
                 <div className="container">
                     <Global
                         styles={css`
+                            html {
+                                scroll-behavior: smooth;
+                            }
                             body {
                                 margin: ${margins.bodyTopBottomMargin}
                                     ${margins.bodyLeftRightMargin.sm};

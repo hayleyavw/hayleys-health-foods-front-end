@@ -15,3 +15,7 @@ export const StyledRecipeList = styled('div')({
         gridTemplateColumns: '1fr 1fr 1fr 1fr',
     },
 })
+
+export const StyledRecipeListWrapper = styled('div')({
+    minHeight: '100vh',
+})

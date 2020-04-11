@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from '../Card/Card'
-import { StyledRecipeList } from './RecipeList.styled'
+import { StyledRecipeList, StyledRecipeListWrapper } from './RecipeList.styled'
 import { getRecipeGraphQL, getRecipesByTags } from '../../api/recipes/Queries'
 import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
 import Loading from '../Loading/Loading'
@@ -60,7 +60,7 @@ export class RecipeList extends React.Component<RecipeListProps> {
 
     render() {
         return (
-            <React.Fragment>
+            <StyledRecipeListWrapper className={'recipe-list'}>
                 {this.state.loading ? (
                     <React.Fragment>
                         <Loading />
@@ -79,7 +79,7 @@ export class RecipeList extends React.Component<RecipeListProps> {
                         ))}
                     </StyledRecipeList>
                 )}
-            </React.Fragment>
+            </StyledRecipeListWrapper>
         )
     }
 }

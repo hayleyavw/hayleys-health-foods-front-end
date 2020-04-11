@@ -27,12 +27,13 @@ class HomePage extends React.Component<Props> {
         this.setState({
             tags: tags,
         })
+        const yOffset = -10
+        const element = document.getElementsByClassName('recipe-list')[0]
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+        window.scrollTo({ top: y, behavior: 'smooth' })
     }
 
     render() {
-        if (this.state.tags) {
-            console.log(this.state.tags)
-        }
         return (
             <React.Fragment>
                 <Helmet>
