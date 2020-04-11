@@ -7,10 +7,14 @@ import {
     StyledHeroGradientLine,
     StyledHeroWrapper,
     StyledSubtitle,
+    StyledTagsWrapper,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
 import { getStaticFilesPrefix } from '../../utils/utils'
 import { srcSetWidths } from '../styling/styling-utils/breakpoints'
+import { TagButton } from '../TagButton/TagButton'
+import { TagObject } from '../../api/recipes/ResponseShapes'
+import { getTags } from '../../api/recipes/Queries'
 
 interface HeroProps {
     isHomePage?: boolean
@@ -19,11 +23,37 @@ interface HeroProps {
     largeImage?: Image
     title: string
     subtitle?: string
+    handler?: (tags: TagObject[]) => void
+}
+
+interface State {
+    tags: TagObject[]
+    loading: boolean
 }
 
 export class Hero extends React.Component<HeroProps> {
+    public readonly state: Readonly<State> = {
+        tags: [new TagObject()],
+        loading: true,
+    }
+
+    async componentDidMount() {
+        const tags = await getTags()
+        this.setState({ tags: tags })
+        this.setState({ loading: false })
+    }
+
     render() {
-        const { isHomePage, smallImage, mediumImage, largeImage, title, subtitle } = this.props
+        const {
+            isHomePage,
+            smallImage,
+            mediumImage,
+            largeImage,
+            title,
+            subtitle,
+            handler,
+        } = this.props
+        const { tags } = this.state
 
         let smallBanner = require('./heroImages/small.jpg')
         let mediumBanner = require('./heroImages/medium.jpg')
@@ -47,6 +77,18 @@ export class Hero extends React.Component<HeroProps> {
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
+                        <StyledTagsWrapper>
+                            {this.state.loading === false && handler && tags
+                                ? tags.map((tag: TagObject, index) => (
+                                      <TagButton
+                                          key={index}
+                                          text={tag.name}
+                                          handler={handler}
+                                          tag={tag}
+                                      ></TagButton>
+                                  ))
+                                : ''}
+                        </StyledTagsWrapper>
                     </StyledHeroHeadingWrapper>
                 </StyledHero>
                 <StyledHeroGradientLine />

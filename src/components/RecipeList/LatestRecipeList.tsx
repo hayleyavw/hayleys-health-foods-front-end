@@ -5,11 +5,14 @@ import {
     StyledLatestRecipeImage,
     StyledLatestRecipeCardHeadings,
     StyledLatestRecipeDescription,
+    StyledLatestRecipeImageWrapper,
+    StyledTagsWrapper,
 } from './LatestRecipeList.styled'
-import { Recipe } from '../../api/recipes/ResponseShapes'
+import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import Loading from '../Loading/Loading'
 import { getStaticFilesPrefix } from '../../utils/utils'
+import { TagLabel } from '../TagLabel/TagLabel'
 
 interface State {
     recipes: Recipe[]
@@ -52,17 +55,38 @@ export class LatestRecipeList extends React.Component {
                                 to={`/recipes/${recipe.slug}`}
                                 className={'latest-recipe-image'}
                             >
-                                <StyledLatestRecipeImage
-                                    src={
-                                        recipe.thumbnail
-                                            ? index === 0
-                                                ? `${getStaticFilesPrefix()}${
-                                                      recipe.mediumImage.url
-                                                  }`
-                                                : `${getStaticFilesPrefix()}${recipe.thumbnail.url}`
-                                            : ''
-                                    }
-                                />
+                                <StyledLatestRecipeImageWrapper>
+                                    <StyledLatestRecipeImage
+                                        src={
+                                            recipe.thumbnail
+                                                ? index === 0
+                                                    ? `${getStaticFilesPrefix()}${
+                                                          recipe.mediumImage.url
+                                                      }`
+                                                    : `${getStaticFilesPrefix()}${
+                                                          recipe.thumbnail.url
+                                                      }`
+                                                : ''
+                                        }
+                                    />
+                                    <StyledTagsWrapper>
+                                        {recipe.tags &&
+                                            recipe.tags.map((tag: TagObject, index) => (
+                                                <React.Fragment key={index}>
+                                                    <TagLabel
+                                                        classText="tag-label-short"
+                                                        key={`${recipe.id}-${index}-short`}
+                                                        text={tag.shortName}
+                                                    />
+                                                    <TagLabel
+                                                        classText="tag-label-long"
+                                                        key={`${recipe.id}-${index}-long`}
+                                                        text={tag.name}
+                                                    />
+                                                </React.Fragment>
+                                            ))}
+                                    </StyledTagsWrapper>
+                                </StyledLatestRecipeImageWrapper>
                             </StyledLatestRecipeCard>
                         ))}
                         {this.state.recipes.map((recipe, index) => (

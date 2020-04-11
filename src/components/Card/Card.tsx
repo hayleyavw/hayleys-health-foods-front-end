@@ -7,9 +7,12 @@ import {
     StyledCardDescription,
     StyledCardTitleWrapper,
     StyledCardSubtitle,
+    StyledTagsWrapper,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
 import { getStaticFilesPrefix } from '../../utils/utils'
+import { TagObject } from '../../api/recipes/ResponseShapes'
+import { TagLabel } from '../TagLabel/TagLabel'
 
 interface CardProps {
     url: string
@@ -17,9 +20,17 @@ interface CardProps {
     subtitle?: string
     description: string
     thumbnail: string
+    tags?: TagObject[]
 }
 
-export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, thumbnail }) => {
+export const Card: React.FC<CardProps> = ({
+    url,
+    title,
+    subtitle,
+    description,
+    thumbnail,
+    tags,
+}) => {
     // Truncate the description
     if (description.length > 150) {
         description = `${description.slice(0, 150)}...`
@@ -28,6 +39,12 @@ export const Card: React.FC<CardProps> = ({ url, title, subtitle, description, t
     return (
         <StyledCard>
             <Link to={url}>
+                <StyledTagsWrapper>
+                    {tags &&
+                        tags.map((tag: TagObject, index) => (
+                            <TagLabel key={`${index}-${title}`} text={tag.shortName} />
+                        ))}
+                </StyledTagsWrapper>
                 <StyledCardTextWrapper className="card-text-wrapper">
                     <StyledCardTitleWrapper className="card-titles">
                         <StyledCardTitle>{title}</StyledCardTitle>

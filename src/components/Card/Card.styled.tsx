@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { calcRem } from '../styling/styling-utils/calcRem'
 import { colours } from '../styling/colours'
-import { gradients } from '../styling/gradients'
 import { cardBorderRadius } from '../styling/borders'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 import { StyledHeadingThree, StyledHeadingFour } from '../common/Headings.styled'
@@ -49,6 +48,14 @@ export const StyledCardImage = styled('img')({
     },
 })
 
+export const StyledTagsWrapper = styled('div')({
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    margin: calcRem(2),
+})
+
 export const StyledCardTextWrapper = styled('div')({
     position: 'absolute',
     display: 'flex',
@@ -60,8 +67,8 @@ export const StyledCardTextWrapper = styled('div')({
     bottom: 0,
     padding: calcRem(0, 10),
     boxSizing: 'border-box',
-    color: colours.white,
-    background: gradients.primary_to_accent,
+    color: colours.black,
+    background: colours.offWhite,
 
     '&:hover .card-titles': {
         textDecoration: 'underline',
@@ -76,6 +83,8 @@ export const StyledCardTitleWrapper = styled('div')({})
 
 export const StyledCardTitle = styled(StyledHeadingThree)({
     fontSize: calcRem(18),
+    fontWeight: 900,
+    color: colours.black,
 
     [breakpoint('sm')]: {
         fontSize: calcRem(19),
@@ -85,7 +94,7 @@ export const StyledCardTitle = styled(StyledHeadingThree)({
 export const StyledCardSubtitle = styled(StyledHeadingFour)({
     margin: calcRem(3, 0, 0),
     fontSize: calcRem(14),
-    color: colours.white,
+    color: colours.black,
 
     [breakpoint('sm')]: {
         fontSize: calcRem(14),
