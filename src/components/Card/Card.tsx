@@ -40,7 +40,10 @@ export const Card: React.FC<CardProps> = ({
         <StyledCard>
             <Link to={url}>
                 <StyledTagsWrapper>
-                    {tags && tags.map((tag: Tag, index) => <StyledTag>{tag.shortName}</StyledTag>)}
+                    {tags &&
+                        tags.map((tag: Tag, index) => (
+                            <StyledTag key={index}>{tag.shortName}</StyledTag>
+                        ))}
                 </StyledTagsWrapper>
                 <StyledCardTextWrapper className="card-text-wrapper">
                     <StyledCardTitleWrapper className="card-titles">
