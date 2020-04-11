@@ -6,14 +6,14 @@ interface TagProps {
     tag: TagObject
     text: string
     classText?: string
-    handler: (tags: TagObject[]) => void
+    handler: (tag: string) => void
 }
 
 export const TagButton: React.FC<TagProps> = ({ text, classText, handler, tag }) => {
     return (
         <StyledTagButton
             onClick={() => {
-                handler([tag])
+                handler(tag.shortName)
             }}
             className={classText ? classText : ''}
         >

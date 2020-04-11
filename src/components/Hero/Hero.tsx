@@ -23,7 +23,7 @@ interface HeroProps {
     largeImage?: Image
     title: string
     subtitle?: string
-    handler?: (tags: TagObject[]) => void
+    handler?: (tag: string) => void
 }
 
 interface State {

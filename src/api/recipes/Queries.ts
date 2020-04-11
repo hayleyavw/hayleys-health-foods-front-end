@@ -47,9 +47,9 @@ export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recip
     return new Recipe()
 }
 
-export async function getRecipesByTags(tags: TagObject[]): Promise<Recipe[]> {
-    let tagList = tags.map((tag: TagObject) => {
-        return tag.shortName
+export async function getRecipesByTags(tags: string[]): Promise<Recipe[]> {
+    let tagList = tags.map((tag: string) => {
+        return tag
     })
     const queryString = recipesByTagsQuery(JSON.stringify(tagList))
     const results = await (await fetch(`${api_url}/graphql`, {
