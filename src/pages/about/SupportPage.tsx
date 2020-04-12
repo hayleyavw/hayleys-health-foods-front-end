@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import { StyledHeadingOne } from '../../components/common/Headings.styled'
 import { ButtonLink } from '../../components/ButtonLink/ButtonLink'
 import { AboutMenu } from '../../components/AboutMenu/AboutMenu'

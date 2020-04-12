@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import {
     StyledCard,
     StyledCardImage,
@@ -38,7 +39,16 @@ export const Card: React.FC<CardProps> = ({
 
     return (
         <StyledCard>
-            <Link to={url}>
+            <Link
+                to={url}
+                onClick={() => {
+                    ReactGA.event({
+                        category: tags ? 'Recipe Card' : 'Blog Card',
+                        action: 'Card Click',
+                        label: title,
+                    })
+                }}
+            >
                 <StyledTagsWrapper>
                     {tags &&
                         tags.map((tag: TagObject, index) => (

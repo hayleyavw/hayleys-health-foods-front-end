@@ -1,17 +1,61 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import { StyledNav, StyledNavItem, StyledNavColumn, StyledNavLogo } from './Nav.styled'
+
+function GAEvent(label: string) {
+    ReactGA.event({
+        category: 'Navigation',
+        action: 'Main Nav Link Click',
+        label: label,
+    })
+}
 
 export const Nav: React.FC = () => {
     return (
         <StyledNav>
             <StyledNavColumn>
-                <StyledNavLogo to={'/'}>Hayley's Health Foods</StyledNavLogo>
+                <StyledNavLogo
+                    to={'/'}
+                    onClick={() => {
+                        GAEvent("Hayley's Health Foods")
+                    }}
+                >
+                    Hayley's Health Foods
+                </StyledNavLogo>
             </StyledNavColumn>
             <StyledNavColumn>
-                <StyledNavItem to={'/'}>Recipes</StyledNavItem>
-                <StyledNavItem to={'/blog'}>Blog</StyledNavItem>
-                <StyledNavItem to={'/about'}>About</StyledNavItem>
-                <StyledNavItem to={'/about/support'}>Support</StyledNavItem>
+                <StyledNavItem
+                    to={'/'}
+                    onClick={() => {
+                        GAEvent('Recipes')
+                    }}
+                >
+                    Recipes
+                </StyledNavItem>
+                <StyledNavItem
+                    to={'/blog'}
+                    onClick={() => {
+                        GAEvent('Blog')
+                    }}
+                >
+                    Blog
+                </StyledNavItem>
+                <StyledNavItem
+                    to={'/about'}
+                    onClick={() => {
+                        GAEvent('About')
+                    }}
+                >
+                    About
+                </StyledNavItem>
+                <StyledNavItem
+                    to={'/about/support'}
+                    onClick={() => {
+                        GAEvent('Support')
+                    }}
+                >
+                    Support
+                </StyledNavItem>
             </StyledNavColumn>
         </StyledNav>
     )
