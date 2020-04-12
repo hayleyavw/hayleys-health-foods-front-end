@@ -47,16 +47,13 @@ class GoogleAnalytics extends Component<Props> {
 const RouteTracker = () => <Route component={GoogleAnalytics} />
 
 const init = (options = {}) => {
-    // const isGAEnabled = process.env.NODE_ENV === 'production'
+    const isGAEnabled = process.env.NODE_ENV === 'production'
 
-    // if (isGAEnabled) {
-    //     ReactGA.initialize('UA-61782039-2')
-    // }
+    if (isGAEnabled) {
+        ReactGA.initialize('UA-61782039-2')
+    }
 
-    // return isGAEnabled
-
-    ReactGA.initialize('UA-61782039-2')
-    return true
+    return isGAEnabled
 }
 
 export default {
