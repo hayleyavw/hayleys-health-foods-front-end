@@ -86,6 +86,7 @@ export class RecipePage extends React.Component<Props> {
                                         mediumImage={recipe.mediumImage}
                                         largeImage={recipe.largeImage}
                                         title={recipe.title}
+                                        tags={recipe.tags}
                                     />
                                     <RecipeSteps
                                         method={recipe.method}

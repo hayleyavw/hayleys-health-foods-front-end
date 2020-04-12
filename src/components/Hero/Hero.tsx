@@ -12,7 +12,7 @@ import {
 import { Image } from '../../api/common/ResponseShapes'
 import { getStaticFilesPrefix } from '../../utils/utils'
 import { srcSetWidths } from '../styling/styling-utils/breakpoints'
-import { TagButton } from '../TagButton/TagButton'
+import { Tag } from '../Tag/Tag'
 import { TagObject } from '../../api/recipes/ResponseShapes'
 import { getTags } from '../../api/recipes/Queries'
 
@@ -24,6 +24,7 @@ interface HeroProps {
     title: string
     subtitle?: string
     handler?: (reset: boolean, tag: string, scroll: boolean) => void
+    tags?: TagObject[]
 }
 
 interface State {
@@ -38,8 +39,11 @@ export class Hero extends React.Component<HeroProps> {
     }
 
     async componentDidMount() {
-        const tags = await getTags()
-        this.setState({ tags: tags })
+        if (this.props.isHomePage) {
+            const tags = await getTags()
+            this.setState({ tags: tags })
+            this.setState({ loading: false })
+        }
         this.setState({ loading: false })
     }
 
@@ -52,8 +56,9 @@ export class Hero extends React.Component<HeroProps> {
             title,
             subtitle,
             handler,
+            tags,
         } = this.props
-        const { tags } = this.state
+        let tagList = tags ? tags : this.state.tags
 
         let smallBanner = require('./heroImages/small.jpg')
         let mediumBanner = require('./heroImages/medium.jpg')
@@ -78,14 +83,14 @@ export class Hero extends React.Component<HeroProps> {
                         <StyledHeroHeading>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
                         <StyledTagsWrapper>
-                            {this.state.loading === false && handler && tags
-                                ? tags.map((tag: TagObject, index) => (
-                                      <TagButton
+                            {this.state.loading === false
+                                ? tagList.map((tag: TagObject, index) => (
+                                      <Tag
                                           key={index}
                                           text={tag.name}
                                           handler={handler}
                                           tag={tag}
-                                      ></TagButton>
+                                      ></Tag>
                                   ))
                                 : ''}
                         </StyledTagsWrapper>
