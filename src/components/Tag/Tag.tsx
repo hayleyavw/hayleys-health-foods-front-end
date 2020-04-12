@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import { StyledHeroTagButton, StyledHeroTagLabel } from './Tag.styled'
 import { TagObject } from '../../api/recipes/ResponseShapes'
 
@@ -14,6 +15,11 @@ export const Tag: React.FC<TagProps> = ({ text, classText, handler, tag }) => {
         <StyledHeroTagButton
             onClick={() => {
                 handler(true, tag.shortName, true)
+                ReactGA.event({
+                    category: 'Filters',
+                    action: 'Hero Click',
+                    label: tag.name,
+                })
             }}
             className={classText ? `${classText} tag-button` : 'tag-button'}
         >

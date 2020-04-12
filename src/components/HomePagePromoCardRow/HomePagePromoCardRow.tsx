@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import {
     StyledPromoCardRow,
     StyledPromoCardRowButtonLink,
@@ -8,18 +9,34 @@ import {
 
 export class HomePagePromoCardRow extends React.Component {
     render() {
-        const blogIcon = require('../HomePagePromoCardRow/bubble.png')
+        const blogIcon = require('../../assets/blog.png')
+        const supportIcon = require('../../assets/buy-me-a-smoothie.svg')
         return (
             <StyledPromoCardRow>
-                <StyledPromoCardRowButtonLink href="/blog/">
+                <StyledPromoCardRowButtonLink
+                    href="/blog/"
+                    onClick={() => {
+                        ReactGA.event({
+                            category: 'Promo',
+                            action: 'Button click',
+                            label: 'Blog',
+                        })
+                    }}
+                >
                     <StyledPromoCardButtonLinkImage src={blogIcon} alt={'Thought bubble.'} />
                     <StyledPromoCardButtonLinkText>Read the Blog</StyledPromoCardButtonLinkText>
                 </StyledPromoCardRowButtonLink>
-                <StyledPromoCardRowButtonLink href="/about/support">
-                    <StyledPromoCardButtonLinkImage
-                        src={'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg'}
-                        alt={'Keep cup.'}
-                    />
+                <StyledPromoCardRowButtonLink
+                    href="/about/support"
+                    onClick={() => {
+                        ReactGA.event({
+                            category: 'Promo',
+                            action: 'Button click',
+                            label: 'Support',
+                        })
+                    }}
+                >
+                    <StyledPromoCardButtonLinkImage src={supportIcon} alt={'Keep cup.'} />
                     <StyledPromoCardButtonLinkText>
                         Buy me a smoothie?
                     </StyledPromoCardButtonLinkText>
@@ -28,5 +45,3 @@ export class HomePagePromoCardRow extends React.Component {
         )
     }
 }
-
-// <a target="_blank" href="https://icons8.com/icons/set/thinking-bubble">Thinking Bubble icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

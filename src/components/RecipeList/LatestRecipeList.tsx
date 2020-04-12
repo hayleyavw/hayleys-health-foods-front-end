@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactGA from 'react-ga'
 import {
     StyledLatestRecipeList,
     StyledLatestRecipeCard,
@@ -40,6 +41,31 @@ export class LatestRecipeList extends React.Component {
             }
         })
 
+        function GAEvent(index: number, recipeName: string) {
+            let action: string = ''
+            switch (index) {
+                case 0:
+                    action = 'Featured'
+                    break
+                case 1:
+                    action = 'Top'
+                    break
+                case 2:
+                    action = 'Middle'
+                    break
+                case 3:
+                    action = 'Bottom'
+                    break
+                default:
+                    break
+            }
+            ReactGA.event({
+                category: 'Latest',
+                action: action,
+                label: recipeName,
+            })
+        }
+
         return (
             <React.Fragment>
                 {this.state.loading ? (
@@ -54,6 +80,9 @@ export class LatestRecipeList extends React.Component {
                                 id={`latest-recipe-image-${index}`}
                                 to={`/recipes/${recipe.slug}`}
                                 className={'latest-recipe-image'}
+                                onClick={() => {
+                                    GAEvent(index, recipe.title)
+                                }}
                             >
                                 <StyledLatestRecipeImageWrapper>
                                     <StyledLatestRecipeImage

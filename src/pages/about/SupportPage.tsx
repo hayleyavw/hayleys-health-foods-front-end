@@ -9,6 +9,7 @@ import { jsonld } from '../../components/common/jsonld'
 import { StyledAnchor } from '../../components/common/Anchor.styled'
 
 const SupportPage: React.FC = () => {
+    const supportIcon = require('../../assets/buy-me-a-smoothie.svg')
     return (
         <React.Fragment>
             <Helmet>
@@ -33,7 +34,7 @@ const SupportPage: React.FC = () => {
                         href="https://www.buymeacoffee.com/healthfoods"
                         newTab={true}
                         image={{
-                            src: 'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg',
+                            src: supportIcon,
                             alt: 'But me a smoothie?',
                         }}
                         buttonText="Buy me a smoothie?"

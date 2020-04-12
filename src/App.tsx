@@ -20,6 +20,7 @@ import { Nav } from './components/Nav/Nav'
 import { Footer } from './components/Footer/Footer'
 import { calcRem } from './components/styling/styling-utils/calcRem'
 import PageNotFound from './pages/PageNotFound'
+import GoogleAnalytics from './components/common/GoogleAnalytics'
 
 export class App extends React.Component {
     render() {
@@ -56,6 +57,7 @@ export class App extends React.Component {
                         `}
                     />
                     <Router history={history}>
+                        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
                         <div className="content-wrapper">
                             <Nav />
                             <Switch>
