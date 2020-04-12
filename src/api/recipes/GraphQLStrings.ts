@@ -64,10 +64,10 @@ export const tagsQuery = `query {
     }
 }`
 
-export const recipesByTagsQuery = (tagList: string) => {
+export const recipesByTagsQuery = (tag: string) => {
     return `query {
         tags(where: {
-            short_name: ${tagList}
+            short_name: ${tag}
         }) {
             ${tagsQueryString}
             recipes {

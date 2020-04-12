@@ -32,9 +32,15 @@ class HomePage extends React.Component<Props> {
         this.handler = this.handler.bind(this)
     }
 
-    handler(tag: string) {
+    handler(reset: boolean, tag: string, scroll: boolean) {
+        if (reset) {
+            this.setState({ gf: false })
+            this.setState({ df: false })
+            this.setState({ nf: false })
+            this.setState({ vege: false })
+            this.setState({ vegan: false })
+        }
         let status: boolean
-
         switch (tag) {
             case 'gf':
                 status = this.state.gf
@@ -59,10 +65,12 @@ class HomePage extends React.Component<Props> {
             default:
                 break
         }
-        const yOffset = -10
-        const element = document.getElementsByClassName('recipe-list')[0]
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
-        window.scrollTo({ top: y, behavior: 'smooth' })
+        if (scroll) {
+            const yOffset = -10
+            const element = document.getElementsByClassName('recipe-list')[0]
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+            window.scrollTo({ top: y, behavior: 'smooth' })
+        }
     }
 
     render() {

@@ -12,7 +12,7 @@ interface FilterButtonProps {
         vege: boolean
         vegan: boolean
     }
-    handler: (tag: string) => void
+    handler: (reset: boolean, tag: string, scroll: boolean) => void
 }
 interface State {
     tags: TagObject[]
