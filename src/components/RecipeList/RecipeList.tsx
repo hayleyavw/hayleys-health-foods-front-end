@@ -2,11 +2,17 @@ import React from 'react'
 import { Card } from '../Card/Card'
 import { StyledRecipeList, StyledRecipeListWrapper } from './RecipeList.styled'
 import { getRecipeGraphQL, getRecipesByTags } from '../../api/recipes/Queries'
-import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
+import { Recipe } from '../../api/recipes/ResponseShapes'
 import Loading from '../Loading/Loading'
 
 interface RecipeListProps {
-    tags: TagObject[] | null
+    tagStatus: {
+        gf: boolean
+        df: boolean
+        nf: boolean
+        vege: boolean
+        vegan: boolean
+    }
 }
 interface State {
     recipes: Recipe[]
@@ -21,13 +27,29 @@ export class RecipeList extends React.Component<RecipeListProps> {
 
     async componentDidMount() {
         try {
-            if (this.props.tags === null) {
+            let tagList = []
+            if (this.props.tagStatus.gf) {
+                tagList.push('gf')
+            }
+            if (this.props.tagStatus.df) {
+                tagList.push('df')
+            }
+            if (this.props.tagStatus.nf) {
+                tagList.push('nf')
+            }
+            if (this.props.tagStatus.vege) {
+                tagList.push('vege')
+            }
+            if (this.props.tagStatus.vegan) {
+                tagList.push('vegan')
+            }
+            if (tagList.length === 0) {
                 await getRecipeGraphQL({}).then(recipe => {
                     this.setState({ recipes: recipe })
                     this.setState({ loading: false })
                 })
             } else {
-                await getRecipesByTags(this.props.tags).then(recipes => {
+                await getRecipesByTags(tagList).then(recipes => {
                     this.setState({ recipes: recipes })
                     this.setState({ loading: false })
                 })
@@ -38,16 +60,32 @@ export class RecipeList extends React.Component<RecipeListProps> {
     }
 
     async componentDidUpdate(prevProps: RecipeListProps) {
-        if (JSON.stringify(this.props.tags) !== JSON.stringify(prevProps.tags)) {
+        if (JSON.stringify(this.props.tagStatus) !== JSON.stringify(prevProps.tagStatus)) {
             try {
+                let tagList = []
+                if (this.props.tagStatus.gf) {
+                    tagList.push('gf')
+                }
+                if (this.props.tagStatus.df) {
+                    tagList.push('df')
+                }
+                if (this.props.tagStatus.nf) {
+                    tagList.push('nf')
+                }
+                if (this.props.tagStatus.vege) {
+                    tagList.push('vege')
+                }
+                if (this.props.tagStatus.vegan) {
+                    tagList.push('vegan')
+                }
                 this.setState({ loading: true })
-                if (this.props.tags === null) {
+                if (tagList.length === 0) {
                     await getRecipeGraphQL({}).then(recipe => {
                         this.setState({ recipes: recipe })
                         this.setState({ loading: false })
                     })
                 } else {
-                    await getRecipesByTags(this.props.tags).then(recipes => {
+                    await getRecipesByTags(tagList).then(recipes => {
                         this.setState({ recipes: recipes })
                         this.setState({ loading: false })
                     })

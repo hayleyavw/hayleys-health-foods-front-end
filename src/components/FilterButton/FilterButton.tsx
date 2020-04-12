@@ -5,16 +5,18 @@ import { StyledFilterButton, StyledFilterButtonText } from './FilterButton.style
 interface TagProps {
     tag: TagObject
     classText?: string
-    // handler: (tags: TagObject[]) => void
+    selected: boolean
+    handler: (reset: boolean, tag: string, scroll: boolean) => void
 }
 
-export const FilterButton: React.FC<TagProps> = ({ tag, classText }) => {
+export const FilterButton: React.FC<TagProps> = ({ tag, classText, selected, handler }) => {
     return (
         <StyledFilterButton
-            // onClick={() => {
-            //     handler([tag])
-            // }}
+            onClick={() => {
+                handler(false, tag.shortName, false)
+            }}
             className={classText ? classText : ''}
+            selected={selected}
         >
             <StyledFilterButtonText>{tag.name}</StyledFilterButtonText>
         </StyledFilterButton>

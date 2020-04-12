@@ -8,7 +8,7 @@ import { bodyFont } from '../styling/fonts'
 import { StyledMiniLogo } from '../common/Headings.styled'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
 
-export const NavLogo = styled('div')({
+export const NavLogo = styled(Link)({
     fontSize: calcRem(18),
 
     [breakpoint('sm')]: {

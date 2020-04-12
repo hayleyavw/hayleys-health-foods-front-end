@@ -30,6 +30,7 @@ class ContactForm extends React.Component {
                         id="message-input"
                         required
                         rows={5}
+                        className="contact-textarea"
                     ></StyledTextarea>
                 </StyledFieldset>
 

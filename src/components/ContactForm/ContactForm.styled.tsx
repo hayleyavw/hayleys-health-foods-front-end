@@ -41,6 +41,10 @@ const commonStyles = css({
     fontFamily: 'monospace',
     backgroundColor: '#f9f9f9',
     borderRadius: calcRem(5),
+
+    '&.contact-textarea': {
+        resize: 'none',
+    },
 })
 
 export const StyledLabel = styled('label')({})
@@ -51,7 +55,6 @@ export const StyledInput = styled('input')({
 
 export const StyledTextarea = styled('textarea')({
     ...commonStyles,
-    resize: 'none',
 })
 
 export const StyledButtonWrapper = styled('div')({

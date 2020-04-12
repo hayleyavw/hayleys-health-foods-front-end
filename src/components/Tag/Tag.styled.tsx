@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { calcRem } from '../styling/styling-utils/calcRem'
 import { colours } from '../styling/colours'
+import { css } from '@emotion/core'
 
-export const StyledTagButton = styled('button')({
+const commonStyles = css({
     margin: calcRem(2),
     padding: calcRem(6),
     borderRadius: calcRem(3),
@@ -13,8 +14,18 @@ export const StyledTagButton = styled('button')({
     opacity: 0.8,
     height: 'fit-content',
 
-    '&:hover': {
-        opacity: 1,
-        cursor: 'pointer',
+    '&.tag-button': {
+        '&:hover': {
+            opacity: 1,
+            cursor: 'pointer',
+        },
     },
+})
+
+export const StyledHeroTagButton = styled('button')({
+    ...commonStyles,
+})
+
+export const StyledHeroTagLabel = styled('p')({
+    ...commonStyles,
 })
