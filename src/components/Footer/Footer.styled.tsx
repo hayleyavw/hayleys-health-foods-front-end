@@ -4,6 +4,7 @@ import { StyledMiniLogo } from '../common/Headings.styled'
 import { StyledNav, StyledNavItem, StyledNavLogo, StyledNavColumn } from '../Nav/Nav.styled'
 import { calcRem } from '../styling/styling-utils/calcRem'
 import { breakpoint } from '../styling/styling-utils/breakpoints'
+import { StyledParagraph } from '../common/Paragraph.styled'
 
 export const StyledFooterFooter = styled('footer')({
     height: undefined,
@@ -25,6 +26,12 @@ export const StyledFooterColumnDiv = styled('div')({
     [breakpoint('md')]: {
         fontSize: calcRem(19),
     },
+})
+
+export const StyledFooterParagraph = styled(StyledParagraph)({
+    margin: 0,
+    textAlign: 'center',
+    fontSize: calcRem(8),
 })
 
 export const StyledFooter = StyledNav.withComponent(StyledFooterFooter)

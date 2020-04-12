@@ -9,7 +9,8 @@ import {
 
 export class HomePagePromoCardRow extends React.Component {
     render() {
-        const blogIcon = require('../HomePagePromoCardRow/bubble.png')
+        const blogIcon = require('../../assets/blog.png')
+        const supportIcon = require('../../assets/buy-me-a-smoothie.svg')
         return (
             <StyledPromoCardRow>
                 <StyledPromoCardRowButtonLink
@@ -35,10 +36,7 @@ export class HomePagePromoCardRow extends React.Component {
                         })
                     }}
                 >
-                    <StyledPromoCardButtonLinkImage
-                        src={'https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg'}
-                        alt={'Keep cup.'}
-                    />
+                    <StyledPromoCardButtonLinkImage src={supportIcon} alt={'Keep cup.'} />
                     <StyledPromoCardButtonLinkText>
                         Buy me a smoothie?
                     </StyledPromoCardButtonLinkText>
@@ -47,5 +45,3 @@ export class HomePagePromoCardRow extends React.Component {
         )
     }
 }
-
-// <a target="_blank" href="https://icons8.com/icons/set/thinking-bubble">Thinking Bubble icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
