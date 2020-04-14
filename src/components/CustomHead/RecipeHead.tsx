@@ -61,7 +61,7 @@ const generateRecipeStructuredData = (
         "@context": "http://schema.org/",
         "@type": "Recipe",
         "name": "${title}",
-        "image": "${getStaticFilesPrefix}${imageUrl}",
+        "image": "${getStaticFilesPrefix()}${imageUrl}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"
