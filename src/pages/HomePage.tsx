@@ -33,38 +33,38 @@ class HomePage extends React.Component<Props> {
     }
 
     handler(reset: boolean, tag: string, scroll: boolean) {
-        if (reset) {
-            this.setState({ gf: false })
-            this.setState({ df: false })
-            this.setState({ nf: false })
-            this.setState({ vege: false })
-            this.setState({ vegan: false })
-        }
-        let status: boolean
+        let gf_state = reset ? false : this.state.gf
+        let df_state = reset ? false : this.state.df
+        let nf_state = reset ? false : this.state.nf
+        let vege_state = reset ? false : this.state.vege
+        let vegan_state = reset ? false : this.state.vegan
+
         switch (tag) {
             case 'gf':
-                status = this.state.gf
-                this.setState({ gf: status ? false : true })
+                gf_state = gf_state ? false : true
                 break
             case 'df':
-                status = this.state.df
-                this.setState({ df: status ? false : true })
+                df_state = df_state ? false : true
                 break
             case 'nf':
-                status = this.state.nf
-                this.setState({ nf: status ? false : true })
+                nf_state = nf_state ? false : true
                 break
             case 'vege':
-                status = this.state.vege
-                this.setState({ vege: status ? false : true })
+                vege_state = vege_state ? false : true
                 break
             case 'vegan':
-                status = this.state.vegan
-                this.setState({ vegan: status ? false : true })
+                vegan_state = vegan_state ? false : true
                 break
             default:
                 break
         }
+
+        this.setState({ gf: gf_state })
+        this.setState({ df: df_state })
+        this.setState({ nf: nf_state })
+        this.setState({ vege: vege_state })
+        this.setState({ vegan: vegan_state })
+
         if (scroll) {
             const yOffset = -10
             const element = document.getElementsByClassName('recipe-list')[0]
