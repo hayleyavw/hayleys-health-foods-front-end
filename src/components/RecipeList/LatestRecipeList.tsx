@@ -12,7 +12,7 @@ import {
 import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
 import { getRecipeGraphQL } from '../../api/recipes/Queries'
 import Loading from '../Loading/Loading'
-import { getStaticFilesPrefix } from '../../utils/utils'
+import { buildImagePath } from '../../utils/utils'
 import { TagLabel } from '../TagLabel/TagLabel'
 
 interface State {
@@ -89,12 +89,8 @@ export class LatestRecipeList extends React.Component {
                                         src={
                                             recipe.thumbnail
                                                 ? index === 0
-                                                    ? `${getStaticFilesPrefix()}${
-                                                          recipe.mediumImage.url
-                                                      }`
-                                                    : `${getStaticFilesPrefix()}${
-                                                          recipe.thumbnail.url
-                                                      }`
+                                                    ? `${buildImagePath(recipe.mediumImage.url)}`
+                                                    : `${buildImagePath(recipe.thumbnail.url)}`
                                                 : ''
                                         }
                                     />

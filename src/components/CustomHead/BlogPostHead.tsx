@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { Blog } from '../../api/blogPosts/ResponseShapes'
-import { getStaticFilesPrefix } from '../../utils/utils'
+import { buildImagePath } from '../../utils/utils'
 
 interface Props {
     blogPost: Blog
@@ -38,7 +38,7 @@ const generateBlogStructuredData = (
     createdAt: string,
     updatedAt: string
 ) => {
-    let image = `${getStaticFilesPrefix}${imageUrl}`
+    let image = `${buildImagePath(imageUrl)}`
     return `{
         "@context": "https://schema.org",
         "@type": "BlogPosting",

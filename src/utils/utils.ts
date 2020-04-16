@@ -1,8 +1,6 @@
-import { api_url } from '../api/common'
-
-export function getStaticFilesPrefix() {
-    if (process.env.NODE_ENV !== 'production' && process.env.REACT_APP_NODE_ENV !== 'production') {
-        return `${api_url}/`
+export function buildImagePath(imageUrl: string) {
+    if (process.env.REACT_APP_NODE_ENV === 'production' && imageUrl !== 'Loading...') {
+        return imageUrl
     }
-    return ''
+    return 'https://via.placeholder.com/1200x900.jpg/?text=Hayley%27s+Health+Foods'
 }
