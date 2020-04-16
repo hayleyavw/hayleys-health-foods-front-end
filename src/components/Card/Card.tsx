@@ -11,7 +11,7 @@ import {
     StyledTagsWrapper,
 } from './Card.styled'
 import { Link } from 'react-router-dom'
-import { getStaticFilesPrefix } from '../../utils/utils'
+import { buildImagePath } from '../../utils/utils'
 import { TagObject } from '../../api/recipes/ResponseShapes'
 import { TagLabel } from '../TagLabel/TagLabel'
 
@@ -64,7 +64,7 @@ export const Card: React.FC<CardProps> = ({
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage src={`${getStaticFilesPrefix()}${thumbnail}`} />
+                <StyledCardImage src={`${buildImagePath(thumbnail)}`} />
             </Link>
         </StyledCard>
     )

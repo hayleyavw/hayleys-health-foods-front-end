@@ -10,7 +10,7 @@ import {
     StyledTagsWrapper,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
-import { getStaticFilesPrefix } from '../../utils/utils'
+import { buildImagePath } from '../../utils/utils'
 import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 import { Tag } from '../Tag/Tag'
 import { TagObject } from '../../api/recipes/ResponseShapes'
@@ -64,11 +64,9 @@ export class Hero extends React.Component<HeroProps> {
         let mediumBanner = require('./heroImages/medium.jpg')
         let largeBanner = require('./heroImages/large.jpg')
 
-        const small = smallImage ? `${getStaticFilesPrefix()}${smallImage.url}` : `${smallBanner}`
-        const medium = mediumImage
-            ? `${getStaticFilesPrefix()}${mediumImage.url}`
-            : `${mediumBanner}`
-        const large = largeImage ? `${getStaticFilesPrefix()}${largeImage.url}` : `${largeBanner}`
+        const small = smallImage ? `${buildImagePath(smallImage.url)}` : `${smallBanner}`
+        const medium = mediumImage ? `${buildImagePath(mediumImage.url)}` : `${mediumBanner}`
+        const large = largeImage ? `${buildImagePath(largeImage.url)}` : `${largeBanner}`
 
         const hasSubtitle = subtitle ? true : false
         return (
