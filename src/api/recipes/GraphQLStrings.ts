@@ -6,6 +6,7 @@ const baseQuery = `
     title
     method
     description
+    published
     ${imageQuery}
     tags {
         id
@@ -45,7 +46,7 @@ export const recipesQuery = (props: RecipesQueryProps) => {
     return `query {
         recipes (${props.limit ? 'limit:' + props.limit : ''}, ${
         props.start ? 'start:' + props.start : ''
-    }, sort: "created_at:desc") {
+    }, sort: "created_at:desc", where: {published: "true"}) {
             ${baseQuery}
         }
     }`
@@ -70,12 +71,13 @@ export const recipesByTagsQuery = (tag: string) => {
             short_name: ${tag}
         }) {
             ${tagsQueryString}
-            recipes {
+            recipes(where: {published: "true"}) {
                 id
                 slug
                 title
                 method
                 description
+                published
                 ${imageQuery}
                 tags {
                     ${tagsQueryString}
