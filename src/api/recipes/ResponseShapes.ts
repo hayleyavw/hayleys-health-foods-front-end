@@ -69,6 +69,7 @@ export class Recipe {
     largeImage: Image
     tags: TagObject[]
     ingredients: Ingredients[]
+    published: Boolean
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -88,12 +89,12 @@ export class Recipe {
                       return new TagObject(tag)
                   })
                 : [new TagObject()]
-
         this.ingredients =
             results && results.ingredients
                 ? results.ingredients.map((ingredient: any) => {
                       return new Ingredients(ingredient)
                   })
                 : [new Ingredients()]
+        this.published = results && results.published ? results.published : false
     }
 }
