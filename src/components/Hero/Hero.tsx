@@ -78,7 +78,7 @@ export class Hero extends React.Component<HeroProps> {
                         srcSet={`${small} ${srcSetWidths.sm}, ${medium} ${srcSetWidths.md}, ${large} ${srcSetWidths.lg}`}
                     />
                     <StyledHeroHeadingWrapper>
-                        <StyledHeroHeading>{title}</StyledHeroHeading>
+                        <StyledHeroHeading isHomePage={isHomePage}>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
                         <StyledTagsWrapper>
                             {this.state.loading === false
