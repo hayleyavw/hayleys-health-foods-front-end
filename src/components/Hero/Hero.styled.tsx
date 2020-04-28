@@ -22,19 +22,23 @@ export const StyledHeroHeadingWrapper = styled('div')<StyledHeroProps>(({ hasSub
     width: '90%',
 }))
 
-export const StyledHeroHeading = styled(StyledHeadingOne)({
-    fontSize: calcRem(60),
+export const StyledHeroHeading = styled(StyledHeadingOne)<StyledHeroProps>(({ isHomePage }) => ({
+    fontSize: isHomePage ? calcRem(60) : calcRem(40),
     color: colours.white,
     textShadow: `${calcRem(4)} ${calcRem(4)} ${calcRem(1)} rgba(0,0,0,0.8)`,
 
     [breakpoint('sm')]: {
-        fontSize: calcRem(80),
+        fontSize: isHomePage ? calcRem(80) : calcRem(50),
     },
 
     [breakpoint('md')]: {
-        fontSize: calcRem(110),
+        fontSize: isHomePage ? calcRem(110) : calcRem(70),
     },
-})
+
+    [breakpoint('lg')]: {
+        fontSize: isHomePage ? undefined : calcRem(90),
+    },
+}))
 
 export const StyledSubtitle = styled(StyledHeadingThree)({
     textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
