@@ -17,7 +17,6 @@ export class Footer extends React.Component {
                     </StyledFooterColumn>
                     <StyledFooterColumn>
                         <StyledFooterItem to={'/'}>Recipes</StyledFooterItem>
-                        <StyledFooterItem to={'/blog'}>Blog</StyledFooterItem>
                         <StyledFooterItem to={'/about'}>About</StyledFooterItem>
                         <StyledFooterItem to={'/about/support'}>Support</StyledFooterItem>
                     </StyledFooterColumn>

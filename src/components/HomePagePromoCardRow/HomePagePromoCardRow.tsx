@@ -9,22 +9,22 @@ import {
 
 export class HomePagePromoCardRow extends React.Component {
     render() {
-        const blogIcon = require('../../assets/blog.png')
+        const aboutIcon = require('../../assets/info.png')
         const supportIcon = require('../../assets/buy-me-a-smoothie.svg')
         return (
             <StyledPromoCardRow>
                 <StyledPromoCardRowButtonLink
-                    href="/blog/"
+                    href="/about"
                     onClick={() => {
                         ReactGA.event({
                             category: 'Promo',
                             action: 'Button click',
-                            label: 'Blog',
+                            label: 'About',
                         })
                     }}
                 >
-                    <StyledPromoCardButtonLinkImage src={blogIcon} alt={'Thought bubble.'} />
-                    <StyledPromoCardButtonLinkText>Read the Blog</StyledPromoCardButtonLinkText>
+                    <StyledPromoCardButtonLinkImage src={aboutIcon} alt={'Information icon.'} />
+                    <StyledPromoCardButtonLinkText>About the project</StyledPromoCardButtonLinkText>
                 </StyledPromoCardRowButtonLink>
                 <StyledPromoCardRowButtonLink
                     href="/about/support"
