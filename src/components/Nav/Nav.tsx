@@ -33,14 +33,6 @@ export const Nav: React.FC = () => {
                     Recipes
                 </StyledNavItem>
                 <StyledNavItem
-                    to={'/blog'}
-                    onClick={() => {
-                        GAEvent('Blog')
-                    }}
-                >
-                    Blog
-                </StyledNavItem>
-                <StyledNavItem
                     to={'/about'}
                     onClick={() => {
                         GAEvent('About')
