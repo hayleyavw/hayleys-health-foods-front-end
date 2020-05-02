@@ -12,7 +12,6 @@ import { Card } from '../Card/Card'
 
 const ErrorPage: React.FC = () => {
     const recipeImage = require('./assets/recipes.jpg')
-    const blogImage = require('./assets/blog.jpg')
     const aboutImage = require('./assets/about.jpg')
     return (
         <StyledErrorPage>
@@ -30,12 +29,6 @@ const ErrorPage: React.FC = () => {
                         title="Recipes"
                         description="Check out all my recipes, each and everyone designed with gut health in mind."
                         thumbnail={recipeImage}
-                    />
-                    <Card
-                        url="/blog"
-                        title="Blog"
-                        description="Read my latest blog posts to see what is going on in the world of Hayley."
-                        thumbnail={blogImage}
                     />
                     <Card
                         url="/about"

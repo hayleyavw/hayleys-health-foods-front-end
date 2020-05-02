@@ -39,7 +39,7 @@ interface State {
 }
 
 function isRecipeObject(response: Recipe | Error): response is Recipe {
-    return (response as Recipe).title !== undefined
+    return (response as Recipe).title !== undefined && (response as Recipe).title !== 'Loading...'
 }
 
 export class RecipePage extends React.Component<Props> {
@@ -53,13 +53,18 @@ export class RecipePage extends React.Component<Props> {
         try {
             const response = await getRecipeBySlug({ slug: this.state.slug })
             if (isRecipeObject(response)) {
+                console.log(response)
                 getRecipeGraphQL({ id: response.id }).then(recipe => {
                     this.setState({ recipe: recipe })
                     this.setState({ loading: false })
                 })
+            } else {
+                this.setState({ loading: false })
+                this.setState({ recipe: null })
             }
         } catch {
             this.setState({ loading: false })
+            this.setState({ recipe: null })
         }
     }
 
@@ -76,33 +81,26 @@ export class RecipePage extends React.Component<Props> {
                             <Loading />
                         </StyledContentBox>
                     </React.Fragment>
-                ) : (
+                ) : recipe !== null ? (
                     <React.Fragment>
-                        {recipe.slug !== 'Loading...' ? (
-                            <React.Fragment>
-                                <RecipeHead recipe={recipe} />
-                                <React.Fragment>
-                                    <Hero
-                                        smallImage={recipe.thumbnail}
-                                        mediumImage={recipe.mediumImage}
-                                        largeImage={recipe.largeImage}
-                                        title={recipe.title}
-                                        tags={recipe.tags}
-                                        recipeYield={recipe.yield}
-                                        prepTime={recipe.prepTime}
-                                        cookTime={recipe.cookTime}
-                                    />
-                                    <RecipeSteps
-                                        method={recipe.method}
-                                        ingredients={recipe.ingredients}
-                                    />
-                                    <RecipeFooter recipeTitle={recipe.title} />
-                                </React.Fragment>
-                            </React.Fragment>
-                        ) : (
-                            <ErrorPage />
-                        )}
+                        <RecipeHead recipe={recipe} />
+                        <React.Fragment>
+                            <Hero
+                                smallImage={recipe.thumbnail}
+                                mediumImage={recipe.mediumImage}
+                                largeImage={recipe.largeImage}
+                                title={recipe.title}
+                                tags={recipe.tags}
+                                recipeYield={recipe.yield}
+                                prepTime={recipe.prepTime}
+                                cookTime={recipe.cookTime}
+                            />
+                            <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
+                            <RecipeFooter recipeTitle={recipe.title} />
+                        </React.Fragment>
                     </React.Fragment>
+                ) : (
+                    <ErrorPage />
                 )}
             </React.Fragment>
         )
