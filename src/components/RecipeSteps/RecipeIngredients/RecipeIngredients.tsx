@@ -1,5 +1,9 @@
 import React from 'react'
-import { StyledRecipeIngredients, StyledRecipeIngredientsWrapper } from './RecipeIngredients.styled'
+import {
+    StyledRecipeIngredients,
+    StyledRecipeIngredientsWrapper,
+    StyledIngredientsGradientLine,
+} from './RecipeIngredients.styled'
 import { StyledHeadingTwo } from '../../common/Headings.styled'
 import { Ingredients } from '../../../api/recipes/ResponseShapes'
 import { RecipeIngredient } from './RecipeIngredient'
@@ -19,6 +23,7 @@ export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
                         <RecipeIngredient ingredient={ingredient} key={index} />
                     ))}
                 </StyledRecipeIngredients>
+                <StyledIngredientsGradientLine />
             </StyledRecipeIngredientsWrapper>
         )
     }
