@@ -13,7 +13,7 @@ export class RecipeMethod extends React.Component<RecipeMethodProps> {
         return (
             <StyledRecipeMethod>
                 <StyledHeadingTwo>Method</StyledHeadingTwo>
-                <ReactMarkdown source={method} />
+                <ReactMarkdown className="method-step" source={method} />
             </StyledRecipeMethod>
         )
     }

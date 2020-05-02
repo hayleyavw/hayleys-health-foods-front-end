@@ -1,11 +1,8 @@
 import React from 'react'
-import {
-    StyledRecipeIngredients,
-    StyledRecipeIngredientsWrapper,
-    StyledRecipeIngredient,
-} from './RecipeIngredients.styled'
+import { StyledRecipeIngredients, StyledRecipeIngredientsWrapper } from './RecipeIngredients.styled'
 import { StyledHeadingTwo } from '../../common/Headings.styled'
 import { Ingredients } from '../../../api/recipes/ResponseShapes'
+import { RecipeIngredient } from './RecipeIngredient'
 
 interface RecipeIngredientsProps {
     ingredients: Ingredients[]
@@ -19,13 +16,7 @@ export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
                 <StyledHeadingTwo>Ingredients</StyledHeadingTwo>
                 <StyledRecipeIngredients>
                     {ingredients.map((ingredient: Ingredients, index: number) => (
-                        <StyledRecipeIngredient key={index}>
-                            {ingredient.ingredient.name} ({ingredient.quantity}
-                            {ingredient.ingredientUnit.shortName !== 'Loading...'
-                                ? ` ${ingredient.ingredientUnit.shortName}`
-                                : ''}
-                            )
-                        </StyledRecipeIngredient>
+                        <RecipeIngredient ingredient={ingredient} key={index} />
                     ))}
                 </StyledRecipeIngredients>
             </StyledRecipeIngredientsWrapper>
