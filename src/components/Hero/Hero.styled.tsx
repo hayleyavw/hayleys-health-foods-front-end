@@ -43,6 +43,7 @@ export const StyledHeroHeading = styled(StyledHeadingOne)<StyledHeroProps>(({ is
 export const StyledSubtitle = styled(StyledHeadingThree)({
     textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
     fontSize: calcRem(25),
+    marginTop: calcRem(10),
 
     [breakpoint('sm')]: {
         fontSize: calcRem(30),
@@ -92,53 +93,6 @@ export const StyledRecipeInfoWrapper = styled('div')({
 export const StyledRecipeInfo = styled('div')({
     display: 'flex',
     justifyContent: 'center',
+    flexWrap: 'wrap',
     marginTop: calcRem(10),
-})
-
-export const StyledRecipeYield = styled('div')({
-    display: 'flex',
-    alignItems: 'center',
-    margin: calcRem(2),
-    padding: calcRem(6),
-    borderRadius: calcRem(3),
-    backgroundColor: colours.offWhite,
-    color: colours.black,
-    opacity: 0.8,
-
-    img: {
-        height: calcRem(50),
-        width: 'auto',
-        display: 'block',
-        marginRight: calcRem(2),
-    },
-
-    p: {
-        margin: calcRem(1),
-        '&.recipe-info-heading': {
-            fontWeight: 'bold',
-        },
-    },
-
-    [breakpoint('sm')]: {
-        img: {
-            display: 'none',
-        },
-    },
-})
-
-export const StyledRecipeYieldVertical = styled('div')({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-
-    img: {
-        display: 'none',
-    },
-
-    [breakpoint('sm')]: {
-        alignItems: 'center',
-        img: {
-            display: 'block',
-        },
-    },
 })

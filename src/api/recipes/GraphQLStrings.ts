@@ -5,6 +5,8 @@ const baseQuery = `
     slug
     title
     yield
+    prep_time
+    cook_time
     method
     description
     published
@@ -77,6 +79,8 @@ export const recipesByTagsQuery = (tag: string) => {
                 slug
                 title
                 yield
+                prep_time
+                cook_time
                 method
                 description
                 published

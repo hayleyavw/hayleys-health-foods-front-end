@@ -88,6 +88,8 @@ export class RecipePage extends React.Component<Props> {
                                         title={recipe.title}
                                         tags={recipe.tags}
                                         recipeYield={recipe.yield}
+                                        prepTime={recipe.prepTime}
+                                        cookTime={recipe.cookTime}
                                     />
                                     <RecipeSteps
                                         method={recipe.method}

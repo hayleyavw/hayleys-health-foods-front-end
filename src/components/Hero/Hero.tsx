@@ -10,8 +10,6 @@ import {
     StyledTagsWrapper,
     StyledRecipeInfo,
     StyledRecipeInfoWrapper,
-    StyledRecipeYield,
-    StyledRecipeYieldVertical,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
@@ -19,6 +17,7 @@ import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 import { Tag } from '../Tag/Tag'
 import { TagObject } from '../../api/recipes/ResponseShapes'
 import { getTags } from '../../api/recipes/Queries'
+import { RecipeInfoCard } from '../RecipeInfoCard/RecipeInfoCard'
 
 interface HeroProps {
     isHomePage?: boolean
@@ -30,6 +29,8 @@ interface HeroProps {
     handler?: (reset: boolean, tag: string, scroll: boolean) => void
     tags?: TagObject[]
     recipeYield?: string
+    prepTime?: string
+    cookTime?: string
 }
 
 interface State {
@@ -63,19 +64,22 @@ export class Hero extends React.Component<HeroProps> {
             handler,
             tags,
             recipeYield,
+            prepTime,
+            cookTime,
         } = this.props
         let tagList = tags ? tags : this.state.tags
 
         let smallBanner = require('./heroImages/small.jpg')
         let mediumBanner = require('./heroImages/medium.jpg')
         let largeBanner = require('./heroImages/large.jpg')
-        let yieldIcon = require('./../../assets/plate.png')
 
         const small = smallImage ? `${buildImagePath(smallImage.url)}` : `${smallBanner}`
         const medium = mediumImage ? `${buildImagePath(mediumImage.url)}` : `${mediumBanner}`
         const large = largeImage ? `${buildImagePath(largeImage.url)}` : `${largeBanner}`
 
         const hasSubtitle = subtitle ? true : false
+
+        console.log(prepTime)
         return (
             <StyledHeroWrapper>
                 <StyledHero hasSubtitle={hasSubtitle}>
@@ -102,23 +106,26 @@ export class Hero extends React.Component<HeroProps> {
                             </StyledTagsWrapper>
                             <StyledRecipeInfo>
                                 {this.state.loading === false ? (
+                                    prepTime && prepTime !== '' ? (
+                                        <RecipeInfoCard type="prepTime" description={prepTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    cookTime && cookTime !== '' ? (
+                                        <RecipeInfoCard type="cookTime" description={cookTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
                                     recipeYield && recipeYield !== '' ? (
-                                        <StyledRecipeYield>
-                                            <img
-                                                src={yieldIcon}
-                                                className="mobile-yield-img"
-                                                alt="Plate with knife and fork."
-                                            />
-                                            <StyledRecipeYieldVertical>
-                                                <p className="recipe-info-heading">Yields</p>
-                                                <img
-                                                    src={yieldIcon}
-                                                    className="yield-img"
-                                                    alt="Plate with knife and fork."
-                                                />
-                                                <p>{recipeYield}</p>
-                                            </StyledRecipeYieldVertical>
-                                        </StyledRecipeYield>
+                                        <RecipeInfoCard type="yield" description={recipeYield} />
                                     ) : (
                                         ''
                                     )

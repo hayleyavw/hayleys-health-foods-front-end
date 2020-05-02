@@ -63,6 +63,8 @@ export class Recipe {
     slug: string
     title: string
     yield: string
+    prepTime: string
+    cookTime: string
     method: string
     description: string
     thumbnail: Image
@@ -73,10 +75,13 @@ export class Recipe {
     published: Boolean
 
     constructor(results?: any) {
+        console.log(results)
         this.id = results && results.id ? results.id : 0
         this.slug = results && results.slug ? results.slug : 'Loading...'
         this.title = results && results.title ? results.title : 'Loading...'
         this.yield = results && results.yield ? results.yield : ''
+        this.prepTime = results && results.prep_time ? results.prep_time : ''
+        this.cookTime = results && results.cook_time ? results.cook_time : ''
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
         this.thumbnail =

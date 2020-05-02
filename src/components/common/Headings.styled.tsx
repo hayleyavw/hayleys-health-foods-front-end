@@ -8,6 +8,7 @@ export const StyledHeadingOne = styled('h1')({
     fontFamily: headingFont,
     margin: 0,
     color: colours.primary.primary,
+    lineHeight: 1,
 })
 
 export const StyledHeadingTwo = styled('h2')({
