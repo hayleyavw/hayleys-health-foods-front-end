@@ -8,6 +8,8 @@ import {
     StyledHeroWrapper,
     StyledSubtitle,
     StyledTagsWrapper,
+    StyledRecipeInfo,
+    StyledRecipeInfoWrapper,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
@@ -15,6 +17,7 @@ import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 import { Tag } from '../Tag/Tag'
 import { TagObject } from '../../api/recipes/ResponseShapes'
 import { getTags } from '../../api/recipes/Queries'
+import { RecipeInfoCard } from '../RecipeInfoCard/RecipeInfoCard'
 
 interface HeroProps {
     isHomePage?: boolean
@@ -25,6 +28,9 @@ interface HeroProps {
     subtitle?: string
     handler?: (reset: boolean, tag: string, scroll: boolean) => void
     tags?: TagObject[]
+    recipeYield?: string
+    prepTime?: string
+    cookTime?: string
 }
 
 interface State {
@@ -57,6 +63,9 @@ export class Hero extends React.Component<HeroProps> {
             subtitle,
             handler,
             tags,
+            recipeYield,
+            prepTime,
+            cookTime,
         } = this.props
         let tagList = tags ? tags : this.state.tags
 
@@ -69,6 +78,7 @@ export class Hero extends React.Component<HeroProps> {
         const large = largeImage ? `${buildImagePath(largeImage.url)}` : `${largeBanner}`
 
         const hasSubtitle = subtitle ? true : false
+
         return (
             <StyledHeroWrapper>
                 <StyledHero hasSubtitle={hasSubtitle}>
@@ -80,18 +90,49 @@ export class Hero extends React.Component<HeroProps> {
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading isHomePage={isHomePage}>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
-                        <StyledTagsWrapper>
-                            {this.state.loading === false
-                                ? tagList.map((tag: TagObject, index) => (
-                                      <Tag
-                                          key={index}
-                                          text={tag.name}
-                                          handler={handler}
-                                          tag={tag}
-                                      ></Tag>
-                                  ))
-                                : ''}
-                        </StyledTagsWrapper>
+                        <StyledRecipeInfoWrapper>
+                            <StyledTagsWrapper>
+                                {this.state.loading === false
+                                    ? tagList.map((tag: TagObject, index) => (
+                                          <Tag
+                                              key={index}
+                                              text={tag.name}
+                                              handler={handler}
+                                              tag={tag}
+                                          ></Tag>
+                                      ))
+                                    : ''}
+                            </StyledTagsWrapper>
+                            <StyledRecipeInfo>
+                                {this.state.loading === false ? (
+                                    prepTime && prepTime !== '' ? (
+                                        <RecipeInfoCard type="prepTime" description={prepTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    cookTime && cookTime !== '' ? (
+                                        <RecipeInfoCard type="cookTime" description={cookTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    recipeYield && recipeYield !== '' ? (
+                                        <RecipeInfoCard type="yield" description={recipeYield} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                            </StyledRecipeInfo>
+                        </StyledRecipeInfoWrapper>
                     </StyledHeroHeadingWrapper>
                 </StyledHero>
                 <StyledHeroGradientLine />

@@ -43,6 +43,7 @@ export const StyledHeroHeading = styled(StyledHeadingOne)<StyledHeroProps>(({ is
 export const StyledSubtitle = styled(StyledHeadingThree)({
     textShadow: `${calcRem(2)} ${calcRem(2)} ${calcRem(1)} rgba(0,0,0,0.8)`,
     fontSize: calcRem(25),
+    marginTop: calcRem(10),
 
     [breakpoint('sm')]: {
         fontSize: calcRem(30),
@@ -55,14 +56,9 @@ export const StyledSubtitle = styled(StyledHeadingThree)({
 
 export const StyledTagsWrapper = styled('div')({
     marginTop: calcRem(10),
-    height: calcRem(60),
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-
-    [breakpoint('sm')]: {
-        height: calcRem(30),
-    },
 })
 
 export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isHomePage }) => ({
@@ -86,4 +82,17 @@ export const StyledHeroGradientLine = styled('div')({
     height: calcRem(20),
     background: gradients.primary_to_accent,
     margin: `0 -${margins.bodyLeftRightMargin.sm}`,
+})
+
+export const StyledRecipeInfoWrapper = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    color: colours.black,
+})
+
+export const StyledRecipeInfo = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    marginTop: calcRem(10),
 })
