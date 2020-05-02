@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { StyledRecipeStepCard } from '../RecipeStepCard.styled'
 import { breakpoint } from '../../styling/styling-utils/breakpoints'
 import { calcRem } from '../../styling/styling-utils/calcRem'
-import { keyframes } from '@emotion/core'
+import { colours } from '../../styling/colours'
 
 interface StyledRecipeIngredientProps {
     checked?: boolean
@@ -15,7 +15,7 @@ export const StyledRecipeIngredient = styled('div')<StyledRecipeIngredientProps>
 
     span: {
         textDecoration: checked ? 'line-through' : undefined,
-        opacity: checked ? 0.4 : 1,
+        color: checked ? colours.grey : undefined,
         transition: '0.3s',
     },
 
