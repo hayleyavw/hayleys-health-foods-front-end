@@ -62,6 +62,7 @@ export class Recipe {
     id: number
     slug: string
     title: string
+    yield: string
     method: string
     description: string
     thumbnail: Image
@@ -75,6 +76,7 @@ export class Recipe {
         this.id = results && results.id ? results.id : 0
         this.slug = results && results.slug ? results.slug : 'Loading...'
         this.title = results && results.title ? results.title : 'Loading...'
+        this.yield = results && results.yield ? results.yield : ''
         this.method = results && results.method ? results.method : 'Loading...'
         this.description = results && results.description ? results.description : 'Loading...'
         this.thumbnail =

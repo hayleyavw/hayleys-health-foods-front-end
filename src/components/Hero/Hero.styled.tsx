@@ -55,14 +55,9 @@ export const StyledSubtitle = styled(StyledHeadingThree)({
 
 export const StyledTagsWrapper = styled('div')({
     marginTop: calcRem(10),
-    height: calcRem(60),
     display: 'flex',
     justifyContent: 'center',
     flexWrap: 'wrap',
-
-    [breakpoint('sm')]: {
-        height: calcRem(30),
-    },
 })
 
 export const StyledHeroImage = styled('img')<StyledHeroProps>(({ isHomePage }) => ({
@@ -86,4 +81,64 @@ export const StyledHeroGradientLine = styled('div')({
     height: calcRem(20),
     background: gradients.primary_to_accent,
     margin: `0 -${margins.bodyLeftRightMargin.sm}`,
+})
+
+export const StyledRecipeInfoWrapper = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    color: colours.black,
+})
+
+export const StyledRecipeInfo = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: calcRem(10),
+})
+
+export const StyledRecipeYield = styled('div')({
+    display: 'flex',
+    alignItems: 'center',
+    margin: calcRem(2),
+    padding: calcRem(6),
+    borderRadius: calcRem(3),
+    backgroundColor: colours.offWhite,
+    color: colours.black,
+    opacity: 0.8,
+
+    img: {
+        height: calcRem(50),
+        width: 'auto',
+        display: 'block',
+        marginRight: calcRem(2),
+    },
+
+    p: {
+        margin: calcRem(1),
+        '&.recipe-info-heading': {
+            fontWeight: 'bold',
+        },
+    },
+
+    [breakpoint('sm')]: {
+        img: {
+            display: 'none',
+        },
+    },
+})
+
+export const StyledRecipeYieldVertical = styled('div')({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+
+    img: {
+        display: 'none',
+    },
+
+    [breakpoint('sm')]: {
+        alignItems: 'center',
+        img: {
+            display: 'block',
+        },
+    },
 })

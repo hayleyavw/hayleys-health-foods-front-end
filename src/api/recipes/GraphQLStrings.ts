@@ -4,6 +4,7 @@ const baseQuery = `
     id
     slug
     title
+    yield
     method
     description
     published
@@ -75,6 +76,7 @@ export const recipesByTagsQuery = (tag: string) => {
                 id
                 slug
                 title
+                yield
                 method
                 description
                 published

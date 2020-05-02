@@ -27,14 +27,21 @@ export class Footer extends React.Component {
                         href="https://www.flaticon.com/authors/freepik"
                         title="Freepik"
                         target="_blank"
+                        rel="noopener noreferrer"
                     >
                         Freepik
                     </a>{' '}
                     from{' '}
-                    <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">
+                    <a
+                        href="https://www.flaticon.com/"
+                        title="Flaticon"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         {' '}
                         www.flaticon.com
                     </a>
+                    {/* Icons made by <a href="https://www.flaticon.com/authors/pause08" title="Pause08">Pause08</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> */}
                 </StyledFooterParagraph>
             </React.Fragment>
         )

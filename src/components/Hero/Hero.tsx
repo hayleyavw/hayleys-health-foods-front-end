@@ -8,6 +8,10 @@ import {
     StyledHeroWrapper,
     StyledSubtitle,
     StyledTagsWrapper,
+    StyledRecipeInfo,
+    StyledRecipeInfoWrapper,
+    StyledRecipeYield,
+    StyledRecipeYieldVertical,
 } from './Hero.styled'
 import { Image } from '../../api/common/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
@@ -25,6 +29,7 @@ interface HeroProps {
     subtitle?: string
     handler?: (reset: boolean, tag: string, scroll: boolean) => void
     tags?: TagObject[]
+    recipeYield?: string
 }
 
 interface State {
@@ -57,12 +62,14 @@ export class Hero extends React.Component<HeroProps> {
             subtitle,
             handler,
             tags,
+            recipeYield,
         } = this.props
         let tagList = tags ? tags : this.state.tags
 
         let smallBanner = require('./heroImages/small.jpg')
         let mediumBanner = require('./heroImages/medium.jpg')
         let largeBanner = require('./heroImages/large.jpg')
+        let yieldIcon = require('./../../assets/plate.png')
 
         const small = smallImage ? `${buildImagePath(smallImage.url)}` : `${smallBanner}`
         const medium = mediumImage ? `${buildImagePath(mediumImage.url)}` : `${mediumBanner}`
@@ -80,18 +87,46 @@ export class Hero extends React.Component<HeroProps> {
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading isHomePage={isHomePage}>{title}</StyledHeroHeading>
                         <StyledSubtitle>{subtitle}</StyledSubtitle>
-                        <StyledTagsWrapper>
-                            {this.state.loading === false
-                                ? tagList.map((tag: TagObject, index) => (
-                                      <Tag
-                                          key={index}
-                                          text={tag.name}
-                                          handler={handler}
-                                          tag={tag}
-                                      ></Tag>
-                                  ))
-                                : ''}
-                        </StyledTagsWrapper>
+                        <StyledRecipeInfoWrapper>
+                            <StyledTagsWrapper>
+                                {this.state.loading === false
+                                    ? tagList.map((tag: TagObject, index) => (
+                                          <Tag
+                                              key={index}
+                                              text={tag.name}
+                                              handler={handler}
+                                              tag={tag}
+                                          ></Tag>
+                                      ))
+                                    : ''}
+                            </StyledTagsWrapper>
+                            <StyledRecipeInfo>
+                                {this.state.loading === false ? (
+                                    recipeYield && recipeYield !== '' ? (
+                                        <StyledRecipeYield>
+                                            <img
+                                                src={yieldIcon}
+                                                className="mobile-yield-img"
+                                                alt="Plate with knife and fork."
+                                            />
+                                            <StyledRecipeYieldVertical>
+                                                <p className="recipe-info-heading">Yields</p>
+                                                <img
+                                                    src={yieldIcon}
+                                                    className="yield-img"
+                                                    alt="Plate with knife and fork."
+                                                />
+                                                <p>{recipeYield}</p>
+                                            </StyledRecipeYieldVertical>
+                                        </StyledRecipeYield>
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                            </StyledRecipeInfo>
+                        </StyledRecipeInfoWrapper>
                     </StyledHeroHeadingWrapper>
                 </StyledHero>
                 <StyledHeroGradientLine />
