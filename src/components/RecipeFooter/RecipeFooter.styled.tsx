@@ -12,7 +12,7 @@ export const StyledRecipeFooterButtons = styled('div')({
     justifyContent: 'center',
     flexWrap: 'wrap',
 
-    'a:first-of-type': {
-        marginRight: calcRem(10),
+    a: {
+        margin: calcRem(5),
     },
 })
