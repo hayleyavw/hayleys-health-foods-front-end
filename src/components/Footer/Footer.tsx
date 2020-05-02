@@ -23,11 +23,15 @@ export class Footer extends React.Component {
                 </StyledFooter>
                 <StyledFooterParagraph>
                     Blog Icon made by{' '}
-                    <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
+                    <a
+                        href="https://www.flaticon.com/authors/freepik"
+                        title="Freepik"
+                        target="_blank"
+                    >
                         Freepik
                     </a>{' '}
                     from{' '}
-                    <a href="https://www.flaticon.com/" title="Flaticon">
+                    <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">
                         {' '}
                         www.flaticon.com
                     </a>
