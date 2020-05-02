@@ -75,7 +75,6 @@ export class Recipe {
     published: Boolean
 
     constructor(results?: any) {
-        console.log(results)
         this.id = results && results.id ? results.id : 0
         this.slug = results && results.slug ? results.slug : 'Loading...'
         this.title = results && results.title ? results.title : 'Loading...'

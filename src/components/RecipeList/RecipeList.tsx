@@ -81,12 +81,10 @@ export class RecipeList extends React.Component<RecipeListProps> {
                 this.setState({ loading: true })
                 if (tagList.length === 0) {
                     await getRecipeGraphQL({}).then(recipe => {
-                        console.log('test')
                         this.setState({ recipes: recipe })
                         this.setState({ loading: false })
                     })
                 } else {
-                    console.log(tagList)
                     await getRecipesByTags(tagList).then(recipes => {
                         this.setState({ recipes: recipes })
                         this.setState({ loading: false })

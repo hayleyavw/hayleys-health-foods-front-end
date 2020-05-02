@@ -79,7 +79,6 @@ export class Hero extends React.Component<HeroProps> {
 
         const hasSubtitle = subtitle ? true : false
 
-        console.log(prepTime)
         return (
             <StyledHeroWrapper>
                 <StyledHero hasSubtitle={hasSubtitle}>
