@@ -10,6 +10,7 @@ import Loading from '../components/Loading/Loading'
 import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
+import { RecipeFooter } from '../components/RecipeFooter/RecipeFooter'
 
 interface MatchParams {
     slug: string
@@ -95,6 +96,7 @@ export class RecipePage extends React.Component<Props> {
                                         method={recipe.method}
                                         ingredients={recipe.ingredients}
                                     />
+                                    <RecipeFooter recipeTitle={recipe.title} />
                                 </React.Fragment>
                             </React.Fragment>
                         ) : (

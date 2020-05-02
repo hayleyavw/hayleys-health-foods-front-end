@@ -22,7 +22,7 @@ export class Footer extends React.Component {
                     </StyledFooterColumn>
                 </StyledFooter>
                 <StyledFooterParagraph>
-                    Blog and Chef Icons made by{' '}
+                    Blog, Contact and Chef Icons made by{' '}
                     <a
                         href="https://www.flaticon.com/authors/freepik"
                         title="Freepik"
