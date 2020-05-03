@@ -68,7 +68,6 @@ export class RecipeStep {
         this.id = results && results.id ? results.id : 0
         this.stepNumber = results && results.step_number ? results.step_number : null
         this.description = results && results.description ? results.description : ''
-        console.log(results && results.recipe_ingredients)
         this.ingredients =
             results && results.recipe_ingredients
                 ? results.recipe_ingredients.map((ingredient: any) => {

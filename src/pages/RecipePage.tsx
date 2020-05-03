@@ -11,7 +11,7 @@ import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
 import { RecipeFooter } from '../components/RecipeFooter/RecipeFooter'
-import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
+import { RecipeContent } from '../components/RecipeContent/RecipeContent'
 
 interface MatchParams {
     slug: string
@@ -37,10 +37,6 @@ interface State {
     slug: string
     recipe: Recipe
     loading: boolean
-}
-
-function isRecipeObject(response: Recipe | Error): response is Recipe {
-    return (response as Recipe).title !== undefined && (response as Recipe).title !== 'Loading...'
 }
 
 export class RecipePage extends React.Component<Props> {
@@ -90,7 +86,7 @@ export class RecipePage extends React.Component<Props> {
                                 cookTime={recipe.cookTime}
                             />
                             {recipe.useSteps ? (
-                                <RecipeSteps recipe={recipe} />
+                                <RecipeContent recipe={recipe} />
                             ) : (
                                 <StaticRecipeSteps
                                     method={recipe.method}
