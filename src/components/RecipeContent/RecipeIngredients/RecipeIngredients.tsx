@@ -5,23 +5,25 @@ import {
     StyledIngredientsGradientLine,
 } from './RecipeIngredients.styled'
 import { StyledHeadingTwo } from '../../common/Headings.styled'
-import { Ingredients } from '../../../api/recipes/ResponseShapes'
+import { Ingredients, RecipeStep } from '../../../api/recipes/ResponseShapes'
 import { RecipeIngredient } from './RecipeIngredient'
 
 interface RecipeIngredientsProps {
-    ingredients: Ingredients[]
+    steps: RecipeStep[]
 }
 
 export class RecipeIngredients extends React.Component<RecipeIngredientsProps> {
     render() {
-        const { ingredients } = this.props
+        const { steps } = this.props
         return (
             <StyledRecipeIngredientsWrapper>
                 <StyledHeadingTwo>Ingredients</StyledHeadingTwo>
                 <StyledRecipeIngredients>
-                    {ingredients.map((ingredient: Ingredients, index: number) => (
-                        <RecipeIngredient ingredient={ingredient} key={index} />
-                    ))}
+                    {steps.map((step: RecipeStep) =>
+                        step.ingredients.map((ingredient: Ingredients, index: number) => (
+                            <RecipeIngredient ingredient={ingredient} key={index} />
+                        ))
+                    )}
                 </StyledRecipeIngredients>
                 <StyledIngredientsGradientLine />
             </StyledRecipeIngredientsWrapper>

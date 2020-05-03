@@ -30,7 +30,7 @@ export class RecipeContent extends React.Component<RecipeContentProps> {
         const { recipe } = this.props
         return (
             <StyledRecipeContentWrapper>
-                <RecipeIngredients ingredients={recipe.ingredients} />
+                <RecipeIngredients steps={recipe.steps} />
                 <RecipeMethod
                     method={recipe.steps}
                     handler={this.handler}
