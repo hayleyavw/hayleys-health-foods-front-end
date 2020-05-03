@@ -1,7 +1,7 @@
 import React from 'react'
 import * as H from 'history'
-import { RecipeSteps } from '../components/RecipeSteps/RecipeSteps'
-import { getRecipeBySlug, getRecipeGraphQL } from '../api/recipes/Queries'
+import { StaticRecipeSteps } from '../components/StaticRecipeSteps/StaticRecipeSteps'
+import { getRecipeGraphQL } from '../api/recipes/Queries'
 import { Recipe } from '../api/recipes/ResponseShapes'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeHead } from '../components/CustomHead/RecipeHead'
@@ -11,6 +11,7 @@ import { StyledContentBox } from '../components/common/ContentBox.styled'
 import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
 import { RecipeFooter } from '../components/RecipeFooter/RecipeFooter'
+import { RecipeContent } from '../components/RecipeContent/RecipeContent'
 
 interface MatchParams {
     slug: string
@@ -38,10 +39,6 @@ interface State {
     loading: boolean
 }
 
-function isRecipeObject(response: Recipe | Error): response is Recipe {
-    return (response as Recipe).title !== undefined && (response as Recipe).title !== 'Loading...'
-}
-
 export class RecipePage extends React.Component<Props> {
     public readonly state: Readonly<State> = {
         slug: this.props.match.params.slug,
@@ -51,17 +48,10 @@ export class RecipePage extends React.Component<Props> {
 
     async componentDidMount() {
         try {
-            const response = await getRecipeBySlug({ slug: this.state.slug })
-            if (isRecipeObject(response)) {
-                console.log(response)
-                getRecipeGraphQL({ id: response.id }).then(recipe => {
-                    this.setState({ recipe: recipe })
-                    this.setState({ loading: false })
-                })
-            } else {
+            getRecipeGraphQL({ slug: this.state.slug }).then(recipe => {
+                this.setState({ recipe: recipe })
                 this.setState({ loading: false })
-                this.setState({ recipe: null })
-            }
+            })
         } catch {
             this.setState({ loading: false })
             this.setState({ recipe: null })
@@ -95,7 +85,15 @@ export class RecipePage extends React.Component<Props> {
                                 prepTime={recipe.prepTime}
                                 cookTime={recipe.cookTime}
                             />
-                            <RecipeSteps method={recipe.method} ingredients={recipe.ingredients} />
+                            {recipe.useSteps ? (
+                                <RecipeContent recipe={recipe} />
+                            ) : (
+                                <StaticRecipeSteps
+                                    recipeTitle={recipe.title}
+                                    method={recipe.method}
+                                    ingredients={recipe.ingredients}
+                                />
+                            )}
                             <RecipeFooter recipeTitle={recipe.title} />
                         </React.Fragment>
                     </React.Fragment>

@@ -1,5 +1,7 @@
 import { imageQuery } from '../common/GraphQLStrings'
 
+// (where: {slug: "apple-sauce"})
+
 const baseQuery = `
     id
     slug
@@ -10,6 +12,25 @@ const baseQuery = `
     method
     description
     published
+    use_steps
+    recipe_steps (sort: "step_number:asc") {
+        step_number
+        description
+        recipe_ingredients {
+            id
+            quantity
+            ingredient {
+                id
+                slug
+                name
+            }
+            ingredient_unit {
+                id
+                name
+                short_name
+            }
+        }
+    }
     ${imageQuery}
     tags {
         id
@@ -43,13 +64,16 @@ export const recipeByIdQuery = (id: number) => {
 interface RecipesQueryProps {
     start?: string
     limit?: string
+    slug?: string
 }
 
 export const recipesQuery = (props: RecipesQueryProps) => {
     return `query {
         recipes (${props.limit ? 'limit:' + props.limit : ''}, ${
         props.start ? 'start:' + props.start : ''
-    }, sort: "created_at:desc", where: {published: "true"}) {
+    }, sort: "created_at:desc", where: {published: "true"${
+        props.slug ? ', slug: "' + props.slug + '"' : ''
+    }}) {
             ${baseQuery}
         }
     }`
@@ -84,6 +108,25 @@ export const recipesByTagsQuery = (tag: string) => {
                 method
                 description
                 published
+                use_steps
+                recipe_steps (sort: "step_number:asc") {
+                    step_number
+                    description
+                    recipe_ingredients {
+                        id
+                        quantity
+                        ingredient {
+                            id
+                            slug
+                            name
+                        }
+                        ingredient_unit {
+                            id
+                            name
+                            short_name
+                        }
+                    }
+                }
                 ${imageQuery}
                 tags {
                     ${tagsQueryString}
