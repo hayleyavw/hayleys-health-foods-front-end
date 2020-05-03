@@ -10,6 +10,25 @@ const baseQuery = `
     method
     description
     published
+    use_steps
+    recipe_steps {
+        step_number
+        description
+        recipe_ingredients {
+            id
+            quantity
+            ingredient {
+                id
+                slug
+                name
+            }
+            ingredient_unit {
+                id
+                name
+                short_name
+            }
+        }
+    }
     ${imageQuery}
     tags {
         id
@@ -84,6 +103,25 @@ export const recipesByTagsQuery = (tag: string) => {
                 method
                 description
                 published
+                use_steps
+                recipe_steps {
+                    step_number
+                    description
+                        recipe_ingredients {
+                        id
+                        quantity
+                        ingredient {
+                            id
+                            slug
+                            name
+                        }
+                        ingredient_unit {
+                            id
+                            name
+                            short_name
+                        }
+                    }
+                }
                 ${imageQuery}
                 tags {
                     ${tagsQueryString}
