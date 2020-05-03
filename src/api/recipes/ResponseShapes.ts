@@ -65,7 +65,6 @@ export class RecipeStep {
     ingredients: Ingredients[]
 
     constructor(results?: any) {
-        console.log(results)
         this.id = results && results.id ? results.id : 0
         this.stepNumber = results && results.step_number ? results.step_number : null
         this.description = results && results.description ? results.description : ''

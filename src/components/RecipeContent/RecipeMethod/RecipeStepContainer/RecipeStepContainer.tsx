@@ -53,7 +53,7 @@ export class RecipeStepContainer extends React.Component<RecipeStepContainerProp
     }
 
     render() {
-        const { recipeTitle, step, index, currentStep, handler } = this.props
+        const { step, index } = this.props
         return (
             <StyledRecipeStepContainer checked={this.state.checked}>
                 <label className={`step-${index}`}>

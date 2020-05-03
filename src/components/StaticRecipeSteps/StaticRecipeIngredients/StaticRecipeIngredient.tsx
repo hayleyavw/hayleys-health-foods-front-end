@@ -34,7 +34,7 @@ export class StaticRecipeIngredient extends React.Component<RecipeIngredientProp
     }
 
     render() {
-        const { recipeTitle, ingredient } = this.props
+        const { ingredient } = this.props
         return (
             <StyledStaticRecipeIngredient checked={this.state.checked}>
                 <label>
