@@ -62,11 +62,19 @@ export class RecipeStep {
     id: number
     stepNumber: number
     description: string
+    ingredients: Ingredients[]
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
         this.stepNumber = results && results.step_number ? results.step_number : null
         this.description = results && results.description ? results.description : ''
+        console.log(results && results.recipe_ingredients)
+        this.ingredients =
+            results && results.recipe_ingredients
+                ? results.recipe_ingredients.map((ingredient: any) => {
+                      return new Ingredients(ingredient)
+                  })
+                : [new Ingredients()]
     }
 }
 
@@ -116,7 +124,6 @@ export class Recipe {
                   })
                 : [new Ingredients()]
         this.published = results && results.published ? results.published : false
-        console.log(results && results.recipe_steps)
         this.steps =
             results && results.recipe_steps
                 ? results.recipe_steps.map((step: any) => {

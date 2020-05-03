@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react'
 import { Ingredients } from '../../../api/recipes/ResponseShapes'
 import { Checkbox } from '../../common/Checkbox/Checkbox'
-import { StyledRecipeIngredient } from './RecipeIngredients.styled'
+import { StyledStaticRecipeIngredient } from './StaticRecipeIngredients.styled'
 
 interface RecipeIngredientProps {
     ingredient: Ingredients
@@ -11,7 +11,7 @@ interface State {
     checked: boolean
 }
 
-export class RecipeIngredient extends React.Component<RecipeIngredientProps> {
+export class StaticRecipeIngredient extends React.Component<RecipeIngredientProps> {
     public readonly state: Readonly<State> = {
         checked: false,
     }
@@ -29,7 +29,7 @@ export class RecipeIngredient extends React.Component<RecipeIngredientProps> {
     render() {
         const { ingredient } = this.props
         return (
-            <StyledRecipeIngredient checked={this.state.checked}>
+            <StyledStaticRecipeIngredient checked={this.state.checked}>
                 <label>
                     <Checkbox checked={this.state.checked} handler={this.handler} />
                     <span>
@@ -40,7 +40,7 @@ export class RecipeIngredient extends React.Component<RecipeIngredientProps> {
                         )
                     </span>
                 </label>
-            </StyledRecipeIngredient>
+            </StyledStaticRecipeIngredient>
         )
     }
 }

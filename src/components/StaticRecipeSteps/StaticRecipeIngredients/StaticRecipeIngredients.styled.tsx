@@ -1,31 +1,33 @@
 import styled from '@emotion/styled'
-import { StyledRecipeStepCard } from '../RecipeStepCard.styled'
+import { StyledRecipeStepCard } from '../StaticRecipeStepCard.styled'
 import { breakpoint } from '../../styling/styling-utils/breakpoints'
 import { calcRem } from '../../styling/styling-utils/calcRem'
 import { colours } from '../../styling/colours'
 import { gradients } from '../../styling/gradients'
 
-interface StyledRecipeIngredientProps {
+interface StyledStaticRecipeIngredientProps {
     checked?: boolean
 }
 
-export const StyledRecipeIngredient = styled('div')<StyledRecipeIngredientProps>(({ checked }) => ({
-    margin: calcRem(6, 0),
-    flexBasis: '45%',
-    transition: '1s',
+export const StyledStaticRecipeIngredient = styled('div')<StyledStaticRecipeIngredientProps>(
+    ({ checked }) => ({
+        margin: calcRem(6, 0),
+        flexBasis: '45%',
+        transition: '1s',
 
-    span: {
-        textDecoration: checked ? 'line-through' : undefined,
-        color: checked ? colours.grey : undefined,
-        transition: '0.3s',
-    },
+        span: {
+            textDecoration: checked ? 'line-through' : undefined,
+            color: checked ? colours.grey : undefined,
+            transition: '0.3s',
+        },
 
-    [breakpoint('sm')]: {
-        flexBasis: '100%',
-    },
-}))
+        [breakpoint('sm')]: {
+            flexBasis: '100%',
+        },
+    })
+)
 
-export const StyledRecipeIngredients = styled(StyledRecipeStepCard)({
+export const StyledStaticRecipeIngredients = styled(StyledRecipeStepCard)({
     flexBasis: '100%',
     columnCount: 2,
     display: 'flex',
@@ -38,7 +40,7 @@ export const StyledRecipeIngredients = styled(StyledRecipeStepCard)({
     },
 })
 
-export const StyledRecipeIngredientsWrapper = styled('div')({
+export const StyledStaticRecipeIngredientsWrapper = styled('div')({
     width: '100%',
     position: 'sticky',
     top: 0,
@@ -53,7 +55,7 @@ export const StyledRecipeIngredientsWrapper = styled('div')({
     },
 })
 
-export const StyledIngredientsGradientLine = styled('div')({
+export const StyledStaticIngredientsGradientLine = styled('div')({
     height: calcRem(2),
     background: gradients.primary_to_accent,
 

@@ -1,28 +1,9 @@
 import styled from '@emotion/styled'
-import { colours } from '../styling/colours'
-import { calcRem } from '../styling/styling-utils/calcRem'
-import { breakpoint } from '../styling/styling-utils/breakpoints'
 
-export const StyledRecipeSteps = styled('div')({
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    margin: calcRem(0),
-    position: 'relative',
-    color: colours.black,
-    fontSize: calcRem(16),
+// interface Props {
+//     prop?: undefined
+// }
 
-    [breakpoint('sm')]: {
-        flexWrap: 'wrap',
-        margin: calcRem(0, 32),
-    },
+export const StyledRecipeStepsWrapper = styled('div')({})
 
-    [breakpoint('md')]: {
-        margin: calcRem(0, 96),
-        fontSize: calcRem(18),
-    },
-
-    [breakpoint('lg')]: {
-        margin: calcRem(0, 128),
-    },
-})
+// export const StyledComponentWithProps = styled('div')<Props>(({ prop }) => ({}))

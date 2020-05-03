@@ -1,22 +1,47 @@
 import React from 'react'
-import { StyledRecipeSteps } from './RecipeSteps.styled'
-import { RecipeIngredients } from './RecipeIngredients/RecipeIngredients'
-import { RecipeMethod } from './RecipeMethod/RecipeMethod'
-import { Ingredients } from '../../api/recipes/ResponseShapes'
+import { StyledRecipeStepsWrapper } from './RecipeSteps.styled'
+import {
+    Recipe,
+    RecipeStep,
+    IngredientGraphQLObject,
+    Ingredients,
+} from '../../api/recipes/ResponseShapes'
 
 interface RecipeStepsProps {
-    method: string
-    ingredients: Ingredients[]
+    recipe: Recipe
+}
+
+interface State {
+    currentStep: number
 }
 
 export class RecipeSteps extends React.Component<RecipeStepsProps> {
+    public readonly state: Readonly<State> = {
+        currentStep: 0,
+    }
+
+    constructor(props: RecipeStepsProps) {
+        super(props)
+        this.handler = this.handler.bind(this)
+    }
+
+    handler() {}
+
     render() {
-        const { method, ingredients } = this.props
+        const { recipe } = this.props
+        console.log(recipe)
         return (
-            <StyledRecipeSteps>
-                <RecipeIngredients ingredients={ingredients} />
-                <RecipeMethod method={method} />
-            </StyledRecipeSteps>
+            <StyledRecipeStepsWrapper>
+                {recipe.steps.map((step: RecipeStep) => (
+                    <div>
+                        <h2>{step.stepNumber}</h2>
+                        <p>{step.description}</p>
+                        {step.ingredients.map((ingredient: Ingredients) => (
+                            <p>{ingredient.ingredient.name}</p>
+                        ))}
+                    </div>
+                ))}
+            </StyledRecipeStepsWrapper>
         )
     }
 }

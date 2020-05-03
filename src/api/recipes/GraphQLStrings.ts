@@ -1,5 +1,7 @@
 import { imageQuery } from '../common/GraphQLStrings'
 
+// (where: {slug: "apple-sauce"})
+
 const baseQuery = `
     id
     slug
@@ -62,13 +64,16 @@ export const recipeByIdQuery = (id: number) => {
 interface RecipesQueryProps {
     start?: string
     limit?: string
+    slug?: string
 }
 
 export const recipesQuery = (props: RecipesQueryProps) => {
     return `query {
         recipes (${props.limit ? 'limit:' + props.limit : ''}, ${
         props.start ? 'start:' + props.start : ''
-    }, sort: "created_at:desc", where: {published: "true"}) {
+    }, sort: "created_at:desc", where: {published: "true"${
+        props.slug ? ', slug: "' + props.slug + '"' : ''
+    }}) {
             ${baseQuery}
         }
     }`
