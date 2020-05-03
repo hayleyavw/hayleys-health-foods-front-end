@@ -16,7 +16,7 @@ const baseQuery = `
     recipe_steps {
         step_number
         description
-        recipe_ingredients {
+        recipe_ingredients (sort: "step_number:asc") {
             id
             quantity
             ingredient {
@@ -112,7 +112,7 @@ export const recipesByTagsQuery = (tag: string) => {
                 recipe_steps {
                     step_number
                     description
-                        recipe_ingredients {
+                        recipe_ingredients (sort: "step_number:asc") {
                         id
                         quantity
                         ingredient {
