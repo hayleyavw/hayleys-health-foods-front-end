@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import { StyledRecipeStepCard } from '../RecipeStepCard.styled'
+import { StyledRecipeStepCard } from '../StaticRecipeStepCard.styled'
 import { calcRem } from '../../styling/styling-utils/calcRem'
 import { breakpoint } from '../../styling/styling-utils/breakpoints'
 import { headingFont } from '../../styling/fonts'
 import { colours } from '../../styling/colours'
 
-export const StyledRecipeMethod = styled(StyledRecipeStepCard)({
+export const StyledStaticRecipeMethod = styled(StyledRecipeStepCard)({
     flexBasis: '100%',
 
     ol: {

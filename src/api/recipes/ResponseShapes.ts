@@ -58,6 +58,25 @@ export class Ingredients {
     }
 }
 
+export class RecipeStep {
+    id: number
+    stepNumber: number
+    description: string
+    ingredients: Ingredients[]
+
+    constructor(results?: any) {
+        this.id = results && results.id ? results.id : 0
+        this.stepNumber = results && results.step_number ? results.step_number : null
+        this.description = results && results.description ? results.description : ''
+        this.ingredients =
+            results && results.recipe_ingredients
+                ? results.recipe_ingredients.map((ingredient: any) => {
+                      return new Ingredients(ingredient)
+                  })
+                : [new Ingredients()]
+    }
+}
+
 export class Recipe {
     id: number
     slug: string
@@ -72,7 +91,9 @@ export class Recipe {
     largeImage: Image
     tags: TagObject[]
     ingredients: Ingredients[]
-    published: Boolean
+    useSteps: boolean
+    steps: RecipeStep[]
+    published: boolean
 
     constructor(results?: any) {
         this.id = results && results.id ? results.id : 0
@@ -102,5 +123,12 @@ export class Recipe {
                   })
                 : [new Ingredients()]
         this.published = results && results.published ? results.published : false
+        this.steps =
+            results && results.recipe_steps
+                ? results.recipe_steps.map((step: any) => {
+                      return new RecipeStep(step)
+                  })
+                : [new RecipeStep()]
+        this.useSteps = results && results.use_steps ? results.use_steps : false
     }
 }

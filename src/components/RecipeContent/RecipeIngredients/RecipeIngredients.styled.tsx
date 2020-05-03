@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { StyledRecipeStepCard } from '../RecipeStepCard.styled'
 import { breakpoint } from '../../styling/styling-utils/breakpoints'
 import { calcRem } from '../../styling/styling-utils/calcRem'
 import { colours } from '../../styling/colours'
@@ -25,7 +24,7 @@ export const StyledRecipeIngredient = styled('div')<StyledRecipeIngredientProps>
     },
 }))
 
-export const StyledRecipeIngredients = styled(StyledRecipeStepCard)({
+export const StyledRecipeIngredients = styled('div')({
     flexBasis: '100%',
     columnCount: 2,
     display: 'flex',
