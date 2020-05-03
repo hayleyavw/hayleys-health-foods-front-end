@@ -10,6 +10,8 @@ import {
 
 interface RecipeStepContainerProps {
     step: RecipeStep
+    currentStep: number
+    handler: (stepNumber: number) => void
 }
 
 interface State {
@@ -23,22 +25,37 @@ export class RecipeStepContainer extends React.Component<RecipeStepContainerProp
 
     constructor(props: RecipeStepContainerProps) {
         super(props)
-        this.handler = this.handler.bind(this)
+        this.checkedHandler = this.checkedHandler.bind(this)
     }
 
-    handler(evt?: Event | ChangeEvent | undefined) {
+    componentDidUpdate(prevProps: RecipeStepContainerProps) {
+        if (this.props.currentStep !== prevProps.currentStep) {
+            this.setState({ checked: this.props.step.stepNumber <= this.props.currentStep })
+        }
+    }
+
+    checkedHandler(evt?: Event | ChangeEvent | undefined) {
         let checked = evt && evt.target ? (evt.target as any).checked : false
         this.setState({ checked: checked })
+        if (checked) {
+            this.props.handler(this.props.step.stepNumber)
+        } else {
+            this.props.handler(this.props.step.stepNumber - 1)
+        }
     }
+
     render() {
-        const { step } = this.props
+        const { step, currentStep, handler } = this.props
         return (
-            <StyledRecipeStepContainer>
+            <StyledRecipeStepContainer checked={this.state.checked}>
                 <label>
-                    <StyledRecipeStepCheckbox checked={this.state.checked} handler={this.handler} />
+                    <StyledRecipeStepCheckbox
+                        checked={this.state.checked}
+                        handler={this.checkedHandler}
+                    />
                     <span>
                         <StyledRecipeStepContent>
-                            <StyledRecipeStepContentHeading>
+                            <StyledRecipeStepContentHeading checked={this.state.checked}>
                                 Step {step.stepNumber}
                             </StyledRecipeStepContentHeading>
                             <ReactMarkdown className="method-step" source={step.description} />

@@ -6,16 +6,23 @@ import { RecipeStepContainer } from './RecipeStepContainer/RecipeStepContainer'
 
 interface RecipeMethodProps {
     method: RecipeStep[]
+    currentStep: number
+    handler: (stepNumber: number) => void
 }
 
 export class RecipeMethod extends React.Component<RecipeMethodProps> {
     render() {
-        const { method } = this.props
+        const { method, currentStep, handler } = this.props
         return (
             <StyledRecipeMethod>
                 <StyledHeadingTwo>Method</StyledHeadingTwo>
                 {method.map((step: RecipeStep, index: number) => (
-                    <RecipeStepContainer key={index} step={step} />
+                    <RecipeStepContainer
+                        key={index}
+                        step={step}
+                        handler={handler}
+                        currentStep={currentStep}
+                    />
                 ))}
             </StyledRecipeMethod>
         )

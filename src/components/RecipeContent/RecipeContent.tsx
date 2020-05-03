@@ -22,14 +22,20 @@ export class RecipeContent extends React.Component<RecipeContentProps> {
         this.handler = this.handler.bind(this)
     }
 
-    handler() {}
+    handler(stepNumber: number) {
+        this.setState({ currentStep: stepNumber })
+    }
 
     render() {
         const { recipe } = this.props
         return (
             <StyledRecipeContentWrapper>
                 <RecipeIngredients ingredients={recipe.ingredients} />
-                <RecipeMethod method={recipe.steps} />
+                <RecipeMethod
+                    method={recipe.steps}
+                    handler={this.handler}
+                    currentStep={this.state.currentStep}
+                />
             </StyledRecipeContentWrapper>
         )
     }
