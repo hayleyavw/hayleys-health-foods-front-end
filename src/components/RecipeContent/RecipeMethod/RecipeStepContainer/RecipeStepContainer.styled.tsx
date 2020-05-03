@@ -34,6 +34,9 @@ export const StyledRecipeStepContainer = styled('div')<StyledRecipeStepProps>(({
         alignItems: 'center',
         borderBottom: `${calcRem(1)} solid ${colours.lightGrey}`,
         padding: calcRem(10, 2),
+        '&.step-0': {
+            paddingTop: 0,
+        },
         span: {
             textDecoration: checked ? 'line-through' : undefined,
             color: checked ? colours.grey : undefined,

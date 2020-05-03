@@ -30,8 +30,14 @@ export class RecipeContent extends React.Component<RecipeContentProps> {
         const { recipe } = this.props
         return (
             <StyledRecipeContentWrapper>
-                <RecipeIngredients steps={recipe.steps} />
+                <RecipeIngredients
+                    recipeTitle={recipe.title}
+                    steps={recipe.steps}
+                    handler={this.handler}
+                    currentStep={this.state.currentStep}
+                />
                 <RecipeMethod
+                    recipeTitle={recipe.title}
                     method={recipe.steps}
                     handler={this.handler}
                     currentStep={this.state.currentStep}

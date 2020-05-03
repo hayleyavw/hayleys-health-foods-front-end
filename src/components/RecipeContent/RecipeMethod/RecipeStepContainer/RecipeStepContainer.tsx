@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react'
+import ReactGA from 'react-ga'
 import ReactMarkdown from 'react-markdown/with-html'
 import { RecipeStep } from '../../../../api/recipes/ResponseShapes'
 import {
@@ -9,7 +10,9 @@ import {
 } from './RecipeStepContainer.styled'
 
 interface RecipeStepContainerProps {
+    recipeTitle: string
     step: RecipeStep
+    index: number
     currentStep: number
     handler: (stepNumber: number) => void
 }
@@ -35,6 +38,11 @@ export class RecipeStepContainer extends React.Component<RecipeStepContainerProp
     }
 
     checkedHandler(evt?: Event | ChangeEvent | undefined) {
+        ReactGA.event({
+            category: this.props.recipeTitle,
+            action: 'Checkbox Click',
+            label: 'Method Step',
+        })
         let checked = evt && evt.target ? (evt.target as any).checked : false
         this.setState({ checked: checked })
         if (checked) {
@@ -45,10 +53,10 @@ export class RecipeStepContainer extends React.Component<RecipeStepContainerProp
     }
 
     render() {
-        const { step, currentStep, handler } = this.props
+        const { recipeTitle, step, index, currentStep, handler } = this.props
         return (
             <StyledRecipeStepContainer checked={this.state.checked}>
-                <label>
+                <label className={`step-${index}`}>
                     <StyledRecipeStepCheckbox
                         checked={this.state.checked}
                         handler={this.checkedHandler}

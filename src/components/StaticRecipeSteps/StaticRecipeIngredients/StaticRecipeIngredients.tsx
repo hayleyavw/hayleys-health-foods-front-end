@@ -9,18 +9,23 @@ import { Ingredients } from '../../../api/recipes/ResponseShapes'
 import { StaticRecipeIngredient } from './StaticRecipeIngredient'
 
 interface StaticRecipeIngredientsProps {
+    recipeTitle: string
     ingredients: Ingredients[]
 }
 
 export class StaticRecipeIngredients extends React.Component<StaticRecipeIngredientsProps> {
     render() {
-        const { ingredients } = this.props
+        const { recipeTitle, ingredients } = this.props
         return (
             <StyledStaticRecipeIngredientsWrapper>
                 <StyledHeadingTwo>Ingredients</StyledHeadingTwo>
                 <StyledStaticRecipeIngredients>
                     {ingredients.map((ingredient: Ingredients, index: number) => (
-                        <StaticRecipeIngredient ingredient={ingredient} key={index} />
+                        <StaticRecipeIngredient
+                            recipeTitle={recipeTitle}
+                            ingredient={ingredient}
+                            key={index}
+                        />
                     ))}
                 </StyledStaticRecipeIngredients>
                 <StyledStaticIngredientsGradientLine />

@@ -89,6 +89,7 @@ export class RecipePage extends React.Component<Props> {
                                 <RecipeContent recipe={recipe} />
                             ) : (
                                 <StaticRecipeSteps
+                                    recipeTitle={recipe.title}
                                     method={recipe.method}
                                     ingredients={recipe.ingredients}
                                 />

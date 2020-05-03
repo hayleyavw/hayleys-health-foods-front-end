@@ -5,16 +5,17 @@ import { StaticRecipeMethod } from './StaticRecipeMethod/StaticRecipeMethod'
 import { Ingredients } from '../../api/recipes/ResponseShapes'
 
 interface StaticRecipeStepsProps {
+    recipeTitle: string
     method: string
     ingredients: Ingredients[]
 }
 
 export class StaticRecipeSteps extends React.Component<StaticRecipeStepsProps> {
     render() {
-        const { method, ingredients } = this.props
+        const { recipeTitle, method, ingredients } = this.props
         return (
             <StyledRecipeSteps>
-                <StaticRecipeIngredients ingredients={ingredients} />
+                <StaticRecipeIngredients recipeTitle={recipeTitle} ingredients={ingredients} />
                 <StaticRecipeMethod method={method} />
             </StyledRecipeSteps>
         )
