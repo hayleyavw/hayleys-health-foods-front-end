@@ -29,8 +29,4 @@ export const StyledRow = styled('div')({
     [breakpoint('sm')]: {
         gridTemplateColumns: '1fr 1fr',
     },
-
-    [breakpoint('md')]: {
-        gridTemplateColumns: '1fr 1fr 1fr',
-    },
 })
