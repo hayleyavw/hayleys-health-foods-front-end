@@ -2,7 +2,7 @@ import React from 'react'
 import { Hero } from '../components/Hero/Hero'
 import { RecipeList } from '../components/RecipeList/RecipeList'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
-import { HomePagePromoCardRow } from '../components/HomePagePromoCardRow/HomePagePromoCardRow'
+import { HomePageButtonLinkRow } from '../components/ButtonLinkRow/HomePageButtonLinkRow'
 import { LatestRecipeList } from '../components/RecipeList/LatestRecipeList'
 import Helmet from 'react-helmet'
 import { jsonld } from '../components/common/jsonld'
@@ -94,7 +94,7 @@ class HomePage extends React.Component<Props> {
                 ></Hero>
                 <StyledHeadingTwo>Latest Recipes</StyledHeadingTwo>
                 <LatestRecipeList />
-                <HomePagePromoCardRow />
+                <HomePageButtonLinkRow />
                 <StyledAllRecipesHeading>
                     <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
                     <FilterButtons handler={this.handler} tagStatus={tagStatus} />
