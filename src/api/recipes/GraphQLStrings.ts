@@ -98,7 +98,7 @@ export const recipesByTagsQuery = (tag: string) => {
             short_name: ${tag}
         }) {
             ${tagsQueryString}
-            recipes(where: {published: "true"}) {
+            recipes("created_at:desc", where: {published: "true"}) {
                 id
                 slug
                 title
