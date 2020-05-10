@@ -22,6 +22,7 @@ interface CardProps {
     description: string
     thumbnail: string
     tags?: TagObject[]
+    page: string
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -31,6 +32,7 @@ export const Card: React.FC<CardProps> = ({
     description,
     thumbnail,
     tags,
+    page,
 }) => {
     // Truncate the description
     if (description.length > 150) {
@@ -43,7 +45,7 @@ export const Card: React.FC<CardProps> = ({
                 to={url}
                 onClick={() => {
                     ReactGA.event({
-                        category: tags ? 'Recipe Card' : 'Blog Card',
+                        category: `${page} Recipe Card`,
                         action: 'Card Click',
                         label: title,
                     })

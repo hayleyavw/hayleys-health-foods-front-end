@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
-import { calcRem } from '../styling/styling-utils/calcRem'
-import { StyledHeadingFour } from '../common/Headings.styled'
-import { colours } from '../styling/colours'
-import { breakpoint } from '../styling/styling-utils/breakpoints'
+import { calcRem } from '../../styling/styling-utils/calcRem'
+import { StyledHeadingFour } from '../../common/Headings.styled'
+import { colours } from '../../styling/colours'
+import { breakpoint } from '../../styling/styling-utils/breakpoints'
 
 export const StyledLatestRecipeList = styled('div')({
     display: 'grid',

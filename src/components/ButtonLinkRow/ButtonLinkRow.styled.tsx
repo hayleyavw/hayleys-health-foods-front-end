@@ -15,9 +15,9 @@ interface StyledButtonLinkRowWrapperProps {
 
 export const StyledButtonLinkRowWrapper = styled('div')<StyledButtonLinkRowWrapperProps>(
     ({ hasHeading }) => ({
-        margin: `${calcRem(20)} -${margins.bodyLeftRightMargin.sm} ${
-            hasHeading ? calcRem(-12) : calcRem(12)
-        } -${margins.bodyLeftRightMargin.sm}`,
+        margin: `${calcRem(20)} -${margins.bodyLeftRightMargin.sm} ${calcRem(12)} -${
+            margins.bodyLeftRightMargin.sm
+        }`,
         padding: calcRem(hasHeading ? 4 : 8, 8, 8, 8),
         backgroundColor: colours.offWhite,
         textAlign: 'center',

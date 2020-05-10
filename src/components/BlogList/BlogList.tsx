@@ -46,6 +46,7 @@ export class BlogList extends React.Component {
                                         subtitle={createdAt}
                                         thumbnail={blogPost.thumbnail.url}
                                         description={blogPost.content}
+                                        page={'Blog List Page'}
                                     />
                                 )
                             })}

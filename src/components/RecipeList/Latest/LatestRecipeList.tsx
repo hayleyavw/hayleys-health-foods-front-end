@@ -9,11 +9,11 @@ import {
     StyledLatestRecipeImageWrapper,
     StyledTagsWrapper,
 } from './LatestRecipeList.styled'
-import { Recipe, TagObject } from '../../api/recipes/ResponseShapes'
-import { getRecipeGraphQL } from '../../api/recipes/Queries'
-import Loading from '../Loading/Loading'
-import { buildImagePath } from '../../utils/utils'
-import { TagLabel } from '../TagLabel/TagLabel'
+import { Recipe, TagObject } from '../../../api/recipes/ResponseShapes'
+import { getRecipeGraphQL } from '../../../api/recipes/Queries'
+import Loading from '../../Loading/Loading'
+import { buildImagePath } from '../../../utils/utils'
+import { TagLabel } from '../../TagLabel/TagLabel'
 
 interface State {
     recipes: Recipe[]

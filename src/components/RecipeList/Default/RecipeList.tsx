@@ -1,9 +1,9 @@
 import React from 'react'
-import { Card } from '../Card/Card'
-import { StyledRecipeList, StyledRecipeListWrapper } from './RecipeList.styled'
-import { getRecipeGraphQL, getRecipesByTags } from '../../api/recipes/Queries'
-import { Recipe } from '../../api/recipes/ResponseShapes'
-import Loading from '../Loading/Loading'
+import { Recipe } from '../../../api/recipes/ResponseShapes'
+import { getRecipeGraphQL, getRecipesByTags } from '../../../api/recipes/Queries'
+import { StyledRecipeListWrapper, StyledRecipeList } from './RecipeList.styled'
+import Loading from '../../Loading/Loading'
+import { Card } from '../../Card/Card'
 
 interface RecipeListProps {
     tagStatus: {
@@ -44,8 +44,8 @@ export class RecipeList extends React.Component<RecipeListProps> {
                 tagList.push('vegan')
             }
             if (tagList.length === 0) {
-                await getRecipeGraphQL({}).then(recipe => {
-                    this.setState({ recipes: recipe })
+                await getRecipeGraphQL({}).then(recipes => {
+                    this.setState({ recipes: recipes })
                     this.setState({ loading: false })
                 })
             } else {
@@ -113,6 +113,7 @@ export class RecipeList extends React.Component<RecipeListProps> {
                                 description={recipe.description}
                                 thumbnail={recipe.thumbnail.url}
                                 tags={recipe.tags}
+                                page={'Home Page'}
                             />
                         ))}
                     </StyledRecipeList>

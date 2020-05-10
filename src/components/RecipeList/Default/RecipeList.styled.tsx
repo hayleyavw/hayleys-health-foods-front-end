@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { breakpoint } from '../styling/styling-utils/breakpoints'
-import { calcRem } from '../styling/styling-utils/calcRem'
+import { calcRem } from '../../styling/styling-utils/calcRem'
+import { breakpoint } from '../../styling/styling-utils/breakpoints'
 
 export const StyledRecipeList = styled('div')({
     display: 'grid',

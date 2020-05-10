@@ -12,6 +12,8 @@ import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
 import { RecipeContent } from '../components/RecipeContent/RecipeContent'
 import { RecipePageButtonLinkRow } from '../components/ButtonLinkRow/RecipePageButtonLinkRow'
+import { RecipeList } from '../components/RecipeList/RecipePage/RecipeList'
+import { StyledHeadingTwo } from '../components/common/Headings.styled'
 
 interface MatchParams {
     slug: string
@@ -95,6 +97,8 @@ export class RecipePage extends React.Component<Props> {
                                 />
                             )}
                             <RecipePageButtonLinkRow recipeTitle={recipe.title} />
+                            <StyledHeadingTwo>Check out these other recipes...</StyledHeadingTwo>
+                            <RecipeList recipeTitle={recipe.title} />
                         </React.Fragment>
                     </React.Fragment>
                 ) : (
