@@ -2,7 +2,6 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Recipe, Ingredients, RecipeStep } from '../../api/recipes/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
-import { StaticRecipeSteps } from '../StaticRecipeSteps/StaticRecipeSteps'
 
 interface Props {
     recipe: Recipe
