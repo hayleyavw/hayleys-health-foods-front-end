@@ -93,6 +93,7 @@ export class LatestRecipeList extends React.Component {
                                                     : `${buildImagePath(recipe.thumbnail.url)}`
                                                 : ''
                                         }
+                                        loading="lazy"
                                     />
                                     <StyledTagsWrapper>
                                         {recipe.tags &&
