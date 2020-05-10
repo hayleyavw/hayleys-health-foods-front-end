@@ -14,10 +14,6 @@ export const StyledRecipeList = styled('div')({
     gridGap: calcRem(10),
 
     [breakpoint('md')]: {
-        gridTemplateColumns: '1fr 1fr 1fr',
-    },
-
-    [breakpoint('lg')]: {
         gridTemplateColumns: '1fr 1fr 1fr 1fr',
     },
 })
