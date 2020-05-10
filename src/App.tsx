@@ -26,7 +26,7 @@ import GoogleAnalytics from './components/common/GoogleAnalytics'
 export class App extends React.Component {
     render() {
         const history = createBrowserHistory()
-        const heroImage = require('../components/Hero/heroImages/medium.jpg')
+        const heroImage = require('./components/Hero/heroImages/medium.jpg')
         return (
             <HttpsRedirect>
                 <React.Fragment>
