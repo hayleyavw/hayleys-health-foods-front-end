@@ -69,7 +69,13 @@ export class App extends React.Component {
                                     <Route exact path="/" component={HomePage} />
                                     <Route path="/blog/:slug" component={BlogPage} />
                                     <Route path="/blog" component={BlogListPage} />
-                                    <Route path="/recipes/:slug" component={RecipePage} />
+                                    <Route
+                                        path="/recipes/:slug"
+                                        render={props => (
+                                            <RecipePage key={props.match.params.slug} {...props} />
+                                        )}
+                                    />
+                                    component={RecipePage} />
                                     <Route path="/about/contact" component={ContactPage} />
                                     <Route path="/about/gut-health" component={GutHealthPage} />
                                     <Route path="/about/my-story" component={MyStoryPage} />
