@@ -26,6 +26,7 @@ import GoogleAnalytics from './components/common/GoogleAnalytics'
 export class App extends React.Component {
     render() {
         const history = createBrowserHistory()
+        const heroImage = require('./components/Hero/heroImages/medium.jpg')
         return (
             <HttpsRedirect>
                 <React.Fragment>
@@ -41,6 +42,12 @@ export class App extends React.Component {
                             content="Recipes designed with gut health in mind."
                         />
                         <link rel="canonical" href="hayleyshealthfoods.com" />
+                        <meta property="og:title" content="Hayley's Health Foods" />
+                        <meta
+                            property="og:description"
+                            content="Recipes designed with Gut Health in mind."
+                        />
+                        <meta property="og:image" content={heroImage} />
                     </Helmet>
                     <div className="container">
                         <Global

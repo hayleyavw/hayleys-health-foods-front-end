@@ -66,7 +66,7 @@ export const Card: React.FC<CardProps> = ({
                         {description}
                     </StyledCardDescription>
                 </StyledCardTextWrapper>
-                <StyledCardImage src={`${buildImagePath(thumbnail)}`} />
+                <StyledCardImage src={`${buildImagePath(thumbnail)}`} loading="lazy" />
             </Link>
         </StyledCard>
     )

@@ -1,8 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Recipe, Ingredients, RecipeStep } from '../../api/recipes/ResponseShapes'
+import { Recipe, Ingredients, RecipeStep, TagObject } from '../../api/recipes/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
-import { StaticRecipeSteps } from '../StaticRecipeSteps/StaticRecipeSteps'
 
 interface Props {
     recipe: Recipe
@@ -15,6 +14,9 @@ export class RecipeHead extends React.Component<Props> {
             <Helmet>
                 <title>{recipe.title}</title>
                 <meta name="description" content={`${recipe.description}`} />
+                <meta property="og:title" content={`${recipe.title}`} />
+                <meta property="og:description" content={`${recipe.description}`} />
+                <meta property="og:image" content={`${recipe.thumbnail.url}`} />
                 <script type="application/ld+json">{generateRecipeStructuredData(recipe)}</script>
             </Helmet>
         )
@@ -62,9 +64,30 @@ const generateStructuredDataFromSteps = (steps: RecipeStep[]): string[] => {
     return [ingredientString.slice(0, -1), methodString.slice(0, -1)] // Slice to remove trailing comma
 }
 
+const generateKeyWords = (tags: TagObject[]) => {
+    let tagString = ''
+    tags.forEach(tag => {
+        tagString += `${tag.name},`
+    })
+    return tagString.slice(0, -1)
+}
+
+const generateYieldString = (recipeYield: string) => {
+    let yieldString = ''
+    if (recipeYield !== '') {
+        yieldString = `[
+            "${recipeYield.split(' ')[0]}",
+            "${recipeYield}"
+        ]`
+    }
+    return yieldString
+}
+
 const generateRecipeStructuredData = (recipe: Recipe) => {
     let ingredientString = ''
     let methodString = ''
+    let tagString = generateKeyWords(recipe.tags)
+    let yieldString = generateYieldString(recipe.yield)
 
     if (recipe.useSteps) {
         ;[ingredientString, methodString] = generateStructuredDataFromSteps(recipe.steps)
@@ -83,11 +106,12 @@ const generateRecipeStructuredData = (recipe: Recipe) => {
             "name": "Hayley van Waas"
         },
         "description": "${recipe.title} recipe designed with gut health in mind.",
+        "keywords": "${recipe.title}${tagString.length > 0 ? ', ' + tagString : ''}",
         "recipeIngredient": [
             ${ingredientString}
         ],
         "recipeInstructions": [
             ${methodString}
-        ]
+        ]${yieldString.length > 0 ? ', "recipeYield": ' + yieldString : ''}
     }`
 }
