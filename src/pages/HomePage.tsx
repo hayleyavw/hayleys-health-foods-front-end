@@ -81,16 +81,9 @@ class HomePage extends React.Component<Props> {
             vege: this.state.vege,
             vegan: this.state.vegan,
         }
-        const heroImage = require('../components/Hero/heroImages/medium.jpg')
         return (
             <React.Fragment>
                 <Helmet>
-                    <meta property="og:title" content="Hayley's Health Foods" />
-                    <meta
-                        property="og:description"
-                        content="Recipes designed with Gut Health in mind."
-                    />
-                    <meta property="og:image" content={heroImage} />
                     <script type="application/ld+json">{jsonld}</script>
                 </Helmet>
                 <Hero
