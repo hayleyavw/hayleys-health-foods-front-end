@@ -19,9 +19,7 @@ interface MatchParams {
     slug: string
 }
 
-interface Props extends RouteComponentProps<MatchParams> {
-    key: string
-}
+interface Props extends RouteComponentProps<MatchParams> {}
 
 export interface RouteComponentProps<P> {
     match: match<P>
