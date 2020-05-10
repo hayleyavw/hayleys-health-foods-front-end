@@ -1,7 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Recipe, Ingredients } from '../../api/recipes/ResponseShapes'
+import { Recipe, Ingredients, RecipeStep } from '../../api/recipes/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
+import { StaticRecipeSteps } from '../StaticRecipeSteps/StaticRecipeSteps'
 
 interface Props {
     recipe: Recipe
@@ -14,32 +15,13 @@ export class RecipeHead extends React.Component<Props> {
             <Helmet>
                 <title>{recipe.title}</title>
                 <meta name="description" content={`${recipe.description}`} />
-                <script type="application/ld+json">
-                    {generateRecipeStructuredData(
-                        recipe.title,
-                        recipe.thumbnail.url,
-                        recipe.ingredients,
-                        recipe.method
-                    )}
-                </script>
+                <script type="application/ld+json">{generateRecipeStructuredData(recipe)}</script>
             </Helmet>
         )
     }
 }
 
-const generateRecipeStructuredData = (
-    title: string,
-    imageUrl: string,
-    ingredients: Ingredients[],
-    method: string
-) => {
-    const numIngredients = ingredients.length
-    let ingredientString = ''
-    ingredients.forEach(function(ingredient, index) {
-        ingredientString += `"${ingredient.quantity} ${ingredient.ingredient.name}"${
-            index < numIngredients - 1 ? ',' : ''
-        }`
-    })
+const generateMethodStructuredDataFromString = (method: string): string => {
     let methodStepsRaw = method.split('\n')
     let methodSteps: string[] = []
     let methodString = ''
@@ -48,25 +30,59 @@ const generateRecipeStructuredData = (
             methodSteps.push(step)
         }
     })
-    const numMethodSteps = methodSteps.length
-    methodSteps.forEach(function(step, index) {
-        if (step.length > 0) {
-            methodString += `{
+    methodSteps.forEach(step => {
+        methodString += `{
                 "@type": "HowToStep",
                 "text": "${step}"
-            }${index < numMethodSteps - 1 ? ',' : ''}`
-        }
+            },`
     })
+    return methodString.slice(0, -1) // Slice to remove trailing comma
+}
+
+const generateIngredientsStructuredData = (ingredients: Ingredients[]): string => {
+    let ingredientString = ''
+    ingredients.forEach(ingredient => {
+        ingredientString += `"${ingredient.quantity} ${ingredient.ingredient.name}",`
+    })
+    return ingredientString.slice(0, -1) // Slice to remove trailing comma
+}
+
+const generateStructuredDataFromSteps = (steps: RecipeStep[]): string[] => {
+    let ingredientString = ''
+    let methodString = ''
+    steps.forEach(step => {
+        methodString += `{
+                "@type": "HowToStep",
+                "text": "${step.description}"
+            },`
+        step.ingredients.forEach(ingredient => {
+            ingredientString += `"${ingredient.quantity} ${ingredient.ingredient.name}",`
+        })
+    })
+    return [ingredientString.slice(0, -1), methodString.slice(0, -1)] // Slice to remove trailing comma
+}
+
+const generateRecipeStructuredData = (recipe: Recipe) => {
+    let ingredientString = ''
+    let methodString = ''
+
+    if (recipe.useSteps) {
+        ;[ingredientString, methodString] = generateStructuredDataFromSteps(recipe.steps)
+    } else {
+        methodString = generateMethodStructuredDataFromString(recipe.method)
+        ingredientString = generateIngredientsStructuredData(recipe.ingredients)
+    }
+
     return `{
         "@context": "http://schema.org/",
         "@type": "Recipe",
-        "name": "${title}",
-        "image": "${buildImagePath(imageUrl)}",
+        "name": "${recipe.title}",
+        "image": "${buildImagePath(recipe.thumbnail.url)}",
         "author": {
             "@type": "Person",
             "name": "Hayley van Waas"
         },
-        "description": "${title} recipe designed with gut health in mind.",
+        "description": "${recipe.title} recipe designed with gut health in mind.",
         "recipeIngredient": [
             ${ingredientString}
         ],
