@@ -22,7 +22,15 @@ export class Footer extends React.Component {
                     </StyledFooterColumn>
                 </StyledFooter>
                 <StyledFooterParagraph>
-                    Blog, Contact and Chef Icons made by{' '}
+                    Info Icon made by{' '}
+                    <a
+                        href="https://www.flaticon.com/authors/prettycons"
+                        title="prettyicons"
+                        target="_blank"
+                    >
+                        prettyicons
+                    </a>
+                    . Blog, Contact and Chef Icons made by{' '}
                     <a
                         href="https://www.flaticon.com/authors/freepik"
                         title="Freepik"
@@ -30,7 +38,7 @@ export class Footer extends React.Component {
                         rel="noopener noreferrer"
                     >
                         Freepik
-                    </a>{' '}
+                    </a>
                     . Chopping Board Icon made by{' '}
                     <a
                         href="https://www.flaticon.com/authors/monkik"
@@ -39,7 +47,7 @@ export class Footer extends React.Component {
                         rel="noopener noreferrer"
                     >
                         monkik
-                    </a>{' '}
+                    </a>
                     . Plate Icon made by{' '}
                     <a
                         href="https://www.flaticon.com/authors/pause08"
@@ -48,7 +56,7 @@ export class Footer extends React.Component {
                         rel="noopener noreferrer"
                     >
                         Pause08
-                    </a>{' '}
+                    </a>
                     . These icons are from{' '}
                     <a
                         href="https://www.flaticon.com/"
