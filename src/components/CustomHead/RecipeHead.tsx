@@ -14,6 +14,9 @@ export class RecipeHead extends React.Component<Props> {
             <Helmet>
                 <title>{recipe.title}</title>
                 <meta name="description" content={`${recipe.description}`} />
+                <meta property="og:title" content={`${recipe.title}`} />
+                <meta property="og:description" content={`${recipe.description}`} />
+                <meta property="og:image" content={`${recipe.thumbnail.url}`} />
                 <script type="application/ld+json">{generateRecipeStructuredData(recipe)}</script>
             </Helmet>
         )
