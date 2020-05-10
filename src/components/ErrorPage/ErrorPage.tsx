@@ -29,12 +29,14 @@ const ErrorPage: React.FC = () => {
                         title="Recipes"
                         description="Check out all my recipes, each and everyone designed with gut health in mind."
                         thumbnail={recipeImage}
+                        page="Error Page"
                     />
                     <Card
                         url="/about"
                         title="About and Support"
                         description="Ready about what inspired this project and how you can help me to keep making awesome things!"
                         thumbnail={aboutImage}
+                        page="Error Page"
                     />
                 </StyledRow>
             </StyledContentBox>

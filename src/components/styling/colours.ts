@@ -28,4 +28,5 @@ export const colours = {
     black: '#000',
     grey: '#807f7f',
     lightGrey: '#DCDCDC',
+    yellow: '#FFCE00',
 }

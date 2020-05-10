@@ -16,6 +16,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({ href, newTab, image, but
     return (
         <StyledButtonLink
             target={newTab ? '_blank' : ''}
+            rel={newTab ? 'noopener noreferrer' : ''}
             href={href}
             onClick={() => {
                 ReactGA.event({
