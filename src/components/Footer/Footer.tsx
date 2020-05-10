@@ -27,6 +27,7 @@ export class Footer extends React.Component {
                         href="https://www.flaticon.com/authors/prettycons"
                         title="prettyicons"
                         target="_blank"
+                        rel="noopener noreferrer"
                     >
                         prettyicons
                     </a>
