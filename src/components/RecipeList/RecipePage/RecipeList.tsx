@@ -12,6 +12,7 @@ import {
     StyledRecipeListButtonLinkText,
     StyledButtonLinkImageWrapper,
 } from './RecipeList.styled'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
 interface RecipeListProps {
     recipeTitle: string
@@ -22,7 +23,7 @@ interface State {
     loading: boolean
 }
 
-export class RecipeList extends React.Component<RecipeListProps> {
+class RecipeList extends React.Component<RecipeListProps & RouteComponentProps> {
     public readonly state: Readonly<State> = {
         recipes: [new Recipe()],
         loading: true,
@@ -86,3 +87,5 @@ export class RecipeList extends React.Component<RecipeListProps> {
         )
     }
 }
+
+export const RecipeListComponent = withRouter(RecipeList)

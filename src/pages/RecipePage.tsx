@@ -12,14 +12,16 @@ import { jsonld } from '../components/common/jsonld'
 import Helmet from 'react-helmet'
 import { RecipeContent } from '../components/RecipeContent/RecipeContent'
 import { RecipePageButtonLinkRow } from '../components/ButtonLinkRow/RecipePageButtonLinkRow'
-import { RecipeList } from '../components/RecipeList/RecipePage/RecipeList'
 import { StyledHeadingTwo } from '../components/common/Headings.styled'
+import { RecipeListComponent } from '../components/RecipeList/RecipePage/RecipeList'
 
 interface MatchParams {
     slug: string
 }
 
-interface Props extends RouteComponentProps<MatchParams> {}
+interface Props extends RouteComponentProps<MatchParams> {
+    key: string
+}
 
 export interface RouteComponentProps<P> {
     match: match<P>
@@ -98,7 +100,7 @@ export class RecipePage extends React.Component<Props> {
                             )}
                             <RecipePageButtonLinkRow recipeTitle={recipe.title} />
                             <StyledHeadingTwo>Check out these other recipes...</StyledHeadingTwo>
-                            <RecipeList recipeTitle={recipe.title} />
+                            <RecipeListComponent recipeTitle={recipe.title} />
                         </React.Fragment>
                     </React.Fragment>
                 ) : (
