@@ -58,6 +58,15 @@ export class Footer extends React.Component {
                     >
                         Pause08
                     </a>
+                    . Arrow Icon made by{' '}
+                    <a
+                        href="https://www.flaticon.com/authors/roundicons"
+                        title="roundicons"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        roundicons
+                    </a>
                     . These icons are from{' '}
                     <a
                         href="https://www.flaticon.com/"
