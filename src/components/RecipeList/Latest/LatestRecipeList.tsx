@@ -94,6 +94,7 @@ export class LatestRecipeList extends React.Component {
                                                 : ''
                                         }
                                         loading="lazy"
+                                        alt={`${recipe.title}.`}
                                     />
                                     <StyledTagsWrapper>
                                         {recipe.tags &&
