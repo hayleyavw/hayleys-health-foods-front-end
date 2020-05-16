@@ -86,6 +86,7 @@ export class Hero extends React.Component<HeroProps> {
                         isHomePage={isHomePage}
                         src={small}
                         srcSet={`${small} ${srcSetWidths.sm}, ${medium} ${srcSetWidths.md}, ${large} ${srcSetWidths.lg}`}
+                        alt={isHomePage ? `Muesli, banana, strawberries and yoghurt.` : `${title}.`}
                     />
                     <StyledHeroHeadingWrapper>
                         <StyledHeroHeading isHomePage={isHomePage}>{title}</StyledHeroHeading>
