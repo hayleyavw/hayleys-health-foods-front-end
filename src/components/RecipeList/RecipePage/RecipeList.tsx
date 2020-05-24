@@ -31,7 +31,7 @@ class RecipeList extends React.Component<RecipeListProps & RouteComponentProps> 
 
     async componentDidMount() {
         try {
-            await getRecipeGraphQL({ limit: '3' }).then(recipes => {
+            await getRecipeGraphQL({ preview: true, limit: '3' }).then(recipes => {
                 this.setState({ recipes: recipes })
                 this.setState({ loading: false })
             })

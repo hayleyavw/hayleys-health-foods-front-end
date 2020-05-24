@@ -7,6 +7,7 @@ interface RecipeGraphQLProps {
     limit?: string
     start?: string
     slug?: string
+    preview?: boolean
 }
 
 export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recipe | Recipe[]> {
@@ -14,7 +15,12 @@ export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recip
     if (props.id) {
         queryString = recipeByIdQuery(props.id)
     } else {
-        queryString = recipesQuery({ start: props.start, limit: props.limit, slug: props.slug })
+        queryString = recipesQuery({
+            preview: props.preview,
+            start: props.start,
+            limit: props.limit,
+            slug: props.slug,
+        })
     }
     const results = await (await fetch(`${api_url}/graphql`, {
         method: 'post',

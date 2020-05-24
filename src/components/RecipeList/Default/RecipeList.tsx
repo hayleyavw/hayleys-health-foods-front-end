@@ -44,7 +44,7 @@ export class RecipeList extends React.Component<RecipeListProps> {
                 tagList.push('vegan')
             }
             if (tagList.length === 0) {
-                await getRecipeGraphQL({}).then(recipes => {
+                await getRecipeGraphQL({ preview: true }).then(recipes => {
                     this.setState({ recipes: recipes })
                     this.setState({ loading: false })
                 })
@@ -80,7 +80,7 @@ export class RecipeList extends React.Component<RecipeListProps> {
                 }
                 this.setState({ loading: true })
                 if (tagList.length === 0) {
-                    await getRecipeGraphQL({}).then(recipe => {
+                    await getRecipeGraphQL({ preview: true }).then(recipe => {
                         this.setState({ recipes: recipe })
                         this.setState({ loading: false })
                     })
