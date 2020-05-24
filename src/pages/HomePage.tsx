@@ -97,7 +97,7 @@ class HomePage extends React.Component<Props> {
                 <HomePageButtonLinkRow />
                 <StyledAllRecipesHeading>
                     <StyledHeadingTwo>All Recipes</StyledHeadingTwo>
-                    <FilterButtons handler={this.handler} tagStatus={tagStatus} />
+                    {/* <FilterButtons handler={this.handler} tagStatus={tagStatus} /> */}
                 </StyledAllRecipesHeading>
                 <RecipeList tagStatus={tagStatus} />
             </React.Fragment>
