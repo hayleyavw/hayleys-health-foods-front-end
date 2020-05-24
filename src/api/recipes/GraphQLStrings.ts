@@ -2,7 +2,7 @@ import { imageQuery } from '../common/GraphQLStrings'
 
 // (where: {slug: "apple-sauce"})
 
-const baseQuery = `
+const fullRecipe = `
     id
     slug
     title
@@ -32,12 +32,6 @@ const baseQuery = `
         }
     }
     ${imageQuery}
-    tags {
-        id
-        slug
-        name
-        short_name
-    }
     ingredients {
         id
         quantity
@@ -53,10 +47,28 @@ const baseQuery = `
         }
     }`
 
+const tags = `
+    tags {
+        id
+        slug
+        name
+        short_name
+    }`
+
+const previewRecipe = `
+    id
+    slug
+    title
+    description
+    published
+    ${imageQuery}
+    `
+
 export const recipeByIdQuery = (id: number) => {
     return `query {
         recipe(id: ${id}) {
-            ${baseQuery}
+            ${fullRecipe}
+            ${tags}
         }
     }`
 }
@@ -65,6 +77,7 @@ interface RecipesQueryProps {
     start?: string
     limit?: string
     slug?: string
+    preview?: boolean
 }
 
 export const recipesQuery = (props: RecipesQueryProps) => {
@@ -74,7 +87,8 @@ export const recipesQuery = (props: RecipesQueryProps) => {
     }, sort: "created_at:desc", where: {published: "true"${
         props.slug ? ', slug: "' + props.slug + '"' : ''
     }}) {
-            ${baseQuery}
+            ${props.preview ? previewRecipe : fullRecipe}
+            ${tags}
         }
     }`
 }
@@ -99,35 +113,7 @@ export const recipesByTagsQuery = (tag: string) => {
         }) {
             ${tagsQueryString}
             recipes("created_at:desc", where: {published: "true"}) {
-                id
-                slug
-                title
-                yield
-                prep_time
-                cook_time
-                method
-                description
-                published
-                use_steps
-                recipe_steps (sort: "step_number:asc") {
-                    step_number
-                    description
-                    recipe_ingredients {
-                        id
-                        quantity
-                        ingredient {
-                            id
-                            slug
-                            name
-                        }
-                        ingredient_unit {
-                            id
-                            name
-                            short_name
-                        }
-                    }
-                }
-                ${imageQuery}
+                ${previewRecipe}
                 tags {
                     ${tagsQueryString}
                 }

@@ -27,7 +27,7 @@ export class LatestRecipeList extends React.Component {
     }
 
     async componentDidMount() {
-        await getRecipeGraphQL({ limit: '4' }).then(recipes => {
+        await getRecipeGraphQL({ preview: true, limit: '4' }).then(recipes => {
             this.setState({ recipes: recipes })
             this.setState({ loading: false })
         })

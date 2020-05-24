@@ -95,12 +95,7 @@ export class Hero extends React.Component<HeroProps> {
                             <StyledTagsWrapper>
                                 {this.state.loading === false
                                     ? tagList.map((tag: TagObject, index) => (
-                                          <Tag
-                                              key={index}
-                                              text={tag.name}
-                                              handler={handler}
-                                              tag={tag}
-                                          ></Tag>
+                                          <Tag key={index} text={tag.name} tag={tag}></Tag>
                                       ))
                                     : ''}
                             </StyledTagsWrapper>
