@@ -62,6 +62,32 @@ export class RecipePage extends React.Component<Props> {
 
     render() {
         const recipe = this.state.recipe
+        let prepTime, cookTime, freezeTime, soakTime, setTime, otherTime
+        recipe.times.forEach(time => {
+            switch (time.category) {
+                case 'prep':
+                    prepTime = time
+                    break
+                case 'cook':
+                    cookTime = time
+                    break
+                case 'freeze':
+                    freezeTime = time
+                    break
+                case 'soak':
+                    soakTime = time
+                    break
+                case 'set':
+                    setTime = time
+                    break
+                case 'other':
+                    otherTime = time
+                    break
+                default:
+                    break
+            }
+        })
+
         return (
             <React.Fragment>
                 {this.state.loading ? (
@@ -84,8 +110,12 @@ export class RecipePage extends React.Component<Props> {
                                 title={recipe.title}
                                 tags={recipe.tags}
                                 recipeYield={recipe.yield}
-                                prepTime={recipe.prepTime}
-                                cookTime={recipe.cookTime}
+                                prepTime={prepTime}
+                                cookTime={cookTime}
+                                freezeTime={freezeTime}
+                                soakTime={soakTime}
+                                setTime={setTime}
+                                otherTime={otherTime}
                             />
                             {recipe.useSteps ? (
                                 <RecipeContent recipe={recipe} />
