@@ -45,7 +45,16 @@ const fullRecipe = `
             name
             short_name
         }
-    }`
+    }
+    recipe_times {
+        id
+        title
+        duration
+        category {
+            name
+        }
+    }
+    `
 
 const tags = `
     tags {
