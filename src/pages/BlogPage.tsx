@@ -58,8 +58,6 @@ export class BlogPage extends React.Component<Props> {
 
     render() {
         const blogPost = this.state.blogPost
-        const moment = require('moment')
-        const createdAt = moment(blogPost.createdAt).format('Do MMM YYYY')
 
         function getDescription(content: string) {
             let description = content.split(/\r?\n/)
@@ -96,7 +94,7 @@ export class BlogPage extends React.Component<Props> {
                                     mediumImage={blogPost.mediumImage}
                                     largeImage={blogPost.largeImage}
                                     title={blogPost.title}
-                                    subtitle={createdAt}
+                                    subtitle={blogPost.createdAt}
                                 />
                                 <StyledContentBox>
                                     <ReactMarkdown source={blogPost.content}></ReactMarkdown>
