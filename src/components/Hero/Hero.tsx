@@ -15,7 +15,7 @@ import { Image } from '../../api/common/ResponseShapes'
 import { buildImagePath } from '../../utils/utils'
 import { srcSetWidths } from '../styling/styling-utils/breakpoints'
 import { Tag } from '../Tag/Tag'
-import { TagObject } from '../../api/recipes/ResponseShapes'
+import { TagObject, RecipeTime } from '../../api/recipes/ResponseShapes'
 import { getTags } from '../../api/recipes/Queries'
 import { RecipeInfoCard } from '../RecipeInfoCard/RecipeInfoCard'
 
@@ -29,8 +29,12 @@ interface HeroProps {
     handler?: (reset: boolean, tag: string, scroll: boolean) => void
     tags?: TagObject[]
     recipeYield?: string
-    prepTime?: string
-    cookTime?: string
+    prepTime?: RecipeTime
+    cookTime?: RecipeTime
+    freezeTime?: RecipeTime
+    soakTime?: RecipeTime
+    setTime?: RecipeTime
+    otherTime?: RecipeTime
 }
 
 interface State {
@@ -66,6 +70,10 @@ export class Hero extends React.Component<HeroProps> {
             recipeYield,
             prepTime,
             cookTime,
+            freezeTime,
+            soakTime,
+            setTime,
+            otherTime,
         } = this.props
         let tagList = tags ? tags : this.state.tags
 
@@ -101,8 +109,8 @@ export class Hero extends React.Component<HeroProps> {
                             </StyledTagsWrapper>
                             <StyledRecipeInfo>
                                 {this.state.loading === false ? (
-                                    prepTime && prepTime !== '' ? (
-                                        <RecipeInfoCard type="prepTime" description={prepTime} />
+                                    prepTime ? (
+                                        <RecipeInfoCard info={prepTime} />
                                     ) : (
                                         ''
                                     )
@@ -110,8 +118,44 @@ export class Hero extends React.Component<HeroProps> {
                                     ''
                                 )}
                                 {this.state.loading === false ? (
-                                    cookTime && cookTime !== '' ? (
-                                        <RecipeInfoCard type="cookTime" description={cookTime} />
+                                    cookTime ? (
+                                        <RecipeInfoCard info={cookTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    soakTime ? (
+                                        <RecipeInfoCard info={soakTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    freezeTime ? (
+                                        <RecipeInfoCard info={freezeTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    setTime ? (
+                                        <RecipeInfoCard info={setTime} />
+                                    ) : (
+                                        ''
+                                    )
+                                ) : (
+                                    ''
+                                )}
+                                {this.state.loading === false ? (
+                                    otherTime ? (
+                                        <RecipeInfoCard info={otherTime} />
                                     ) : (
                                         ''
                                     )
@@ -120,7 +164,7 @@ export class Hero extends React.Component<HeroProps> {
                                 )}
                                 {this.state.loading === false ? (
                                     recipeYield && recipeYield !== '' ? (
-                                        <RecipeInfoCard type="yield" description={recipeYield} />
+                                        <RecipeInfoCard info={recipeYield} />
                                     ) : (
                                         ''
                                     )

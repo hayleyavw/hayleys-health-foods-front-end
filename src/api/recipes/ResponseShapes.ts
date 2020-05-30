@@ -77,6 +77,21 @@ export class RecipeStep {
     }
 }
 
+export class RecipeTime {
+    id: number
+    title: string
+    duration: string
+    category: string
+
+    constructor(results?: any) {
+        this.id = results && results.id ? results.id : 0
+        this.title = results && results.title ? results.title : ''
+        this.duration = results && results.duration ? results.duration : ''
+        this.category =
+            results && results.category && results.category.name ? results.category.name : ''
+    }
+}
+
 export class Recipe {
     id: number
     slug: string
@@ -93,6 +108,7 @@ export class Recipe {
     ingredients: Ingredients[]
     useSteps: boolean
     steps: RecipeStep[]
+    times: RecipeTime[]
     published: boolean
 
     constructor(results?: any) {
@@ -129,6 +145,12 @@ export class Recipe {
                       return new RecipeStep(step)
                   })
                 : [new RecipeStep()]
+        this.times =
+            results && results.recipe_times
+                ? results.recipe_times.map((time: any) => {
+                      return new RecipeTime(time)
+                  })
+                : [new RecipeTime()]
         this.useSteps = results && results.use_steps ? results.use_steps : false
     }
 }

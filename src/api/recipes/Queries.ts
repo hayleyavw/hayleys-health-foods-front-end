@@ -29,6 +29,7 @@ export async function getRecipeGraphQL(props: RecipeGraphQLProps): Promise<Recip
         },
         body: JSON.stringify({ query: queryString }),
     })).json()
+    console.log(results)
     if (results) {
         if (props.id) {
             return new Recipe(results.data.recipe)

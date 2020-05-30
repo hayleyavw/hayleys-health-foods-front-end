@@ -31,7 +31,7 @@ export class Footer extends React.Component {
                     >
                         prettyicons
                     </a>
-                    . Blog, Contact and Chef Icons made by{' '}
+                    . Blog, Contact, Water Droplet and Chef Icons made by{' '}
                     <a
                         href="https://www.flaticon.com/authors/freepik"
                         title="Freepik"
@@ -66,6 +66,24 @@ export class Footer extends React.Component {
                         rel="noopener noreferrer"
                     >
                         roundicons
+                    </a>
+                    . Snowflake Icon made by{' '}
+                    <a
+                        href="https://www.flaticon.com/authors/kiranshastry"
+                        title="kiranshastry"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        kiranshastry
+                    </a>
+                    . Water and Timer Icons made by{' '}
+                    <a
+                        href="https://www.flaticon.com/authors/good-ware"
+                        title="Good Ware"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Good Ware
                     </a>
                     . These icons are from{' '}
                     <a
